@@ -219,10 +219,10 @@ $consumercomplain = get_waiting_complain($employee_id);
     include 'src/init.php';
     global $con;
 
-    $sql = "SELECT emp_tbl.*, user_tbl.role
+    $sql = "SELECT emp_tbl.*, user_tbl.pos_id
             FROM emp_tbl
             INNER JOIN user_tbl ON emp_tbl.employee_id = user_tbl.employee_id
-            WHERE user_tbl.role > 2 AND user_tbl.role != 4";
+            WHERE user_tbl.pos_id > 2 AND user_tbl.pos_id != 4";
 
     $qry = $con->query($sql);
     

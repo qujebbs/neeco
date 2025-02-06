@@ -82,7 +82,7 @@ function get_waiting_complain($employee_id) {
     $sql = "SELECT *
             FROM complaint_tbl
             JOIN consumer_tbl ON complaint_tbl.consumer_id = consumer_tbl.consumer_id
-            JOIN town_tbl ON complaint_tbl.town_id = town_tbl.town_id 
+            JOIN town_table ON complaint_tbl.town_code = town_table.town_code 
             JOIN emp_tbl ON complaint_tbl.employee_id = emp_tbl.employee_id
             WHERE complaint_tbl.employee_id = '$employee_id' AND complaint_tbl.complaint_status = 1";
             

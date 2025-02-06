@@ -512,8 +512,8 @@
 		$error='';
 
   	//make the allowed extensions
-	//$goodExtensions = array(
-  //	'.jpg', '.png','.jpeg',); 
+	$goodExtensions = array(
+  	'.jpg', '.png','.jpeg',); 
   	
   	//set the current directory where you wanna upload the doc/docx  or pdf files
 	$uploaddir = $dir;
@@ -553,8 +553,8 @@
 		$error='';
 
   	//make the allowed extensions
-	//$goodExtensions = array(
-  //	'.jpg', '.png','.jpeg',); 
+	$goodExtensions = array(
+  	'.jpg', '.png','.jpeg',); 
   	
   	//set the current directory where you wanna upload the doc/docx  or pdf files
 	$uploaddir = $dir;

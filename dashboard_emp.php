@@ -77,7 +77,7 @@ if (isset($_FILES['textfile']['name'])) {
            
             echo "Debug: " . implode(', ', $values) . "<br>";
 
-            $insertDataQuery = "INSERT INTO $tableName (`town_code`, `route_code`, `account_num`, `lastname`, `firstname`, `midname`, `suffix`, `barangay`, `profilepix`, `reg_date`, `cpnum`, `pole_id`, `meter_srn`, `emp_name`, `date`, `time`) VALUES (";
+            $insertDataQuery = "INSERT INTO $tableName (`town_code`, `route_code`, `account_num`, `lastname`, `firstname`, `midname`, `suffix`, `barangay`, `profilepix`, `backpix`,  `reg_date`, `cpnum`, `pole_id`, `meter_srn`, `emp_name`, `date`, `time`, `tansferable`, `email`) VALUES (";
             foreach ($values as $cell) {
                 $insertDataQuery .= "'$cell', ";
             }

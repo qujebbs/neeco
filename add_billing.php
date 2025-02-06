@@ -56,6 +56,7 @@ include "sidebar.php";
     <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['textfile']['name'])) {
     $con = mysqli_connect("localhost", "root", "", "neecollarea1");
+    // global $con;
 
     if ($con) {
         $textFileContent = file_get_contents($_FILES['textfile']['tmp_name']);
@@ -81,13 +82,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['textfile']['name'])) 
             $insertDataQuery = rtrim($insertDataQuery, ', ') . ');';
 
             if (mysqli_query($con, $insertDataQuery)) {
+        // if (sqlsrv_query($con, $insertDataQuery)) {
                 $emp_id = $peracc[0]['employee_id'];
                 $sql = "INSERT INTO logs_tbl (employee_id, log_activity) VALUES ('$emp_id', 'add billing')";
                 $result =mysqli_query($con, $sql);
+            // $result =mysqli_query($con, $sql);        
             } if($result) {
                 echo "Data inserted successfully into the '$tableName' table.<br>";
             }else {
                 echo "Error inserting data: " . mysqli_error($con) . "<br>";
+                // echo "Error inserting data: " . sqlsrv_error($con) . "<br>";
             }
         }
     } else {
@@ -127,6 +131,31 @@ function get_your_bill() {
     }
     return null;
 }
+
+// function get_your_bill() {
+//     global $con;
+//     $list = array();
+
+//     $sql = "SELECT *
+//             FROM consumer_tbl
+//             INNER JOIN bill_tbl ON consumer_tbl.consumer_id = bill_tbl.consumer_id
+//             INNER JOIN town_tbl ON consumer_tbl.town_id = town_tbl.town_id";
+
+//     $stmt = sqlsrv_query($con, $sql);
+
+//     if ($stmt === false) {
+//         die(print_r(sqlsrv_errors(), true));
+//     }
+
+//     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+//         $list[] = $row;
+//     }
+
+//     sqlsrv_free_stmt($stmt);
+
+//     return !empty($list) ? $list : null;
+// }
+
 
 
 
@@ -310,7 +339,7 @@ if (isset($_POST['dltbillbtn'])) {
     
     $sql = "DELETE FROM bill_tbl WHERE bill_id = '$billID'";
     $result = mysqli_query($con, $sql);
-
+// $result = sqlsrv_query($con, $sql);
     if($result){
         $emp_id = $peracc[0]['employee_id'];
         
@@ -349,6 +378,7 @@ if (isset($_POST['editbillbtn'])) {
     
     $sql = "UPDATE bill_tbl SET bill_amount = '$billamount', bill_yrmonth = '$billyrmonth', kwh_used = '$kwh_used', or_amount = '$or_amount', due_date = '$duedate' WHERE bill_id = '$billID'";
     $result = mysqli_query($con, $sql);
+    // $result = sqlsrv_query($con, $sql);
 
     if($result){
         $emp_id = $peracc[0]['employee_id'];

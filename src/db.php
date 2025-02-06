@@ -15,6 +15,18 @@ if ($con->connect_error) {
 }
 error_reporting(0);
 
+// $serverName = "localhost";
+// $connectionOptions = [
+//     "Database" => "neeco2area1", 
+//     "TrustServerCertificate" => true 
+// ];
 
 
+// $conn = sqlsrv_connect($serverName, $connectionOptions);
+
+// if ($conn === false) {
+//     die(print_r(sqlsrv_errors(), true));
+// } else {
+//     echo "Connection successful! <br>";
+// }
 ?>

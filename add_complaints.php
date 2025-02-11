@@ -21,7 +21,7 @@ include "sidebar.php";
     
 </head>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 
 <!-- Page Heading -->
 

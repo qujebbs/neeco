@@ -1,10 +1,6 @@
 
 <?php
 include "sidebar.php";
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,34 +127,6 @@ function get_your_bill() {
     }
     return null;
 }
-
-// function get_your_bill() {
-//     global $con;
-//     $list = array();
-
-//     $sql = "SELECT *
-//             FROM consumer_tbl
-//             INNER JOIN bill_tbl ON consumer_tbl.consumer_id = bill_tbl.consumer_id
-//             INNER JOIN town_tbl ON consumer_tbl.town_id = town_tbl.town_id";
-
-//     $stmt = sqlsrv_query($con, $sql);
-
-//     if ($stmt === false) {
-//         die(print_r(sqlsrv_errors(), true));
-//     }
-
-//     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-//         $list[] = $row;
-//     }
-
-//     sqlsrv_free_stmt($stmt);
-
-//     return !empty($list) ? $list : null;
-// }
-
-
-
-
 ?>
 
 

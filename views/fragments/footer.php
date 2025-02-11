@@ -1,30 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>NEECO ll Area 1</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Impact
-  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-  * Updated: Mar 17 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
 <body>
 
 <footer id="footer" class="footer">
@@ -33,7 +6,7 @@
   <div class="row gy-4">
     <div class="col-lg-5 col-md-12 footer-info">
       <a href="index.html" class="logo d-flex align-items-center">
-        <span>NEECO ll - AREA 1</span>
+        <span>NEECO ll - AREA 3</span>
       </a>
       <p>NUEVA ECIJA II ELECTRIC COOPERATIVE, INC. in the humble service of the municipalities of Talavera, Lupao, Carranglan, Aliaga, Quezon, Licab, Sto. Domingo, Munoz, Guimba and Talugtug</p>
       <div class="social-links d-flex mt-4">
@@ -138,13 +111,6 @@ Monday to Sunday 24/7
 </div>
 
 </footer>
-  <!-- ======= Header ======= -->
- <!--End Header -->
- <!-- End Footer -->
-  <!-- End Footer -->
-
-  
-  <!-- Vendor JS Files -->
   
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -162,5 +128,3 @@ Monday to Sunday 24/7
   <!-- Template Main JS File -->
   <script src="assets/js/mains.js"></script>
 </body>
-
-</html>

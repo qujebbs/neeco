@@ -11,7 +11,20 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendors/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendors/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -29,7 +42,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <section id="mobile" >
+  <section id="topbar" >
 <div class="container d-flex justify-content-center justify-content-md-between">
   <div class="contact-info d-flex align-items-center">
    <img src="assets/img/neeco.png" alt=""> 
@@ -56,6 +69,37 @@
           </div>
   </div>
 </div>
+</section>
+
+<section id="mobile" >
+
+   <img src="assets/img/neeco.png" alt="" style="position: center; width: 90%;"> 
+   
+   <div class="upper-column info-box">
+             <div class="icon-box"><span class="flaticon-phone-call"></span></div>
+             <ul>
+                <p class="text-center"><strong>Call Now</strong></p>
+                <p class="text-center">(044) 411 1007 / 958 0260 <br> 0915-0816-960 Globe/Tm <br/> 0933-8231-894 Sun/Smart</p>
+             </ul>
+          </div>
+          <!--Info Box-->
+          <div class="upper-column info-box">
+             <div class="icon-box"><span class="flaticon-alarm-clock"></span></div>
+             <ul>
+                <p class="text-center"><strong>Business Hours</strong></p>
+                <p class="text-center">Mon-Fri: 8:00am to 5:00pm</p>
+             </ul>
+          </div>
+  </div>
+  
+  <div class="upper-column info-box" style="padding: 10px 20px; line-height: 47px; text-transform: uppercase; background: #036029; width: 90%; margin: 0 auto; text-align: center;">
+    <div class="icon-box">
+        <a href="login.php" style="color: #fff; font-size: 16px;" class="theme-btn btn-style-two">Know your Bill</a>
+    </div>
+</div>
+
+
+ 
 </section>
 
   
@@ -93,39 +137,11 @@
             </ul>
           </li>
           <li><a href="gm-corners.php">GM's Corner</a></li>
+          <li><a href="rate.php">Rate Archive</a></li>
           
           
           
-          <?php
-include 'src/init.php';
-
-function get_all_rate_archive() {
-    global $con;
-    $list = array();
-
-    $sql = "SELECT * FROM rates   ";
-    $qry = $con->query($sql);
-
-    if ($qry) {
-        while ($row = mysqli_fetch_assoc($qry)) {
-            $list[] = $row;
-        }
-    }
-
-    return $list;
-}
-
-$quickdl = get_all_rate_archive();
-?>
-
-<li class="dropdown">
-    <a href="#"><span>Rate Archive</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-    <ul>
-        <?php foreach ($quickdl as $dl) : ?>
-            <li><a href="<?php echo $dl['pdf']; ?>"><?php echo $dl['file_title']; ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-</li>
+        
 
           <li class="dropdown"><a href="#"><span>FAQs</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>

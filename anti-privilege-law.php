@@ -1,16 +1,11 @@
-
 <?php 
 
 include 'views/fragments/header.php';
 
-
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
 <body>
-
+  
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -19,7 +14,7 @@ include 'views/fragments/header.php';
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              
+             
               <p></p>
             </div>
           </div>
@@ -29,7 +24,7 @@ include 'views/fragments/header.php';
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Coverage Area</li>
+            <li>R.A. 7832 Anti Pilferage Law</li>
           </ol>
         </div>
       </nav>
@@ -45,13 +40,12 @@ include 'views/fragments/header.php';
 
             <article class="blog-details">
 
-              
-              <h2 class="title">Coverage Area
-</h2>
-<div class="post-img">
-                <img src="assets/img/Coverage Area.png" alt="" class="img-fluid" style="height: 150%; width: 110%;">
+              <div class="post-img">
+                <img src="assets/img/NEECO.png" alt="" class="img-fluid" style="height: 150%; width: 110%;">
               </div>
 
+              <h2 class="title">R.A. 7832 Anti Pilferage Law
+</h2>
 
               <div class="meta-top">
                 <ul>
@@ -60,7 +54,27 @@ include 'views/fragments/header.php';
               </div><!-- End meta top -->
 
               <div class="content">
+                <p>
+                Ang Section 14 ng Republic Act 7832, Anti Pilferage Law ay isang batas na mahigpit at direktang ipinagbabawal ang pagnanakaw ng kuryente gayun din sa mga materyales na ginagamit sa transmisyon o distribusyon nito. Nasasaad din sa R.A. 7832 ang mga kaukulang parusa sa anumang uri ng paglabag sa batas na ito, mula Anim (6) na taon at isang araw hanggang labindalawang (12) taong pagkakabilanggo at multang Php 50,000.00 hanggang Php 100,000.00 libong piso o kaya ay pareho ayon sa pasiya ng hukuman.
+                </p>
+
+                <h3>Paano maipapaalam sa NEEO II-Area1 kung mayroong pinagdududahan na nagnanakaw ng kuryente? </h3>
+
+               
+
+                <p>
+                Magreport lamang po sa NEECO II-Area1 main office o kaya tumawag o magtext  sa numerong 09150816960 (Globe/TM) o 09338231894 (Sun/Smart) at agad pong iimbestigahan ng Pilferage Detection & Apprehension (PDA) team. Makakaasa po kayo na mananaitling confidential ang pangalan ng nag-report.
+
+                </p>
+               
+               <h3>Ano ang mga isinasagawang pamamaraan ng NEECO II- Area1 para sa mas epektibong pagsugpo sa mga nagnanakaw ng kuryente? </h3>
+
+                <p>
                 
+                Nagsasagawa po ng random na inspeksyon ang  Pilferage Detection & Apprehension (PDA) team sa bawat kabahayan sa iba’t ibang barangay na nasasakupan. Nagbibigay din po ng pabuya sa mga taong nakapagbibigay ng tamang inpormasyon sa mga nagnanakaw ng kuryente.
+
+                </p>
+
                
 
                
@@ -121,13 +135,6 @@ $allList = get_all_news();
                 </div>
               </div><!-- End recent post item-->
               <?php endforeach; ?>
-              
-
-              
-
-             
-
-              
 
             </div>
 
@@ -139,7 +146,8 @@ $allList = get_all_news();
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php include 'views/fragments/footer.php' ?>
+  <?php include 'views/fragments/footer.php'; ?>
+
 </body>
 
 </html>

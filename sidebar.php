@@ -21,9 +21,6 @@ session_start();
 
 
 <?php
-// Ensure you include the database connection
-include 'src/init.php';
-
 function get_complain_notification($employee_id) {
     global $con; // Ensure global connection is used
     $list = array();

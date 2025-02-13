@@ -1,19 +1,18 @@
 <?php
-    class Award{
+    class Towns{
         private $con;
-        private $table = "awards";
+        private $table = "towns";
 
-        public $awardId;
-        public $awardType;
-        public $awardName;
-        public $awardFrom;
-        public $awardDate;
+        public $townId;
+        public $zoneCode;
+        public $townDesc;
+        public $townAbbrv;
 
         public function __construct($con) {
             $this->con = $con;
         }
 
-        public function insert($award){
+        public function insert($town){
             die();
         }
 
@@ -36,4 +35,5 @@
         public function delete(){
             die();
         }
+
     }

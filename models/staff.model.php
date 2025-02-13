@@ -1,19 +1,17 @@
-<?php
-    class Award{
+<?php 
+    class Staff{
         private $con;
-        private $table = "awards";
+        private $table = "staffs";
 
-        public $awardId;
-        public $awardType;
-        public $awardName;
-        public $awardFrom;
-        public $awardDate;
+        public $staffId;
+        public $staffDepartment;
+        public $staffPic;
 
         public function __construct($con) {
             $this->con = $con;
         }
 
-        public function insert($award){
+        public function insert($staff){
             die();
         }
 

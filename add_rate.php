@@ -91,7 +91,7 @@ if (isset($_POST['addratebtn'])) {
     
     $employee_id = $strip->strip($_POST['employee_id']);
     $newsUploadDirectory = 'assets/img/pdfrates/';
-    $news_picture = $_FILES['pdf'];
+    $news_picture = $_FILES['pdf']; //input name
     $rate_type = $_POST['rate_type'];
     $date = $_POST['curdate'];
    
@@ -101,9 +101,6 @@ if (isset($_POST['addratebtn'])) {
         $newspixFilename = uniqid() . '_' . basename($news_picture['name']);
         $newsFilepath = $newsUploadDirectory . $newspixFilename;
 
-        
-
-       
         if (move_uploaded_file($news_picture['tmp_name'], $newsFilepath)) {
             
             $newsInsert = $qrys->insert('rates', array(

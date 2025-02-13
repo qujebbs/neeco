@@ -20,10 +20,6 @@ function getPDOConnection()
 }
 
 
-
-
-
-
 $servername = "localhost";
 $username = "root";
 $password = "105671080088";

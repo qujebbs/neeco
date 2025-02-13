@@ -46,16 +46,16 @@ include "sidebar.php";
                 </div>
                 <div class="modal-body">
                 <form action="#" method="POST" enctype="multipart/form-data">
-    <input type="file" name="textfile">
+    <input type="file" name="billsCSV">
     <input type="submit" name="submit">
 
     <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['textfile']['name'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['billsCSV'])) {
     $con = mysqli_connect("localhost", "root", "", "neecollarea1");
     // global $con;
 
     if ($con) {
-        $textFileContent = file_get_contents($_FILES['textfile']['tmp_name']);
+        $textFileContent = file_get_contents($_FILES['billsCSV']['tmp_name']);
         $rows = explode("\n", $textFileContent);
         $tableName = 'bill_tbl';
 

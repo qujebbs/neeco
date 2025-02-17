@@ -1,5 +1,5 @@
 <?php 
-include "models/award.model.php";
+include "models/award.models.php";
 include "src/debugUtil.php";
 
 
@@ -10,12 +10,12 @@ if ($con) {
 
 $id = 2;
 $award = new Award($con);
-$award->awardType = "n4s";
-$award->awardName = "n3s";
+$award->awardType = "test";
+$award->awardName = "ing";
 $award->awardFrom = "n4ss";
 
 
 
-$awards = $award->selectOne($id);
+$awards = $award->update($id);
 
 dumpVar($awards);

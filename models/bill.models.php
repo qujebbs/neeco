@@ -1,8 +1,6 @@
-<?php 
-        class Bill {
-        private $con;
-        private $table = "bills";
-
+<?php
+    require_once 'models/baseModel.models.php';
+        class Bill extends BaseModel{
         public $billId;
         public $billAmount;
         public $billYrMonth;
@@ -11,7 +9,7 @@
         public $dueDate;
 
         public function __construct($con) {
-            $this->con = $con;
+            parent::__construct($con, 'bills', 'billId');
         }
 
         //remove file handling
@@ -42,25 +40,6 @@
                 return false;
             }
         }
-
-        public function selectAll(){
-            $stmt = $this->con->prepare("SELECT * FROM ". $this->table);
-            $stmt->execute();
-    
-            $result = $stmt->fetchall(PDO :: FETCH_ASSOC);
-    
-            return $result;
-        }
-        
-        public function selectOne($id){
-            $sql = $this->con->prepare("SELECT TOP 1 * FROM ". $this->table . " WHERE billId = :id");
-            $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            return $stmt->fetchall(PDO :: FETCH_ASSOC);
-        }
-
         public function selectByFilter($filter){
             die();
         }
@@ -78,12 +57,4 @@
             return $stmt->execute();
         }
         
-        public function delete($id){
-            $sql = "DELETE FROM {$this->table} WHERE billId = :id";
-            $stmt = $this->con->prepare($sql);
-
-            $stmt->bindParam(":id", $id);
-            
-            return $stmt->execute();
-        }
     }

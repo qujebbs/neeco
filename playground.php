@@ -1,5 +1,5 @@
 <?php 
-include "models/downloads.models.php";
+include "logs/logger.php";
 include "src/debugUtil.php";
 
 
@@ -8,12 +8,15 @@ if ($con) {
     echo "Connected successfully!";
 }
 
-$id = 2;
-$award = new Downloads($con);
-$award->pdfName = "test";
-$award->pdfTitle = "ing";
+// $id = 2;
+// $award = new Downloads($con);
+// $award->pdfName = "test";
+// $award->pdfTitle = "ing";
 
 
-$awards = $award->insert();
+// $awards = $award->insert();
 
-dumpVar($awards);
+$log = new Logger($con);
+$logs = $log->getLogsByEmployeeId(2);
+
+dumpVar($logs);

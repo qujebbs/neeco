@@ -1,0 +1,1 @@
+[2025-02-17 16:33:22] Logging Failed: deletes idk - Error: SQLSTATE[23000]: [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]The INSERT statement conflicted with the FOREIGN KEY constraint "FK_employee_logs". The conflict occurred in database "neeco2area1", table "dbo.employees", column 'employeeId'.

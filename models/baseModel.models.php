@@ -28,6 +28,8 @@
         public function delete($id) {
             $stmt = $this->con->prepare("DELETE FROM {$this->table} WHERE {$this->primaryKey} = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            return $stmt->execute();
+            $stmt->execute();
+
+            return $stmt->rowCount();
         }
     }

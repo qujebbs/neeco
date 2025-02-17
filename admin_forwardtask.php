@@ -1,11 +1,5 @@
 
-<?php
-include "sidebar.php";
-
-
-
-
-?>
+<?php include "sidebar.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +15,6 @@ include "sidebar.php";
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    
 </head>
 
 <?php

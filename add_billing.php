@@ -111,7 +111,7 @@ function get_your_bill() {
     $sql = "SELECT *
          FROM consumer_tbl
          INNER JOIN bill_tbl ON consumer_tbl.consumer_id = bill_tbl.consumer_id
-         INNER JOIN town_tbl ON consumer_tbl.town_id = town_tbl.town_id
+         INNER JOIN town_table ON consumer_tbl.town_code = town_table.town_code
          ";
 
     $qry = $con->query($sql);

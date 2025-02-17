@@ -14,7 +14,7 @@
         }
 
         public function insert(){
-                $sql = "INSERT INTO rates (pdf, date, rateType) VALUES (:pdf, :date, :rateType)";
+                $sql = "INSERT INTO {$this->table} (pdf, date, rateType) VALUES (:pdf, :date, :rateType)";
                 $stmt = $this->con->prepare($sql);
                 $stmt->bindParam(':pdf', $this->pdf);
                 $stmt->bindParam(':date', $this->date);
@@ -26,14 +26,11 @@
             $stmt = $this->con->prepare("SELECT * FROM ". $this->table);
             $stmt->execute();
     
-            $result = $stmt->fetchall(PDO :: FETCH_ASSOC);
-    
-            return $result;
+            return $stmt->fetchall(PDO :: FETCH_ASSOC);
         }
 
         public function selectOne($id){
-            $sql = $this->con->prepare("SELECT * FROM ". $this->table . " WHERE rateId = :id LIMITT 1");
-            $stmt = $this->con->prepare($sql);
+            $stmt = $this->con->prepare("SELECT TOP 1 * FROM ". $this->table . " WHERE rateId = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -44,12 +41,24 @@
             die();
         }
 
-        public function update(){
-            die();
+        public function update($id){
+            $sql = "UPDATE {$this->table} SET pdf = :pdf, [date] = :date, rateType = :rateType WHERE rateId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":pdf", $this->pdf);
+            $stmt->bindParam(":date", $this->date);
+            $stmt->bindParam(":rateType", $this->rateType);
+            $stmt->bindParam(":id", $id);
+
+            return $stmt->execute();
         }
 
-        public function delete(){
-            die();
+        public function delete($id){
+            $sql = "DELETE FROM awards WHERE award_id = :id";
+            $stmt = $this->con->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+            
+            return $stmt->execute();
         }
         
     }

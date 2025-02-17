@@ -1,5 +1,5 @@
 <?php 
-include "models/rate.model.php";
+include "models/award.model.php";
 include "src/debugUtil.php";
 
 
@@ -8,9 +8,14 @@ if ($con) {
     echo "Connected successfully!";
 }
 
-$rate = new Rate($con);
-$rate->pdf = "route";
-$rate->date = date("2002-12-12");
-$rate->rateType = "idk";
+$id = 2;
+$award = new Award($con);
+$award->awardType = "n4s";
+$award->awardName = "n3s";
+$award->awardFrom = "n4ss";
 
-$rate->insert();
+
+
+$awards = $award->selectOne($id);
+
+dumpVar($awards);

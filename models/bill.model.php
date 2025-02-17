@@ -14,6 +14,7 @@
             $this->con = $con;
         }
 
+        //remove file handling
         public function insert($csvFile){
         if (($handle = fopen($csvFile, "r")) !== FALSE) {
             // fgetcsv($handle); Skip the header row
@@ -52,7 +53,7 @@
         }
         
         public function selectOne($id){
-            $sql = $this->con->prepare("SELECT * FROM ". $this->table . " WHERE billId = :id LIMITT 1");
+            $sql = $this->con->prepare("SELECT TOP 1 * FROM ". $this->table . " WHERE billId = :id");
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -64,11 +65,25 @@
             die();
         }
 
-        public function update(){
-            die();
+        public function update($id){
+            $sql = "UPDATE {$this->table} SET billAmount = :billAmount, billYrMonth = :billYrMonth, kwhUsed = :kwhUsed, orAmount = :orAmount, dueDate = : dueDate WHERE billId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":billAmount", $this->billAmount);
+            $stmt->bindParam(":billYrMonth", $this->billYrMonth);
+            $stmt->bindParam("kwhUsed", $this->kwhUsed);
+            $stmt->bindParam(":orAmount", $this->orAmount);
+            $stmt->bindParam(":dueDate", $this->dueDate);
+            $stmt->bindParam(":id", $id);
+
+            return $stmt->execute();
         }
         
         public function delete($id){
-            die();
+            $sql = "DELETE FROM {$this->table} WHERE billId = :id";
+            $stmt = $this->con->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+            
+            return $stmt->execute();
         }
     }

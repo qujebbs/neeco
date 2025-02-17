@@ -1,37 +1,34 @@
-<?php 
-    class Staff{
-        private $con;
-        private $table = "staffs";
-
+<?php
+    require_once 'models/baseModel.models.php';
+    class Staff extends BaseModel{
         public $staffId;
         public $staffDepartment;
         public $staffPic;
 
         public function __construct($con) {
-            $this->con = $con;
+            parent::__construct($con, 'staffs', 'staffId');
         }
 
         public function insert($staff){
-            die();
-        }
+            $sql = "INSERT INTO {$this->table} (staffDepartment, staffPic) VALUES (:staffDepartment, :staffPic)";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":servicePic", $this->staffDepartment);
+            $stmt->bindParam(":serviceTitle", $this->staffPic);
 
-        public function selectAll(){
-            die();
-        }
-
-        public function selectOne(){
-            die();
+            return $stmt->execute();
         }
 
         public function selectByFilter(){
             die();
         }
 
-        public function update(){
-            die();
-        }
+        public function update($id){
+            $sql = "UPDATE {$this->table} SET staffDepartment = :staffDepartment, staffPic = :staffPic WHERE serviceId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":staffDepartment", $this->staffDepartment);
+            $stmt->bindParam(":staffPic", $this->staffPic);
 
-        public function delete(){
-            die();
+            return $stmt->execute();
         }
     }

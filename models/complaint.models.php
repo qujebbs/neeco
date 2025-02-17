@@ -1,8 +1,6 @@
-<?php 
-    class Complaint{
-        private $con;
-        private $table = "complaints";
-
+<?php
+    require_once 'models/baseModel.models.php';
+    class Complaint extends BaseModel{
         public $complaintId;
         public $cosumerId;
         public $employeeId;
@@ -15,18 +13,10 @@
         public $natureId;
 
         public function __construct($con) {
-            $this->con = $con;
+            parent::__construct($con, 'complaints', 'complaintId');
         }
 
-        public function insert($complaint){
-            die();
-        }
-
-        public function selectAll(){
-            die();
-        }
-
-        public function selectOne(){
+        public function insert(){
             die();
         }
 
@@ -41,9 +31,4 @@
         public function updateByFilter($filter){
             die();
         }
-
-        public function delete(){
-            die();
-        }
-
     }

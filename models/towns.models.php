@@ -1,39 +1,37 @@
 <?php
-    class Towns{
-        private $con;
-        private $table = "towns";
-
+    require_once 'models/baseModel.models.php';
+    class Towns extends BaseModel{
         public $townId;
         public $zoneCode;
         public $townDesc;
         public $townAbbrv;
 
         public function __construct($con) {
-            $this->con = $con;
+            parent::__construct($con, 'towns', 'townId');
         }
 
         public function insert($town){
-            die();
-        }
+            $sql = "INSERT INTO {$this->table} (zoneCode, townDesc, townAbbrv) VALUES (:zoneCode, :townDesc, :townAbbrv)";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":zoneCode", $this->zoneCode);
+            $stmt->bindParam(":townDesc", $this->townDesc);
+            $stmt->bindParam(":townAbbrv", $this->townAbbrv);
 
-        public function selectAll(){
-            die();
-        }
-
-        public function selectOne(){
-            die();
+            return $stmt->execute();
         }
 
         public function selectByFilter(){
             die();
         }
 
-        public function update(){
-            die();
-        }
+        public function update($id){
+            $sql = "UPDATE {$this->table} SET zoneCode = :zoneCode, townDesc = :townDesc, townAbbrv = :townAbbrv WHERE serviceId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":zoneCode", $this->zoneCode);
+            $stmt->bindParam(":townDesc", $this->townDesc);
+            $stmt->bindParam(":townAbbrv", $this->townAbbrv);
+            $stmt->bindParam(":id", $id);
 
-        public function delete(){
-            die();
+            return $stmt->execute();
         }
-
     }

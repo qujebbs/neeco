@@ -1,5 +1,5 @@
 <?php 
-include "models/award.models.php";
+include "models/downloads.models.php";
 include "src/debugUtil.php";
 
 
@@ -9,13 +9,11 @@ if ($con) {
 }
 
 $id = 2;
-$award = new Award($con);
-$award->awardType = "test";
-$award->awardName = "ing";
-$award->awardFrom = "n4ss";
+$award = new Downloads($con);
+$award->pdfName = "test";
+$award->pdfTitle = "ing";
 
 
-
-$awards = $award->update($id);
+$awards = $award->insert();
 
 dumpVar($awards);

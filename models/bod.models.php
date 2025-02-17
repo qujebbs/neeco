@@ -11,7 +11,7 @@
                 parent::__construct($con, 'bod', 'bodId');
             }
 
-        public function insert($service){
+        public function insert(){
             $sql = "INSERT INTO {$this->table} (bodName, bodPosition, bodPicture, townId) VALUES (:bodName, :bodPosition, :bodPicture, :townId)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":bodName", $this->bodName);
@@ -26,6 +26,13 @@
         }
 
         public function update(){
-            die();
+            $sql = "UPDATE {$this->table} SET bodName = :bodName, bodPosition = :bodPosition, bodPicture = :bodPicture, townId = :townId";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":bodName", $this->bodName);
+            $stmt->bindParam(":bodPosition", $this->bodPosition);
+            $stmt->bindParam(":bodPicture", $this->bodPicture);
+            $stmt->bindParam(":townId", $this->townId);
+
+            return $stmt->execute();
         }
     }

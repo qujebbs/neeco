@@ -1,36 +1,34 @@
 <?php 
-    class Service{
-        private $con;
-        private $table = "services";
-
+    require_once 'models/baseModel.models.php';
+    class Service extends BaseModel{
         public $servicePic;
         public $serviceTitle;
         public $serviceDesc;
         public function __construct($con) {
-            $this->con = $con;
+            parent::__construct($con, 'services', 'serviceId');
         }
+        public function insert(){
+            $sql = "INSERT INTO {$this->table} (servicePic, serviceTitle, serviceDesc) VALUES (:servicePic, :serviceTitle, :serviceDesc)";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":servicePic", $this->servicePic);
+            $stmt->bindParam(":serviceTitle", $this->serviceTitle);
+            $stmt->bindParam(":serviceDesc", $this->serviceDesc);
 
-        public function insert($service){
-            die();
-        }
-
-        public function selectAll(){
-            die();
-        }
-
-        public function selectOne(){
-            die();
+            return $stmt->execute();
         }
 
         public function selectByFilter(){
             die();
         }
 
-        public function update(){
-            die();
-        }
+        public function update($id){
+            $sql = "UPDATE {$this->table} SET servicePic = :servicePic, serviceTitle = :serviceTitle, serviceDesc = :serviceDesc WHERE serviceId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":servicePic", $this->servicePic);
+            $stmt->bindParam(":serviceTitle", $this->serviceTitle);
+            $stmt->bindParam(":serviceDesc", $this->serviceDesc);
+            $stmt->bindParam(":id", $id);
 
-        public function delete(){
-            die();
+            return $stmt->execute();
         }
     }

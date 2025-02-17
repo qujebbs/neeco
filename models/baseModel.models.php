@@ -19,7 +19,7 @@
         }
 
         public function selectOne($id) {
-            $stmt = $this->con->prepare("SELECT * FROM {$this->table} WHERE {$this->primaryKey} = :id");
+            $stmt = $this->con->prepare("SELECT TOP 1 * FROM {$this->table} WHERE {$this->primaryKey} = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);

@@ -1,16 +1,13 @@
 <?php
-    require_once("src/db.php");
-    class Rate{
-        private $con;
-        private $table = "rates";
-
+    require_once 'models/baseModel.models.php';
+    class Rate extends BaseModel{
         public $rateId;
         public $pdf;
         public $date;
         public $rateType;
 
         public function __construct($con) {
-            $this->con = $con;
+            parent::__construct($con, 'rates', 'rateId');
         }
 
         public function insert(){
@@ -21,20 +18,6 @@
                 $stmt->bindParam(':rateType', $this->rateType);
         
                 return $stmt->execute();
-        }
-        public function selectAll(){
-            $stmt = $this->con->prepare("SELECT * FROM ". $this->table);
-            $stmt->execute();
-    
-            return $stmt->fetchall(PDO :: FETCH_ASSOC);
-        }
-
-        public function selectOne($id){
-            $stmt = $this->con->prepare("SELECT TOP 1 * FROM ". $this->table . " WHERE rateId = :id");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            return $stmt->fetchall(PDO :: FETCH_ASSOC);
         }
 
         public function selectByFilter($filter){
@@ -51,14 +34,4 @@
 
             return $stmt->execute();
         }
-
-        public function delete($id){
-            $sql = "DELETE FROM awards WHERE award_id = :id";
-            $stmt = $this->con->prepare($sql);
-
-            $stmt->bindParam(":id", $id);
-            
-            return $stmt->execute();
-        }
-        
     }

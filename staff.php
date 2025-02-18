@@ -39,7 +39,7 @@ include "sidebar.php";
                     $modelLabel = "addUserModalLabel";
                     $title = "Add Staff";
 
-                    include "views/fragments/modal-header.php";
+                    include "views/fragments/modalHeader.php";
                     ?>
                     <div class="modal-body">
                         <form action="" method="POST" enctype="multipart/form-data">

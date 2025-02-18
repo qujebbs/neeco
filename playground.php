@@ -8,15 +8,18 @@ if ($con) {
     echo "Connected successfully!";
 }
 
-// $id = 2;
-// $award = new Downloads($con);
-// $award->pdfName = "test";
-// $award->pdfTitle = "ing";
+$id = 2;
+$award = new Award($con);
+$award->pdfName = "test";
+$award->pdfTitle = "ing";
 
 
-// $awards = $award->insert();
+$awards = $award->insert();
 
 $log = new Logger($con);
-$logs = $log->getLogsByEmployeeId(2);
+$logs = $log->log(
+    $id,
+    "nsw"
+);
 
 dumpVar($logs);

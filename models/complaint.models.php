@@ -17,7 +17,9 @@
         }
 
         public function insert(){
-            die();
+            $sql = "INSERT INTO {$this->table}(consumerId, employeeId, townId, accountNum, landmark, complaintDesc, statusId, complaintDate, natureId) \
+                    VALUES (:consumerId, :employeeId, :townId, :accountNum, :landmark, :complaintDesc, :statusId, :complaintDate, :natureId)";
+            $stmt = $this->con->prepare($sql);
         }
 
         public function selectByFilter(){

@@ -1,6 +1,6 @@
 <?php 
 include "logs/logger.php";
-include "src/debugUtil.php";
+include "utils/debugUtil.php";
 
 
 $con = getPDOConnection();
@@ -19,7 +19,7 @@ $awards = $award->insert();
 $log = new Logger($con);
 $logs = $log->log(
     $id,
-    "nsw"
+    "nuw"
 );
 
 dumpVar($logs);

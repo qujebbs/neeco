@@ -90,99 +90,8 @@
                  </button>
               </div>
               <div class="navbar-collapse collapse clearfix">
-                <!-- <ul class="rd-navbar-nav">
-  <li class="active"><a href="index.html">Home</a></li>
-  <li><a href="#">Who we are</a>
-    <ul class="rd-navbar-dropdown">
-      <li><a href="#">History</a></li>
-      <li><a href="#">Our team</a></li>
-      <li><a href="#">News</a>
-        <ul class="rd-navbar-dropdown">
-          <li><a href="#">Fresh</a></li>
-          <li><a href="#">Archive</a></li>
-          <li><a href="#">404</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#">What we do</a>
-    <ul class="rd-navbar-megamenu">
-      <li class="rd-navbar-hidden rd-navbar-fixed--visible"><a href="#">Need your help</a></li>
-      <li class="rd-navbar-fixed--hidden">
-        <h3>
-          CHILDREN NEED
-          <br class='veil reveal-md-block'>
-          YOUR HELP
-          <br class='veil reveal-md-block'>
-          TO SURVIVE!
-        </h3>
-        <p>Daily living presents unimaginable challenges for those who are orphaned and abandoned. As a child welfare agency, a vital part of our mission is to improve life for these children. Open Heart provides assistance, hope, and opportunity for the most vulnerable among us. We are aimed to offer orphan care and education to orphaned children all over the world including some of the poor African countries and other regions where high-quality orphan care is problematic.</p><a href="#" class="link">read more</a>
-      </li>
-      <li>
-        <ul>
-          <li><a href="#">ADOPTION ASSISTANCE</a></li>
-          <li><a href="#">CHILD SPONSORSHIP</a></li>
-          <li><a href="#">GRANTS AND LOANS</a></li>
-          <li><a href="#">FOSTER CARE</a></li>
-          <li><a href="#">MEDICAL SUPPORT</a></li>
-          <li><a href="#">FIRST AID</a></li>
-          <li><a href="#">EDUCATION</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#">Where we work</a></li>
-  <li><a href="#">Contacts</a></li>
-</ul> -->
-
 <ul class="navigation clearfix">
     <li><a href="https://neeco2area1.com/">Home</a></li><li class="dropdown"><a href="#">About Us</a><ul><li><a href="https://neeco2area1.com/page/mission-and-vision-1">Mission And Vision</a></li><li><a href="https://neeco2area1.com/page/company-profile">Company Profile</a></li><li><a href="https://neeco2area1.com/page/board-of-directors">Board Of Directors</a></li><li><a href="https://neeco2area1.com/page/management-and-staffs">Management and Staff</a></li><li><a href="https://neeco2area1.com/page/coverage-area">Coverage Area</a></li><li><a href="https://neeco2area1.com/page/district-offices">District Offices</a></li><li class="dropdown"><a href="https://neeco2area1.com/page/awards">Awards</a><ul><li><a href="https://neeco2area1.com/page/awards">NEECO II-A1 Awards</a></li><li><a href="https://neeco2area1.com/page/consumers-prompt-payers">Consumers Prompt Payers</a></li></ul></li></ul></li><li><a href="https://neeco2area1.com/page/gms-corner">GM&#039;s CORNER</a></li><li><a href="https://neeco2area1.com/unbundled-power-rates">Rate Archive</a></li><li class="dropdown"><a href="#">Downloads</a><ul><li><a href="https://www.neeco2area1.com/assets/file_manager/filemanager/source/ERC%20CASE/ERC%20Case%20No.%202023-032%20CF.pdf">Notice of Virtual Hearing - ERC Case #2023-032 CF</a></li></ul></li><li class="dropdown"><a href="https://neeco2area1.com/page/faqs">FAQS</a><ul><li><a href="https://neeco2area1.com/page/member-consumers-insurance">Member-Consumer Owner Insurance</a></li><li><a href="https://neeco2area1.com/page/senior-citizen-discount">Senior Citizen Discount</a></li><li><a href="https://neeco2area1.com/page/safety-tips">SAFETY TIPS</a></li><li><a href="https://neeco2area1.com/page/ra-7832-anti-pilferage-law-1">R.A. 7832 Anti Pilferage Law</a></li></ul></li><li><a href="https://neeco2area1.com/contact">Contact Us</a></li><li><a href="https://neeco2area1.com/bac">BAC</a></li></ul>
-<!--                  <ul class="navigation clearfix">
-                    <li class="current">
-                       <a href="#">Home</a>
-                    </li>
-                    <li class="dropdown">
-                       <a href="#">About Us</a>
-                       <ul>
-                          <li><a href="#">Mission and Vision</a></li>
-                          <li><a href="#">Company Profile</a></li>
-                          <li><a href="#">Coverage Area</a></li>
-                          <li><a href="#">Organizational Chart</a></li>
-                          <li><a href="#">Awards</a></li>
-                       </ul>
-                    </li>
-                    <li class="dropdown">
-                       <a href="#">Customer Service</a>
-                       <ul>
-                          <li><a href="#">Member-Consumer's Insurance</a></li>
-                          <li><a href="#">ERC Case No. 2013 - 007 RM</a></li>
-                          <li><a href="#">Senior Citizen Discount</a></li>
-                          <li><a href="#">Safety Tips</a></li>
-                          <li><a href="#">New Connection</a></li>
-                       </ul>
-                    </li>
-                    <li class="dropdown">
-                       <a href="#">Downloads</a>
-                       <ul>
-                          <li><a href="#">Consumer Forms</a></li>
-                       </ul>
-                    </li>
-                    <li class="dropdown">
-                       <a href="#">Our Officials</a>
-                       <ul>
-                          <li><a href="#">Board of Directors</a></li>
-                          <li><a href="#">Management and Staffs</a></li>
-                       </ul>
-                    </li>
-                    <li class="dropdown">
-                       <a href="#">Contact Us</a>
-                       <ul>
-                          <li><a href="#">Main Office || Substations</a></li>
-                          <li><a href="#">District Offices</a></li>
-                       </ul>
-                    </li>
-                    <li><a href="#">FAQS</a></li>
-                 </ul> -->
               </div>
            </nav>
            <!-- Main Menu End-->
@@ -213,51 +122,7 @@
                  </button>
               </div>
               <div class="navbar-collapse collapse clearfix">
-                 <!-- <ul class="rd-navbar-nav">
-  <li class="active"><a href="index.html">Home</a></li>
-  <li><a href="#">Who we are</a>
-    <ul class="rd-navbar-dropdown">
-      <li><a href="#">History</a></li>
-      <li><a href="#">Our team</a></li>
-      <li><a href="#">News</a>
-        <ul class="rd-navbar-dropdown">
-          <li><a href="#">Fresh</a></li>
-          <li><a href="#">Archive</a></li>
-          <li><a href="#">404</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#">What we do</a>
-    <ul class="rd-navbar-megamenu">
-      <li class="rd-navbar-hidden rd-navbar-fixed--visible"><a href="#">Need your help</a></li>
-      <li class="rd-navbar-fixed--hidden">
-        <h3>
-          CHILDREN NEED
-          <br class='veil reveal-md-block'>
-          YOUR HELP
-          <br class='veil reveal-md-block'>
-          TO SURVIVE!
-        </h3>
-        <p>Daily living presents unimaginable challenges for those who are orphaned and abandoned. As a child welfare agency, a vital part of our mission is to improve life for these children. Open Heart provides assistance, hope, and opportunity for the most vulnerable among us. We are aimed to offer orphan care and education to orphaned children all over the world including some of the poor African countries and other regions where high-quality orphan care is problematic.</p><a href="#" class="link">read more</a>
-      </li>
-      <li>
-        <ul>
-          <li><a href="#">ADOPTION ASSISTANCE</a></li>
-          <li><a href="#">CHILD SPONSORSHIP</a></li>
-          <li><a href="#">GRANTS AND LOANS</a></li>
-          <li><a href="#">FOSTER CARE</a></li>
-          <li><a href="#">MEDICAL SUPPORT</a></li>
-          <li><a href="#">FIRST AID</a></li>
-          <li><a href="#">EDUCATION</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#">Where we work</a></li>
-  <li><a href="#">Contacts</a></li>
-</ul> -->
-
+                 
 <ul class="navigation clearfix">
     <li><a href="https://neeco2area1.com/">Home</a></li><li class="dropdown"><a href="#">About Us</a><ul><li><a href="https://neeco2area1.com/page/mission-and-vision-1">Mission And Vision</a></li><li><a href="https://neeco2area1.com/page/company-profile">Company Profile</a></li><li><a href="https://neeco2area1.com/page/board-of-directors">Board Of Directors</a></li><li><a href="https://neeco2area1.com/page/management-and-staffs">Management and Staff</a></li><li><a href="https://neeco2area1.com/page/coverage-area">Coverage Area</a></li><li><a href="https://neeco2area1.com/page/district-offices">District Offices</a></li><li class="dropdown"><a href="https://neeco2area1.com/page/awards">Awards</a><ul><li><a href="https://neeco2area1.com/page/awards">NEECO II-A1 Awards</a></li><li><a href="https://neeco2area1.com/page/consumers-prompt-payers">Consumers Prompt Payers</a></li></ul></li></ul></li><li><a href="https://neeco2area1.com/page/gms-corner">GM&#039;s CORNER</a></li><li><a href="https://neeco2area1.com/unbundled-power-rates">Rate Archive</a></li><li class="dropdown"><a href="#">Downloads</a><ul><li><a href="https://www.neeco2area1.com/assets/file_manager/filemanager/source/ERC%20CASE/ERC%20Case%20No.%202023-032%20CF.pdf">Notice of Virtual Hearing - ERC Case #2023-032 CF</a></li></ul></li><li class="dropdown"><a href="https://neeco2area1.com/page/faqs">FAQS</a><ul><li><a href="https://neeco2area1.com/page/member-consumers-insurance">Member-Consumer Owner Insurance</a></li><li><a href="https://neeco2area1.com/page/senior-citizen-discount">Senior Citizen Discount</a></li><li><a href="https://neeco2area1.com/page/safety-tips">SAFETY TIPS</a></li><li><a href="https://neeco2area1.com/page/ra-7832-anti-pilferage-law-1">R.A. 7832 Anti Pilferage Law</a></li></ul></li><li><a href="https://neeco2area1.com/contact">Contact Us</a></li><li><a href="https://neeco2area1.com/bac">BAC</a></li></ul>
               </div>

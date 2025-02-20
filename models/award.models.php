@@ -26,6 +26,7 @@
             die();
         }
 
+
         public function update($id){
             $sql = "UPDATE awards SET awardType = :awardType, awardName = :awardName, awardFrom = :awardFrom, awardDate = :awardDate WHERE awardId = :id";
             $stmt = $this->con->prepare($sql);

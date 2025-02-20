@@ -44,6 +44,20 @@
             die();
         }
 
+        public function selectWithJoin($consumerId){
+            $sql ="SELECT TOP {$this->limit} *
+                    FROM consumers
+                    INNER JOIN bills ON consumers.consumerId = bills.consumerId
+                    LEFT JOIN towns ON consumers.townId = towns.townId
+                    WHERE bills.consumerId = :id ORDER BY billId DESC";
+
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":id", $consumerId);
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function update($id){
             $sql = "UPDATE {$this->table} SET billAmount = :billAmount, billYrMonth = :billYrMonth, kwhUsed = :kwhUsed, orAmount = :orAmount, dueDate = : dueDate WHERE billId = :id";
             $stmt = $this->con->prepare($sql);

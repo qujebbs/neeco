@@ -1,5 +1,5 @@
-<?php 
-include "logs/logger.php";
+<?php
+include "models/bill.models.php";
 include "utils/debugUtil.php";
 
 
@@ -9,17 +9,9 @@ if ($con) {
 }
 
 $id = 2;
-$award = new Award($con);
-$award->pdfName = "test";
-$award->pdfTitle = "ing";
+$award = new Bill($con);
+$award->limit = 1;
 
+$awards = $award->selectWithJoin(1);
 
-$awards = $award->insert();
-
-$log = new Logger($con);
-$logs = $log->log(
-    $id,
-    "nuw"
-);
-
-dumpVar($logs);
+dumpVar($awards);

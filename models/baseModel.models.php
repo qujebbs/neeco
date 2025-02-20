@@ -6,6 +6,8 @@
         protected $table;
         protected $primaryKey;
 
+        public $limit = 100;
+
         public function __construct($con, $table, $primaryKey = 'id') {
             $this->con = $con;
             $this->table = $table;

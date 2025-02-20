@@ -25,6 +25,14 @@
             die();
         }
 
+        public function selectWithJoin(){
+            $sql = "SELECT * FROM bod LEFT JOIN towns ON bod.townId = towns.townId";
+            $stmt = $this->con->prepare($sql);
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function update(){
             $sql = "UPDATE {$this->table} SET bodName = :bodName, bodPosition = :bodPosition, bodPicture = :bodPicture, townId = :townId";
             $stmt = $this->con->prepare($sql);

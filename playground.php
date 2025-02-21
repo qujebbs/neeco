@@ -1,5 +1,5 @@
 <?php
-include "src/repositories/ComplaintRepo.php";
+include "src/repositories/TownsRepo.php";
 include "utils/debugUtil.php";
 
 
@@ -8,12 +8,11 @@ if ($con) {
     echo "Connected successfully!";
 }
 
-$filter = new ComplaintFilter([
-    'statusId' => 1
-]);
+// $filter = new ComplaintFilter([
+//     'statusId' => 1
+// ]);
 
-$complaintModel = new ComplaintRepo($con);
-$filteredComplaints = $complaintModel->selectByFilter($filter);
+$complaintModel = new TownsRepo($con);
+$filteredComplaints = $complaintModel->selectAll();
 
-// dumpVar($filteredComplaints);
-echo $filteredComplaints[0]['complaintId'];
+dumpVar($filteredComplaints);

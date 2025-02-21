@@ -1,5 +1,6 @@
 <?php
     require_once 'src/repositories/BaseRepo.php';
+    require_once 'src/models/StaffModel.php';
     class StaffRepo extends BaseRepo{
         public function __construct($con) {
             parent::__construct($con, 'staffs', 'staffId');

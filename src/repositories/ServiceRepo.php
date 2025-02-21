@@ -1,5 +1,6 @@
 <?php 
     require_once 'src/repositories/baseRepo.php';
+    require_once 'src/models/ServiceModel.php';
     class ServiceRepo extends BaseRepo{
         public function __construct($con) {
             parent::__construct($con, 'services', 'serviceId');

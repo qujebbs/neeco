@@ -1,5 +1,6 @@
 <?php
     require_once("src/repositories/BaseRepo.php");
+    require_once("src/models/DownloadsModel.php");
 
     class DownloadsRepo extends BaseRepo{
 

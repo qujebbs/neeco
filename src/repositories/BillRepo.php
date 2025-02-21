@@ -1,6 +1,6 @@
 <?php
         require_once 'src/repositories/BaseRepo.php';
-        require_once 'src/models/BillModels.php';
+        require_once 'src/models/BillModel.php';
         class BillRepo extends BaseRepo{
         public function __construct($con) {
             parent::__construct($con, 'bills', 'billId');

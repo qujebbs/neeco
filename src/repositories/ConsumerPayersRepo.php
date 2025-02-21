@@ -1,5 +1,6 @@
 <?php
     require_once("src/repositories/BaseRepo.php");
+    require_once("src/models/ConsumerPayersModel.php");
 
     class ConsumerPayersRepo extends BaseRepo {
         public function __construct($con) {

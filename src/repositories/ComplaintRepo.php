@@ -1,36 +1,26 @@
 <?php
-    require_once 'models/baseModel.models.php';
-    require_once 'models/helpers/ComplaintFilters.php';
-    class Complaint extends BaseModel{
-        public $complaintId;
-        public $accountId;
-        public $employeeId;
-        public $townId;
-        public $accountNum;
-        public $landmark;
-        public $complaintDesc;
-        public $statusId;
-        public $complaintDate;
-        public $natureId;
-
+    require_once 'src/repositories/baseRepo.php';
+    require_once 'src/helpers/ComplaintFilters.php';
+    require_once 'src/models/ComplaintModels.php';
+    class ComplaintRepo extends BaseRepo{
         public function __construct($con) {
             parent::__construct($con, 'complaints', 'complaintId');
         }
 
-        public function insert(){
+        public function insert(Complaint $complaint){
             $sql = "INSERT INTO {$this->table}(accountId, employeeId, townId, accountNum, landmark, complaintDesc, statusId, complaintDate, natureId)
                     VALUES (:accountId, :employeeId, :townId, :accountNum, :landmark, :complaintDesc, :statusId, :complaintDate, :natureId)";
             $stmt = $this->con->prepare($sql);
 
-            $stmt->bindParam(":accountId", $this->accountId);
-            $stmt->bindParam(":employeeId", $this->employeeId);
-            $stmt->bindParam(":townId", $this->townId);
-            $stmt->bindParam(":accountNum", $this->accountNum);
-            $stmt->bindParam(":landmark", $this->landmark);
-            $stmt->bindParam(":complaintDesc", $this->complaintDesc);
-            $stmt->bindParam(":statusId", $this->statusId);
-            $stmt->bindParam(":complaintDate", $this->complaintDate);
-            $stmt->bindParam(":natureId", $this->natureId);
+            $stmt->bindParam(":accountId", $complaint->accountId);
+            $stmt->bindParam(":employeeId", $complaint->employeeId);
+            $stmt->bindParam(":townId", $complaint->townId);
+            $stmt->bindParam(":accountNum", $complaint->accountNum);
+            $stmt->bindParam(":landmark", $complaint->landmark);
+            $stmt->bindParam(":complaintDesc", $complaint->complaintDesc);
+            $stmt->bindParam(":statusId", $complaint->statusId);
+            $stmt->bindParam(":complaintDate", $complaint->complaintDate);
+            $stmt->bindParam(":natureId", $complaint->natureId);
 
             return $stmt->execute();
         }
@@ -61,13 +51,13 @@
             
         }
 
-        public function update(){
+        public function update(Complaint $complaint, $id){
             $sql = "UPDATE {$this->table} SET employeeId = :employeeId, statusId = :statusId, natureId = :natureId WHERE complaintId = :complaintId";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":employeeId", $this->employeeId);
-            $stmt->bindParam(":statusId", $this->statusId);
-            $stmt->bindParam("natureId", $this->natureId);
-            $stmt->bindParam("complaintId", $this->complaintId);
+            $stmt->bindParam(":employeeId", $complaint->employeeId);
+            $stmt->bindParam(":statusId", $complaint->statusId);
+            $stmt->bindParam("natureId", $complaint->natureId);
+            $stmt->bindParam("complaintId", $$id);
 
             return $stmt->execute();
         }

@@ -1,5 +1,5 @@
 <?php
-include "models/Complaint.models.php";
+include "src/repositories/ComplaintRepo.php";
 include "utils/debugUtil.php";
 
 
@@ -12,7 +12,7 @@ $filter = new ComplaintFilter([
     'statusId' => 1
 ]);
 
-$complaintModel = new Complaint($con);
+$complaintModel = new ComplaintRepo($con);
 $filteredComplaints = $complaintModel->selectByFilter($filter);
 
 // dumpVar($filteredComplaints);

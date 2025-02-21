@@ -120,7 +120,7 @@
 <section id="blog" class="blog">
 <?php
 
-include "src/db.php";
+include "src/config/db.php";
 
 if(isset($_GET['news_id'])){
 $news_id = $_GET['news_id'];

@@ -36,7 +36,7 @@ include 'views/fragments/header.php';
 <?php 
 
 
-include "src/db.php";
+include "src/config/db.php";
 
 if(isset($_GET['bac_id'])){
 $bac_id = $_GET['bac_id'];

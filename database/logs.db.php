@@ -1,6 +1,6 @@
 <?php
 
-    include "src/db.php";
+    include "src/config/db.php";
     function insertLog($employeeId, $logActivity, $con)
     {
         try {

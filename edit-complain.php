@@ -5,7 +5,7 @@
 
 <?php
 
-include "src/db.php";
+include "src/config/db.php";
 
 if(isset($_GET['complain_id'])){
 $complain_id = $_GET['complain_id'];

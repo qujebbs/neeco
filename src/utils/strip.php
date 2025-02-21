@@ -1,5 +1,5 @@
 <?php
-    require_once("db.php");
+    require_once("src/config/db.php");
     class strip{
         function __construct(){
                 global $con;

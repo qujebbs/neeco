@@ -1,5 +1,5 @@
 <?php
-    include "src/db.php";
+    include "src/config/db.php";
 
     function insertRate($con, $rate){
         $sql = "INSERT INTO rates (pdf, date, rateType) VALUES (:pdf, :date, rateType)";

@@ -18,7 +18,7 @@
             $conditions = [];
 
             if ($this->complaintId !== null) $conditions[] = "c.complaintId = :complaintId";
-            if ($this->consumerId !== null) $conditions[] = "c.consumerId = :consumerId";
+            if ($this->accountId !== null) $conditions[] = "c.accountId = :accountId";
             if ($this->employeeId !== null) $conditions[] = "c.employeeId = :employeeId";
             if ($this->natureId !== null) $conditions[] = "c.natureId = :natureId";
             if ($this->statusId !== null) $conditions[] = "c.statusId = :statusId";

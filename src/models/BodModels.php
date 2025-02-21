@@ -1,46 +1,16 @@
 <?php
-    require_once 'models/baseModel.models.php';
-        class Bod extends BaseModel {
+        class Bod{
             public $bodId;
             public $bodName;
             public $bodPosition;
             public $bodPicture;
             public $townId;
         
-            public function __construct($con) {
-                parent::__construct($con, 'bod', 'bodId');
+            public function __construct($data = []) {
+                $this->bodId = $data['bodId'] ?? null;
+                $this->bodName = $data['bodName'] ?? null;
+                $this->bodPosition = $data['bodPosition'] ?? null;
+                $this->bodPicture = $data['bodPicture'] ?? null;
+                $this->townId = $data['townId'] ?? null;
             }
-
-        public function insert(){
-            $sql = "INSERT INTO {$this->table} (bodName, bodPosition, bodPicture, townId) VALUES (:bodName, :bodPosition, :bodPicture, :townId)";
-            $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":bodName", $this->bodName);
-            $stmt->bindParam(":bodPosition", $this->bodPosition);
-            $stmt->bindParam(":bodPicture", $this->bodPicture);
-            $stmt->bindParam(":townId", $this->townId);
-
-            return $stmt->execute();
-        }
-        public function selectByFilter(){
-            die();
-        }
-
-        public function selectWithJoin(){
-            $sql = "SELECT * FROM bod LEFT JOIN towns ON bod.townId = towns.townId";
-            $stmt = $this->con->prepare($sql);
-
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-
-        public function update(){
-            $sql = "UPDATE {$this->table} SET bodName = :bodName, bodPosition = :bodPosition, bodPicture = :bodPicture, townId = :townId";
-            $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":bodName", $this->bodName);
-            $stmt->bindParam(":bodPosition", $this->bodPosition);
-            $stmt->bindParam(":bodPicture", $this->bodPicture);
-            $stmt->bindParam(":townId", $this->townId);
-
-            return $stmt->execute();
-        }
     }

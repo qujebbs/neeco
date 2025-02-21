@@ -92,7 +92,6 @@ if (isset($_POST['addcomplainbtn'])) {
                 $town_id = $row['town_id'];
     }
 
-
     if($town_id == 1){
         $emp_id = 5;
     }

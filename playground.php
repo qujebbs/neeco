@@ -1,5 +1,5 @@
 <?php
-include "models/bill.models.php";
+include "models/Complaint.models.php";
 include "utils/debugUtil.php";
 
 
@@ -8,10 +8,12 @@ if ($con) {
     echo "Connected successfully!";
 }
 
-$id = 2;
-$award = new Bill($con);
-$award->limit = 1;
+$filter = new ComplaintFilter([
+    'statusId' => 1
+]);
 
-$awards = $award->selectWithJoin(1);
+$complaintModel = new Complaint($con);
+$filteredComplaints = $complaintModel->selectByFilter($filter);
 
-dumpVar($awards);
+// dumpVar($filteredComplaints);
+echo $filteredComplaints[0]['complaintId'];

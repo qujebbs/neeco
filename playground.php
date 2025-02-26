@@ -15,4 +15,4 @@
     $bill = new BillRepo($con);
     $bill->insert($bills);
 
-    // dumpVar($bills);
+    include ("awards.php");

@@ -6,6 +6,7 @@
         $bills = [];
         if (($handle = fopen($csvFile, "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                
                 $billData = [
                     "consumerId" => $data[0],
                     "billYearMonth"=> $data[1],

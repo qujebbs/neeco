@@ -6,32 +6,21 @@
             parent::__construct($con, 'bills', 'billId');
         }
 
-        //remove file handling
-        public function insert($csvFile){
-        if (($handle = fopen($csvFile, "r")) !== FALSE) {
-            // fgetcsv($handle); Skip the header row
+        public function insert($bills){
+            $sql = "INSERT INTO {$this->table}(consumerId, billYearMonth, billAmount, kwhUsed, orDate, orAmount, dueDate, disconnectionDate)
+                    VALUES (:consumerId, :billYearMonth, :billAmount, :kwhUsed, :orDate, :orAmount, :dueDate, :disconnectionDate)";
+                    $stmt = $this->con->prepare($sql);
 
-            $sql = "INSERT INTO bills (consumerId, billYearMonth, billAmount, kwhUsed, orDate, orAmount, dueDate, disconnectionDate) VALUES (:consumerId, :billYearMonth, :billAmount, :kwhUsed, :orDate, :orAmount, :dueDate, :disconnectionDate)";
-            $stmt = $this->con->prepare($sql);
-
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $stmt->bindParam(':consumerId', $data[0]);
-                $stmt->bindParam(':billYearMonth', $data[1]);
-                $stmt->bindParam(':billAmount', $data[2]);
-                $stmt->bindParam(':kwhUsed', $data[3]);
-                $stmt->bindParam(':orDate', $data[4]);
-                $stmt->bindParam(':orAmount', $data[5]);
-                $stmt->bindParam(':dueDate', $data[6]);
-                $stmt->bindParam(':disconnectionDate', $data[7]);
+            foreach($bills as $bill){
+                $stmt->bindParam("consumerId", $bill->consumerId);
+                $stmt->bindParam("billYearMonth", $bill->billYearMonth);
+                $stmt->bindParam("billAmount", $bill->billAmount);
+                $stmt->bindParam("kwhUsed", $bill->kwhUsed);
+                $stmt->bindParam("orDate", $bill->orDate);
+                $stmt->bindParam("orAmount", $bill->orAmount);
+                $stmt->bindParam("dueDate", $bill->dueDate);
+                $stmt->bindParam("disconnectionDate", $bill->disconnectionDate);
                 $stmt->execute();
-            }
-
-            fclose($handle);
-            echo "CSV data inserted successfully!";
-            return true;
-            } else {
-                echo "Error opening file!";
-                return false;
             }
         }
         public function selectByFilter($filter){

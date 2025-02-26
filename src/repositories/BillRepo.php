@@ -45,7 +45,7 @@
             $sql = "UPDATE {$this->table} SET billAmount = :billAmount, billYrMonth = :billYrMonth, kwhUsed = :kwhUsed, orAmount = :orAmount, dueDate = : dueDate WHERE billId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":billAmount", $bill->billAmount);
-            $stmt->bindParam(":billYrMonth", $bill->billYrMonth);
+            $stmt->bindParam(":billYrMonth", $bill->billYearMonth);
             $stmt->bindParam("kwhUsed", $bill->kwhUsed);
             $stmt->bindParam(":orAmount", $bill->orAmount);
             $stmt->bindParam(":dueDate", $bill->dueDate);

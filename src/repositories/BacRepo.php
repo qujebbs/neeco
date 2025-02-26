@@ -16,7 +16,7 @@
 
             return $stmt->execute();
         }
-
+        
         public function update(Bac $bac, $id){
             $sql = "UPDATE awards SET bacName = :bacName, bacTitle = :bacTitle, bacUploadDate = :bacUploadDate, bacDesc = :bacDesc WHERE bacId = :id";
             $stmt = $this->con->prepare($sql);

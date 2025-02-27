@@ -6,7 +6,6 @@
         public function __construct($con) {
             parent::__construct($con, 'complaints', 'complaintId');
         }
-
         public function insert(Complaint $complaint){
             $sql = "INSERT INTO {$this->table}(accountId, employeeId, townId, accountNum, landmark, complaintDesc, statusId, complaintDate, natureId)
                     VALUES (:accountId, :employeeId, :townId, :accountNum, :landmark, :complaintDesc, :statusId, :complaintDate, :natureId)";
@@ -24,7 +23,6 @@
 
             return $stmt->execute();
         }
-
         public function selectByFilter(ComplaintFilter $filter){
                 $sql = "SELECT * FROM neeco2area1.dbo.complaints c
                         LEFT JOIN 	towns t ON c.townId=t.townId
@@ -48,9 +46,7 @@
 
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
         }
-
         public function update(Complaint $complaint, $id){
             $sql = "UPDATE {$this->table} SET employeeId = :employeeId, statusId = :statusId, natureId = :natureId WHERE complaintId = :complaintId";
             $stmt = $this->con->prepare($sql);
@@ -61,7 +57,6 @@
 
             return $stmt->execute();
         }
-
         public function updateByFilter($filter){
             die();
         }

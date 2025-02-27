@@ -1,6 +1,8 @@
 <?php
     require_once 'BaseRepo.php';
     require_once 'src/models/BacModel.php';
+
+    
     class BacRepo extends BaseRepo{
         public function __construct($con) {
             parent::__construct($con, 'bac', 'bacId');

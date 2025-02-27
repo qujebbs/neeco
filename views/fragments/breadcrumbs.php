@@ -15,7 +15,7 @@
         <div class="container">
           <ol>
             <li><a href="index.php">Home</a></li>
-            <li>Terms and Condition</li>
+            <li>Privacy Policy</li>
           </ol>
         </div>
       </nav>

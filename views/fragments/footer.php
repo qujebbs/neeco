@@ -6,7 +6,7 @@
   <div class="row gy-4">
     <div class="col-lg-5 col-md-12 footer-info">
       <a href="index.html" class="logo d-flex align-items-center">
-        <span>NEECO ll - AREA 3</span>
+        <span>NEECO ll - AREA 1</span>
       </a>
       <p>NUEVA ECIJA II ELECTRIC COOPERATIVE, INC. in the humble service of the municipalities of Talavera, Lupao, Carranglan, Aliaga, Quezon, Licab, Sto. Domingo, Munoz, Guimba and Talugtug</p>
       <div class="social-links d-flex mt-4">

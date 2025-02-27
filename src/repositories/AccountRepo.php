@@ -6,7 +6,6 @@
             public function __construct($con) {
                 parent::__construct($con, 'bills', 'billId');
             }
-
             public function insert($consumers){
                 $sql = "INSERT INTO {$this->table}(accountId, consumerId, employeeId, userName, passwrord, positionId;, registrationDate, accountStatusId, verificationCode, isActive)
                         VALUES (:accountId, :consumerId, :employeeId, :userName, :passwrord, :positionId;, :registrationDate, :accountStatusId, :verificationCode, :isActive)";
@@ -22,6 +21,4 @@
                 $stmt->bindParam(":verificationCode", $consumers->verificationCode);
                 $stmt->bindParam(":isActive", $consumers->isActive);
             }
-
-            
         }

@@ -1,58 +1,47 @@
 <?php
 
-require_once 'src/repositories/AwardRepo.php';
-require_once 'src/models/AwardModel.php';
+class AwardHandler {
+    private $awardRepo;
 
-//add data validation and sanitizer
-function createAward($con) {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-        $award = new Award($_POST);
-
-        $awardRepo = new AwardRepo($con);
-
-        $awardRepo->insert($award);
-
-        header("Location: views/unimplemented.php");
-        exit;
+    public function __construct($con) {
+        $this->awardRepo = new AwardRepo($con);
     }
-}
+            public function createAward($con) {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-function updateAward($con) {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $award = new Award($_POST);
 
-        $award = new Award($_POST);
+                    $this->awardRepo->insert($award);
 
-        $awardRepo = new AwardRepo($con);
+                    header("Location: views/unimplemented.php");
+                    exit;
+                }
+            }
 
-        $id = $_POST['awardId'];
+            public function updateAward($con) {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $awardRepo->update($award, $id);
+                    $award = new Award($_POST);
 
-        header("Location: views/unimplemented.php");
-        exit;
-    }
-}
+                    $this->awardRepo->update($award, $_POST['awardId']);
+
+                    header("Location: views/unimplemented.php");
+                    exit;
+                }
+            }
 
 
-//returned deleted rows unused
-function deleteAward($con) {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['awardId'])) {
-        $awardId = filter_var($_POST['awardId'], FILTER_SANITIZE_NUMBER_INT);
+            //returned deleted rows unused
+            public function deleteAward($con) {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['awardId'])) {
 
-        if (!$awardId) {
-            die("Invalid award ID.");
+                    $deletedRows = $this->awardRepo->delete($$_POST['awardId']);
+
+                    header("Location: views/unimplemented.php");
+                    exit;
+                }
+            }
         }
-
-        $awardRepo = new AwardRepo($con);
-
-        $deletedRows = $awardRepo->delete($awardId);
-
-        header("Location: views/unimplemented.php");
-        exit;
-    }
-}
-
 
 
 //VIEWS NOT YET READY

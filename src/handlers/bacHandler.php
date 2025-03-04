@@ -16,7 +16,7 @@
         }
     }
 
-    function updateAward($con) {
+    function updateBac($con) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             $bac = new Bac($_POST);
@@ -31,3 +31,21 @@
             exit;
         }
     }
+
+    function deleteBac($con){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $bac = new Bac($_POST);
+    
+            $bacRepo = new BacRepo($con);
+    
+            $id = $_POST['awardId'];
+    
+            $bacRepo->delete($id);
+
+            header("Location: views/unimplemented.php");
+            exit;
+    }
+}
+
+//NO VIEWS AND BAD ROUTING

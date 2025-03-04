@@ -1,7 +1,5 @@
 <?php
 
-//BAD ROUTING
-
 require_once 'src/repositories/AwardRepo.php';
 require_once 'src/models/AwardModel.php';
 
@@ -57,7 +55,7 @@ function deleteAward($con) {
 
 
 
-//VIEWS NOT YET READY NO ROUTER
+//VIEWS NOT YET READY
 // function listAwards($awardRepo) {
 //     return $awardRepo->getAll();
 // }

@@ -1,5 +1,6 @@
 <?php
     class Downloads{
+        public $downloadsId;
         public $pdfName;
         public $pdfTitle;
         public $uploadDate;

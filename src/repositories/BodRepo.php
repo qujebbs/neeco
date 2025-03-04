@@ -28,13 +28,14 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function update(Bod $bod){
-            $sql = "UPDATE {$this->table} SET bodName = :bodName, bodPosition = :bodPosition, bodPicture = :bodPicture, townId = :townId";
+        public function update(Bod $bod, $id){
+            $sql = "UPDATE {$this->table} SET bodName = :bodName, bodPosition = :bodPosition, bodPicture = :bodPicture, townId = :townId WHERE bodId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":bodName", $bod->bodName);
             $stmt->bindParam(":bodPosition", $bod->bodPosition);
             $stmt->bindParam(":bodPicture", $bod->bodPicture);
             $stmt->bindParam(":townId", $bod->townId);
+            $stmt->bindParam(":id", $bod->$id);
 
             return $stmt->execute();
         }

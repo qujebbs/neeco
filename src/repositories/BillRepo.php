@@ -6,23 +6,32 @@
             parent::__construct($con, 'bills', 'billId');
         }
 
-        public function insert($bills){
-            $sql = "INSERT INTO {$this->table}(consumerId, billYearMonth, billAmount, kwhUsed, orDate, orAmount, dueDate, disconnectionDate)
-                    VALUES (:consumerId, :billYearMonth, :billAmount, :kwhUsed, :orDate, :orAmount, :dueDate, :disconnectionDate)";
-                    $stmt = $this->con->prepare($sql);
-
-            foreach($bills as $bill){
-                $stmt->bindParam("consumerId", $bill->consumerId);
-                $stmt->bindParam("billYearMonth", $bill->billYearMonth);
-                $stmt->bindParam("billAmount", $bill->billAmount);
-                $stmt->bindParam("kwhUsed", $bill->kwhUsed);
-                $stmt->bindParam("orDate", $bill->orDate);
-                $stmt->bindParam("orAmount", $bill->orAmount);
-                $stmt->bindParam("dueDate", $bill->dueDate);
-                $stmt->bindParam("disconnectionDate", $bill->disconnectionDate);
-                $stmt->execute();
+        public function insert(array $bills) {
+            if (empty($bills)) return false;
+        
+            $values = [];
+            $params = [];
+            
+            foreach ($bills as $bill) {
+                $values[] = "(?, ?, ?, ?, ?, ?, ?, ?)";
+                $params[] = $bill->consumerId;
+                $params[] = $bill->billYearMonth;
+                $params[] = $bill->billAmount;
+                $params[] = $bill->kwhUsed;
+                $params[] = $bill->orDate;
+                $params[] = $bill->orAmount;
+                $params[] = $bill->dueDate;
+                $params[] = $bill->disconnectionDate;
             }
+        
+            $sql = "INSERT INTO {$this->table} 
+                    (consumerId, billYearMonth, billAmount, kwhUsed, orDate, orAmount, dueDate, disconnectionDate) 
+                    VALUES " . implode(", ", $values);
+        
+            $stmt = $this->con->prepare($sql);
+            return $stmt->execute($params);
         }
+        
         public function selectByFilter($filter){
             die();
         }

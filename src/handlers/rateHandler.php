@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/RateRepo.php");
+    require_once("src/models/RateModel.php");
     class RateHandler {
         private $rateRepo;
     

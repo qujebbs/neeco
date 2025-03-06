@@ -1,5 +1,7 @@
 <?php
-    class townsHandler {
+    require_once("src/repositories/TownsRepo.php");
+    require_once("src/models/TownsModel.php");
+    class TownsHandler {
         private $townsRepo;
     
         public function __construct($con) {

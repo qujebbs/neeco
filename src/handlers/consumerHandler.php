@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/ConsumerRepo.php");
+    require_once("src/models/ConsumerModel.php");
     class ConsumerHandler {
         private $consumerRepo;
     

@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/BillRepo.php");
+    require_once("src/models/BillModel.php");
     class BillHandler {
         private $billRepo;
     

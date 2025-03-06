@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/DownloadsRepo.php");
+    require_once("src/models/DownloadsModel.php");
     class DownloadsHandler {
         private $downloadsRepo;
     

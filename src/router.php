@@ -1,4 +1,5 @@
-<?php 
+<?php
+    require_once ("");
 
 $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 

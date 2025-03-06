@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/ComplaintRepo.php");
+    require_once("src/models/ComplaintModel.php");
     class ComplaintHandler {
         private $complaintRepo;
     

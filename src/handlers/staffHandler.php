@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/StaffRepo.php");
+    require_once("src/models/StaffModel.php");
     class StaffHandler {
         private $staffRepo;
     

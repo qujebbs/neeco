@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/NewsRepo.php");
+    require_once("src/models/NewsModel.php");
     class NewsHandler {
         private $newsRepo;
     

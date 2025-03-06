@@ -1,5 +1,6 @@
-<?php 
-
+<?php
+    require_once("src/repositories/BacRepo.php");
+    require_once("src/models/BacModel.php");
 
     class BacHandler {
             private $bacRepo;

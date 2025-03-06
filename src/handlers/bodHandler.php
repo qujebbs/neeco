@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/BodRepo.php");
+    require_once("src/models/BodModel.php");
     class BodHandler {
         private $bodRepo;
     

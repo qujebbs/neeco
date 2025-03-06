@@ -1,4 +1,6 @@
 <?php
+    require_once("src/repositories/ServiceRepo.php");
+    require_once("src/models/ServiceModel.php");
     class ServiceHandler {
         private $serviceRepo;
     

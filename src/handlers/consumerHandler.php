@@ -24,6 +24,12 @@
             die("Invalid action: $action");
         }
 
+            public function getAll(){
+                $towns = $this->consumerRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
+
             public function createConsumer(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     

@@ -23,6 +23,11 @@
         
             die("Invalid action: $action");
         }
+            public function getAll(){
+                $towns = $this->districtOfficesRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
 
             public function createDistrictOffices(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

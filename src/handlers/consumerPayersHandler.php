@@ -25,6 +25,12 @@
                 die("Invalid action: $action");
             }
 
+            public function getAll(){
+                $towns = $this->consumerPayersRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
+
             public function createConsumerPayers(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $consumerPayer = new ConsumerPayers($_POST);

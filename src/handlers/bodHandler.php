@@ -25,6 +25,12 @@
             die("Invalid action: $action");
         }
 
+            public function getAll(){
+                $towns = $this->bodRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
+
             public function createBod($con){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $bod = new Bod($_POST);

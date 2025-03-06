@@ -25,6 +25,12 @@
                 die("Invalid action: $action");
             }
 
+            public function getAll(){
+                $towns = $this->complaintRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
+
             public function createComplaint(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $complaint = new Complaint($_POST);

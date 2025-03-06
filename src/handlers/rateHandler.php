@@ -24,6 +24,11 @@
         
             die("Invalid action: $action");
         }
+            public function getAll(){
+                $towns = $this->rateRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
 
             public function createRate(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

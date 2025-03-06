@@ -28,7 +28,7 @@
             public function getAll(){
                 $towns = $this->townsRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/towns.php";
             }
         
 

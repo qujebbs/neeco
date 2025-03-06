@@ -24,6 +24,11 @@
             
                 die("Invalid action: $action");
             }
+            public function getAll(){
+                $towns = $this->staffRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
 
             public function createStaff(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

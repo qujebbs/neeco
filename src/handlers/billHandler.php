@@ -1,6 +1,7 @@
 <?php
     require_once("src/repositories/BillRepo.php");
     require_once("src/models/BillModel.php");
+    require_once("src/config/db.php");
     class BillHandler {
         private $billRepo;
     
@@ -22,6 +23,12 @@
             }
         
             die("Invalid action: $action");
+        }
+
+        public function getAll(){
+            $towns = $this->billRepo->selectAll(); 
+
+            include "views/unimplemented.php";
         }
 
         public function createBill() {

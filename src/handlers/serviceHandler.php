@@ -25,6 +25,12 @@
             die("Invalid action: $action");
         }
 
+        public function getAll(){
+            $towns = $this->serviceRepo->selectAll(); 
+
+            include "views/unimplemented";
+        }
+
             public function createService(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $service = new Service($_POST);

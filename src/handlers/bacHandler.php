@@ -25,6 +25,11 @@
             
                 die("Invalid action: $action");
             }
+            public function getAll(){
+                $towns = $this->bacRepo->selectAll(); 
+
+                include "views/unimplemented.php";
+            }
 
             public function createBac(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

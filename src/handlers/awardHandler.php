@@ -1,6 +1,7 @@
 <?php
     require_once("src/repositories/AwardRepo.php");
-    require_once("src/models/AwardsModel.php");
+    require_once("src/models/AwardModel.php");
+    require_once("src/config/db.php");
     class AwardHandler {
         private $awardRepo;
 
@@ -23,6 +24,11 @@
         
             die("Invalid action: $action");
         }
+            public function getAll(){
+                $towns = $this->awardRepo->selectAll(); 
+
+                include "views/award.php";
+            }
             public function createAward($con) {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

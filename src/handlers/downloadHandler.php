@@ -25,6 +25,12 @@
                 die("Invalid action: $action");
             }
 
+            public function getAll(){
+                $towns = $this->downloadsRepo->selectAll(); 
+
+                include "views/unimplemented";
+            }
+
             public function createDownloads(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $download = new Downloads($_POST);

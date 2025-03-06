@@ -9,6 +9,23 @@
                 $this->bacRepo = new BacRepo($con);
             }
 
+            public function handleRequest() {
+                $action = $_REQUEST['action'] ?? 'getAll';
+            
+                $actions = [
+                    'create' => 'createBac',
+                    'update' => 'updateBac',
+                    'delete' => 'deleteBac',
+                    'getAll' => 'getAll'
+                ];
+            
+                if (isset($actions[$action])) {
+                    return $this->{$actions[$action]}();
+                }
+            
+                die("Invalid action: $action");
+            }
+
             public function createBac(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -43,4 +60,8 @@
         }
     }
 
+$con = getPDOConnection();
+$bacHandler = new BacHandler($con);
+$bacHandler->handleRequest();
+    
 //NO VIEWS

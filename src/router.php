@@ -1,5 +1,5 @@
 <?php
-    require_once ("");
+    require_once ("src/config/db.php");
 
 $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 

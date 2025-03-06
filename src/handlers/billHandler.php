@@ -7,6 +7,22 @@
         public function __construct($con) {
             $this->billRepo = new BillRepo($con);
         }
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createBill',
+                'update' => 'updateBill',
+                'delete' => 'deleteBill',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
 
         public function createBill() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
@@ -40,6 +56,11 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$billHandler = new BillHandler($con);
+$billHandler->handleRequest();
+    
 //VIEWS NOT READY
 
 

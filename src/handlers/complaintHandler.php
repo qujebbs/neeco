@@ -8,6 +8,23 @@
             $this->complaintRepo = new ComplaintRepo($con);
         }
 
+            public function handleRequest() {
+                $action = $_REQUEST['action'] ?? 'getAll';
+            
+                $actions = [
+                    'create' => 'createComplaint',
+                    'update' => 'updateComplaint',
+                    'delete' => 'deleteComplaint',
+                    'getAll' => 'getAll'
+                ];
+            
+                if (isset($actions[$action])) {
+                    return $this->{$actions[$action]}();
+                }
+            
+                die("Invalid action: $action");
+            }
+
             public function createComplaint(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $complaint = new Complaint($_POST);
@@ -38,5 +55,10 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$complaintHandler = new ComplaintHandler($con);
+$complaintHandler->handleRequest();
+
 
 //VIEWS NOT READY

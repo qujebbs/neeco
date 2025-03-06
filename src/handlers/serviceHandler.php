@@ -8,6 +8,23 @@
             $this->serviceRepo = new ServiceRepo($con);
         }
 
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createService',
+                'update' => 'updateService',
+                'delete' => 'deleteService',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
+
             public function createService(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $service = new Service($_POST);
@@ -39,4 +56,8 @@
         }
     }
 
+$con = getPDOConnection();
+$serviceHandler = new ServiceHandler($con);
+$serviceHandler->handleRequest();
+    
 //VIEWS NOT READY

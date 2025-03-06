@@ -384,14 +384,7 @@ if (isset($_POST['editnewsbtn'])) {
 } 
 ?>
 
-
-
-
-
-
-
 </div>
-
 
 </div>
 <!-- End of Main Content -->

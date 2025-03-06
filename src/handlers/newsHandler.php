@@ -8,6 +8,22 @@
             $this->newsRepo = new NewsRepo($con);
         }
 
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createNews',
+                'update' => 'updateNews',
+                'delete' => 'deleteNews',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
             public function createNews(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
@@ -41,5 +57,10 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$newsHandler = new NewsHandler($con);
+$newsHandler->handleRequest();
+    
 
 //VIEWS NOT READY

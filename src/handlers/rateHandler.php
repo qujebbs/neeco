@@ -8,6 +8,23 @@
             $this->rateRepo = new RateRepo($con);
         }
 
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createRate',
+                'update' => 'updateRate',
+                'delete' => 'deleteRate',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
+
             public function createRate(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rate = new Rate($_POST);
@@ -41,4 +58,8 @@
         }
     }
 
+$con = getPDOConnection();
+$rateHandler = new RateHandler($con);
+$rateHandler->handleRequest();
+    
 //VIEWS NOT READY

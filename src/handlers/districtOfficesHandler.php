@@ -7,6 +7,22 @@
         public function __construct($con) {
             $this->districtOfficesRepo = new DistrictOfficesRepo($con);
         }
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createDistrictOffices',
+                'update' => 'updateDistrictOffices',
+                'delete' => 'deleteDistrictOffices',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
 
             public function createDistrictOffices(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -40,5 +56,10 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$districtOfficesHandler = new DistrictOfficesHandler($con);
+$districtOfficesHandler->handleRequest();
+    
 
 //VIEWS NOT READY

@@ -8,6 +8,23 @@
             $this->bodRepo = new BodRepo($con);
         }
 
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createBod',
+                'update' => 'updateBod',
+                'delete' => 'deleteBod',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
+
             public function createBod($con){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $bod = new Bod($_POST);
@@ -40,5 +57,10 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$bodHandler = new BodHandler($con);
+$bodHandler->handleRequest();
+    
 
 //VIEWS NOT READY

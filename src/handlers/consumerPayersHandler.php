@@ -8,6 +8,23 @@
             $this->consumerPayersRepo = new ConsumerPayersRepo($con);
         }
 
+            public function handleRequest() {
+                $action = $_REQUEST['action'] ?? 'getAll';
+            
+                $actions = [
+                    'create' => 'createConsumerPayers',
+                    'update' => 'updateConsumerPayers',
+                    'delete' => 'deleteConsumerPayers',
+                    'getAll' => 'getAll'
+                ];
+            
+                if (isset($actions[$action])) {
+                    return $this->{$actions[$action]}();
+                }
+            
+                die("Invalid action: $action");
+            }
+
             public function createConsumerPayers(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $consumerPayer = new ConsumerPayers($_POST);
@@ -41,4 +58,8 @@
         }
     }
 
+$con = getPDOConnection();
+$consumerPayerHandler = new ConsumerPayersHandler($con);
+$consumerPayersHandler->handleRequest();
+    
 //VIEWS NOT READY

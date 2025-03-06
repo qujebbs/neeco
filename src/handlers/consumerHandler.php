@@ -7,6 +7,22 @@
         public function __construct($con) {
             $this->consumerRepo = new ConsumerRepo($con);
         }
+        public function handleRequest() {
+            $action = $_REQUEST['action'] ?? 'getAll';
+        
+            $actions = [
+                'create' => 'createConsumer',
+                'update' => 'updateConsumer',
+                'delete' => 'deleteConsumer',
+                'getAll' => 'getAll'
+            ];
+        
+            if (isset($actions[$action])) {
+                return $this->{$actions[$action]}();
+            }
+        
+            die("Invalid action: $action");
+        }
 
             public function createConsumer(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -40,5 +56,10 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$consumerHandler = new ConsumerHandler($con);
+$consumerHandler->handleRequest();
+
 
 //VIEWS NOT READY

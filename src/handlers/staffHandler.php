@@ -8,6 +8,23 @@
             $this->staffRepo = new StaffRepo($con);
         }
 
+            public function handleRequest() {
+                $action = $_REQUEST['action'] ?? 'getAll';
+            
+                $actions = [
+                    'create' => 'createStaff',
+                    'update' => 'updateStaff',
+                    'delete' => 'deleteStaff',
+                    'getAll' => 'getAll'
+                ];
+            
+                if (isset($actions[$action])) {
+                    return $this->{$actions[$action]}();
+                }
+            
+                die("Invalid action: $action");
+            }
+
             public function createStaff(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $staff = new Staff($_POST);
@@ -39,5 +56,9 @@
             }
         }
     }
+
+$con = getPDOConnection();
+$staffHandler = new StaffHandler($con);
+$staffHandler->handleRequest();
 
 //VIEWS NOT READY

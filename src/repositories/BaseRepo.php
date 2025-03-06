@@ -1,6 +1,4 @@
 <?php
-    require_once("src/config/db.php");
-    
     class BaseRepo {
         protected $con;
         protected $table;

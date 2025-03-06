@@ -6,6 +6,7 @@
 include "views/fragments/metadata.php";
 require_once "src/repositories/TownsRepo.php";
 require_once "src/config/db.php";
+$con = getPDOConnection();
 
 $townsRepo = new TownsRepo($con);
 $towns = $townsRepo->selectAll(); // Fetch all towns

@@ -1,5 +1,5 @@
 <?php
-    require_once("src/repositories/ConsumerPayerRepo.php");
+    require_once("src/repositories/ConsumerPayersRepo.php");
     require_once("src/models/ConsumerPayersModel.php");
     class ConsumerPayersHandler {
         private $consumerPayersRepo;
@@ -26,9 +26,9 @@
             }
 
             public function getAll(){
-                $towns = $this->consumerPayersRepo->selectAll(); 
+                $consumerPayers = $this->consumerPayersRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/consumerPayers.php";
             }
 
             public function createConsumerPayers(){
@@ -65,7 +65,7 @@
     }
 
 $con = getPDOConnection();
-$consumerPayerHandler = new ConsumerPayersHandler($con);
+$consumerPayersHandler = new ConsumerPayersHandler($con);
 $consumerPayersHandler->handleRequest();
     
 //VIEWS NOT READY

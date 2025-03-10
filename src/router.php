@@ -10,7 +10,7 @@
         '/neeco2/bod'=> 'src/handlers/BodHandler.php',
         '/neeco2/complaint'=> 'src/handlers/ComplaintHandler.php',
         '/neeco2/consumer'=> 'src/handlers/ConsumerHandler.php',
-        '/neeco2/consumer-payer'=> 'src/handlers/ConsumerPayerHandler.php',
+        '/neeco2/consumer-payer'=> 'src/handlers/ConsumerPayersHandler.php',
         '/neeco2/district-office'=> 'src/handlers/DistrictOfficeHandler.php',
         '/neeco2/download'=> 'src/handlers/DownloadHandler.php',
         '/neeco2/news'=> 'src/handlers/Newsandler.php',
@@ -25,7 +25,7 @@
         require $routes[$url];
     } else{
         http_response_code(404);
-        echo "404 not found";
+        echo "404 not found :( ";
         echo "<pre>". var_dump($url) . "</pre>";
         die();
     }

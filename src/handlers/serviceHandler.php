@@ -26,9 +26,9 @@
         }
 
         public function getAll(){
-            $towns = $this->serviceRepo->selectAll(); 
+            $services = $this->serviceRepo->selectAll(); 
 
-            include "views/unimplemented";
+            include "views/service.php";
         }
 
             public function createService(){

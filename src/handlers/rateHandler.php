@@ -25,9 +25,9 @@
             die("Invalid action: $action");
         }
             public function getAll(){
-                $towns = $this->rateRepo->selectAll(); 
+                $rates = $this->rateRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/rate.php";
             }
 
             public function createRate(){

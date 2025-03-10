@@ -1,23 +1,23 @@
 <?php
 
-$url = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 
     $routes =[
         '/' => 'index.php',
-        '/award'=> 'neeco2/src/handlers/AwardHandler.php',
-        '/bac'=> 'src/handlers/BacHandler.php',
-        '/bill'=> 'src/handlers/BillHandler.php',
-        '/bod'=> 'src/handlers/BodHandler.php',
-        '/complaint'=> 'src/handlers/ComplaintHandler.php',
-        '/consumer'=> 'src/handlers/ConsumerHandler.php',
-        '/consumer-payer'=> 'src/handlers/ConsumerPayerHandler.php',
-        '/district-office'=> 'src/handlers/DistrictOfficeHandler.php',
-        '/download'=> 'src/handlers/DownloadHandler.php',
-        '/news'=> 'src/handlers/Newsandler.php',
-        '/rate'=> 'src/handlers/RateHandler.php',
-        '/service'=> 'src/handlers/ServiceHandler.php',
-        '/staff'=> 'src/handlers/StaffHandler.php',
-        '/town'=> 'src/handlers/TownHandler.php',
+        '/neeco2/award'=> 'src/handlers/AwardHandler.php',
+        '/neeco2/bac'=> 'src/handlers/BacHandler.php',
+        '/neeco2/bill'=> 'src/handlers/BillHandler.php',
+        '/neeco2/bod'=> 'src/handlers/BodHandler.php',
+        '/neeco2/complaint'=> 'src/handlers/ComplaintHandler.php',
+        '/neeco2/consumer'=> 'src/handlers/ConsumerHandler.php',
+        '/neeco2/consumer-payer'=> 'src/handlers/ConsumerPayerHandler.php',
+        '/neeco2/district-office'=> 'src/handlers/DistrictOfficeHandler.php',
+        '/neeco2/download'=> 'src/handlers/DownloadHandler.php',
+        '/neeco2/news'=> 'src/handlers/Newsandler.php',
+        '/neeco2/rate'=> 'src/handlers/RateHandler.php',
+        '/neeco2/service'=> 'src/handlers/ServiceHandler.php',
+        '/neeco2/staff'=> 'src/handlers/StaffHandler.php',
+        '/neeco2/town'=> 'src/handlers/TownsHandler.php',
     ];
 
         

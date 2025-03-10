@@ -60,8 +60,10 @@ include "fragments/metadata.php";
                                             <input type="hidden" name="action" value="update">
                                             <input type="hidden" name="downloadId" value="<?= $download['downloadId']; ?>">
                                             <div class="form-group">
-                                                <label>download Name:</label>
-                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($download['downloadName']); ?>" required>
+                                                <label>File Title:</label>
+                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($download['pdfTitle']); ?>" required>
+                                                <label>File:</label>
+                                                <input type="file" name="name" class="form-control" value="<?= htmlspecialchars($download['pdfName']); ?>" required>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>
@@ -94,8 +96,10 @@ include "fragments/metadata.php";
                 <form action="../handler.php" method="POST">
                     <input type="hidden" name="action" value="create">
                     <div class="form-group">
-                        <label>download Name:</label>
-                        <input type="text" name="name" class="form-control" required>
+                        <label>File Name:</label>
+                        <input type="text" name="fileName" class="form-control" required>
+                        <label>File:</label>
+                        <input type="file" name="name" class="form-control" required>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>

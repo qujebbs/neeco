@@ -1,6 +1,6 @@
 <?php
     require_once 'src/repositories/baseRepo.php';
-    require_once 'src/helpers/ComplaintFilters.php';
+    require_once 'src/filters/ComplaintFilters.php';
     require_once 'src/models/ComplaintModel.php';
     class ComplaintRepo extends BaseRepo{
         public function __construct() {

@@ -6,10 +6,10 @@
 include "fragments/metadata.php";
 ?>
 <div class="container-fluid">
-    <h2 class="mt-4">Staff Management</h2>
+    <h2 class="mt-4">rate Management</h2>
     
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addstaffModal">
-        Add New Staff
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addrateModal">
+        Add New rate
     </button>
 
     <div class="card-body">
@@ -17,26 +17,24 @@ include "fragments/metadata.php";
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Picture</th>
-                        <th>Department</th>
+                        <th>PDF</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($staffs as $staff): ?>
+                    <?php foreach ($rates as $rate): ?>
                         <tr>
-                            <td><?= htmlspecialchars($staff['staffPic']); ?></td>
-                            <td><?= htmlspecialchars($staff['staffDepartment']); ?></td>
+                            <td><?= htmlspecialchars($rate['pdf']); ?></td>
                             <td>
                                 <!-- Edit Button -->
-                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editstaffModal<?= $staff['staffId']; ?>">
+                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editTownModal<?= $rate['rateId']; ?>">
                                     <i class="fas fa-edit"></i>
                                 </button>
 
                                 <!-- Delete Form -->
                                 <form action="../handler.php" method="POST" style="display:inline;">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="staffId" value="<?= $town['staffId']; ?>">
+                                    <input type="hidden" name="rateId" value="<?= $town['rateId']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -45,11 +43,11 @@ include "fragments/metadata.php";
                         </tr>
 
                         <!-- Edit Town Modal -->
-                        <div class="modal fade" id="editstaffModal<?= $staff['staffId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade" id="editTownModal<?= $rate['rateId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Update Staff</h5>
+                                        <h5 class="modal-title">Update rate</h5>
                                         <button type="button" class="close" data-dismiss="modal">
                                             <span>&times;</span>
                                         </button>
@@ -57,12 +55,9 @@ include "fragments/metadata.php";
                                     <div class="modal-body">
                                         <form action="../handler.php" method="POST">
                                             <input type="hidden" name="action" value="update">
-                                            <input type="hidden" name="staffId" value="<?= $staff['staffId']; ?>">
+                                            <input type="hidden" name="rateId" value="<?= $rate['rateId']; ?>">
                                             <div class="form-group">
-                                                <label>staff Department:</label>
-                                                <input type="text" name="staffDepartment" class="form-control" value="<?= htmlspecialchars($staff['staffDepartment']); ?>" required>
-                                                <label>staff Pic:</label>
-                                                <input type="file" name="staffDepartment" class="form-control" value="<?= htmlspecialchars($staff['staffPic']); ?>" required>
+                                                <input type="file" name="rateFile" class="form-control" value="<?= htmlspecialchars($rate['pdf']); ?>" required>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>
@@ -82,11 +77,11 @@ include "fragments/metadata.php";
 </div>
 
 <!-- Add Town Modal -->
-<div class="modal fade" id="addstaffModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="addrateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add New staff</h5>
+                <h5 class="modal-title">Add New Rate</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
@@ -95,10 +90,8 @@ include "fragments/metadata.php";
                 <form action="../handler.php" method="POST">
                     <input type="hidden" name="action" value="create">
                     <div class="form-group">
-                        <label>staff Department:</label>
-                        <input type="text" name="staffDepartment" class="form-control" required>
-                        <label>staff Pic:</label>
-                        <input type="file" name="staffDepartment" class="form-control" required>
+                        <label>File:</label>
+                        <input type="file" name="rateFile" class="form-control" required>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>

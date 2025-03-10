@@ -9,7 +9,7 @@ include "fragments/metadata.php";
 <div class="container-fluid">
     <h2 class="mt-4">Award Management</h2>
     
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addawardModal">
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addAwardModal">
         Add New Award
     </button>
 
@@ -65,7 +65,13 @@ include "fragments/metadata.php";
                                             <input type="hidden" name="awardId" value="<?= $award['awardId']; ?>">
                                             <div class="form-group">
                                                 <label>Award Name:</label>
-                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($award['awardName']); ?>" required>
+                                                <input type="text" name="awardName" class="form-control" value="<?= htmlspecialchars($award['awardName']); ?>" required>
+                                                <label>Town Type:</label>
+                                                <input type="text" name="awardType" class="form-control" value="<?= htmlspecialchars($award['awardType']); ?>" required>
+                                                <label>Town From:</label>
+                                                <input type="text" name="awardFrom" class="form-control" value="<?= htmlspecialchars($award['awardFrom']); ?>" required>
+                                                <label>Town Date:</label>
+                                                <input type="text" name="awardDate" class="form-control" value="<?= htmlspecialchars($award['awardDate']); ?>" required>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>
@@ -99,7 +105,13 @@ include "fragments/metadata.php";
                     <input type="hidden" name="action" value="create">
                     <div class="form-group">
                         <label>Award Name:</label>
-                        <input type="text" name="name" class="form-control" required>
+                        <input type="text" name="awardName" class="form-control" required>
+                        <label>Award Type:</label>
+                        <input type="text" name="awardType" class="form-control" required>
+                        <label>Award From:</label>
+                        <input type="text" name="awardFrom" class="form-control" required>
+                        <label>Award Date:</label>
+                        <input type="date" name="awardDate" class="form-control" required>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -5,7 +5,7 @@
     class BillHandler {
         private $billRepo;
     
-        public function __construct($con) {
+        public function __construct() {
             $this->billRepo = new BillRepo();
         }
         public function handleRequest() {

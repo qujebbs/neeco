@@ -26,9 +26,9 @@
                 die("Invalid action: $action");
             }
             public function getAll(){
-                $towns = $this->bacRepo->selectAll(); 
+                $bacs = $this->bacRepo->selectAll(); 
 
-                include "views/unimplemented.php";
+                include "views/bac.php";
             }
 
             public function createBac(){

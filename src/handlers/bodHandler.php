@@ -26,9 +26,9 @@
         }
 
             public function getAll(){
-                $towns = $this->bodRepo->selectAll(); 
+                $bods = $this->bodRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/bod.php";
             }
 
             public function createBod($con){

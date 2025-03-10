@@ -1,5 +1,5 @@
 <?php
-    require_once 'src/models//BodModel';
+    require_once 'src/models/BodModel.php';
     require_once 'src/repositories/BaseRepo.php';
         class BodRepo extends BaseRepo {
             public function __construct() {

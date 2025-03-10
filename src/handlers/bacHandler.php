@@ -6,7 +6,7 @@
             private $bacRepo;
         
             public function __construct($con) {
-                $this->bacRepo = new BacRepo($con);
+                $this->bacRepo = new BacRepo();
             }
 
             public function handleRequest() {

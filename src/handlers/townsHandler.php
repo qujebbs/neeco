@@ -6,7 +6,7 @@
         private $townsRepo;
     
         public function __construct($con) {
-            $this->townsRepo = new TownsRepo($con);
+            $this->townsRepo = new TownsRepo();
         }
             public function handleRequest() {
                 $action = $_REQUEST['action'] ?? 'getAll';

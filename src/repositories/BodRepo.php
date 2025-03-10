@@ -2,8 +2,8 @@
     require_once 'src/models//BodModel';
     require_once 'src/repositories/BaseRepo.php';
         class BodRepo extends BaseRepo {
-            public function __construct($con) {
-                parent::__construct($con, 'bod', 'bodId');
+            public function __construct() {
+                parent::__construct( 'bod', 'bodId');
             }
 
         public function insert(Bod $bod){

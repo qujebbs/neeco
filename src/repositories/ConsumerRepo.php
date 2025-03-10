@@ -3,8 +3,8 @@
     require_once 'src/models/ConsumerModel.php';
 
     class ConsumerRepo extends BaseRepo{
-            public function __construct($con) {
-                parent::__construct($con, 'consumers', 'consumerId');
+            public function __construct() {
+                parent::__construct('consumers', 'consumerId');
             }
         
             public function insert(Consumer $consumer) {

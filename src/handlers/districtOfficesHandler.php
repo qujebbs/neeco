@@ -5,7 +5,7 @@
         private $districtOfficesRepo;
     
         public function __construct($con) {
-            $this->districtOfficesRepo = new DistrictOfficesRepo($con);
+            $this->districtOfficesRepo = new DistrictOfficesRepo();
         }
         public function handleRequest() {
             $action = $_REQUEST['action'] ?? 'getAll';

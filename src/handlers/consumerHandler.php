@@ -5,7 +5,7 @@
         private $consumerRepo;
     
         public function __construct($con) {
-            $this->consumerRepo = new ConsumerRepo($con);
+            $this->consumerRepo = new ConsumerRepo();
         }
         public function handleRequest() {
             $action = $_REQUEST['action'] ?? 'getAll';

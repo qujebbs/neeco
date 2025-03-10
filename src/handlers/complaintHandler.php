@@ -5,7 +5,7 @@
         private $complaintRepo;
     
         public function __construct($con) {
-            $this->complaintRepo = new ComplaintRepo($con);
+            $this->complaintRepo = new ComplaintRepo();
         }
 
             public function handleRequest() {

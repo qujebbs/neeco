@@ -3,8 +3,8 @@
         require_once 'src/models/AccountModel.php';
 
         class AccountRepo extends BaseRepo{
-            public function __construct($con) {
-                parent::__construct($con, 'accounts', 'accountId');
+            public function __construct() {
+                parent::__construct('accounts', 'accountId');
             }
             public function insert($consumers){
                 $sql = "INSERT INTO {$this->table}(accountId, consumerId, employeeId, userName, passwrord, positionId;, registrationDate, accountStatusId, verificationCode, isActive)

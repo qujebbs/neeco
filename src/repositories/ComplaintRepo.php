@@ -3,8 +3,8 @@
     require_once 'src/helpers/ComplaintFilters.php';
     require_once 'src/models/ComplaintModel.php';
     class ComplaintRepo extends BaseRepo{
-        public function __construct($con) {
-            parent::__construct($con, 'complaints', 'complaintId');
+        public function __construct() {
+            parent::__construct( 'complaints', 'complaintId');
         }
         public function insert(Complaint $complaint){
             $sql = "INSERT INTO {$this->table}(accountId, employeeId, townId, accountNum, landmark, complaintDesc, statusId, complaintDate, natureId)

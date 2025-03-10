@@ -2,8 +2,8 @@
     require_once 'src/repositories/BaseRepo.php';
     require_once 'src/models/townsModel.php';
     class TownsRepo extends BaseRepo{
-        public function __construct($con) {
-            parent::__construct($con, 'towns', 'townId');
+        public function __construct() {
+            parent::__construct('towns', 'townId');
         }
         public function insert(Towns $towns){
             $sql = "INSERT INTO {$this->table} (zoneCode, townDesc, townAbbrv) VALUES (:zoneCode, :townDesc, :townAbbrv)";

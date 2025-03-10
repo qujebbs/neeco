@@ -5,7 +5,7 @@
         private $serviceRepo;
     
         public function __construct($con) {
-            $this->serviceRepo = new ServiceRepo($con);
+            $this->serviceRepo = new ServiceRepo();
         }
 
         public function handleRequest() {

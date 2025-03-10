@@ -6,7 +6,7 @@
         private $billRepo;
     
         public function __construct($con) {
-            $this->billRepo = new BillRepo($con);
+            $this->billRepo = new BillRepo();
         }
         public function handleRequest() {
             $action = $_REQUEST['action'] ?? 'getAll';

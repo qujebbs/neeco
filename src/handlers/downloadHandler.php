@@ -5,7 +5,7 @@
         private $downloadsRepo;
     
         public function __construct($con) {
-            $this->downloadsRepo = new DownloadsRepo($con);
+            $this->downloadsRepo = new DownloadsRepo();
         }
 
             public function handleRequest() {
@@ -26,9 +26,9 @@
             }
 
             public function getAll(){
-                $towns = $this->downloadsRepo->selectAll(); 
+                $downloads = $this->downloadsRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/downloads.php";
             }
 
             public function createDownloads(){

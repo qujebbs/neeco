@@ -4,8 +4,8 @@
 
     class DownloadsRepo extends BaseRepo{
 
-        public function __construct($con) {
-            parent::__construct($con, 'downloads', 'downloadId');
+        public function __construct() {
+            parent::__construct('downloads', 'downloadId');
         }
 
         public function insert(Downloads $downloads){

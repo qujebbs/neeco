@@ -4,8 +4,8 @@
 
     
     class BacRepo extends BaseRepo{
-        public function __construct($con) {
-            parent::__construct($con, 'bac', 'bacId');
+        public function __construct() {
+            parent::__construct('bac', 'bacId');
         }
 
         public function insert(Bac $bac) {

@@ -5,7 +5,7 @@
         private $newsRepo;
     
         public function __construct($con) {
-            $this->newsRepo = new NewsRepo($con);
+            $this->newsRepo = new NewsRepo();
         }
 
         public function handleRequest() {

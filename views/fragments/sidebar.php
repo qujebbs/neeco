@@ -18,25 +18,24 @@
 //  $result = mysqli_query($con, $sql);
 //  $row = mysqli_fetch_assoc($result);
 $positionId = 2;
-//FIX LATER
-include ("src/repositories/ComplaintRepo.php");
-include ("src/repositories/AccountRepo.php");
+//FIX LATER when login
+    include ("src/repositories/ComplaintRepo.php");
+    include ("src/repositories/AccountRepo.php");
 ?>
-
 
 <?php
 $con = getPDOConnection();
 
-$complaintRepo = new ComplaintRepo($con);
+$complaintRepo = new ComplaintRepo();
 
 $filter = new ComplaintFilter([
     'employeeId' => 1
 ]);
 
-$complaints = $complaintRepo->selectByFilter($filter);
+$complaints = $complaintRepo->selectAll();
 
 
-$accountRepo = new AccountRepo($con);
+$accountRepo = new AccountRepo();
 $peracc = $accountRepo->selectAll();
 ?>
 
@@ -222,15 +221,6 @@ $peracc = $accountRepo->selectAll();
                     <span>Attended Complaint</span></a>
             </li>
 
-           
-
-           
-
-
-           
-
-           
-
             <?php } ?>
             <?php if ($positionId > 2 && ($positionId != 7 && $positionId != 1)){ ?>
             <li class="nav-item active">
@@ -287,10 +277,6 @@ $peracc = $accountRepo->selectAll();
                 <i class="fas fa-fw fa-comment"></i>
                     <span>View Solved Reports</span></a>
             </li>
-
-
-
-           
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">

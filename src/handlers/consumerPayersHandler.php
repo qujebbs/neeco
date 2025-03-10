@@ -5,7 +5,7 @@
         private $consumerPayersRepo;
     
         public function __construct($con) {
-            $this->consumerPayersRepo = new ConsumerPayersRepo($con);
+            $this->consumerPayersRepo = new ConsumerPayersRepo();
         }
 
             public function handleRequest() {

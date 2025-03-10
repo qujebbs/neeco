@@ -1,12 +1,10 @@
 <?php
-    require_once ("src/config/db.php");
 
 $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-
     $routes =[
         '/' => 'index.php',
-        '/award'=> 'src/handlers/AwardHandler.php',
+        '/award'=> 'neeco2/src/handlers/AwardHandler.php',
         '/bac'=> 'src/handlers/BacHandler.php',
         '/bill'=> 'src/handlers/BillHandler.php',
         '/bod'=> 'src/handlers/BodHandler.php',
@@ -28,5 +26,6 @@ $url = parse_url($_SERVER['REQUEST_URI'])['path'];
     } else{
         http_response_code(404);
         echo "404 not found";
+        echo "<pre>". var_dump($url) . "</pre>";
         die();
     }

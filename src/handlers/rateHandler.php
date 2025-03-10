@@ -5,7 +5,7 @@
         private $rateRepo;
     
         public function __construct($con) {
-            $this->rateRepo = new RateRepo($con);
+            $this->rateRepo = new RateRepo();
         }
 
         public function handleRequest() {

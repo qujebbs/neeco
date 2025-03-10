@@ -3,8 +3,8 @@
     require_once("src/models/ConsumerPayersModel.php");
 
     class ConsumerPayersRepo extends BaseRepo {
-        public function __construct($con) {
-            parent::__construct($con, 'consumerPromptPayers', 'payerId');
+        public function __construct() {
+            parent::__construct('consumerPromptPayers', 'payerId');
         }
 
         public function insert(ConsumerPayers $consumerPayers) {

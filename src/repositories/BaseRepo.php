@@ -1,4 +1,6 @@
 <?php
+    require_once "src/config/db.php";
+
     class BaseRepo {
         protected $con;
         protected $table;
@@ -6,8 +8,8 @@
 
         public $limit = 100;
 
-        public function __construct($con, $table, $primaryKey = 'id') {
-            $this->con = $con;
+        public function __construct($table, $primaryKey = 'id') {
+            $this->con = getPDOConnection();
             $this->table = $table;
             $this->primaryKey = $primaryKey;
         }

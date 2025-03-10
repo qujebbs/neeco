@@ -9,7 +9,7 @@ include "fragments/metadata.php";
 <div class="container-fluid">
     <h2 class="mt-4">Award Management</h2>
     
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addTownModal">
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addawardModal">
         Add New Award
     </button>
 
@@ -26,20 +26,22 @@ include "fragments/metadata.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($towns as $town): ?>
+                    <?php foreach ($awards as $award): ?>
                         <tr>
-                            <td><?= htmlspecialchars($town['townId']); ?></td>
-                            <td><?= htmlspecialchars($town['townDesc']); ?></td>
+                            <td><?= htmlspecialchars($award['awardName']); ?></td>
+                            <td><?= htmlspecialchars($award['awardType']); ?></td>
+                            <td><?= htmlspecialchars($award['awardFrom']); ?></td>
+                            <td><?= htmlspecialchars($award['awardDate']); ?></td>
                             <td>
                                 <!-- Edit Button -->
-                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editTownModal<?= $town['townId']; ?>">
+                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editawardModal<?= $award['awardId']; ?>">
                                     <i class="fas fa-edit"></i>
                                 </button>
 
                                 <!-- Delete Form -->
                                 <form action="../handler.php" method="POST" style="display:inline;">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
+                                    <input type="hidden" name="awardId" value="<?= $award['awardId']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -47,12 +49,12 @@ include "fragments/metadata.php";
                             </td>
                         </tr>
 
-                        <!-- Edit Town Modal -->
-                        <div class="modal fade" id="editTownModal<?= $town['townId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                        <!-- Edit award Modal -->
+                        <div class="modal fade" id="editawardModal<?= $award['awardId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Update Town</h5>
+                                        <h5 class="modal-title">Update Award</h5>
                                         <button type="button" class="close" data-dismiss="modal">
                                             <span>&times;</span>
                                         </button>
@@ -60,10 +62,10 @@ include "fragments/metadata.php";
                                     <div class="modal-body">
                                         <form action="../handler.php" method="POST">
                                             <input type="hidden" name="action" value="update">
-                                            <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
+                                            <input type="hidden" name="awardId" value="<?= $award['awardId']; ?>">
                                             <div class="form-group">
-                                                <label>Town Name:</label>
-                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($town['townDesc']); ?>" required>
+                                                <label>Award Name:</label>
+                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($award['awardName']); ?>" required>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>
@@ -82,12 +84,12 @@ include "fragments/metadata.php";
     </div>
 </div>
 
-<!-- Add Town Modal -->
-<div class="modal fade" id="addTownModal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Add award Modal -->
+<div class="modal fade" id="addAwardModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add New Town</h5>
+                <h5 class="modal-title">Add New Award</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
@@ -96,7 +98,7 @@ include "fragments/metadata.php";
                 <form action="../handler.php" method="POST">
                     <input type="hidden" name="action" value="create">
                     <div class="form-group">
-                        <label>Town Name:</label>
+                        <label>Award Name:</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="modal-footer">

@@ -7,10 +7,10 @@ include "fragments/metadata.php";
 ?>
 
 <div class="container-fluid">
-    <h2 class="mt-4">Award Management</h2>
+    <h2 class="mt-4">Download Management</h2>
     
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addTownModal">
-        Add New Award
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#adddownloadModal">
+        Add New download
     </button>
 
     <div class="card-body">
@@ -18,28 +18,26 @@ include "fragments/metadata.php";
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Award Name</th>
-                        <th>Award Type</th>
-                        <th>Award From</th>
-                        <th>Award Date</th>
+                        <th>File Title</th>
+                        <th>Quick Downloads</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($towns as $town): ?>
+                    <?php foreach ($downloads as $download): ?>
                         <tr>
-                            <td><?= htmlspecialchars($town['townId']); ?></td>
-                            <td><?= htmlspecialchars($town['townDesc']); ?></td>
+                            <td><?= htmlspecialchars($download['pdfTitle']); ?></td>
+                            <td><?= htmlspecialchars($download['pdfName']); ?></td>
                             <td>
                                 <!-- Edit Button -->
-                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editTownModal<?= $town['townId']; ?>">
+                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editdownloadModal<?= $download['downloadId']; ?>">
                                     <i class="fas fa-edit"></i>
                                 </button>
 
                                 <!-- Delete Form -->
                                 <form action="../handler.php" method="POST" style="display:inline;">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
+                                    <input type="hidden" name="downloadId" value="<?= $download['downloadId']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -47,12 +45,12 @@ include "fragments/metadata.php";
                             </td>
                         </tr>
 
-                        <!-- Edit Town Modal -->
-                        <div class="modal fade" id="editTownModal<?= $town['townId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                        <!-- Edit download Modal -->
+                        <div class="modal fade" id="editdownloadModal<?= $download['downloadId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Update Town</h5>
+                                        <h5 class="modal-title">Update download</h5>
                                         <button type="button" class="close" data-dismiss="modal">
                                             <span>&times;</span>
                                         </button>
@@ -60,10 +58,10 @@ include "fragments/metadata.php";
                                     <div class="modal-body">
                                         <form action="../handler.php" method="POST">
                                             <input type="hidden" name="action" value="update">
-                                            <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
+                                            <input type="hidden" name="downloadId" value="<?= $download['downloadId']; ?>">
                                             <div class="form-group">
-                                                <label>Town Name:</label>
-                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($town['townDesc']); ?>" required>
+                                                <label>download Name:</label>
+                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($download['downloadName']); ?>" required>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>
@@ -82,12 +80,12 @@ include "fragments/metadata.php";
     </div>
 </div>
 
-<!-- Add Town Modal -->
-<div class="modal fade" id="addTownModal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Add download Modal -->
+<div class="modal fade" id="adddownloadModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add New Town</h5>
+                <h5 class="modal-title">Add New Download</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
@@ -96,7 +94,7 @@ include "fragments/metadata.php";
                 <form action="../handler.php" method="POST">
                     <input type="hidden" name="action" value="create">
                     <div class="form-group">
-                        <label>Town Name:</label>
+                        <label>download Name:</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="modal-footer">

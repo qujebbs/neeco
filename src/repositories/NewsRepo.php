@@ -3,8 +3,8 @@
     require_once 'src/models/NewsModel.php';
 
     class NewsRepo extends BaseRepo{
-        public function __construct($con) {
-            parent::__construct($con, 'news', 'newsId');
+        public function __construct() {
+            parent::__construct('news', 'newsId');
         }
 
         public function insert(News $news){

@@ -5,7 +5,7 @@
         private $bodRepo;
     
         public function __construct($con) {
-            $this->bodRepo = new BodRepo($con);
+            $this->bodRepo = new BodRepo();
         }
 
         public function handleRequest() {

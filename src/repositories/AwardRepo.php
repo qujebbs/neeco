@@ -3,8 +3,8 @@
     require_once 'src/models/AwardModel.php';
 
     class AwardRepo extends BaseRepo{
-            public function __construct($con) {
-                parent::__construct($con, 'awards', 'awardId');
+            public function __construct() {
+                parent::__construct('awards', 'awardId');
             }
 
             public function insert(Award $award){

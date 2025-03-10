@@ -2,11 +2,13 @@
     require_once("src/repositories/AwardRepo.php");
     require_once("src/models/AwardModel.php");
     require_once("src/config/db.php");
+    
+
     class AwardHandler {
         private $awardRepo;
 
         public function __construct($con) {
-            $this->awardRepo = new AwardRepo($con);
+            $this->awardRepo = new AwardRepo();
         }
         public function handleRequest() {
             $action = $_REQUEST['action'] ?? 'getAll';
@@ -25,9 +27,9 @@
             die("Invalid action: $action");
         }
             public function getAll(){
-                $towns = $this->awardRepo->selectAll(); 
+                $awards = $this->awardRepo->selectAll(); 
 
-                include "views/award.php";
+                include "views/awards.php";
             }
             public function createAward($con) {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

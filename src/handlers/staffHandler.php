@@ -5,9 +5,8 @@
         private $staffRepo;
     
         public function __construct($con) {
-            $this->staffRepo = new StaffRepo($con);
+            $this->staffRepo = new StaffRepo();
         }
-
             public function handleRequest() {
                 $action = $_REQUEST['action'] ?? 'getAll';
             
@@ -17,17 +16,15 @@
                     'delete' => 'deleteStaff',
                     'getAll' => 'getAll'
                 ];
-            
                 if (isset($actions[$action])) {
                     return $this->{$actions[$action]}();
                 }
-            
                 die("Invalid action: $action");
             }
             public function getAll(){
-                $towns = $this->staffRepo->selectAll(); 
+                $staffs = $this->staffRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/staff.php";
             }
 
             public function createStaff(){

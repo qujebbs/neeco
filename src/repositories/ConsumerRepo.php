@@ -35,7 +35,11 @@
             }
 
             public function selectByFilters(ConsumerFilter $filters){
-                $sql = "SELECT * FROM neeco2area1.dbo.consumers c LEFT JOIN towns t ON c.townId=t.townId WHERE consumerId = :consumerId";
+                $sql = "SELECT * FROM neeco2area1.dbo.consumers c 
+                        LEFT JOIN towns t ON c.townId=t.townId 
+                        LEFT JOIN accounts a ON c.consumerId=a.consumerId
+                        INNER JOIN accountStatus ac ON ac.accountStatusId=a.accountStatusId
+                        ";
 
                 $conditions = $filters->toSqlConditions();
         

@@ -1,5 +1,6 @@
 <?php
     require_once("src/repositories/ConsumerRepo.php");
+    require_once 'src/filters/ConsumerFilters.php';
     require_once("src/models/ConsumerModel.php");
     class ConsumerHandler {
         private $consumerRepo;
@@ -8,13 +9,13 @@
             $this->consumerRepo = new ConsumerRepo();
         }
         public function handleRequest() {
-            $action = $_REQUEST['action'] ?? 'getAll';
+            $action = $_REQUEST['action'] ?? 'getConsumers';
         
             $actions = [
                 'create' => 'createConsumer',
                 'update' => 'updateConsumer',
                 'delete' => 'deleteConsumer',
-                'getAll' => 'getAll'
+                'getConsumers' => 'getConsumers'
             ];
         
             if (isset($actions[$action])) {
@@ -24,11 +25,11 @@
             die("Invalid action: $action");
         }
 
-            public function getAll(){
-                $towns = $this->consumerRepo->selectAll(); 
+            // public function getAll(){
+            //     $towns = $this->consumerRepo->selectAll(); 
 
-                include "views/unimplemented";
-            }
+            //     include "views/unimplemented";
+            // }
 
             public function createConsumer(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -62,7 +63,7 @@
                 }
             }
             public function getConsumers() {
-                if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                if (isset($_GET["status"])){
                     $statuses = [
                         "pending" => 1,
                         "active" => 2,
@@ -70,7 +71,7 @@
                     ];
             
                     $status = $_GET['status'] ?? null;
-                    
+
                     if (!isset($statuses[$status])) {
                         http_response_code(400);
                         echo "Invalid status.";
@@ -78,12 +79,17 @@
                     }
             
                     $filter = new ConsumerFilter([
-                        "statusId" => $statuses[$status]
+                        "statusId" => $statuses[$status],
+                        "consumerId" => 1
                     ]);
             
                     $accounts = $this->consumerRepo->selectByFilters($filter);
-                    
+
                     include "views/accounts.php";
+                }else{
+                    $towns = $this->consumerRepo->selectAll(); 
+
+                    include "views/unimplemented";
                 }
             }
     }

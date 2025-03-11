@@ -155,7 +155,7 @@ $peracc = $accountRepo->selectAll();
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Consumer</h6>
-                        <a class="collapse-item" href="new_consumer.php">New Consumer List</a>
+                        <a class="collapse-item" href="neeco2/consumer?status=active">New Consumer List</a>
                         <a class="collapse-item" href="archived.php">Archived Consumers</a>
                         <h6 class="collapse-header">Bills</h6>
                         <a class="collapse-item" href="/neeco2/bill">Consumer Bills</a>

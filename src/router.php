@@ -31,4 +31,7 @@
     }
 
     //required fields
-    //
+    //file uploads
+    //authorization
+    //user management
+    //approve and archive multiple users

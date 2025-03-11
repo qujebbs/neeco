@@ -21,4 +21,8 @@
                 $stmt->bindParam(":verificationCode", $consumers->verificationCode);
                 $stmt->bindParam(":isActive", $consumers->isActive);
             }
+            
+            public function select(){
+
+            }
         }

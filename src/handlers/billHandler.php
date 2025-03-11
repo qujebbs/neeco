@@ -33,7 +33,7 @@
         
 
         public function createBill() {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['billFile'])) {
                 $billsArr = readBillsCSV($_FILES['csv_file']["tmp_name"]);
     
                 $this->billRepo->insert($billsArr);

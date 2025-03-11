@@ -35,7 +35,7 @@
             }
 
             public function selectByFilters(ConsumerFilter $filters){
-                $sql = "SELECT * FROM neeco2area1.dbo.consumers c LEFT JOIN 	towns t ON c.townId=t.townId WHERE consumerId = :consumerId";
+                $sql = "SELECT * FROM neeco2area1.dbo.consumers c LEFT JOIN towns t ON c.townId=t.townId WHERE consumerId = :consumerId";
 
                 $conditions = $filters->toSqlConditions();
         
@@ -55,6 +55,18 @@
             }
 
             public function update(Consumer $consumer){
-                die();
+                $sql = "UPDATE {$this->table} SET lastname = :lastname, firstname = :firstname, midname = :midname, suffix = :suffix, barangay = :barangay, profilepix = :profilepix, backpix = :backpix WHERE consumerId = :id";
+                $stmt = $this->con->prepare($sql);
+                
+                $stmt->bindParam(":lastname", $consumer->lastName);
+                $stmt->bindParam(":firstName", $consumer->firstName);
+                $stmt->bindParam("midName", $consumer->midName);
+                $stmt->bindParam(":suffix", $consumer->suffix);
+                $stmt->bindParam(":barangay", $consumer->barangay);
+                $stmt->bindParam(":profilepix", $consumer->profilepix);
+                $stmt->bindParam(":backpix", $consumer->backpix);
+                $stmt->bindParam(":id", $id);
+
+                return $stmt->execute();
             }
     }

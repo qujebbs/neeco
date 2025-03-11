@@ -4,7 +4,7 @@
 <?php include "fragments/modalComponent.php"; ?>
 
 <div class="container-fluid">
-    <h2 class="mt-4">BOD Management</h2>
+    <h2 class="mt-4">Consumer Management</h2>
 
     <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addbodModal">Add New BOD</button>
 

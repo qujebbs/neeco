@@ -1,114 +1,35 @@
-<?php include "fragments/sidebar.php"?>
-<!DOCTYPE html>
-<html lang="en">
-
 <?php 
-include "fragments/metadata.php";
-?>
+//TOWN VIEWS NOT NEEDED YET
+include "fragments/sidebar.php"; ?>
+<?php include "fragments/metadata.php"; ?>
+<?php include "fragments/tableComponent.php"; ?>
+<?php include "fragments/modalComponent.php"; ?>
 
 <div class="container-fluid">
     <h2 class="mt-4">Town Management</h2>
-    
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addTownModal">
-        Add New Town
-    </button>
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Town Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($towns as $town): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($town['townId']); ?></td>
-                            <td><?= htmlspecialchars($town['townDesc']); ?></td>
-                            <td>
-                                <!-- Edit Button -->
-                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editTownModal<?= $town['townId']; ?>">
-                                    <i class="fas fa-edit"></i>
-                                </button>
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addtownModal">Add New Town</button>
 
-                                <!-- Delete Form -->
-                                <form action="../handler.php" method="POST" style="display:inline;">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+    <?php
+    renderTable($towns, [
+        'townPic' => 'own Picture',
+        'townDepartment' => 'town Department',
+    ], 'town', 'townId');
 
-                        <!-- Edit Town Modal -->
-                        <div class="modal fade" id="editTownModal<?= $town['townId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Update Town</h5>
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            <span>&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="../handler.php" method="POST">
-                                            <input type="hidden" name="action" value="update">
-                                            <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
-                                            <div class="form-group">
-                                                <label>Town Name:</label>
-                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($town['townDesc']); ?>" required>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Update</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    renderModal('addtownModal', 'Add New town', 'create', [
+        'townPic' => 'town Picture',
+        'townDepartment' => 'town Department',
+    ], 'town');
 
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    foreach ($towns as $town) {
+        renderModal("edittownModal{$town['townId']}", 'Update town', 'update', [
+            'townPic' => 'town Picture',
+            'townDepartment' => 'town Department',
+        ], 'town', $town);
+    }
+    ?>
 </div>
 
-<!-- Add Town Modal -->
-<div class="modal fade" id="addTownModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add New Town</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="../handler.php" method="POST">
-                    <input type="hidden" name="action" value="create">
-                    <div class="form-group">
-                        <label>Town Name:</label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
 <?php include "views/fragments/tableFooter.php"; ?>
-
 </body>
 </html>

@@ -24,9 +24,9 @@
             die("Invalid action: $action");
         }
             public function getAll(){
-                $towns = $this->districtOfficesRepo->selectAll(); 
+                $districtOffices = $this->districtOfficesRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/districtOffices.php";
             }
 
             public function createDistrictOffices(){

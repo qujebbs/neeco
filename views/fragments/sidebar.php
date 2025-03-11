@@ -123,8 +123,8 @@ $peracc = $accountRepo->selectAll();
                 <div id="collaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Members</h6>
-                        <a class="collapse-item" href="staff.php">Management & Staff</a>
-                        <a class="collapse-item" href="BOD.php">Board Of Directors</a>
+                        <a class="collapse-item" href="/neeco2/staff">Management & Staff</a>
+                        <a class="collapse-item" href="/neeco2/bod">Board Of Directors</a>
                     </div>
                 </div>
             </li>
@@ -138,10 +138,10 @@ $peracc = $accountRepo->selectAll();
                 <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Consumer</h6>
-                        <a class="collapse-item" href="awards.php">Awards</a>
-                        <a class="collapse-item" href="add_rate.php">Add Rates</a>
-                        <a class="collapse-item" href="download.php">Downloads</a>
-                        <a class="collapse-item" href="bac.php">BAC pdf</a>
+                        <a class="collapse-item" href="/neeco2/award">Awards</a>
+                        <a class="collapse-item" href="/neeco2/rate">Add Rates</a>
+                        <a class="collapse-item" href="/neeco2/download">Downloads</a>
+                        <a class="collapse-item" href="/neeco2/bac">BAC pdf</a>
                     </div>
                 </div>
             </li>
@@ -158,7 +158,7 @@ $peracc = $accountRepo->selectAll();
                         <a class="collapse-item" href="new_consumer.php">New Consumer List</a>
                         <a class="collapse-item" href="archived.php">Archived Consumers</a>
                         <h6 class="collapse-header">Bills</h6>
-                        <a class="collapse-item" href="add_billing.php">Consumer Bills</a>
+                        <a class="collapse-item" href="/neeco2/bill">Consumer Bills</a>
                         <h6 class="collapse-header">Complaints</h6>
                         <a class="collapse-item" href="consumer_complain.php">Consumer Complaints</a>
                         <a class="collapse-item" href="admin_forwardtask.php">Unattended Complaints</a>
@@ -170,26 +170,26 @@ $peracc = $accountRepo->selectAll();
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="news.php">
+                <a class="nav-link" href="/neeco2/news">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>News</span></a>
             </li>
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="district.php">
+                <a class="nav-link" href="/neeco2/district-office">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>District Office</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="consumer-payers.php">
+                <a class="nav-link" href="/neeco2/consumer-payer">
                 <i class="fas fa-fw fa-comment"></i>
                     <span> Consumer Prompt Payers</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="add_service.php">
+                <a class="nav-link" href="/neeco2/service">
                 <i class="fas fa-fw fa-comment"></i>
                     <span> Services</span></a>
             </li>

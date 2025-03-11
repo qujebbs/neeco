@@ -11,7 +11,7 @@
         '/neeco2/complaint'=> 'src/handlers/ComplaintHandler.php',
         '/neeco2/consumer'=> 'src/handlers/ConsumerHandler.php',
         '/neeco2/consumer-payer'=> 'src/handlers/ConsumerPayersHandler.php',
-        '/neeco2/district-office'=> 'src/handlers/DistrictOfficeHandler.php',
+        '/neeco2/district-office'=> 'src/handlers/DistrictOfficesHandler.php',
         '/neeco2/download'=> 'src/handlers/DownloadHandler.php',
         '/neeco2/news'=> 'src/handlers/NewsHandler.php',
         '/neeco2/rate'=> 'src/handlers/RateHandler.php',
@@ -29,3 +29,6 @@
         echo "<pre>". var_dump($url) . "</pre>";
         die();
     }
+
+    //required fields
+    //

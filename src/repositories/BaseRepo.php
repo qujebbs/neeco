@@ -6,7 +6,7 @@
         protected $table;
         protected $primaryKey;
 
-        public $limit = 100;
+        public $limit = 1000;
 
         public function __construct($table, $primaryKey = 'id') {
             $this->con = getPDOConnection();

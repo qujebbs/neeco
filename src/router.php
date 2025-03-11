@@ -13,7 +13,7 @@
         '/neeco2/consumer-payer'=> 'src/handlers/ConsumerPayersHandler.php',
         '/neeco2/district-office'=> 'src/handlers/DistrictOfficeHandler.php',
         '/neeco2/download'=> 'src/handlers/DownloadHandler.php',
-        '/neeco2/news'=> 'src/handlers/Newsandler.php',
+        '/neeco2/news'=> 'src/handlers/NewsHandler.php',
         '/neeco2/rate'=> 'src/handlers/RateHandler.php',
         '/neeco2/service'=> 'src/handlers/ServiceHandler.php',
         '/neeco2/staff'=> 'src/handlers/StaffHandler.php',

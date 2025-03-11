@@ -36,19 +36,28 @@
             die();
         }
 
-        public function selectWithJoin($consumerId){
-            $sql ="SELECT TOP {$this->limit} *
+        public function selectWithJoin($consumerId = null) {
+            $sql = "SELECT TOP {$this->limit} *
                     FROM consumers
                     INNER JOIN bills ON consumers.consumerId = bills.consumerId
-                    LEFT JOIN towns ON consumers.townId = towns.townId
-                    WHERE bills.consumerId = :id ORDER BY billId DESC";
-
+                    LEFT JOIN towns ON consumers.townId = towns.townId";
+        
+            if ($consumerId !== null) {
+                $sql .= " WHERE bills.consumerId = :id";
+            }
+        
+            $sql .= " ORDER BY billId DESC";
+        
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":id", $consumerId);
-
+        
+            if ($consumerId !== null) {
+                $stmt->bindParam(":id", $consumerId);
+            }
+        
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        
 
         public function update(Bill $bill, $id){
             $sql = "UPDATE {$this->table} SET billAmount = :billAmount, billYrMonth = :billYrMonth, kwhUsed = :kwhUsed, orAmount = :orAmount, dueDate = : dueDate WHERE billId = :id";

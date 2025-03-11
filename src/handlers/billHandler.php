@@ -21,15 +21,16 @@
             if (isset($actions[$action])) {
                 return $this->{$actions[$action]}();
             }
-        
             die("Invalid action: $action");
         }
 
-        public function getAll(){
-            $towns = $this->billRepo->selectAll(); 
-
-            include "views/unimplemented.php";
+        public function getAll() {
+            $consumerId = $_SESSION["consumerId"] ?? null;
+            $bills = $this->billRepo->selectWithJoin($consumerId); 
+        
+            include "views/bills.php";
         }
+        
 
         public function createBill() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
@@ -41,7 +42,6 @@
                 exit;
             }
         }
-
             public function updateBill() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $Bll = new Bill($_POST);

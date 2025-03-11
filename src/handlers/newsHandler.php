@@ -25,9 +25,9 @@
             die("Invalid action: $action");
         }
             public function getAll(){
-                $towns = $this->newsRepo->selectAll(); 
+                $newses = $this->newsRepo->selectAll(); 
 
-                include "views/unimplemented";
+                include "views/news.php";
             }
             public function createNews(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

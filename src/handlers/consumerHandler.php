@@ -59,8 +59,33 @@
 
                     header("Location: views/unimplemented.php");
                     exit;
+                }
             }
-        }
+            public function getConsumers() {
+                if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                    $statuses = [
+                        "pending" => 1,
+                        "active" => 2,
+                        "archived" => 3
+                    ];
+            
+                    $status = $_GET['status'] ?? null;
+                    
+                    if (!isset($statuses[$status])) {
+                        http_response_code(400);
+                        echo "Invalid status.";
+                        exit;
+                    }
+            
+                    $filter = new ConsumerFilter([
+                        "statusId" => $statuses[$status]
+                    ]);
+            
+                    $accounts = $this->consumerRepo->selectByFilters($filter);
+                    
+                    include "views/accounts.php";
+                }
+            }
     }
 
 $con = getPDOConnection();

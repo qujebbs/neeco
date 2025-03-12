@@ -35,3 +35,4 @@
     //authorization
     //user management
     //approve and archive multiple users
+    //CHANGE THE SELECT * to not expose unused data

@@ -1,116 +1,20 @@
-<?php include "fragments/sidebar.php"?>
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    include "utils/debugUtil.php";
+    include "src/filters/ConsumerFilters.php";
+    include "src/repositories/ConsumerRepo.php";
 
-<?php 
-include "fragments/metadata.php";
-?>
-
-<div class="container-fluid">
-    <h2 class="mt-4">Award Management</h2>
+    $statuses = [
+        "pending" => "1",
+        "active" => "2",
+        "archived" => "3"
+    ];
+    $status = "1";
+    $filter = new ConsumerFilter([
+                    "consumerId" => "10"
+                ]);
     
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addTownModal">
-        Add New Award
-    </button>
+    $consumerRepo = new ConsumerRepo();
+    $accounts = $consumerRepo->selectByFilters($filter);
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Award Name</th>
-                        <th>Award Type</th>
-                        <th>Award From</th>
-                        <th>Award Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($towns as $town): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($town['townId']); ?></td>
-                            <td><?= htmlspecialchars($town['townDesc']); ?></td>
-                            <td>
-                                <!-- Edit Button -->
-                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editTownModal<?= $town['townId']; ?>">
-                                    <i class="fas fa-edit"></i>
-                                </button>
+    dumpVar($accounts);
 
-                                <!-- Delete Form -->
-                                <form action="../handler.php" method="POST" style="display:inline;">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <!-- Edit Town Modal -->
-                        <div class="modal fade" id="editTownModal<?= $town['townId']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Update Town</h5>
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            <span>&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="../handler.php" method="POST">
-                                            <input type="hidden" name="action" value="update">
-                                            <input type="hidden" name="townId" value="<?= $town['townId']; ?>">
-                                            <div class="form-group">
-                                                <label>Town Name:</label>
-                                                <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($town['townDesc']); ?>" required>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Update</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<!-- Add Town Modal -->
-<div class="modal fade" id="addTownModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add New Town</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="../handler.php" method="POST">
-                    <input type="hidden" name="action" value="create">
-                    <div class="form-group">
-                        <label>Town Name:</label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
-<?php include "views/fragments/tableFooter.php"; ?>
-
-</body>
-</html>

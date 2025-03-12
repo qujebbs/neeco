@@ -155,8 +155,9 @@ $peracc = $accountRepo->selectAll();
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Consumer</h6>
-                        <a class="collapse-item" href="neeco2/consumer?status=active">New Consumer List</a>
-                        <a class="collapse-item" href="archived.php">Archived Consumers</a>
+                        <a class="collapse-item" href="consumer?status=verified">Verified Consumer List</a>
+                        <a class="collapse-item" href="consumer?status=pending">New Consumer List</a>
+                        <a class="collapse-item" href="consumer?status=archived">Archived Consumers</a>
                         <h6 class="collapse-header">Bills</h6>
                         <a class="collapse-item" href="/neeco2/bill">Consumer Bills</a>
                         <h6 class="collapse-header">Complaints</h6>
@@ -362,7 +363,7 @@ $peracc = $accountRepo->selectAll();
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <!-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -373,7 +374,7 @@ $peracc = $accountRepo->selectAll();
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">

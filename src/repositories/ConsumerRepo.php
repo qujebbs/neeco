@@ -1,6 +1,7 @@
 <?php
     require_once 'BaseRepo.php';
     require_once 'src/models/ConsumerModel.php';
+    require_once 'src/filters/ConsumerFilters.php';
 
     class ConsumerRepo extends BaseRepo{
             public function __construct() {
@@ -33,30 +34,55 @@
 
                 return $stmt->execute();
             }
-
-            public function selectByFilters(ConsumerFilter $filters){
-                $sql = "SELECT * FROM neeco2area1.dbo.consumers c 
-                        LEFT JOIN towns t ON c.townId=t.townId 
-                        LEFT JOIN accounts a ON c.consumerId=a.consumerId
-                        INNER JOIN accountStatus ac ON ac.accountStatusId=a.accountStatusId
-                        ";
-
+            //WITH PAGINATION
+            public function selectByFilters(ConsumerFilter $filters, $limit = 1000, $offset = 0) {
+                $sql = "SELECT * FROM neeco2area1.dbo.consumers c
+                        RIGHT JOIN accounts a ON c.consumerId=a.consumerId
+                        INNER JOIN accountStatus ac ON ac.accountStatusId=a.accountStatusId";
+            
                 $conditions = $filters->toSqlConditions();
-        
+            
                 if (!empty($conditions)) {
                     $sql .= $conditions;
                 }
-
+            
+                $sql .= " ORDER BY a.accountId OFFSET :offset ROWS FETCH NEXT :limit ROWS ONLY";
+            
                 $stmt = $this->con->prepare($sql);
-
+            
                 if ($filters->accountId !== null) $stmt->bindParam(':accountId', $filters->accountId);
                 if ($filters->consumerId !== null) $stmt->bindParam(':consumerId', $filters->consumerId);
-                if ($filters->statusId !== null) $stmt->bindParam(':statusId', $filters->statusId);
+                if ($filters->statusId !== null) $stmt->bindParam(':accountStatusId', $filters->statusId);
                 if ($filters->townId !== null) $stmt->bindParam(':townId', $filters->townId);
-
+            
+                $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
+            
+            // public function selectByFilters(ConsumerFilter $filters){
+            //     $sql = "SELECT TOP {$this->limit} * FROM neeco2area1.dbo.consumers c
+            //             RIGHT JOIN accounts a ON c.consumerId=a.consumerId
+            //             INNER JOIN accountStatus ac ON ac.accountStatusId=a.accountStatusId";
+
+            //     $conditions = $filters->toSqlConditions();
+        
+            //     if (!empty($conditions)) {
+            //         $sql .= $conditions;
+            //     }
+
+            //     $stmt = $this->con->prepare($sql);
+
+            //     if ($filters->accountId !== null) $stmt->bindParam(':accountId', $filters->accountId);
+            //     if ($filters->consumerId !== null) $stmt->bindParam(':consumerId', $filters->consumerId);
+            //     if ($filters->statusId !== null) $stmt->bindParam(':accountStatusId', $filters->statusId);
+            //     if ($filters->townId !== null) $stmt->bindParam(':townId', $filters->townId);
+
+            //     $stmt->execute();
+            //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // }
 
             public function update(Consumer $consumer){
                 $sql = "UPDATE {$this->table} SET lastname = :lastname, firstname = :firstname, midname = :midname, suffix = :suffix, barangay = :barangay, profilepix = :profilepix, backpix = :backpix WHERE consumerId = :id";

@@ -30,6 +30,7 @@
                         LEFT JOIN   employees e ON e.employeeId=c.employeeId
                         LEFT JOIN   complaintStatus s ON s.statusId=c.statusId
                         LEFT JOIN 	complaintNatures cn2 ON cn2.natureId=c.natureId";
+
                 $conditions = $filter->toSqlConditions();
         
                 if (!empty($conditions)) {

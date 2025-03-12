@@ -1,6 +1,5 @@
 <?php
     require_once("src/repositories/ConsumerRepo.php");
-    require_once 'src/filters/ConsumerFilters.php';
     require_once("src/models/ConsumerModel.php");
     class ConsumerHandler {
         private $consumerRepo;
@@ -63,35 +62,63 @@
                 }
             }
             public function getConsumers() {
-                if (isset($_GET["status"])){
                     $statuses = [
                         "pending" => 1,
-                        "active" => 2,
+                        "verified" => 2,
                         "archived" => 3
                     ];
-            
-                    $status = $_GET['status'] ?? null;
-
-                    if (!isset($statuses[$status])) {
+                
+                    $status = $_GET['status'] ?? "pending";
+                
+                    if (isset($status) && !isset($statuses[$status])) {
                         http_response_code(400);
-                        echo "Invalid status.";
+                        echo "Invalid Request.";
                         exit;
                     }
-            
+                
                     $filter = new ConsumerFilter([
-                        "statusId" => $statuses[$status],
-                        "consumerId" => 1
+                        "accountStatusId" => $statuses[$status] ?? null
                     ]);
-            
-                    $accounts = $this->consumerRepo->selectByFilters($filter);
-
+                
+                    $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+                    $limit = 1000;
+                    $offset = ($page - 1) * $limit;
+                
+                    $accounts = $this->consumerRepo->selectByFilters($filter, $limit, $offset);
+                
                     include "views/accounts.php";
-                }else{
-                    $towns = $this->consumerRepo->selectAll(); 
-
-                    include "views/unimplemented";
-                }
             }
+            
+            
+            // public function getConsumers() {
+            //     if (isset($_GET["status"])){
+            //         $statuses = [
+            //             "pending" => 1,
+            //             "verified" => 2,
+            //             "archived" => 3
+            //         ];
+            
+            //         $status = $_GET['status'] ?? null;
+
+            //         if (!isset($statuses[$status])) {
+            //             http_response_code(400);
+            //             echo "Invalid status.";
+            //             exit;
+            //         }
+            
+            //         $filter = new ConsumerFilter([
+            //             "accountStatusId" => $statuses[$status]
+            //         ]);
+            
+            //         $accounts = $this->consumerRepo->selectByFilters($filter);
+
+            //         include "views/accounts.php";
+            // }else{
+            //     $towns = $this->consumerRepo->selectAll(); 
+
+            //     include "views/unimplemented";
+            // }
+            // }
     }
 
 $con = getPDOConnection();

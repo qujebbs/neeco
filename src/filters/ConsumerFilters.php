@@ -7,10 +7,10 @@
 
 
         public function __construct(array $params = []) {
-            if (isset($params['accountId'])) $this->complaintId = $params['accountId'];
-            if (isset($params['consumerId'])) $this->complaintId = $params['consumerId'];
-            if (isset($params['statusId'])) $this->complaintId = $params['statusId'];
-            if (isset($params['townId'])) $this->complaintId = $params['townId'];
+            if (isset($params['accountId'])) $this->accountId = $params['accountId'];
+            if (isset($params['consumerId'])) $this->consumerId = $params['consumerId'];
+            if (isset($params['accountStatusId'])) $this->statusId = $params['accountStatusId'];
+            if (isset($params['townId'])) $this->townId = $params['townId'];
         }
 
         public function toSqlConditions(): string {
@@ -18,8 +18,8 @@
 
             if ($this->accountId !== null) $conditions[] = "a.accountId = :accountId";
             if ($this->consumerId !== null) $conditions[] = "c.consumerId = :consumerId";
-            if ($this->statusId !== null) $conditions[] = "a.statusId = :statusId";
-            if ($this->townId !== null) $conditions[] = "c.townId = :natureId";
+            if ($this->statusId !== null) $conditions[] = "a.accountStatusId = :accountStatusId";
+            if ($this->townId !== null) $conditions[] = "c.townId = :townId";
             
             
             return empty($conditions) ? "" : " WHERE " . implode(" AND ", $conditions);

@@ -6,13 +6,11 @@
 <div class="container-fluid">
     <h2 class="mt-4">Consumer Management</h2>
 
-    <!-- <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addbodModal">Add New BOD</button> -->
-
     <?php
     renderTable($accounts, [
-        'bodName' => 'Membership ID',
-        'bodPosition' => 'Back Membership ID',
-        'bodPicture' => 'Name',
+        'profilepix' => 'Membership ID',
+        'backpix' => 'Back Membership ID',
+        'firstname' => 'Name',
         'accountNum' => 'Account Number',
         'barangay' => 'Address',
         'email' => 'Email',
@@ -20,16 +18,24 @@
     ], 'account', 'accountId');
 
     renderModal('addaccountModal', 'Add New Account', 'create', [
-        'bodName' => 'Membership ID'
-    ], 'bod');
+        'Name' => 'Name'
+    ], 'account');
 
     foreach ($accounts as $account) {
         renderModal("editaccountModal{$account['accountId']}", 'Update Account', 'update', [
-            'bodName' => 'BOD Name'
+            'Name' => 'Name'
         ], 'account', $account);
     }
-    
     ?>
+
+    <!-- Pagination Block -->
+    <div class="pagination mt-3">
+        <?php if ($page > 1): ?>
+            <a href="?status=<?= htmlspecialchars($status) ?>&page=<?= $page - 1 ?>" class="btn btn-secondary">Previous</a>
+        <?php endif; ?>
+
+        <a href="?status=<?= htmlspecialchars($status) ?>&page=<?= $page + 1 ?>" class="btn btn-primary">Next</a>
+    </div>
 </div>
 
 <?php include "views/fragments/tableFooter.php"; ?>

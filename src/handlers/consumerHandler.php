@@ -80,14 +80,21 @@
                         "accountStatusId" => $statuses[$status] ?? null
                     ]);
                 
-                    $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+                    $totalCount = $this->consumerRepo->countByFilters($filter);
                     $limit = 1000;
-                    $offset = ($page - 1) * $limit;
+                    $page = isset($_GET['page']) && is_numeric($_GET['page']) && ctype_digit($_GET['page']) && intval($_GET['page']) > 0
+                        ? intval($_GET['page'])
+                        : 1;
+                    
+                    $totalPages = ceil($totalCount / $limit);
+                    if ($page < 1 || $page > $totalPages) {
+                        echo "Invalid Request";
+                    }
+                    $accounts = $this->consumerRepo->selectByFilters($filter, $limit, ($page - 1) * $limit);
                 
-                    $accounts = $this->consumerRepo->selectByFilters($filter, $limit, $offset);
-                
-                    include "views/accounts.php";
+                    include "views/consumers.php";
             }
+            
             
             
             // public function getConsumers() {

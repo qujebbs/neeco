@@ -36,6 +36,9 @@
             }
             //WITH PAGINATION
             public function selectByFilters(ConsumerFilter $filters, $limit = 1000, $offset = 0) {
+                $limit = (int)$limit;
+                $offset = (int)$offset;
+
                 $sql = "SELECT * FROM neeco2area1.dbo.consumers c
                         RIGHT JOIN accounts a ON c.consumerId=a.consumerId
                         INNER JOIN accountStatus ac ON ac.accountStatusId=a.accountStatusId";
@@ -49,18 +52,41 @@
                 $sql .= " ORDER BY a.accountId OFFSET :offset ROWS FETCH NEXT :limit ROWS ONLY";
             
                 $stmt = $this->con->prepare($sql);
-            
+
                 if ($filters->accountId !== null) $stmt->bindParam(':accountId', $filters->accountId);
                 if ($filters->consumerId !== null) $stmt->bindParam(':consumerId', $filters->consumerId);
                 if ($filters->statusId !== null) $stmt->bindParam(':accountStatusId', $filters->statusId);
                 if ($filters->townId !== null) $stmt->bindParam(':townId', $filters->townId);
-            
+                
                 $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
                 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
+            public function countByFilters(ConsumerFilter $filters) {
+                $sql = "SELECT COUNT(*) AS total 
+                        FROM neeco2area1.dbo.consumers c
+                        RIGHT JOIN accounts a ON c.consumerId = a.consumerId
+                        INNER JOIN accountStatus ac ON ac.accountStatusId = a.accountStatusId";
+            
+                $conditions = $filters->toSqlConditions();
+            
+                if (!empty($conditions)) {
+                    $sql .= $conditions;
+                }
+            
+                $stmt = $this->con->prepare($sql);
+            
+                if ($filters->accountId !== null) $stmt->bindParam(':accountId', $filters->accountId);
+                if ($filters->consumerId !== null) $stmt->bindParam(':consumerId', $filters->consumerId);
+                if ($filters->statusId !== null) $stmt->bindParam(':accountStatusId', $filters->statusId);
+                if ($filters->townId !== null) $stmt->bindParam(':townId', $filters->townId);
+            
+                $stmt->execute();
+                return $stmt->fetchColumn(); // Efficient way to retrieve a single value
+            }
+            
             
             // public function selectByFilters(ConsumerFilter $filters){
             //     $sql = "SELECT TOP {$this->limit} * FROM neeco2area1.dbo.consumers c

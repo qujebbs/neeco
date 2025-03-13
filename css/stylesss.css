@@ -409,6 +409,22 @@ h6 {
   background: #5969f3;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls .btn {
+  margin-right: 5px;
+}
+
+.pagination-info {
+  font-weight: bold;
+  color: #666;
+}
+
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);

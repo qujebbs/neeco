@@ -6,6 +6,38 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27
 {
+    public static $files = array (
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
+        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'phpseclib\\' => 10,
+        ),
+        'P' => 
+        array (
+            'ParagonIE\\Paseto\\' => 17,
+            'ParagonIE\\ConstantTime\\' => 23,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'phpseclib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
+        'ParagonIE\\Paseto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/paseto/src',
+        ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -13,6 +45,8 @@ class ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27::$classMap;
 
         }, null, ClassLoader::class);

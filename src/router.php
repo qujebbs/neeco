@@ -18,6 +18,7 @@
         '/neeco2/service'=> 'src/handlers/ServiceHandler.php',
         '/neeco2/staff'=> 'src/handlers/StaffHandler.php',
         '/neeco2/town'=> 'src/handlers/TownsHandler.php',
+        '/neeco2/playground' => 'dump.php'
     ];
 
         
@@ -36,3 +37,7 @@
     //user management
     //approve and archive multiple users
     //CHANGE THE SELECT * to not expose unused data
+    //upgrade router
+    //MISION VISION
+    //COMPANY PROFILE
+    //BOARD OF DIRECTORS

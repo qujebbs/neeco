@@ -8,6 +8,7 @@ class ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27
 {
     public static $files = array (
         '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
+        '3253b43614197c132b67e5f343def5b7' => __DIR__ . '/..' . '/paragonie/easy-ecc/autoload-shim.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
     );
 
@@ -19,7 +20,20 @@ class ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27
         'P' => 
         array (
             'ParagonIE\\Paseto\\' => 17,
+            'ParagonIE\\EasyECC\\' => 18,
             'ParagonIE\\ConstantTime\\' => 23,
+        ),
+        'M' => 
+        array (
+            'Mdanter\\Ecc\\' => 12,
+        ),
+        'F' => 
+        array (
+            'FG\\' => 3,
+        ),
+        'D' => 
+        array (
+            'Defuse\\Crypto\\' => 14,
         ),
     );
 
@@ -32,9 +46,25 @@ class ComposerStaticInitb51a01c709f2bfb3601ec94aaee32c27
         array (
             0 => __DIR__ . '/..' . '/paragonie/paseto/src',
         ),
+        'ParagonIE\\EasyECC\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/easy-ecc/src',
+        ),
         'ParagonIE\\ConstantTime\\' => 
         array (
             0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
+        'Mdanter\\Ecc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/ecc/src',
+        ),
+        'FG\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/genkgo/php-asn1/lib',
+        ),
+        'Defuse\\Crypto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
         ),
     );
 

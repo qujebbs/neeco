@@ -31,8 +31,7 @@ include 'views/fragments/header.php';
         </div>
       </nav>
     </div><!-- End Breadcrumbs -->
-
-    <!-- ======= Blog Details Section ======= -->
+    
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
@@ -41,15 +40,9 @@ include 'views/fragments/header.php';
           <div class="col-lg-8">
 
             <article class="blog-details">
-
-              
-              <h2 class="title">Mission Vision
-</h2>
 <div class="post-img">
                 <img src="assets/img/gm1.jpg" alt="" class="img-fluid" style="height: 150%; width: 110%;">
-              </div>
-
-
+              </div>y
               <div class="meta-top">
                 <ul>
                  
@@ -119,13 +112,6 @@ $allList = get_all_news();
               </div><!-- End recent post item-->
               <?php endforeach; ?>
               
-
-              
-
-             
-
-              
-
             </div>
 
           </div>

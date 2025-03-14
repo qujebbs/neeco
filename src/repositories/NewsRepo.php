@@ -20,6 +20,12 @@
             return $stmt->execute();
         }
 
+        public function getall() {
+            $stmt = $this->con->prepare("SELECT * FROM {$this->table}");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function selectByFilter(){
             die();
         }

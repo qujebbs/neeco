@@ -18,7 +18,10 @@
         '/neeco2/service'=> 'src/handlers/ServiceHandler.php',
         '/neeco2/staff'=> 'src/handlers/StaffHandler.php',
         '/neeco2/town'=> 'src/handlers/TownsHandler.php',
-        '/neeco2/playground' => 'dump.php'
+        '/neeco2/playground' => 'dump.php',
+
+        '/neeco2/about' => 'src/handlers/aboutHandler.php'
+
     ];
 
         

@@ -29,7 +29,7 @@ class HomeHandler {
 
     public function loadAbout() {
         $params = [
-            "mission" => "views/mission.php",
+            "mission" => "views/login.php",
             "company-profile" => "views/company-profile.php",
             "bod" => "views/board-of-directors.php",
             "staffs" => "views/view-staffs.php",

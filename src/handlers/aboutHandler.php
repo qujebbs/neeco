@@ -28,10 +28,10 @@ class AboutUsHandler {
         $params = [
             "mission" => "views/mission.php",
             "company-profile" => "views/company-profile.php",
-            "bod" => "views/bod.php",
-            "staffs" => "views/staffs.php",
+            "bod" => "views/board-of-directors.php",
+            "staffs" => "views/view-staffs.php",
             "coverage-area" => "views/coverage-area.php",
-            "district-offices" => "views/district-offices.php",
+            "district-offices" => "views/view-district-offices.php",
             "services" => "views/services.php",
             "news" => "views/news.php",
             "awards" => "views/awards.php",

@@ -46,14 +46,18 @@ class AboutUsHandler {
             exit;
         }
 
-        $data = [];
+        $data = [
+            'news' => $this->repositories['news']->selectAll()
+        ];
+
+
         if (isset($this->repositories[$param])) {
             $data[str_replace('-', '_', $param)] = $this->repositories[$param]->selectAll();
         }
 
         extract($data);
 
-        include $params[$param] ;
+        include $params[$param];
     }
 }
 

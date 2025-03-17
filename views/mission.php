@@ -46,7 +46,6 @@ include 'views/fragments/header.php';
               </div>
 
               <div class="content">
-                <?php echo $data['mission'] ?? "<p>Content not available.</p>"; ?>
               </div>
 
             </article>
@@ -60,11 +59,11 @@ include 'views/fragments/header.php';
                 <div class="mt-3">
                 <?php foreach ($news as $row) : ?>  
                   <div class="post-item mt-3">
-                    <img src="<?php echo htmlspecialchars($row['news_picture']); ?>" alt="" style="height: 50px; width: 50px;">
+                    <img src="<?php echo htmlspecialchars($row['newsPic']); ?>" alt="" style="height: 50px; width: 50px;">
                     <div>
-                      <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($row['news_id']); ?>">
-                        <?php echo htmlspecialchars($row['news_title']); ?></a></h4>
-                      <time datetime="2020-01-01"><?php echo htmlspecialchars($row['upload_date']); ?></time>
+                      <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($row['newsId']); ?>">
+                        <?php echo htmlspecialchars($row['newsTitle']); ?></a></h4>
+                      <time datetime="2020-01-01"><?php echo htmlspecialchars($row['uploadDate']); ?></time>
                     </div>
                   </div>
                 <?php endforeach; ?>

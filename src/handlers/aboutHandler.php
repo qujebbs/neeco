@@ -26,15 +26,15 @@ class AboutUsHandler {
 
     public function loadAbout() {
         $params = [
-            "mission" => "views/mission.php",
+            "mission" => "views/consumer-payer.php",
             "company-profile" => "views/company-profile.php",
             "bod" => "views/board-of-directors.php",
             "staffs" => "views/view-staffs.php",
             "coverage-area" => "views/coverage-area.php",
             "district-offices" => "views/view-district-offices.php",
-            "services" => "views/services.php",
-            "news" => "views/news.php",
-            "awards" => "views/awards.php",
+            "services" => "views/view-services.php",
+            "news" => "views/view-news.php",
+            "awards" => "views/view-awards.php",
             "consumer-payer" => "views/consumer-payer.php"
         ];
 

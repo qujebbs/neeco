@@ -6,9 +6,11 @@
     require_once("src/repositories/ServiceRepo.php");
     require_once("src/repositories/AwardRepo.php");
     require_once("src/repositories/ConsumerPayersRepo.php");
+    require_once("src/repositories/BacRepo.php");
 
 
-class AboutUsHandler {
+
+class HomeHandler {
 
     private $repositories;
 
@@ -20,13 +22,14 @@ class AboutUsHandler {
             "district-offices" => new DistrictOfficesRepo(),
             "services" => new ServiceRepo(),
             "awards" => new AwardRepo(),
-            "consumer-payer" => new ConsumerPayersRepo()
+            "consumer-payer" => new ConsumerPayersRepo(),
+            "bacs" => new BacRepo()
         ];
     }
 
     public function loadAbout() {
         $params = [
-            "mission" => "views/consumer-payer.php",
+            "mission" => "views/mission.php",
             "company-profile" => "views/company-profile.php",
             "bod" => "views/board-of-directors.php",
             "staffs" => "views/view-staffs.php",
@@ -35,10 +38,16 @@ class AboutUsHandler {
             "services" => "views/view-services.php",
             "news" => "views/view-news.php",
             "awards" => "views/view-awards.php",
-            "consumer-payer" => "views/consumer-payer.php"
+            "consumer-payer" => "views/consumer-payer.php",
+            "gm-corner" => "views/gm-corners.php",
+            "rate" => "views/view-rate.php",//unimplemented
+            "member-insurance" => "views/member-insurance.php",
+            "safety" => "views/safety-tips.php",
+            "contact" => "views/contact.php",
+            "bacs" => "views/view-bac.php"
         ];
 
-        $param = $_GET['section'] ?? "mission";
+        $param = $_GET['section'] ?? "company-profile";
 
         if (!isset($params[$param])) {
             http_response_code(400);
@@ -61,6 +70,6 @@ class AboutUsHandler {
     }
 }
 
-$aboutHandler = new AboutUsHandler();
+$aboutHandler = new HomeHandler();
 $aboutHandler->loadAbout();
 

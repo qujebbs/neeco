@@ -20,7 +20,7 @@
         '/neeco2/town'=> 'src/handlers/TownsHandler.php',
         '/neeco2/playground' => 'dump.php',
 
-        '/neeco2/about' => 'src/handlers/aboutHandler.php'
+        '/neeco2/home' => 'src/handlers/homeHandler.php'
 
     ];
 
@@ -44,5 +44,5 @@
     //MISION VISION
     //COMPANY PROFILE
     //BOARD OF DIRECTORS
-
+    
     // VIEW-RATE.PHP

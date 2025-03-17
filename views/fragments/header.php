@@ -119,25 +119,25 @@
           <li><a href="index.php">Home</a></li>
           <li class="dropdown"><a href="#"><span>About Us</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-            <li><a href="missionvision.php">Mission And Vission</a></li>
-              <li><a href="company-profile.php">Company Profile</a></li>
-              <li><a href="board-of-directors.php">Board of Directors</a></li>
-              <li><a href="management-staff.php">Management and Staff</a></li>
-              <li><a href="coverage-area.php">Coverage Area</a></li>
-              <li><a href="district-office.php">District Offices</a></li>
-              <li><a href="services.php">Services</a></li>
-              <li><a href="blog.php">News</a></li>
+            <li><a href="/neeco2/home?section=mission">Mission And Vission</a></li>
+              <li><a href="/neeco2/home?section=company-profile">Company Profile</a></li>
+              <li><a href="/neeco2/home?section=bod">Board of Directors</a></li>
+              <li><a href="/neeco2/home?section=staffs">Management and Staff</a></li>
+              <li><a href="/neeco2/home?section=coverage-area">Coverage Area</a></li>
+              <li><a href="/neeco2/home?section=district-offices">District Offices</a></li>
+              <li><a href="/neeco2/home?section=services">Services</a></li>
+              <li><a href="/neeco2/home?section=news">News</a></li>
               <li class="dropdown"><a href="#">Awards<i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                <li><a href="neeco_awards.php">Neeco II-A1 Awards</a></li>
-              <li><a href="consumer_prompt_payers.php">Consumer Prompt Payers</a></li>
+                <li><a href="/neeco2/home?section=awards">Neeco II-A1 Awards</a></li>
+              <li><a href="/neeco2/home?section=consumer-payer">Consumer Prompt Payers</a></li>
               </ul>
             
             </li>
             </ul>
           </li>
-          <li><a href="gm-corners.php">GM's Corner</a></li>
-          <li><a href="rate.php">Rate Archive</a></li>
+          <li><a href="/neeco2/home?section=gm-corner">GM's Corner</a></li>
+          <li><a href="/neeco2/home?section=rate">Rate Archive</a></li>
           
           
           
@@ -145,9 +145,9 @@
 
           <li class="dropdown"><a href="#"><span>FAQs</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="member-consumers-insurance.php">Member Consumer Insurance Owner</a></li>
+              <li><a href="/neeco2/home?section=member-insurance">Member Consumer Insurance Owner</a></li>
               <li><a href="#">Senior Citizen Discounts</a></li>
-              <li><a href="safety-tips.php">Safety Tips</a></li>
+              <li><a href="/neeco2/home?section=safety">Safety Tips</a></li>
               <li><a href="ra-7832-anti-pilferage-law-1.php">R.A. 7832 Anti Pilferage Law</a></li>
             </ul>
           </li>
@@ -184,7 +184,7 @@ $quickdl = get_latest_downloads();
     </ul>
 </li>
 
-          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="/neeco2/home?section=contact">Contact Us</a></li>
           
           <li class="dropdown"><a href="#"><span>Consumer Portal</span></a>
             <ul>
@@ -194,7 +194,7 @@ $quickdl = get_latest_downloads();
             </ul>
           </li>
 
-          <li><a href="bac-front.php">BAC</a></li>
+          <li><a href="/neeco2/home?section=bacs">BAC</a></li>
         </ul>
       </nav><!-- .navbar -->
 

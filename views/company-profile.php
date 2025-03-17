@@ -13,7 +13,6 @@ include 'views/fragments/header.php';
             </div>
           </div>
         </div>
-        
       </div>
       <nav>
         <div class="container">
@@ -31,7 +30,7 @@ include 'views/fragments/header.php';
           <div class="col-lg-8">
             <article class="blog-details">
               <div class="post-img">
-                <img src="assets/img/NEECO.png" alt="" class="img-fluid" style="height: 150%; width: 110%;">
+                <img src="assets/img/NEECO.png" alt="NEECO Logo" class="img-fluid" style="height: 150%; width: 110%;">
               </div>
               <h2 class="title">Company Profile</h2>
               <div class="meta-top">
@@ -50,25 +49,21 @@ include 'views/fragments/header.php';
             </article>
           </div>
 
+          <!-- Recent News Section -->
           <div class="col-lg-4">
             <div class="sidebar">
               <div class="sidebar-item recent-posts">
                 <h3 class="sidebar-title">Recent News</h3>
                 <div class="mt-3">
-                  <div class="post-item mt-3">
-                    <img src="assets/img/news1.jpg" alt="" style="height: 50px; width: 50px;">
-                    <div>
-                      <h4><a href="blog-details.php?news_id=1">Recent News Title 1</a></h4>
-                      <time datetime="2020-01-01">Jan 1, 2020</time>
-                    </div>
-                  </div>
-                  <div class="post-item mt-3">
-                    <img src="assets/img/news2.jpg" alt="" style="height: 50px; width: 50px;">
-                    <div>
-                      <h4><a href="blog-details.php?news_id=2">Recent News Title 2</a></h4>
-                      <time datetime="2020-01-01">Jan 1, 2020</time>
-                    </div>
-                  </div>
+                  <?php foreach ($news as $item) : ?>  
+                    <div class="post-item mt-3">
+                      <img src="<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" style="height: 50px; width: 50px;">
+                      <div>
+                        <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($item['newsId']); ?>"><?php echo htmlspecialchars($item['newsTitle']); ?></a></h4>
+                        <time datetime="<?php echo htmlspecialchars($item['uploadDate']); ?>"><?php echo htmlspecialchars($item['uploadDate']); ?></time>
+                      </div>
+                    </div><!-- End recent post item -->
+                  <?php endforeach; ?>
                 </div>
               </div>
             </div>

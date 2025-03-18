@@ -22,8 +22,26 @@
                 $stmt->bindParam(":isActive", $consumers->isActive);
             }
             
-            public function select(){
+            public function selectByFilter(AccountFilter $filter){
+                $sql = "SELECT * FROM neeco2area1.dbo.accounts a
+                        LEFT JOIN positions p on a.positionId = p.positionId";
 
+                $conditions = $filter->toSqlConditions();
+
+                if (!empty($conditions)) {
+                    $sql .= $conditions;
+                }
+
+                $stmt = $this->con->prepare($sql);
+
+                if ($filter->accountId !== null) $stmt->bindParam(':accountId', $filter->accountId);
+                if ($filter->consumerId !== null) $stmt->bindParam(':consumerId', $filter->consumerId);
+                if ($filter->employeeId !== null) $stmt->bindParam(':employeeId', $filter->employeeId);
+                if ($filter->username !== null) $stmt->bindParam(':username', $filter->username);
+                if ($filter->positionId !== null) $stmt->bindParam(':positionId', $filter->positionId);
+                if ($filter->accountStatusId !== null) $stmt->bindParam(':accountStatusId', $filter->accountStatusId);
+
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
-        

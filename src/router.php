@@ -41,6 +41,7 @@
     //approve and archive multiple users
     //CHANGE THE SELECT * to not expose unused data
     //upgrade router
+    //CSRF 
     //MISION VISION
     //COMPANY PROFILE
     //BOARD OF DIRECTORS

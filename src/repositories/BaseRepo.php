@@ -1,5 +1,5 @@
 <?php
-    require_once "src/config/db.php";
+    require_once __DIR__ . "/../../src/config/db.php";
 
     class BaseRepo {
         protected $con;

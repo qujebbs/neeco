@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/models/BodModel.php';
-    require_once 'src/repositories/BaseRepo.php';
+    require_once __DIR__ . '/../models/BodModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
         class BodRepo extends BaseRepo {
             public function __construct() {
                 parent::__construct( 'bod', 'bodId');

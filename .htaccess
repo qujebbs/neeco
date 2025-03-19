@@ -3,7 +3,17 @@ RewriteEngine On
 
 RewriteBase /neeco2/
 
-# Redirect all requests to index.php
+# Redirect all requests to /public/index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]
+RewriteRule ^(.*)$ public/index.php [QSA,L]
+
+# Options -Multiviews
+# RewriteEngine On
+
+# RewriteBase /neeco2/
+
+# # Redirect all requests to index.php
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php [QSA,L]

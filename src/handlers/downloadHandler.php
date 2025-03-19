@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/DownloadsRepo.php");
-    require_once("src/models/DownloadsModel.php");
+    require_once __DIR__ . "/../repositories/DownloadsRepo.php";
+    require_once __DIR__ . "/../models/DownloadsModel.php";
     class DownloadsHandler {
         private $downloadsRepo;
     
@@ -28,7 +28,7 @@
             public function getAll(){
                 $downloads = $this->downloadsRepo->selectAll(); 
 
-                include "views/downloads.php";
+                include __DIR__ . "/../../public/views/downloads.php";
             }
 
             public function createDownloads(){

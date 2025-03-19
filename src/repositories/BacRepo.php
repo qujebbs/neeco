@@ -1,6 +1,6 @@
 <?php
-    require_once 'BaseRepo.php';
-    require_once 'src/models/BacModel.php';
+    require_once __DIR__ . '/../repositories/BaseRepo.php';
+    require_once __DIR__ . '/../models/BacModel.php';
 
     
     class BacRepo extends BaseRepo{

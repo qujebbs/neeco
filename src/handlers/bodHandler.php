@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/BodRepo.php");
-    require_once("src/models/BodModel.php");
+    require_once __DIR__ . "/../repositories/BodRepo.php";
+    require_once __DIR__ . "/../models/BodModel.php";
     class BodHandler {
         private $bodRepo;
     
@@ -28,7 +28,7 @@
             public function getAll(){
                 $bods = $this->bodRepo->selectAll(); 
 
-                include "views/bod.php";
+                include __DIR__ . "/../../public/views/bod.php";
             }
 
             public function createBod($con){

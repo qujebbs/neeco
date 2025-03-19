@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/repositories/BaseRepo.php';
-    require_once 'src/models/DistrictOfficesModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/DistrictOfficesModel.php';
     class DistrictOfficesRepo extends BaseRepo{
         public function __construct() {
             parent::__construct('districtOffices', 'districtId');

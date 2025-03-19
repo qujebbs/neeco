@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/TownsRepo.php");
-    require_once("src/models/TownsModel.php");
+    require_once __DIR__ . "/../repositories/TownsRepo.php";
+    require_once __DIR__ . "/../models/TownsModel.php";
 
     class TownsHandler {
         private $townsRepo;

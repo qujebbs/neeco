@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/ConsumerRepo.php");
-    require_once("src/models/ConsumerModel.php");
+    require_once __DIR__ . "/../repositories/ConsumerRepo.php";
+    require_once __DIR__ . "/../models/ConsumerModel.php";
     class ConsumerHandler {
         private $consumerRepo;
     
@@ -81,11 +81,11 @@
                     
                     $totalPages = ceil($totalCount / $limit);
                     if ($page < 1 || $page > $totalPages) {
-                        echo "Invalid Request";
+                        echo "Invalid Requestss";
                     }
                     $accounts = $this->consumerRepo->selectByFilters($filter, $limit, ($page - 1) * $limit);
                 
-                    include "views/consumers.php";
+                    include __DIR__ . "/../../public/views/consumers.php";
             }
             
             

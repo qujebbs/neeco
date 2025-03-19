@@ -1,6 +1,6 @@
 <?php 
-    require_once 'src/repositories/baseRepo.php';
-    require_once 'src/models/ServiceModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/ServiceModel.php';
     class ServiceRepo extends BaseRepo{
         public function __construct() {
             parent::__construct('services', 'serviceId');

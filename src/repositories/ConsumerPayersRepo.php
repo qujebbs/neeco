@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/BaseRepo.php");
-    require_once("src/models/ConsumerPayersModel.php");
+    require_once __DIR__ . "/../repositories/BaseRepo.php";
+    require_once __DIR__ . "/../models/ConsumerPayersModel.php";
 
     class ConsumerPayersRepo extends BaseRepo {
         public function __construct() {

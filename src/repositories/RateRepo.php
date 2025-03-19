@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/repositories/baseRepo.php';
-    require_once 'src/models/RateModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/RateModel.php';
     class RateRepo extends BaseRepo{
         public function __construct() {
             parent::__construct('rates', 'rateId');

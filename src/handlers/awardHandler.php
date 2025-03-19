@@ -1,7 +1,7 @@
 <?php
-    require_once("src/repositories/AwardRepo.php");
-    require_once("src/models/AwardModel.php");
-    require_once("src/config/db.php");
+    require_once __DIR__ . "/../repositories/AwardRepo.php";
+    require_once __DIR__ . "/../models/AwardModel.php";
+    require_once __DIR__ ."/../config/db.php";
     
 
     class AwardHandler {

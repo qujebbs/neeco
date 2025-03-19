@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/RateRepo.php");
-    require_once("src/models/RateModel.php");
+    require_once __DIR__ . "/../repositories/RateRepo.php";
+    require_once __DIR__ . "/../models/RateModel.php";
     class RateHandler {
         private $rateRepo;
     
@@ -27,7 +27,7 @@
             public function getAll(){
                 $rates = $this->rateRepo->selectAll(); 
 
-                include "views/rate.php";
+                include __DIR__ . "/../../public/views/rate.php";
             }
 
             public function createRate(){

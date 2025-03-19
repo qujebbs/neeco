@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/StaffRepo.php");
-    require_once("src/models/StaffModel.php");
+    require_once __DIR__ . "/../repositories/StaffRepo.php";
+    require_once __DIR__ . "/../models/StaffModel.php";
     class StaffHandler {
         private $staffRepo;
     
@@ -24,7 +24,7 @@
             public function getAll(){
                 $staffs = $this->staffRepo->selectAll(); 
 
-                include "views/staff.php";
+                include __DIR__ . "/../../public/views/staff.php";
             }
 
             public function createStaff(){

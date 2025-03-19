@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/BaseRepo.php");
-    require_once("src/models/DownloadsModel.php");
+    require_once __DIR__ . "/../repositories/BaseRepo.php";
+    require_once __DIR__ . "/../models/DownloadsModel.php";
 
     class DownloadsRepo extends BaseRepo{
 

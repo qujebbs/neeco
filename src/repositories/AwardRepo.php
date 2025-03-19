@@ -1,6 +1,6 @@
 <?php
-    require_once 'BaseRepo.php';
-    require_once 'src/models/AwardModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/AwardModel.php';
 
     class AwardRepo extends BaseRepo{
             public function __construct() {

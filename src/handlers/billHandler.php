@@ -1,7 +1,7 @@
 <?php
-    require_once("src/repositories/BillRepo.php");
-    require_once("src/models/BillModel.php");
-    require_once("src/config/db.php");
+    require_once __DIR__ . "/../epositories/BillRepo.php";
+    require_once __DIR__ . "/../models/BillModel.php";
+    require_once __DIR__ . "/../../src/config/db.php";
     class BillHandler {
         private $billRepo;
     
@@ -28,7 +28,7 @@
             $consumerId = $_SESSION["consumerId"] ?? null;
             $bills = $this->billRepo->selectWithJoin($consumerId); 
         
-            include "views/bills.php";
+            include __DIR__ . "/../../public/views/bills.php";
         }
         
 

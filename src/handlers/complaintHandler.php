@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/ComplaintRepo.php");
-    require_once("src/models/ComplaintModel.php");
+    require_once __DIR__ . "/../repositories/ComplaintRepo.php";
+    require_once __DIR__ . "/../models/ComplaintModel.php";
     class ComplaintHandler {
         private $complaintRepo;
     

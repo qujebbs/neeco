@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/repositories/BaseRepo.php';
-    require_once 'src/models/NewsModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/NewsModel.php';
 
     class NewsRepo extends BaseRepo{
         public function __construct() {

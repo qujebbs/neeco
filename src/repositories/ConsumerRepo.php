@@ -1,6 +1,6 @@
 <?php
-    require_once 'BaseRepo.php';
-    require_once 'src/models/ConsumerModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/ConsumerModel.php';
     require_once 'src/filters/ConsumerFilters.php';
 
     class ConsumerRepo extends BaseRepo{

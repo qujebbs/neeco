@@ -1,6 +1,6 @@
 <?php
-        require_once 'BaseRepo.php';
-        require_once 'src/models/AccountModel.php';
+        require_once __DIR__ . '/BaseRepo.php';
+        require_once __DIR__ . '/../models/AccountModel.php';
 
         class AccountRepo extends BaseRepo{
             public function __construct() {
@@ -24,7 +24,8 @@
             
             public function selectByFilter(AccountFilter $filter){
                 $sql = "SELECT * FROM neeco2area1.dbo.accounts a
-                        LEFT JOIN positions p on a.positionId = p.positionId";
+                        LEFT JOIN positions p on a.positionId = p.positionId
+                        LEFT JOIN accountStatus ac on ac.accountStatusId = a.accountStatusId";
 
                 $conditions = $filter->toSqlConditions();
 
@@ -42,6 +43,6 @@
                 if ($filter->accountStatusId !== null) $stmt->bindParam(':accountStatusId', $filter->accountStatusId);
 
                 $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetch(PDO::FETCH_ASSOC);
             }
         }

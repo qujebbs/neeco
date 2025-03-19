@@ -1,5 +1,5 @@
 <?php
-	require_once("src/config/db.php");
+	require_once __DIR__ . "/../config/db.php";
 
 	class qrylogic{
 		private $class_var;

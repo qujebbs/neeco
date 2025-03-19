@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/NewsRepo.php");
-    require_once("src/models/NewsModel.php");
+    require_once __DIR__ . "/../repositories/NewsRepo.php";
+    require_once __DIR__ . "/../models/NewsModel.php";
     class NewsHandler {
         private $newsRepo;
     
@@ -27,7 +27,7 @@
         public function getAll(){
             $newses = $this->newsRepo->selectAll(); 
 
-            include "views/news.php";
+            include __DIR__ . "/../../public/views/news.php";
         }
         public function createNews(){
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {

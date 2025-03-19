@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/BacRepo.php");
-    require_once("src/models/BacModel.php");
+    require_once __DIR__ . "/../repositories/BacRepo.php";
+    require_once __DIR__ . "/../models/BacModel.php";
 
     class BacHandler {
             private $bacRepo;
@@ -28,7 +28,7 @@
             public function getAll(){
                 $bacs = $this->bacRepo->selectAll(); 
 
-                include "views/bac.php";
+                include __DIR__ . "/../../public/views/bac.php";
             }
 
             public function createBac(){

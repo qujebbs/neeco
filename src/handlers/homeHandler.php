@@ -1,12 +1,12 @@
 <?php
-    require_once("src/repositories/BodRepo.php");
-    require_once("src/repositories/NewsRepo.php");
-    require_once("src/repositories/StaffRepo.php");
-    require_once("src/repositories/DistrictOfficesRepo.php");
-    require_once("src/repositories/ServiceRepo.php");
-    require_once("src/repositories/AwardRepo.php");
-    require_once("src/repositories/ConsumerPayersRepo.php");
-    require_once("src/repositories/BacRepo.php");
+    require_once __DIR__ . "/../repositories/BodRepo.php";
+    require_once __DIR__ . "/../repositories/NewsRepo.php";
+    require_once __DIR__ . "/../repositories/StaffRepo.php";
+    require_once __DIR__ . "/../repositories/DistrictOfficesRepo.php";
+    require_once __DIR__ . "/../repositories/ServiceRepo.php";
+    require_once __DIR__ . "/../repositories/AwardRepo.php";
+    require_once __DIR__ . "/../repositories/ConsumerPayersRepo.php";
+    require_once __DIR__ . "/../repositories/BacRepo.php";
 
 
 
@@ -29,22 +29,22 @@ class HomeHandler {
 
     public function loadAbout() {
         $params = [
-            "mission" => "views/login.php",
-            "company-profile" => "views/company-profile.php",
-            "bod" => "views/board-of-directors.php",
-            "staffs" => "views/view-staffs.php",
-            "coverage-area" => "views/coverage-area.php",
-            "district-offices" => "views/view-district-offices.php",
-            "services" => "views/view-services.php",
-            "news" => "views/view-news.php",
-            "awards" => "views/view-awards.php",
-            "consumer-payer" => "views/consumer-payer.php",
-            "gm-corner" => "views/gm-corners.php",
-            "rate" => "views/view-rate.php",//unimplemented
-            "member-insurance" => "views/member-insurance.php",
-            "safety" => "views/safety-tips.php",
-            "contact" => "views/contact.php",
-            "bacs" => "views/view-bac.php"
+            "mission" => __DIR__ . "/../../public/views/login.php",
+            "company-profile" => __DIR__ . "/../../public/views/company-profile.php",
+            "bod" => __DIR__ . "/../../public/views/board-of-directors.php",
+            "staffs" => __DIR__ . "/../../public/views/view-staffs.php",
+            "coverage-area" => __DIR__ . "/../../public/views/coverage-area.php",
+            "district-offices" => __DIR__ . "/../../public/views/view-district-offices.php",
+            "services" => __DIR__ . "/../../public/views/view-services.php",
+            "news" => __DIR__ . "/../../public/views/view-news.php",
+            "awards" => __DIR__ . "/../../public/views/view-awards.php",
+            "consumer-payer" => __DIR__ . "/../../public/views/consumer-payer.php",
+            "gm-corner" => __DIR__ . "/../../public/views/gm-corners.php",
+            "rate" => __DIR__ . "/../../public/views/view-rate.php",//unimplemented
+            "member-insurance" => __DIR__ . "/../../public/views/member-insurance.php",
+            "safety" => __DIR__ . "/../../public/views/safety-tips.php",
+            "contact" => __DIR__ . "/../../public/views/contact.php",
+            "bacs" => __DIR__ . "/../../public/views/view-bac.php"
         ];
 
         $param = $_GET['section'] ?? "company-profile";

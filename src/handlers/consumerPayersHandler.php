@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/ConsumerPayersRepo.php");
-    require_once("src/models/ConsumerPayersModel.php");
+    require_once __DIR__ . "/../repositories/ConsumerPayersRepo.php";
+    require_once __DIR__ . "/../models/ConsumerPayersModel.php";
     class ConsumerPayersHandler {
         private $consumerPayersRepo;
     
@@ -28,7 +28,7 @@
             public function getAll(){
                 $consumerPayers = $this->consumerPayersRepo->selectAll(); 
 
-                include "views/consumerPayers.php";
+                include __DIR__ . "/../../public/views/consumerPayers.php";
             }
 
             public function createConsumerPayers(){

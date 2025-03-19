@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/repositories/BaseRepo.php';
-    require_once 'src/models/StaffModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/StaffModel.php';
     class StaffRepo extends BaseRepo{
         public function __construct() {
             parent::__construct('staffs', 'staffId');

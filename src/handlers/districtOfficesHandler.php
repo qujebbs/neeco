@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/DistrictOfficesRepo.php");
-    require_once("src/models/DistrictOfficesModel.php");
+    require_once __DIR__ . "/../repositories/DistrictOfficesRepo.php";
+    require_once __DIR__ . "/../models/DistrictOfficesModel.php";
     class DistrictOfficesHandler {
         private $districtOfficesRepo;
     
@@ -26,7 +26,7 @@
             public function getAll(){
                 $districtOffices = $this->districtOfficesRepo->selectAll(); 
 
-                include "views/districtOffices.php";
+                include __DIR__ . "/../../public/views/districtOffices.php";
             }
 
             public function createDistrictOffices(){

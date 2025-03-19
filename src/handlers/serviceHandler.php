@@ -1,6 +1,6 @@
 <?php
-    require_once("src/repositories/ServiceRepo.php");
-    require_once("src/models/ServiceModel.php");
+    require_once __DIR__ . "/../repositories/ServiceRepo.php";
+    require_once __DIR__ . "/../models/ServiceModel.php";
     class ServiceHandler {
         private $serviceRepo;
     
@@ -28,7 +28,7 @@
         public function getAll(){
             $services = $this->serviceRepo->selectAll(); 
 
-            include "views/service.php";
+            include __DIR__ . "/../../public/views/service.php";
         }
 
             public function createService(){

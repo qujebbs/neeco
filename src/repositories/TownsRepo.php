@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/repositories/BaseRepo.php';
-    require_once 'src/models/townsModel.php';
+    require_once __DIR__ . '/BaseRepo.php';
+    require_once __DIR__ . '/../models/townsModel.php';
     class TownsRepo extends BaseRepo{
         public function __construct() {
             parent::__construct('towns', 'townId');

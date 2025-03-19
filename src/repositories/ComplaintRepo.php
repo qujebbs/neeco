@@ -1,7 +1,7 @@
 <?php
-    require_once 'src/repositories/baseRepo.php';
-    require_once 'src/filters/ComplaintFilters.php';
-    require_once 'src/models/ComplaintModel.php';
+    require_once __DIR__ . '/../repositories/baseRepo.php';
+    require_once __DIR__ . '/../filters/ComplaintFilters.php';
+    require_once __DIR__ . '/../models/ComplaintModel.php';
     class ComplaintRepo extends BaseRepo{
         public function __construct() {
             parent::__construct( 'complaints', 'complaintId');

@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="public/assets/img/favicon.png" rel="icon">
+  <link href="public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,14 +19,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendors/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendors/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="public/assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="public/assets/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="public/assets/vendors/aos/aos.css" rel="stylesheet">
+  <link href="public/assets/vendors/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="public/assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="public/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Impact
@@ -44,7 +44,7 @@
   <section id="topbar" >
 <div class="container d-flex justify-content-center justify-content-md-between">
   <div class="contact-info d-flex align-items-center">
-   <img src="assets/img/neeco.png" alt=""> 
+   <img src="public/assets/img/neeco.png" alt=""> 
    
    <div class="upper-column info-box">
              <div class="icon-box"><span class="flaticon-phone-call"></span></div>
@@ -72,7 +72,7 @@
 
 <section id="mobile" >
 
-   <img src="assets/img/neeco.png" alt="" style="position: center; width: 90%;"> 
+   <img src="public/assets/img/neeco.png" alt="" style="position: center; width: 90%;"> 
    
    <div class="upper-column info-box">
              <div class="icon-box"><span class="flaticon-phone-call"></span></div>
@@ -109,7 +109,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-       <!--<img src="assets/img/new_logo.png" alt="neeco_logo" style="height: 100%; width: 100%;">  -->
+       <!--<img src="public/assets/img/new_logo.png" alt="neeco_logo" style="height: 100%; width: 100%;">  -->
         
        <h1> NEECO ll - <span>AREA 1</span></h1>
       </a>

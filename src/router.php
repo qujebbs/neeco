@@ -18,7 +18,7 @@
         '/neeco2/service'=> 'src/handlers/ServiceHandler.php',
         '/neeco2/staff'=> '../src/handlers/StaffHandler.php',
         '/neeco2/town'=> '../src/handlers/TownsHandler.php',
-        '/neeco2/playground' => '../views/dumper.php',
+        '/neeco2/playground' => '../public/views/dumper.php',
         '/neeco2/login' => '../src/handlers/authHandlers/loginHandler.php',
         '/neeco2/home' => '../src/handlers/homeHandler.php'
 
@@ -29,8 +29,8 @@
         require $routes[$url];
     } else{
         http_response_code(404);
-        echo "404 not found :( ";
-        echo "<pre>". var_dump($url) . "</pre>";
+        echo "404 not found :( <br>";
+        echo $url;
         die();
     }
 

@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . "/../epositories/BillRepo.php";
+    require_once __DIR__ . "/../repositories/BillRepo.php";
     require_once __DIR__ . "/../models/BillModel.php";
     require_once __DIR__ . "/../../src/config/db.php";
     class BillHandler {

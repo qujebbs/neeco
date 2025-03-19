@@ -1,8 +1,8 @@
 <?php
-    require 'src/middlewares/AuthMiddleware.php';
-    require 'src/repositories/AccountRepo.php';
-    require 'src/filters/AccountFilters.php';
-    require 'utils/debugUtil.php';
+    require __DIR__ . '/../../middlewares/AuthMiddleware.php';
+    require __DIR__ . '/../../repositories/AccountRepo.php';
+    require __DIR__ . '/../../filters/AccountFilters.php';
+    require __DIR__ . '/../../../utils/debugUtil.php';
 
     class LoginHandler {
         private $accountRepo;

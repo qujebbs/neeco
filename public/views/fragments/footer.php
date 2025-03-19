@@ -117,14 +117,14 @@ Monday to Sunday 24/7
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendors/aos/aos.js"></script>
-  <script src="assets/vendors/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendors/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendors/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendors/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendors/php-email-form/validate.js"></script>
+  <script src="public/assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/assets/vendors/aos/aos.js"></script>
+  <script src="public/assets/vendors/glightbox/js/glightbox.min.js"></script>
+  <script src="public/assets/vendors/purecounter/purecounter_vanilla.js"></script>
+  <script src="public/assets/vendors/swiper/swiper-bundle.min.js"></script>
+  <script src="public/assets/vendors/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="public/assets/vendors/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/mains.js"></script>
+  <script src="public/assets/js/mains.js"></script>
 </body>

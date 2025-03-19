@@ -26,7 +26,7 @@ include __DIR__ . '/../views/fragments/header.php';
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/neeco.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('public/assets/img/neeco.jpg');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
@@ -54,7 +54,7 @@ include __DIR__ . '/../views/fragments/header.php';
           <div class="col-lg-8">
             <article class="blog-details">
               <div class="post-img">
-                <img src="assets/img/awardssss.png" alt="Awards" style="width: 100%; height: 100%;">
+                <img src="public/assets/img/awardssss.png" alt="Awards" style="width: 100%; height: 100%;">
               </div>
               <h2 class="title">NEECO II AREA 1 AWARDS</h2>
               <div class="meta-top">

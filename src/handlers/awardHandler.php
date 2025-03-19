@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/AwardRepo.php";
     require_once __DIR__ . "/../models/AwardModel.php";
-    require_once __DIR__ ."/../config/db.php";
+    require_once __DIR__ ."/../../src/config/db.php";
     
 
     class AwardHandler {
@@ -29,7 +29,7 @@
             public function getAll(){
                 $awards = $this->awardRepo->selectAll(); 
 
-                include "views/awards.php";
+                include __DIR__ . "/../../public/views/awards.php";
             }
             public function createAward($con) {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

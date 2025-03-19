@@ -7,7 +7,7 @@ include 'views/fragments/header.php';
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/neeco.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('public/assets/img/neeco.jpg');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
@@ -35,7 +35,7 @@ include 'views/fragments/header.php';
           <div class="col-lg-8">
             <article class="blog-details">
               <div class="post-img">
-                <img src="assets/img/safety tips.jpg" alt="Safety Tips" class="img-fluid" style="height: 150%; width: 110%;">
+                <img src="public/assets/img/safety tips.jpg" alt="Safety Tips" class="img-fluid" style="height: 150%; width: 110%;">
               </div>
               <h2 class="title">Safety Tips</h2>
               <div class="meta-top">

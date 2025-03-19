@@ -16,11 +16,11 @@ include __DIR__ . '/../views/fragments/header.php';
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/stylesl.css">
+    <link rel="stylesheet" href="public/css/stylesl.css">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/neeco.png" rel="apple-touch-icon">
+    <link href="public/assets/img/favicon.png" rel="icon">
+    <link href="public/assets/img/neeco.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,14 +30,14 @@ include __DIR__ . '/../views/fragments/header.php';
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="public/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="public/assets/css/main.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
 </head>

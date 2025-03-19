@@ -4,7 +4,7 @@
 <?php include __DIR__ . "/../views/fragments/modalComponent.php"; ?>
 
 <div class="container-fluid">
-    <h2 class="mt-4">Complaints Management</h2>
+    <h2 class="mt-4">Awards Management</h2>
 
     <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addawardModal">Add New Award</button>
 

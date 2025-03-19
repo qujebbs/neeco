@@ -9,7 +9,7 @@ include __DIR__ . '/../views/fragments/header.php';
   <main id="main">
 
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/neeco.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('public/assets/img/neeco.jpg');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
@@ -38,7 +38,7 @@ include __DIR__ . '/../views/fragments/header.php';
 
               <h2 class="title">Mission Vision</h2>
               <div class="post-img">
-                <img src="assets/img/missionvision.png" alt="" class="img-fluid">
+                <img src="public/assets/img/missionvision.png" alt="" class="img-fluid">
               </div>
 
               <div class="meta-top">

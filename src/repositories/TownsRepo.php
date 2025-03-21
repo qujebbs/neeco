@@ -19,6 +19,13 @@
             die();
         }
 
+        public static function getRoute(){
+            $sql = "select * from routes";
+            $stmt = (new self())->con->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+
         public function update(Towns $towns, $id){
             $sql = "UPDATE {$this->table} SET zoneCode = :zoneCode, townDesc = :townDesc, townAbbrv = :townAbbrv WHERE serviceId = :id";
             $stmt = $this->con->prepare($sql);

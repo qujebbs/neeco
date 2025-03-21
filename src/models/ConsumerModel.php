@@ -4,9 +4,9 @@ class Consumer {
     public $townId;
     public $routeCode;
     public $accountNum;
-    public $lastName;
-    public $firstName;
-    public $midName;
+    public $lastname;
+    public $firstname;
+    public $midname;
     public $suffix;
     public $barangay;
     public $profilepix;
@@ -26,9 +26,9 @@ class Consumer {
         $this->townId = $data['townId'] ?? null;
         $this->routeCode = $data['routeCode'] ?? null;
         $this->accountNum = $data['accountNum'] ?? null;
-        $this->lastName = $data['lastName'] ?? null;
-        $this->firsName = $data['firsName'] ?? null;
-        $this->midName = $data['midName'] ?? null;
+        $this->lastname = $data['lastname'] ?? null;
+        $this->firstname = $data['firstname'] ?? null;
+        $this->midname = $data['midname'] ?? null;
         $this->suffix = $data['suffix'] ?? null;
         $this->barangay = $data['barangay'] ?? null;
         $this->profilepix = $data['profilepix'] ?? null;

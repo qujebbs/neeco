@@ -20,7 +20,10 @@
         '/neeco2/town'=> '../src/handlers/TownsHandler.php',
         '/neeco2/playground' => '../public/views/dumper.php',
         '/neeco2/login' => '../src/handlers/authHandlers/loginHandler.php',
-        '/neeco2/home' => '../src/handlers/homeHandler.php'
+        '/neeco2/home' => '../src/handlers/homeHandler.php',
+        '/neeco2/register' => '../src/handlers/authHandlers/registerHandler.php',
+
+        '/neeco2/test' => '../public/views/register.php'
 
     ];
 
@@ -34,6 +37,7 @@
         die();
     }
 
+    //no error handlings or error handling not user friendly
     //required fields
     //file uploads
     //authorization
@@ -46,5 +50,8 @@
     //COMPANY PROFILE
     //BOARD OF DIRECTORS
     //error on consumerHandler
+    //htaccess protection and file uploads security
     
     // VIEW-RATE.PHP
+
+    //REGISTER THROUGH ACCOUNTS ONLY NOT CONSUMERS

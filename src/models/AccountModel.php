@@ -4,8 +4,8 @@
         public $accountId;
         public $consumerId;
         public $employeeId;
-        public $userName;
-        public $passwrord;
+        public $username;
+        public $password;
         public $positionId;
         public $registrationDate;
         public $accountStatusId;
@@ -16,8 +16,8 @@
             $this->accountId = $data['accountId'] ?? null;
             $this->consumerId = $data['consumerId'] ?? null;
             $this->employeeId = $data['employeeId'] ?? null;
-            $this->userName = $data['userName'] ?? null;
-            $this->passwrord = $data['passwrord'] ?? null;
+            $this->username = $data['username'] ?? null;
+            $this->password = $data['password'] ?? null;
             $this->positionId = $data['positionId'] ?? null;
             $this->registrationDate = $data['registrationDate'] ?? null;
             $this->accountStatusId = $data['accountStatusId'] ?? null;

@@ -37,8 +37,9 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     $Consumer = new Consumer($_POST);
+                    $id = $_POST['id'];
 
-                    $this->consumerRepo->update($Consumer);
+                    $this->consumerRepo->update($Consumer, $id);
 
                     header("Location: views/unimplemented.php");
                     exit;
@@ -122,7 +123,7 @@
     }
 
 $con = getPDOConnection();
-$consumerHandler = new ConsumerHandler($con);
+$consumerHandler = new ConsumerHandler();
 $consumerHandler->handleRequest();
 
 

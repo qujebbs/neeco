@@ -6,20 +6,25 @@
             public function __construct() {
                 parent::__construct('accounts', 'accountId');
             }
-            public function insert($consumers){
-                $sql = "INSERT INTO {$this->table}(accountId, consumerId, employeeId, userName, passwrord, positionId;, registrationDate, accountStatusId, verificationCode, isActive)
-                        VALUES (:accountId, :consumerId, :employeeId, :userName, :passwrord, :positionId;, :registrationDate, :accountStatusId, :verificationCode, :isActive)";
-                $stmt = $this->con->prepare($sql);
-                $stmt->bindParam(":accountId", $consumers->accountId);
-                $stmt->bindParam(":consumerId", $consumers->consumerId);
-                $stmt->bindParam(":employeeId", $consumers->employeeId);
-                $stmt->bindParam(":userName", $consumers->userName);
-                $stmt->bindParam(":passwrord", $consumers->passwrord);
-                $stmt->bindParam(":positionId", $consumers->positionId);
-                $stmt->bindParam(":registrationDate", $consumers->registrationDate);
-                $stmt->bindParam(":accountStatusId", $consumers->accountStatusId);
-                $stmt->bindParam(":verificationCode", $consumers->verificationCode);
-                $stmt->bindParam(":isActive", $consumers->isActive);
+            public function insert(Account $account){
+                try{
+                    $sql = "INSERT INTO {$this->table}(consumerId, employeeId, userName, [password], positionId, registrationDate, accountStatusId, verificationCode, isActive)
+                            VALUES (:consumerId, :employeeId, :userName, :pass, :positionId, :registrationDate, :accountStatusId, :verificationCode, :isActive)";
+                    $stmt = $this->con->prepare($sql);
+                    $stmt->bindParam(":consumerId", $account->consumerId);
+                    $stmt->bindParam(":employeeId", $account->employeeId);
+                    $stmt->bindParam(":userName", $account->username);
+                    $stmt->bindParam(":pass", $account->password);
+                    $stmt->bindParam(":positionId", $account->positionId);
+                    $stmt->bindParam(":registrationDate", $account->registrationDate);
+                    $stmt->bindParam(":accountStatusId", $account->accountStatusId);
+                    $stmt->bindParam(":verificationCode", $account->verificationCode);
+                    $stmt->bindParam(":isActive", $account->isActive);
+                    return $stmt->execute();
+                } catch (PDOException $e) {
+                    error_log("Database Error: " . $e->getMessage());
+                    throw new Exception("Database Error: Insert Failed");
+                }
             }
             
             public function selectByFilter(AccountFilter $filter){

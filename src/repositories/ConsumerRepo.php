@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . '/BaseRepo.php';
     require_once __DIR__ . '/../models/ConsumerModel.php';
-    require_once 'src/filters/ConsumerFilters.php';
+    require_once __DIR__ . '/../filters/ConsumerFilters.php';
 
     class ConsumerRepo extends BaseRepo{
             public function __construct() {
@@ -10,16 +10,16 @@
         
             public function insert(Consumer $consumer) {
                 $sql = 'INSERT INTO {$this->table} 
-                (townId, routeCode, accountNum, lastName, firstName, midName, suffix, barangay, profilepix, backpix, registrationDate, poleId, meterSRN, employeeName, [date], [time], transferrable, email) VALUES
-                (:townId, :routeCode, :accountNum, :lastName, :firstName, :midName, :suffix, :barangay, :profilepix, :backpix, :registrationNum, :poleId, :meterSRN, :employeeName, :date, :time, :transferrable, :email)';
+                (townId, routeCode, accountNum, lastname, firstname, midname, suffix, barangay, profilepix, backpix, registrationDate, poleId, meterSRN, employeeName, [date], [time], transferrable, email) VALUES
+                (:townId, :routeCode, :accountNum, :lastname, :firstname, :midname, :suffix, :barangay, :profilepix, :backpix, :registrationNum, :poleId, :meterSRN, :employeeName, :date, :time, :transferrable, :email)';
                 $stmt = $this->con->prepare($sql);
                 $stmt->bindParam(':townId', $consumer->townId);
                 $stmt->bindParam(':routeCode', $consumer->routeCode);
                 $stmt->bindParam(':accountNum', $consumer->accountNum);
-                $stmt->bindParam(':lastName', $consumer->lastName);
-                $stmt->bindParam(':firstName', $consumer->firstName);
-                $stmt->bindParam(':midName', $consumer->midName);
-                $stmt->bindParam('suffix', $consumer->suffix);
+                $stmt->bindParam(':lastname', $consumer->lastname);
+                $stmt->bindParam(':firstname', $consumer->firstname);
+                $stmt->bindParam(':midname', $consumer->midname);
+                $stmt->bindParam(':suffix', $consumer->suffix);
                 $stmt->bindParam(':barangay', $consumer->barangay);
                 $stmt->bindParam(':profilepix', $consumer->profilepix);
                 $stmt->bindParam(':backpix', $consumer->backpix);
@@ -34,14 +34,14 @@
 
                 return $stmt->execute();
             }
-            //WITH PAGINATION
+            
             public function selectByFilters(ConsumerFilter $filters, $limit = 1000, $offset = 0) {
                 $limit = (int)$limit;
                 $offset = (int)$offset;
 
                 $sql = "SELECT * FROM neeco2area1.dbo.consumers c
-                        RIGHT JOIN accounts a ON c.consumerId=a.consumerId
-                        INNER JOIN accountStatus ac ON ac.accountStatusId=a.accountStatusId";
+                        LEFT JOIN accounts a ON c.consumerId = a.consumerId
+                        LEFT JOIN accountStatus ac ON ac.accountStatusId = a.accountStatusId";
             
                 $conditions = $filters->toSqlConditions();
             
@@ -57,10 +57,11 @@
                 if ($filters->consumerId !== null) $stmt->bindParam(':consumerId', $filters->consumerId);
                 if ($filters->statusId !== null) $stmt->bindParam(':accountStatusId', $filters->statusId);
                 if ($filters->townId !== null) $stmt->bindParam(':townId', $filters->townId);
+                if ($filters->accountNum !== null) $stmt->bindParam(':accountNum', $filters->accountNum);
                 
                 $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
                 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-            
+                // return $stmt->debugDumpParams();
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
@@ -110,13 +111,13 @@
             //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
             // }
 
-            public function update(Consumer $consumer){
+            public function update(Consumer $consumer, $id){
                 $sql = "UPDATE {$this->table} SET lastname = :lastname, firstname = :firstname, midname = :midname, suffix = :suffix, barangay = :barangay, profilepix = :profilepix, backpix = :backpix WHERE consumerId = :id";
                 $stmt = $this->con->prepare($sql);
                 
-                $stmt->bindParam(":lastname", $consumer->lastName);
-                $stmt->bindParam(":firstName", $consumer->firstName);
-                $stmt->bindParam("midName", $consumer->midName);
+                $stmt->bindParam(":lastname", $consumer->lastname);
+                $stmt->bindParam(":firstName", $consumer->firstname);
+                $stmt->bindParam("midName", $consumer->midname);
                 $stmt->bindParam(":suffix", $consumer->suffix);
                 $stmt->bindParam(":barangay", $consumer->barangay);
                 $stmt->bindParam(":profilepix", $consumer->profilepix);

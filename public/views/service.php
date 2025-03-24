@@ -19,7 +19,7 @@
         'servicePic' => 'Service Picture',
         'serviceTitle' => 'Service Title',
         'serviceDesc' => 'Service Description',
-    ], 'service');
+    ], 'service', [], "/neeco2/service");
 
     foreach ($services as $service) {
         renderModal("editserviceModal{$service['serviceId']}", 'Update Service', 'update', [

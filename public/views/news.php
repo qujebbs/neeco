@@ -19,7 +19,7 @@
         'newsPic' => 'News Picture',
         'newsTitle' => 'News Title',
         'newsDesc' => 'News Description'
-    ], 'news');
+    ], 'news', [], "/neeco2/news");
 
     foreach ($newses as $news) {
         renderModal("editnewsModal{$news['newsId']}", 'Update News', 'update', [

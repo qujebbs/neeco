@@ -19,7 +19,7 @@
         'bodName' => 'BOD Name',
         'bodPosition' => 'BOD Position',
         'bodPicture' => 'BOD Picture'
-    ], 'bod');
+    ], 'bod', [], "/neeco2/bod");
 
     foreach ($bods as $bod) {
         renderModal("editbodModal{$bod['bodId']}", 'Update BOD', 'update', [

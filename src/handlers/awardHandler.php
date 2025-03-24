@@ -31,14 +31,14 @@
 
                 include __DIR__ . "/../../public/views/awards.php";
             }
-            public function createAward($con) {
+            public function createAward() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $award = new Award($_POST);
 
                     $this->awardRepo->insert($award);
 
-                    header("Location: views/unimplemented.php");
+                    header("Location: /neeco2/award");
                     exit;
                 }
             }

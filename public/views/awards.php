@@ -21,7 +21,7 @@
         'awardType' => 'Award Type',
         'awardFrom' => 'Award From',
         'awardDate' => 'Award Date'
-    ], 'award');
+    ], 'award', [], "/neeco2/award");
 
     foreach ($awards as $award) {
         renderModal("editawardModal{$award['awardId']}", 'Update Award', 'update', [

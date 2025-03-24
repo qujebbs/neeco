@@ -15,7 +15,7 @@
         '/neeco2/download'=> '../src/handlers/DownloadHandler.php',
         '/neeco2/news'=> '../src/handlers/NewsHandler.php',
         '/neeco2/rate'=> '../src/handlers/RateHandler.php',
-        '/neeco2/service'=> 'src/handlers/ServiceHandler.php',
+        '/neeco2/service'=> '../src/handlers/ServiceHandler.php',
         '/neeco2/staff'=> '../src/handlers/StaffHandler.php',
         '/neeco2/town'=> '../src/handlers/TownsHandler.php',
         '/neeco2/playground' => '../public/views/dumper.php',
@@ -37,6 +37,7 @@
         die();
     }
 
+    //no adding consumers yet
     //no error handlings or error handling not user friendly
     //required fields
     //file uploads
@@ -51,7 +52,7 @@
     //BOARD OF DIRECTORS
     //error on consumerHandler
     //htaccess protection and file uploads security
-    
+    // secure parameters and do constant values
     // VIEW-RATE.PHP
 
     //REGISTER THROUGH ACCOUNTS ONLY NOT CONSUMERS

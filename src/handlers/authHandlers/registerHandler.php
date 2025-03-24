@@ -49,7 +49,7 @@
             if ($user) {
                 $inserted = $this->accountRepo->insert($account);
                     if ($inserted) {
-                        echo "Account successfully registered.";
+                        header("Location: /neeco2/login");
                     } else {
                         echo "Error: Failed to register the account. Please try again later.";
                         error_log("Account insertion failed for username: " . $account->username);

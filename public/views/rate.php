@@ -15,7 +15,7 @@
 
     renderModal('addrateModal', 'Add New Rate', 'create', [
         'pdf' => 'PDF'
-    ], 'rate');
+    ], 'rate', [], "/neeco2/rate");
 
     foreach ($rates as $rate) {
         renderModal("editrateModal{$rate['rateId']}", 'Update Rate', 'update', [

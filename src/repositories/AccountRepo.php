@@ -8,15 +8,14 @@
             }
             public function insert(Account $account){
                 try{
-                    $sql = "INSERT INTO {$this->table}(consumerId, employeeId, userName, [password], positionId, registrationDate, accountStatusId, verificationCode, isActive)
-                            VALUES (:consumerId, :employeeId, :userName, :pass, :positionId, :registrationDate, :accountStatusId, :verificationCode, :isActive)";
+                    $sql = "INSERT INTO {$this->table}(consumerId, employeeId, userName, [password], positionId, accountStatusId, verificationCode, isActive)
+                            VALUES (:consumerId, :employeeId, :userName, :pass, :positionId, :accountStatusId, :verificationCode, :isActive)";
                     $stmt = $this->con->prepare($sql);
                     $stmt->bindParam(":consumerId", $account->consumerId);
                     $stmt->bindParam(":employeeId", $account->employeeId);
                     $stmt->bindParam(":userName", $account->username);
                     $stmt->bindParam(":pass", $account->password);
                     $stmt->bindParam(":positionId", $account->positionId);
-                    $stmt->bindParam(":registrationDate", $account->registrationDate);
                     $stmt->bindParam(":accountStatusId", $account->accountStatusId);
                     $stmt->bindParam(":verificationCode", $account->verificationCode);
                     $stmt->bindParam(":isActive", $account->isActive);

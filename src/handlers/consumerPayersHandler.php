@@ -37,7 +37,7 @@
 
                     $this->consumerPayersRepo->insert($consumerPayer);
 
-                    header("Location: views/unimplemented.php");
+                    header("Location: /neeco2/consumer-payer");
                     exit;
                 }
             }

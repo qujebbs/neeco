@@ -17,7 +17,7 @@
     renderModal('adddownloadModal', 'Add New Download', 'create', [
         'Title' => 'File Title',  //POST['Title'] for downloads pdfTitle in db
         'pdfName' => 'Quick Download'
-    ], 'download');
+    ], 'download', [], "/neeco2/download");
 
     foreach ($downloads as $download) {
         renderModal("editdownloadModal{$download['downloadId']}", 'Update Download', 'update', [

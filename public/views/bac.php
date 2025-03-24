@@ -17,7 +17,7 @@
     renderModal('addbacModal', 'Add New BAC', 'create', [
         'bacTitle' => 'BAC Title',
         'bacPdf' => 'BAC PDF'  //POST['bacPdf'] for bac bacName in db
-    ], 'bac');
+    ], 'bac', [], "/neeco2/bac");
 
     foreach ($bacs as $bac) {
         renderModal("editbacModal{$bac['bacId']}", 'Update BAC', 'update', [

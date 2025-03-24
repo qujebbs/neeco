@@ -19,7 +19,7 @@ include "fragments/sidebar.php"; ?>
     renderModal('addtownModal', 'Add New town', 'create', [
         'townPic' => 'town Picture',
         'townDepartment' => 'town Department',
-    ], 'town');
+    ], 'town', [], "/neeco2/town");
 
     foreach ($towns as $town) {
         renderModal("edittownModal{$town['townId']}", 'Update town', 'update', [

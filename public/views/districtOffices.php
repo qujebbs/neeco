@@ -27,7 +27,7 @@
         'teller' => 'Teller',
         'stationLineman' => 'Station Lineman',
         'districtPic' => 'District Picture',
-    ], 'districtOffices');
+    ], 'districtOffices', [], "/neeco2/district-office");
 
     foreach ($districtOffices as $districtOffice) {
         renderModal("editdistrictOfficesModal{$districtOffice['districtId']}", 'Update District Offices', 'update', [

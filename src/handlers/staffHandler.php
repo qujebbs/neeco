@@ -38,18 +38,18 @@
                 }
             }
 
-            public function updateBod() {
+            public function updateStaff() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $staff = new Staff($_POST);
 
-                    $this->staffRepo->update($staff, $_POST['staffId']);
+                    $this->staffRepo->update($staff, intval($_POST['staffId']));
             
                     header("Location: views/unimplemented.php");
                     exit;
                 }
             }
 
-            public function deleteBod(){
+            public function deleteStaff(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $this->staffRepo->delete($_POST['staffId']);
 

@@ -19,7 +19,7 @@
 
     renderModal('addaccountModal', 'Add New Account', 'create', [
         'Name' => 'Name'
-    ], 'account');
+    ], 'account', [], "/neeco2/consumer");
 
     foreach ($accounts as $account) {
         renderModal("editaccountModal{$account['accountId']}", 'Update Account', 'update', [

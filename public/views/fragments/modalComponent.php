@@ -1,5 +1,5 @@
 <?php
-function renderModal($id, $title, $action, $fields, $entity, $data = []) {
+function renderModal($id, $title, $action, $fields, $entity, $data = [], $handler = "defaultHandler") {
 ?>
     <div class="modal fade" id="<?= $id ?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -11,7 +11,7 @@ function renderModal($id, $title, $action, $fields, $entity, $data = []) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../handler.php" method="POST" enctype="multipart/form-data">
+                    <form action="<?= htmlspecialchars($handler) ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="<?= $action ?>">
                         <?php foreach ($fields as $field => $label): ?>
                             <div class="form-group">

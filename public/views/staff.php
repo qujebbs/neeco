@@ -17,7 +17,7 @@
     renderModal('addstaffModal', 'Add New Staff', 'create', [
         'staffPic' => 'Staff Picture',
         'staffDepartment' => 'Staff Department',
-    ], 'staff');
+    ], 'staff', [], "/neeco2/staff");
 
     foreach ($staffs as $staff) {
         renderModal("editstaffModal{$staff['staffId']}", 'Update Staff', 'update', [

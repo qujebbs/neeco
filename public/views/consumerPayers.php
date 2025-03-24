@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <h2 class="mt-4">Consumer Prompt Payer Management</h2>
 
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addbodModal">Add New Consumer Payer</button>
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addconsumerpayerModal">Add New Consumer Payer</button>
 
     <?php
     renderTable($consumerPayers, [
@@ -14,13 +14,13 @@
         'payerAddress' => 'Consumer Payer Address'
     ], 'consumerPayer', 'payerId');
 
-    renderModal('addConsumerPayerModal', 'Add New Consumer Payer', 'create', [
+    renderModal('addconsumerpayerModal', 'Add New Consumer Payer', 'create', [
         'payerName' => 'Consumer Payer Name',
         'payerAddress' => 'Consumer Payer Address'
-    ], 'consumerPayer');
+    ], 'consumerPayer', [], "/neeco2/consumer-payer");
 
     foreach ($consumerPayers as $consumerPayer) {
-        renderModal("editbodModal{$consumerPayer['payerId']}", 'Update Consumer Payer', 'update', [
+        renderModal("editconsumerPayerModal{$consumerPayer['payerId']}", 'Update Consumer Payer', 'update', [
             'payerName' => 'Consumer Payer Name',
             'payerAddress' => 'Consumer Payer Address'
         ], 'consumerPayer', $consumerPayer);

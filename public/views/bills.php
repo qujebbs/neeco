@@ -24,7 +24,7 @@
 
     renderModal('addbillsModal', 'Add New Bill', 'create', [
         'billFile' => 'Bill File'
-    ], 'bill');
+    ], 'bill', [], "/neeco2/bill");
 
     foreach ($bills as $bill) {
         renderModal("editbillModal{$bill['billId']}", 'Update Bill', 'update', [

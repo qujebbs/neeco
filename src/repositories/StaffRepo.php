@@ -9,8 +9,8 @@
         public function insert(Staff $staff){
             $sql = "INSERT INTO {$this->table} (staffDepartment, staffPic) VALUES (:staffDepartment, :staffPic)";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":servicePic", $staff->staffDepartment);
-            $stmt->bindParam(":serviceTitle", $staff->staffPic);
+            $stmt->bindParam(":staffDepartment", $staff->staffDepartment);
+            $stmt->bindParam(":staffPic", $staff->staffPic);
 
             return $stmt->execute();
         }

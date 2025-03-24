@@ -29,3 +29,20 @@
 
     <!-- Page level custom scripts -->
     <script src="public/js/demo/datatables-demo.js"></script>
+
+    <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMessage = urlParams.get('error');
+        const successMessage = urlParams.get('success');
+
+        if (errorMessage) {
+            alert("❌ " + decodeURIComponent(errorMessage));
+        }
+
+        if (successMessage) {
+            alert("✅ " + decodeURIComponent(successMessage));
+        }
+    };
+    </script>
+

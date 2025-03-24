@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__ . "/../repositories/StaffRepo.php";
     require_once __DIR__ . "/../models/StaffModel.php";
+    require_once __DIR__ . "/../utils/fileHandler.php";
+    require_once __DIR__ . "/../../utils/debugUtil.php";
     class StaffHandler {
         private $staffRepo;
     
@@ -28,13 +30,23 @@
             }
 
             public function createStaff(){
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['staffPic'])) {
                     $staff = new Staff($_POST);
-
-                    $this->staffRepo->insert($staff);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                        $staff->staffPic = $fileHandler->uploadFile($_FILES['staffPic'], $allowedTypes);
+                        if ($this->staffRepo->insert($staff)){
+                            header("Location: /neeco2/staff?success=Staff created successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/staff?error=Failed to upload staff picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/staff?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

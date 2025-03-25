@@ -2,6 +2,7 @@
     require_once __DIR__ . "/../repositories/AwardRepo.php";
     require_once __DIR__ . "/../models/AwardModel.php";
     require_once __DIR__ ."/../../src/config/db.php";
+    require_once __DIR__ . "/../../utils/debugUtil.php";
     
 
     class AwardHandler {
@@ -50,11 +51,14 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $award = new Award($_POST);
-
-                    $this->awardRepo->update($award, $_POST['awardId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    // dumpVar($award);
+                    if($this->awardRepo->update($award, $_POST['awardId'])){
+                        header("Location: /neeco2/award?success=Award updated successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/award?error=Failed to update Award.");
+                        exit();
+                    };
                 }
             }
             

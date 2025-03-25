@@ -38,7 +38,7 @@
             'teller' => 'Teller',
             'stationLineman' => 'Station Lineman',
             'districtPic' => 'District Picture',
-        ], 'districtOffices', $districtOffice);
+        ], 'districtOffices', $districtOffice, "/neeco2/district-office", "districtId");
     }
     ?>
 </div>

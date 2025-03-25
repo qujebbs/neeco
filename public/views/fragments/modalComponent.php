@@ -1,5 +1,5 @@
 <?php
-function renderModal($id, $title, $action, $fields, $entity, $data = [], $handler = "defaultHandler") {
+function renderModal($id, $title, $action, $fields, $entity, $data = [], $handler = "defaultHandler", $idName= null) {
 ?>
     <div class="modal fade" id="<?= $id ?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -15,6 +15,10 @@ function renderModal($id, $title, $action, $fields, $entity, $data = [], $handle
                         <input type="hidden" name="action" value="<?= $action ?>">
                         <?php foreach ($fields as $field => $label): ?>
                             <div class="form-group">
+                            <?php if ($idName && isset($data[$idName])): ?>
+                                <input type="hidden" name="<?= htmlspecialchars($idName, ENT_QUOTES, 'UTF-8') ?>" 
+                                   value="<?= htmlspecialchars($data[$idName], ENT_QUOTES, 'UTF-8') ?>">
+                            <?php endif; ?>
                                 <label><?= $label ?>:</label>
                                 <?php
                                 $inputType = 'text';

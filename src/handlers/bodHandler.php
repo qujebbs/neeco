@@ -41,10 +41,10 @@
                         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
                         $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
                         if ($this->bodRepo->insert($bod)){
-                            header("Location: /neeco2/bod?success=Staff created successfully");
+                            header("Location: /neeco2/bod?success=BOD created successfully");
                             exit;
                         }else{
-                            header("Location: /neeco2/bod?error=Failed to upload staff picture.");
+                            header("Location: /neeco2/bod?error=Failed to upload BOD.");
                             exit();
                         };
                     }catch (FileUploadException $e) {
@@ -57,11 +57,21 @@
             public function updateBod() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $bod = new Bod($_POST);
-
-                    $this->bodRepo->update($bod, $_POST['bodId']);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                        $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
+                        if ($this->bodRepo->update($bod, $_POST['bodId'])){
+                            header("Location: /neeco2/bod?success=BOD Updated successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/bod?error=Failed to update BOD.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/bod?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

@@ -19,7 +19,7 @@
         }
 
         public function update(Downloads $downloads, $id){
-            $sql = "UPDATE awards SET pdfName = :pdfName, pdfTitle = :pdfTitle, uploadDate = :uploadDate WHERE downloadId = :id";
+            $sql = "UPDATE {$this->table} SET pdfName = :pdfName, pdfTitle = :pdfTitle, uploadDate = :uploadDate WHERE downloadId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":pdfName", $downloads->pdfName);
             $stmt->bindParam(":pdfTitle", $downloads->pdfTitle);

@@ -35,7 +35,7 @@
             $stmt->bindParam(":bodPosition", $bod->bodPosition);
             $stmt->bindParam(":bodPicture", $bod->bodPicture);
             $stmt->bindParam(":townId", $bod->townId);
-            $stmt->bindParam(":id", $bod->$id);
+            $stmt->bindParam(":id", $id);
 
             return $stmt->execute();
         }

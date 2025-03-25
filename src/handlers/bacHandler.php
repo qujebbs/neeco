@@ -57,11 +57,22 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
                     $bac = new Bac($_POST);
-            
-                    $this->bacRepo->update($bac, $_POST['awardId']);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
+
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['application/pdf'];
+                        $bac->bacPdf = $fileHandler->uploadFile($_FILES['bacPdf'], $allowedTypes);
+                        if ($this->bacRepo->update($bac, $_POST['bacId'])){
+                            header("Location: /neeco2/bac?success=BAC Updated successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/bac?error=Failed to Update BAC picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/bac?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

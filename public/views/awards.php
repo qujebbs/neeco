@@ -28,8 +28,9 @@
             'awardName' => 'Award Name',
             'awardType' => 'Award Type',
             'awardFrom' => 'Award From',
-            'awardDate' => 'Award Date'
-        ], 'award', $award);
+            'awardDate' => 'Award Date',
+            'awardId' => 'Award Id'
+        ], 'award', $award, "/neeco2/award");
     }
     ?>
 </div>

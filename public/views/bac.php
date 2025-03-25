@@ -26,7 +26,7 @@
             'bacTitle' => 'BAC Title',
             'bacPdf' => 'BAC PDF',  //POST['bacPdf'] for bac bacName in db
             'bacDesc' => 'Description'
-        ], 'bac', $bac);
+        ], 'bac', $bac, "/neeco2/bac", "bacId");
     }
     ?>
 </div>

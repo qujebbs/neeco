@@ -23,7 +23,7 @@
         renderModal("editdownloadModal{$download['downloadId']}", 'Update Download', 'update', [
             'title' => 'File Title',
             'pdfName' => 'Quick Download'
-        ], 'download', $download);
+        ], 'download', $download, "/neeco2/download", "downloadId");
     }
     ?>
 </div>

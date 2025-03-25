@@ -57,10 +57,21 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $download = new Downloads($_POST);
                     
-                    $this->downloadsRepo->update($download, $_POST['downloadsId']);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['application/pdf'];
+                        $download->pdfName = $fileHandler->uploadFile($_FILES['pdfName'], $allowedTypes);
+                        if ($this->downloadsRepo->update($download, $_POST['downloadId'])){
+                            header("Location: /neeco2/download?success=Download created successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/download?error=Failed to upload Download picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/download?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

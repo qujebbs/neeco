@@ -52,14 +52,25 @@
                 }            
             }
 
-            public function updateDistrictOffiices() {
+            public function updateDistrictOffices() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $districtOffice = new DistrictOffices($_POST);
-
-                    $this->districtOfficesRepo->update($districtOffice, $_POST['districtId']);
             
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+                        $districtOffice->districtPic = $fileHandler->uploadFile($_FILES['districtPic'], $allowedTypes);
+                        if ($this->districtOfficesRepo->update($districtOffice, $_POST['districtId'])){
+                            header("Location: /neeco2/district-office?success=District Office updated successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/district-office?error=Failed to update District Office.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/district-office?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

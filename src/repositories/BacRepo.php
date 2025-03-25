@@ -11,18 +11,18 @@
         public function insert(Bac $bac) {
             $sql = "INSERT INTO {$this->table} (bacName, bacTitle, bacUploadDate, bacDesc) VALUES (:bacName, :bacTitle, :bacUploadDate, :bacDesc)";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam("bacName", $bac->bacPdf);
-            $stmt->bindParam("bacTitle", $bac->bacTitle);
-            $stmt->bindParam("bacUploadDate", $bac->bacUploadDate);
-            $stmt->bindParam("bacDesc", $bac->bacDesc);
-
+            $stmt->bindParam(":bacName", $bac->bacPdf);
+            $stmt->bindParam(":bacTitle", $bac->bacTitle);
+            $stmt->bindParam(":bacUploadDate", $bac->bacUploadDate);
+            $stmt->bindParam(":bacDesc", $bac->bacDesc);
+            
             return $stmt->execute();
         }
         
         public function update(Bac $bac, $id){
-            $sql = "UPDATE awards SET bacName = :bacName, bacTitle = :bacTitle, bacUploadDate = :bacUploadDate, bacDesc = :bacDesc WHERE bacId = :id";
+            $sql = "UPDATE {$this->table} SET bacName = :bacName, bacTitle = :bacTitle, bacUploadDate = :bacUploadDate, bacDesc = :bacDesc WHERE bacId = :id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":bacName", $bac->bacName);
+            $stmt->bindParam(":bacName", $bac->bacPdf);
             $stmt->bindParam(":bacTitle", $bac->bacTitle);
             $stmt->bindParam(":bacUploadDate", $bac->bacUploadDate);
             $stmt->bindParam(":bacDesc", $bac->bacDesc);

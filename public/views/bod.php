@@ -26,7 +26,7 @@
             'bodName' => 'BOD Name',
             'bodPosition' => 'BOD Position',
             'bodPicture' => 'BOD Picture'
-        ], 'bod', $bod);
+        ], 'bod', $bod, "/neeco2/bod", "bodId");
     }
     ?>
 </div>

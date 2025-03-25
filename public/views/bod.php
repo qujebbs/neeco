@@ -13,7 +13,7 @@
         'bodName' => 'BOD Name',
         'bodPosition' => 'BOD Position',
         'bodPicture' => 'BOD Pic'
-    ], 'bod', 'bodId');
+    ], 'bod', 'bodId', "/neeco2/bod");
 
     renderModal('addbodModal', 'Add New BOD', 'create', [
         'bodName' => 'BOD Name',

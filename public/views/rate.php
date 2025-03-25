@@ -11,7 +11,7 @@
     <?php
     renderTable($rates, [
         'pdf' => 'PDF',
-    ], 'rate', 'rateId');
+    ], 'rate', 'rateId', "/neeco2/rate");
 
     renderModal('addrateModal', 'Add New Rate', 'create', [
         'pdf' => 'PDF'

@@ -12,7 +12,7 @@
     renderTable($consumerPayers, [
         'payerName' => 'Consumer Payer Name',
         'payerAddress' => 'Consumer Payer Address'
-    ], 'consumerPayer', 'payerId');
+    ], 'consumerPayer', 'payerId', "/neeco2/consumer-payer");
 
     renderModal('addconsumerpayerModal', 'Add New Consumer Payer', 'create', [
         'payerName' => 'Consumer Payer Name',

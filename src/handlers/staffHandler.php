@@ -63,10 +63,13 @@
 
             public function deleteStaff(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $this->staffRepo->delete($_POST['staffId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->staffRepo->delete($_POST['staffId'])){
+                        header("Location: /neeco2/staff?success=Staff deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/staff?error=Failed to delete Staff.");
+                        exit();
+                    };
             }
         }
     }

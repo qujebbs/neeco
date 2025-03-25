@@ -67,11 +67,13 @@
 
             public function deleteBod(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-                    $this->bodRepo->delete($_POST['bodId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->bodRepo->delete($_POST['bodId'])){
+                        header("Location: /neeco2/bod?success=BOD deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/bod?error=Failed to delete BOD.");
+                        exit();
+                    };
             }
         }
     }

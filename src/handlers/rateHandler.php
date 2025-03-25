@@ -68,10 +68,13 @@
             public function deleteRate(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                    $this->rateRepo->delete($_POST['rateId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->rateRepo->delete($_POST['rateId'])){
+                        header("Location: /neeco2/rate?success=Rate deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/rate?error=Failed to delete Rate.");
+                        exit();
+                    };
             }
         }
     }

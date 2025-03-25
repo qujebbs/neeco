@@ -36,10 +36,13 @@
 
                     $award = new Award($_POST);
 
-                    $this->awardRepo->insert($award);
-
-                    header("Location: /neeco2/award");
-                    exit;
+                    if($this->awardRepo->insert($award)){
+                        header("Location: /neeco2/award?success=Service created successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/award?error=Failed to upload Service.");
+                        exit();
+                    };
                 }
             }
 
@@ -56,13 +59,16 @@
             }
             
             //returned deleted rows unused
-            public function deleteAward($con) {
+            public function deleteAward() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['awardId'])) {
 
-                    $deletedRows = $this->awardRepo->delete($$_POST['awardId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->awardRepo->delete($_POST['awardId'])){
+                        header("Location: /neeco2/award?success=Award deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/award?error=Failed to delete Award.");
+                        exit();
+                    };
                 }
             }
         }

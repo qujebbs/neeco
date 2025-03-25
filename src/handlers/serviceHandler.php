@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/ServiceRepo.php";
     require_once __DIR__ . "/../models/ServiceModel.php";
+    require_once __DIR__ . "/../utils/fileHandler.php";
     class ServiceHandler {
         private $serviceRepo;
     
@@ -39,10 +40,10 @@
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                         $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
                         if ($this->serviceRepo->insert($service)){
-                            header("Location: /neeco2/service?success=District Office created successfully");
+                            header("Location: /neeco2/service?success=Service created successfully");
                             exit;
                         }else{
-                            header("Location: /neeco2/service?error=Failed to upload District Office.");
+                            header("Location: /neeco2/service?error=Failed to upload Service.");
                             exit();
                         };
                     }catch (FileUploadException $e) {
@@ -62,12 +63,16 @@
                 }
             }
 
-            public function deleteRate(){
+            public function deleteService(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $this->serviceRepo->delete($_POST['servceId']);
 
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->serviceRepo->delete($_POST['serviceId'])){
+                        header("Location: /neeco2/service?success=Service deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/service?error=Failed to delete Service.");
+                        exit();
+                    };
             }
         }
     }

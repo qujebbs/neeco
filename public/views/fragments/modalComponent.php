@@ -11,7 +11,7 @@ function renderModal($id, $title, $action, $fields, $entity, $data = [], $handle
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= htmlspecialchars($handler) ?>" method="POST" enctype="multipart/form-data">
+                    <form action="<?= htmlspecialchars($handler, ENT_QUOTES, 'UTF-8') ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="<?= $action ?>">
                         <?php foreach ($fields as $field => $label): ?>
                             <div class="form-group">
@@ -27,7 +27,7 @@ function renderModal($id, $title, $action, $fields, $entity, $data = [], $handle
                                 <input type="<?= $inputType ?>" 
                                        name="<?= $field ?>" 
                                        class="form-control"
-                                       <?= $inputType === 'file' ? '' : 'value="' . (isset($data[$field]) ? htmlspecialchars($data[$field]) : '') . '"' ?>
+                                       <?= $inputType === 'file' ? '' : 'value="' . (isset($data[$field]) ? htmlspecialchars($data[$field], ENT_QUOTES, 'UTF-8') : '') . '"' ?>
                                        <?= $inputType !== 'file' ? 'required' : '' ?>>
                             </div>
                         <?php endforeach; ?>

@@ -17,7 +17,7 @@
         'DCSO' => 'DCSO',
         'teller' => 'Teller',
         'stationLineman' => 'Station Lineman'
-    ], 'districtOffices', 'districtId');
+    ], 'districtOffices', 'districtId', "/neeco2/district-office");
 
     renderModal('addDistrictOfficesModal', 'Add New District Offices', 'create', [
         'districtName' => 'District Name',

@@ -65,12 +65,15 @@
                 }
             }
 
-            public function deleteBac($con){
+            public function deleteBac(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $this->bacRepo->delete($_POST['awardId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->bacRepo->delete($_POST['bacId'])){
+                        header("Location: /neeco2/bac?success=BAC deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/bac?error=Failed to delete BAC.");
+                        exit();
+                    };
             }
         }
     }

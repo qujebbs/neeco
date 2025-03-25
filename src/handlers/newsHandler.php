@@ -62,13 +62,16 @@
             }
         }
 
-        public function deleteBod($con){
+        public function deleteNews(){
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                $this->newsRepo->delete($_POST['newsId']);
-
-                header("Location: views/unimplemented.php");
-                exit;
+                if($this->newsRepo->delete($_POST['newsId'])){
+                    header("Location: /neeco2/news?success=News deleted successfully");
+                    exit;
+                }else{
+                    header("Location: /neeco2/news?error=Failed to delete News.");
+                    exit();
+                };
             }
         }
 }

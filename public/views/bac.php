@@ -13,7 +13,7 @@
         'bacTitle' => 'BAC Title',
         'bacName' => 'BAC PDF',
         'bacDesc' => 'description'
-    ], 'bac', 'bacId');
+    ], 'bac', 'bacId', "/neeco2/bac");
 
     renderModal('addbacModal', 'Add New BAC', 'create', [
         'bacTitle' => 'BAC Title',

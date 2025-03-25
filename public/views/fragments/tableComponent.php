@@ -1,12 +1,12 @@
 <?php
-function renderTable($items, $fields, $entity, $idField) {
+function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandler") {
 ?>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <?php foreach ($fields as $field): ?>
-                        <th><?= htmlspecialchars($field) ?></th>
+                        <th><?= htmlspecialchars($field, ENT_QUOTES, 'UTF-8') ?></th>
                     <?php endforeach; ?>
                     <th>Actions</th>
                 </tr>
@@ -28,11 +28,11 @@ function renderTable($items, $fields, $entity, $idField) {
                                             echo '<img src="' . htmlspecialchars($filePath, ENT_QUOTES, 'UTF-8') . '" alt="Image" style="max-width: 100px; max-height: 100px;">';
                                         } else {
                                             // Display file link
-                                            echo '<a href="' . htmlspecialchars($value) . '" target="_blank">Download File</a>';
+                                            echo '<a href="' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '" target="_blank">Download File</a>';
                                         }
                                     } else {
                                         // Display text for non-file/non-URL fields
-                                        echo htmlspecialchars($value);
+                                        echo htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
                                     }
                                 } else {
                                     // Display empty cell if value is empty
@@ -46,7 +46,7 @@ function renderTable($items, $fields, $entity, $idField) {
                                     data-target="#edit<?= $entity ?>Modal<?= $item[$idField] ?>">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <form action="../handler.php" method="POST" style="display:inline;">
+                            <form action="<?php htmlspecialchars($handler, ENT_QUOTES, 'UTF-8') ?>" method="POST" style="display:inline;">
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="<?= $idField ?>" value="<?= $item[$idField] ?>">
                                 <button type="submit" class="btn btn-danger btn-sm" 

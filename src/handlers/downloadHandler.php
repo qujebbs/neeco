@@ -64,13 +64,16 @@
                 }
             }
 
-            public function deleteBDownloads(){
+            public function deleteDownloads(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                    $this->downloadsRepo->delete($_POST['downloadsId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->downloadsRepo->delete($_POST['downloadId'])){
+                        header("Location: /neeco2/download?success=Download deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/download?error=Failed to delete Download.");
+                        exit();
+                    };
             }
         }
     }

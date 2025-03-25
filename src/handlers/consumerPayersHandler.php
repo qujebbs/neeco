@@ -56,10 +56,13 @@
             public function deleteConsumerPayers(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                    $this->consumerPayersRepo->delete($_POST['consumerPayersId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->consumerPayersRepo->delete($_POST['payerId'])){
+                        header("Location: /neeco2/consumer-payer?success=Consumer Payer deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/consumer-payer?error=Failed to delete Consumer Payer.");
+                        exit();
+                    };
             }
         }
     }

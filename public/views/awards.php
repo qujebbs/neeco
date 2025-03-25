@@ -14,7 +14,7 @@
         'awardType' => 'Award Type',
         'awardFrom' => 'Award From',
         'awardDate' => 'Award Date'
-    ], 'award', 'awardId');
+    ], 'award', 'awardId', "/neeco2/award");
 
     renderModal('addawardModal', 'Add New Award', 'create', [
         'awardName' => 'Award Name',

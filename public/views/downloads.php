@@ -12,7 +12,7 @@
     renderTable($downloads, [
         'pdfTitle' => 'File Title',
         'pdfName' => 'Quick Download'
-    ], 'download', 'downloadId');
+    ], 'download', 'downloadId', "/neeco2/download");
 
     renderModal('adddownloadModal', 'Add New Download', 'create', [
         'title' => 'File Title',  //POST['Title'] for downloads pdfTitle in db

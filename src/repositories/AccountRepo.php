@@ -1,7 +1,7 @@
 <?php
         require_once __DIR__ . '/BaseRepo.php';
         require_once __DIR__ . '/../models/AccountModel.php';
-
+        
         class AccountRepo extends BaseRepo{
             public function __construct() {
                 parent::__construct('accounts', 'accountId');

@@ -66,10 +66,13 @@
             public function deleteDistrictOffices(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                    $this->districtOfficesRepo->delete($_POST['districtId']);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->districtOfficesRepo->delete($_POST['districtId'])){
+                        header("Location: /neeco2/district-office?success=District Office deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/district-office?error=Failed to delete District Offie.");
+                        exit();
+                    };
             }
         }
     }

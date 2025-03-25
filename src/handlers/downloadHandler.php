@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/DownloadsRepo.php";
     require_once __DIR__ . "/../models/DownloadsModel.php";
+    require_once __DIR__ . "/../utils/fileHandler.php";
     class DownloadsHandler {
         private $downloadsRepo;
     
@@ -32,13 +33,23 @@
             }
 
             public function createDownloads(){
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdfName'])) {
                     $download = new Downloads($_POST);
-                    
-                    $this->downloadsRepo->insert($download);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['application/pdf'];
+                        $download->pdfName = $fileHandler->uploadFile($_FILES['pdfName'], $allowedTypes);
+                        if ($this->downloadsRepo->insert($download)){
+                            header("Location: /neeco2/download?success=Download created successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/download?error=Failed to upload Download picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/download?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

@@ -14,7 +14,7 @@
             $this->districtName = $data['districtName'] ?? null;
             $this->hotline = $data['hotline'] ?? null;
             $this->contactNum = $data['contactNum'] ?? null;
-            $this->dcso = $data['dcso'] ?? null;
+            $this->dcso = $data['DCSO'] ?? null;
             $this->teller = $data['teller'] ?? null;
             $this->stationLineman = $data['stationLineman'] ?? null;
             $this->districtPic = $data['districtPic'] ?? null;

@@ -11,18 +11,21 @@
     <?php
     renderTable($bacs, [
         'bacTitle' => 'BAC Title',
-        'bacName' => 'BAC PDF'
+        'bacName' => 'BAC PDF',
+        'bacDesc' => 'description'
     ], 'bac', 'bacId');
 
     renderModal('addbacModal', 'Add New BAC', 'create', [
         'bacTitle' => 'BAC Title',
-        'bacPdf' => 'BAC PDF'  //POST['bacPdf'] for bac bacName in db
+        'bacPdf' => 'BAC PDF',  //POST['bacPdf'] for bac bacName in db
+        'bacDesc' => 'Description'
     ], 'bac', [], "/neeco2/bac");
 
     foreach ($bacs as $bac) {
         renderModal("editbacModal{$bac['bacId']}", 'Update BAC', 'update', [
             'bacTitle' => 'BAC Title',
-            'bacPdf' => 'BAC PDF'  //POST['bacPdf'] for bac bacName in db
+            'bacPdf' => 'BAC PDF',  //POST['bacPdf'] for bac bacName in db
+            'bacDesc' => 'Description'
         ], 'bac', $bac);
     }
     ?>

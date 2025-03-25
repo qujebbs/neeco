@@ -43,7 +43,7 @@
                 }
             }
 
-            public function updateAward($con) {
+            public function updateAward() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $award = new Award($_POST);

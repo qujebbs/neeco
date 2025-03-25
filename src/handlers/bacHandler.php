@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/BacRepo.php";
     require_once __DIR__ . "/../models/BacModel.php";
+    require_once __DIR__ . "/../utils/fileHandler.php";
 
     class BacHandler {
             private $bacRepo;
@@ -32,14 +33,23 @@
             }
 
             public function createBac(){
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['bacPdf'])) {
                     $bac = new Bac($_POST);
-            
-                    $this->bacRepo->insert($bac);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['application/pdf'];
+                        $bac->bacPdf = $fileHandler->uploadFile($_FILES['bacPdf'], $allowedTypes);
+                        if ($this->bacRepo->insert($bac)){
+                            header("Location: /neeco2/bac?success=Download created successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/bac?error=Failed to upload Download picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/bac?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

@@ -1,2 +1,3 @@
 /storage/keys/*
 .env
+/public/uploads

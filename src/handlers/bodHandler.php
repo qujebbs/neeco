@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__ . "/../repositories/BodRepo.php";
     require_once __DIR__ . "/../models/BodModel.php";
+    require_once __DIR__ . "/../../utils/debugUtil.php";
+    require_once __DIR__ . "/../utils/fileHandler.php";
     class BodHandler {
         private $bodRepo;
     
@@ -31,14 +33,24 @@
                 include __DIR__ . "/../../public/views/bod.php";
             }
 
-            public function createBod($con){
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            public function createBod(){
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['bodPicture'])) {
                     $bod = new Bod($_POST);
-
-                    $this->bodRepo->insert($bod);
-
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                        $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
+                        if ($this->bodRepo->insert($bod)){
+                            header("Location: /neeco2/bod?success=Staff created successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/bod?error=Failed to upload staff picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/bod?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

@@ -32,14 +32,24 @@
         }
 
             public function createService(){
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['servicePic'])) {
                     $service = new Service($_POST);
-
-                    $this->serviceRepo->insert($service);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
-                }
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+                        $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
+                        if ($this->serviceRepo->insert($service)){
+                            header("Location: /neeco2/service?success=District Office created successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/service?error=Failed to upload District Office.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/service?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
+                } 
             }
 
             public function updateService() {

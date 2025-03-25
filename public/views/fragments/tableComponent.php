@@ -15,7 +15,31 @@ function renderTable($items, $fields, $entity, $idField) {
                 <?php foreach ($items as $item): ?>
                     <tr>
                         <?php foreach ($fields as $key => $label): ?>
-                            <td><?= htmlspecialchars($item[$key]) ?></td>
+                            <td>
+                                <?php
+                                $value = $item[$key];
+                                if (!empty($value)) {
+                                    $filePath = 'public/uploads/' . basename($value);
+                                    // Check if the value is a URL or file path
+                                    if (filter_var($value, FILTER_VALIDATE_URL) || preg_match('/\.(jpg|jpeg|png|gif|pdf)$/i', $value)) {
+                                        // Check if it's an image
+                                        if (preg_match('/\.(jpg|jpeg|png|gif)$/i', $value)) {
+                                            // Display image
+                                            echo '<img src="' . htmlspecialchars($filePath, ENT_QUOTES, 'UTF-8') . '" alt="Image" style="max-width: 100px; max-height: 100px;">';
+                                        } else {
+                                            // Display file link
+                                            echo '<a href="' . htmlspecialchars($value) . '" target="_blank">Download File</a>';
+                                        }
+                                    } else {
+                                        // Display text for non-file/non-URL fields
+                                        echo htmlspecialchars($value);
+                                    }
+                                } else {
+                                    // Display empty cell if value is empty
+                                    echo '-';
+                                }
+                                ?>
+                            </td>
                         <?php endforeach; ?>
                         <td>
                             <button class="btn btn-info btn-sm" data-toggle="modal" 

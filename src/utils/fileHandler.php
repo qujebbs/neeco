@@ -14,29 +14,34 @@ class FileHandler
         }
     }
 
-    public function uploadFile(array $file, array $allowedTypes, int $maxSize = 5242880){
+    public function uploadFile(array $file, array $allowedTypes, int $maxSize = 5242880) {
         if ($file['error'] !== UPLOAD_ERR_OK) {
             throw new FileUploadException("File upload error: " . $this->getUploadError($file['error']));
         }
-
+    
         if ($file['size'] > $maxSize) {
             throw new FileUploadException("File size exceeds the maximum limit of " . round($maxSize / 1048576, 2) . " MB.");
         }
-
-        if (!in_array(mime_content_type($file['tmp_name']), $allowedTypes)) {
+    
+        // Use finfo for MIME type detection
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $finfo->file($file['tmp_name']);
+    
+        if (!in_array($mimeType, $allowedTypes)) {
             throw new FileUploadException("Invalid file type. Allowed types are: " . implode(', ', $allowedTypes));
         }
-
+    
         $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
         $uniqueFileName = uniqid('file_') . '.' . $fileExtension;
         $destination = $this->uploadDir . $uniqueFileName;
-
+    
         if (!move_uploaded_file($file['tmp_name'], $destination)) {
             throw new FileUploadException("Failed to move uploaded file.");
         }
-
-        return $destination;
+    
+        return basename($destination);
     }
+    
 
     private function getUploadError(int $errorCode): string
     {

@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/NewsRepo.php";
     require_once __DIR__ . "/../models/NewsModel.php";
+    require_once __DIR__ . "/../utils/fileHandler.php";
     class NewsHandler {
         private $newsRepo;
     
@@ -30,14 +31,23 @@
             include __DIR__ . "/../../public/views/news.php";
         }
         public function createNews(){
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['newsPic'])) {
                 $news = new News($_POST);
-
-                $this->newsRepo->insert($news);
-
-                header("Location: views/unimplemented.php");
-                exit;
+                try{ 
+                    $fileHandler = new FileHandler('uploads/');
+                    $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+                    $news->newsPic = $fileHandler->uploadFile($_FILES['newsPic'], $allowedTypes);
+                    if ($this->newsRepo->insert($news)){
+                        header("Location: /neeco2/news?success=News created successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/news?error=Failed to upload News picture.");
+                        exit();
+                    };
+                }catch (FileUploadException $e) {
+                    header("Location: /neeco2/news?error=" . urlencode($e->getMessage()));
+                    exit;
+                }
             }
         }
 

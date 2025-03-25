@@ -37,22 +37,25 @@
         die();
     }
 
+    //SECURITY
+    //CSRF TOKEN ////////////
+    //CSP
+    //authorization
+    //CHANGE THE SELECT * to not expose unused data
+    //upgrade router
+    //CSRF
+    //htaccess protection and file uploads security
+    // secure parameters and do constant values
+
+
+    //displaying pdfs
     //no adding consumers yet
     //no error handlings or error handling not user friendly
     //required fields
-    //file uploads
-    //authorization
+    //fix file upload paths
     //user management
     //approve and archive multiple users
-    //CHANGE THE SELECT * to not expose unused data
-    //upgrade router
-    //CSRF 
-    //MISION VISION
-    //COMPANY PROFILE
-    //BOARD OF DIRECTORS
     //error on consumerHandler
-    //htaccess protection and file uploads security
-    // secure parameters and do constant values
     // VIEW-RATE.PHP
 
     //REGISTER THROUGH ACCOUNTS ONLY NOT CONSUMERS

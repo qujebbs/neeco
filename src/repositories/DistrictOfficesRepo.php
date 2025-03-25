@@ -8,7 +8,7 @@
 
         public function insert(DistrictOffices $districtOffices) {
             $sql = "INSERT INTO {$this->table} (districtName, hotline, contactNum, DCSO, teller, stationLineman, districtPic) 
-                    VALUES (:districtName, :hotline, :contactNum, :DCSO, :teller, :stationLineman, :districtPic";
+                    VALUES (:districtName, :hotline, :contactNum, :DCSO, :teller, :stationLineman, :districtPic)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":districtName", $districtOffices->districtName);
             $stmt->bindParam(":hotline", $districtOffices->hotline);
@@ -17,7 +17,9 @@
             $stmt->bindParam(":teller", $districtOffices->teller);
             $stmt->bindParam(":stationLineman", $districtOffices->stationLineman);
             $stmt->bindParam(":districtPic", $districtOffices->districtPic);
+            
 
+            // return $stmt->debugDumpParams();
             return $stmt->execute();
         }
 

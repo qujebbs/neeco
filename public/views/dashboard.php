@@ -71,7 +71,7 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total User</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <h4 class="mb-0"><?php echo $totalUser ?></h4>
+                                                <h4 class="mb-0"><?php echo $totalUser["total"] ?></h4>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -113,7 +113,7 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        <h4 class="mb-0"><?php echo $complaintsCount ?></h4>
+                                                        <h4 class="mb-0"><?php echo $complaintsCount["total"] ?></h4>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -220,7 +220,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Attended Complaint</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <h4 class="mb-0"><?php echo $attendedComplaints ?></h4>
+                                                <h4 class="mb-0"><?php echo $solvedComplaints ?></h4>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -301,6 +301,7 @@
                 </div>
                 <!-- /.container-fluid -->
             </div>
+            <?php include __DIR__ . "/../views/fragments/tableFooter.php"; ?>
             <!-- End of Main Content -->
         </div>
     </div>
@@ -388,6 +389,5 @@
             },
         });
     </script>
-<?php include __DIR__ . "/../views/fragments/tableFooter.php"; ?>
 </body>
 </html>

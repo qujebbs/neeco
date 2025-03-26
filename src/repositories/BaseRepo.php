@@ -51,6 +51,18 @@
             }
         }
 
+        public function countAll(){
+            try{
+                $stmt = $this->con->prepare("SELECT COUNT(*) AS total FROM {$this->table}");
+
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            }catch(PDOException $e){
+                error_log("Database error in countAll(): " . $e->getMessage());
+                return null;
+            }
+        }
+
         public function delete($id) {
             try{
                 $stmt = $this->con->prepare("DELETE FROM {$this->table} WHERE {$this->primaryKey} = :id");

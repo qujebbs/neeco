@@ -1,31 +1,44 @@
 <?php
-    class ComplaintFilter {
-        public ?int $complaintId = null;
-        public ?int $accountId = null;
-        public ?int $employeeId = null;
-        public ?int $natureId = null;
-        public ?int $statusId = null;
+class ComplaintFilter {
+    public ?int $complaintId = null;
+    public ?int $accountId = null;
+    public ?int $employeeId = null;
+    public ?int $natureId = null;
+    public ?int $statusId = null;
+    public ?string $groupBy = null;
 
-        public function __construct(array $params = []) {
-            if (isset($params['complaintId'])) $this->complaintId = $params['complaintId'];
-            if (isset($params['consumerId'])) $this->consumerId = $params['consumerId'];
-            if (isset($params['employeeId'])) $this->employeeId = $params['employeeId'];
-            if (isset($params['natureId'])) $this->natureId = $params['natureId'];
-            if (isset($params['statusId'])) $this->statusId = $params['statusId'];
-        }
-
-        public function toSqlConditions(): string {
-            $conditions = [];
-
-            if ($this->complaintId !== null) $conditions[] = "c.complaintId = :complaintId";
-            if ($this->accountId !== null) $conditions[] = "c.accountId = :accountId";
-            if ($this->employeeId !== null) $conditions[] = "c.employeeId = :employeeId";
-            if ($this->natureId !== null) $conditions[] = "c.natureId = :natureId";
-            if ($this->statusId !== null) $conditions[] = "c.statusId = :statusId";
-            
-            
-            return empty($conditions) ? " ORDER BY complaintDate DESC" : 
-                                        " WHERE " . implode(" AND ", $conditions) . " ORDER BY complaintDate DESC";
-
-        }
+    public function __construct(array $params = []) {
+        if (isset($params['complaintId'])) $this->complaintId = $params['complaintId'];
+        if (isset($params['consumerId'])) $this->consumerId = $params['consumerId'];
+        if (isset($params['employeeId'])) $this->employeeId = $params['employeeId'];
+        if (isset($params['natureId'])) $this->natureId = $params['natureId'];
+        if (isset($params['statusId'])) $this->statusId = $params['statusId'];
+        if (isset($params['groupBy'])) $this->groupBy = $params['groupBy'];
     }
+
+    public function toSqlConditions(): string {
+        $conditions = [];
+
+        if ($this->complaintId !== null) $conditions[] = "c.complaintId = :complaintId";
+        if ($this->accountId !== null) $conditions[] = "c.accountId = :accountId";
+        if ($this->employeeId !== null) $conditions[] = "c.employeeId = :employeeId";
+        if ($this->natureId !== null) $conditions[] = "c.natureId = :natureId";
+        if ($this->statusId !== null) $conditions[] = "c.statusId = :statusId";
+
+        $sql = '';
+
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(" AND ", $conditions);
+        }
+
+        if ($this->groupBy !== null) {
+            $sql .= " GROUP BY " . $this->groupBy;
+        }
+
+        // if (!empty($conditions) || $this->groupBy !== null) {
+        //     $sql .= " ORDER BY complaintDate DESC";
+        // }
+
+        return $sql;
+    }
+}

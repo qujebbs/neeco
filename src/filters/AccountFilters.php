@@ -6,6 +6,7 @@
         public ?string $username = null;
         public ?int $positionId = null;
         public ?int $accountStatusId = null;
+        public?string $groupBy = null;
 
         public function __construct(array $params = []) {
             if (isset($params['accountId'])) $this->accountId = $params['accountId'];
@@ -14,6 +15,7 @@
             if (isset($params['username'])) $this->username = $params['username'];
             if (isset($params['positionId'])) $this->positionId = $params['positionId'];
             if (isset($params['accountStatusId'])) $this->accountStatusId = $params['accountStatusId'];
+            if (isset($params['groupBy'])) $this->groupBy = $params['groupBy'];
         }
 
         public function toSqlConditions(): string {
@@ -26,8 +28,13 @@
             if ($this->positionId !== null) $conditions[] = "a.positionId = :positionId";
             if ($this->accountStatusId !== null) $conditions[] = "a.accountStatusId = :accountStatusId";
             
-            return empty($conditions) ? "" : 
+            $sql =  empty($conditions) ? "" : 
                                         " WHERE " . implode(" AND ", $conditions);
 
+            if ($this->groupBy !== null) {
+                $sql .= " GROUP BY " . $this->groupBy;
+            }
+
+            return $sql;
         }
     }

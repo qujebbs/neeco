@@ -18,21 +18,22 @@
 //  $result = mysqli_query($con, $sql);
 //  $row = mysqli_fetch_assoc($result);
 $positionId = 2;
-//FIX LATER when login
-    include __DIR__ . "/../../../src/repositories/ComplaintRepo.php";
-    include __DIR__ . "/../../../src/repositories/AccountRepo.php";
+// //FIX LATER when login
+
+//     include __DIR__ . "/../../../src/repositories/ComplaintRepo.php";
+//     include __DIR__ . "/../../../src/repositories/AccountRepo.php";
 ?>
 
 <?php
 $con = getPDOConnection();
 
-$complaintRepo = new ComplaintRepo();
+// $complaintRepo = new ComplaintRepo();
 
-$filter = new ComplaintFilter([
-    'employeeId' => 1
-]);
+// $filter = new ComplaintFilter([
+//     'employeeId' => 1
+// ]);
 
-$complaints = $complaintRepo->selectAll();
+// $complaints = $complaintRepo->selectAll();
 
 
 $accountRepo = new AccountRepo();
@@ -88,7 +89,7 @@ $peracc = $accountRepo->selectAll();
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/neeco2/dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-bolt"></i>
                 </div>
@@ -108,7 +109,7 @@ $peracc = $accountRepo->selectAll();
             <?php if($positionId == 2){ ?>
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="dashboard.php">
+                <a class="nav-link" href="/neeco2/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>

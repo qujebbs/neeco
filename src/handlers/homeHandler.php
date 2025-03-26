@@ -29,7 +29,7 @@ class HomeHandler {
 
     public function loadAbout() {
         $params = [
-            "mission" => __DIR__ . "/../../public/views/login.php",
+            "mission" => __DIR__ . "/../../public/views/mission.php",
             "company-profile" => __DIR__ . "/../../public/views/company-profile.php",
             "bod" => __DIR__ . "/../../public/views/board-of-directors.php",
             "staffs" => __DIR__ . "/../../public/views/view-staffs.php",

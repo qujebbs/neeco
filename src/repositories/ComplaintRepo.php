@@ -53,10 +53,24 @@
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":employeeId", $complaint->employeeId);
             $stmt->bindParam(":statusId", $complaint->statusId);
-            $stmt->bindParam("natureId", $complaint->natureId);
-            $stmt->bindParam("complaintId", $$id);
+            $stmt->bindParam(":natureId", $complaint->natureId);
+            $stmt->bindParam(":complaintId", $id);
 
             return $stmt->execute();
+        }
+
+        public function countByFilter(ComplaintFilter $filter){
+            $sql = "SELECT c.statusId as cs, COUNT(*) AS count FROM complaints c";
+
+            $conditions = $filter->toSqlConditions();
+
+            if (!empty($conditions)){
+                $sql .= $conditions;
+            }
+
+            $stmt = $this->con->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchall(PDO::FETCH_ASSOC);
         }
         public function updateByFilter($filter){
             die();

@@ -22,6 +22,7 @@
         '/neeco2/login' => '../src/handlers/authHandlers/loginHandler.php',
         '/neeco2/home' => '../src/handlers/homeHandler.php',
         '/neeco2/register' => '../src/handlers/authHandlers/registerHandler.php',
+        '/neeco2/dashboard' => '../src/handlers/dashboardHandler.php',
 
         '/neeco2/test' => '../public/views/register.php'
 

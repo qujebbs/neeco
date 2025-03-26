@@ -56,10 +56,21 @@
             public function updateService() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $service = new Service($_POST);
-
-                    $this->serviceRepo->update($service, $_POST['rateId']);
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+                        $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
+                        if ($this->serviceRepo->update($service, $_POST['serviceId'])){
+                            header("Location: /neeco2/service?success=Service updated successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/service?error=Failed to update Service.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/service?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

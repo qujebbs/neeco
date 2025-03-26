@@ -58,10 +58,21 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rate = new Rate($_POST);
 
-                    $this->rateRepo->update($rate, $_POST['rateId']);
-            
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['application/pdf'];
+                        $rate->pdf = $fileHandler->uploadFile($_FILES['pdf'], $allowedTypes);
+                        if ($this->rateRepo->update($rate, $_POST['rateId'])){
+                            header("Location: /neeco2/rate?success=Rate updated successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/rate?error=Failed to update Rate.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/rate?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

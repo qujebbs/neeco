@@ -23,7 +23,7 @@
         renderModal("editstaffModal{$staff['staffId']}", 'Update Staff', 'update', [
             'staffPic' => 'Staff Picture',
             'staffDepartment' => 'Staff Department',
-        ], 'staff', $staff);
+        ], 'staff', $staff, "/neeco2/staff", "staffId");
     }
     ?>
 </div>

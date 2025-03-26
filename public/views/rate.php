@@ -15,12 +15,12 @@
 
     renderModal('addrateModal', 'Add New Rate', 'create', [
         'pdf' => 'PDF'
-    ], 'rate', [], "/neeco2/rate");
+    ], 'rate', [], "/neeco2/rate",);
 
     foreach ($rates as $rate) {
         renderModal("editrateModal{$rate['rateId']}", 'Update Rate', 'update', [
             'pdf' => 'PDF'
-        ], 'rate', $rate);
+        ], 'rate', $rate, "/neeco2/rate", "rateId");
     }
     ?>
 </div>

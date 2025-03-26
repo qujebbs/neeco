@@ -26,7 +26,7 @@
             'newsPic' => 'News Picture',
             'newsTitle' => 'News Title',
             'newsDesc' => 'News Description'
-        ], 'news', $news);
+        ], 'news', $news, "/neeco2/news", "newsId");
     }
     ?>
 </div>

@@ -26,7 +26,7 @@
             'servicePic' => 'Service Picture',
             'serviceTitle' => 'Service Title',
             'serviceDesc' => 'Service Description',
-        ], 'service', $service);
+        ], 'service', $service, "/neeco2/service", "serviceId");
     }
     ?>
 </div>

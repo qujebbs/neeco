@@ -20,7 +20,7 @@
         }
 
         public function update(Staff $staff, $id){
-            $sql = "UPDATE {$this->table} SET staffDepartment = :staffDepartment, staffPic = :staffPic WHERE serviceId = :id";
+            $sql = "UPDATE {$this->table} SET staffDepartment = :staffDepartment, staffPic = :staffPic WHERE staffId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":id", $id);
             $stmt->bindParam(":staffDepartment", $staff->staffDepartment);

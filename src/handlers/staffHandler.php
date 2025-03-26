@@ -6,7 +6,7 @@
     class StaffHandler {
         private $staffRepo;
     
-        public function __construct($con) {
+        public function __construct() {
             $this->staffRepo = new StaffRepo();
         }
             public function handleRequest() {
@@ -53,11 +53,22 @@
             public function updateStaff() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $staff = new Staff($_POST);
-
-                    $this->staffRepo->update($staff, intval($_POST['staffId']));
             
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    try{ 
+                        $fileHandler = new FileHandler('uploads/');
+                        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                        $staff->staffPic = $fileHandler->uploadFile($_FILES['staffPic'], $allowedTypes);
+                        if ($this->staffRepo->update($staff, intval($_POST['staffId']))){
+                            header("Location: /neeco2/staff?success=Staff updated successfully");
+                            exit;
+                        }else{
+                            header("Location: /neeco2/staff?error=Failed to update staff picture.");
+                            exit();
+                        };
+                    }catch (FileUploadException $e) {
+                        header("Location: /neeco2/staff?error=" . urlencode($e->getMessage()));
+                        exit;
+                    }
                 }
             }
 

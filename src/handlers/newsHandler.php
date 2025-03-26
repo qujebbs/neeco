@@ -51,14 +51,25 @@
             }
         }
 
-        public function updateNews($con) {
+        public function updateNews() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $news = new News($_POST);
 
-                $this->newsRepo->update($news, $_POST['newsId']);
-        
-                header("Location: views/unimplemented.php");
-                exit;
+                try{ 
+                    $fileHandler = new FileHandler('uploads/');
+                    $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+                    $news->newsPic = $fileHandler->uploadFile($_FILES['newsPic'], $allowedTypes);
+                    if ($this->newsRepo->update($news, $_POST['newsId'])){
+                        header("Location: /neeco2/news?success=News created successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/news?error=Failed to upload News picture.");
+                        exit();
+                    };
+                }catch (FileUploadException $e) {
+                    header("Location: /neeco2/news?error=" . urlencode($e->getMessage()));
+                    exit;
+                }
             }
         }
 

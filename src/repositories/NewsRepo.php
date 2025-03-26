@@ -31,7 +31,7 @@
         }
 
         public function update(News $news, $id){
-            $sql = "UPDATE {$this->table} SET newsPic = :newsPic, newsTitle = :newsTitle, newsDesc = :newsDesc, employeeId = :employeeId, uploadDate = :uploadDate WHERE newsId = :newsId";
+            $sql = "UPDATE {$this->table} SET newsPic = :newsPic, newsTitle = :newsTitle, newsDesc = :newsDesc, employeeId = :employeeId, uploadDate = :uploadDate WHERE newsId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":id", $id);
             $stmt->bindParam(":newsPic", $news->newsPic);

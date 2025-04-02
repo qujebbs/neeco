@@ -1,4 +1,5 @@
 <?php
+
 function getPDOConnection()
 {
     $server = "JERALD\SQLEXPRESS";

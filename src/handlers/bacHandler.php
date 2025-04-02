@@ -2,6 +2,7 @@
     require_once __DIR__ . "/../repositories/BacRepo.php";
     require_once __DIR__ . "/../models/BacModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
 
     class BacHandler {
             private $bacRepo;
@@ -11,6 +12,7 @@
             }
 
             public function handleRequest() {
+                $currentUser = Auth::requirePosition(['admin']);
                 $action = $_REQUEST['action'] ?? 'getAll';
             
                 $actions = [

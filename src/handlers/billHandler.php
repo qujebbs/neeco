@@ -2,6 +2,7 @@
     require_once __DIR__ . "/../repositories/BillRepo.php";
     require_once __DIR__ . "/../models/BillModel.php";
     require_once __DIR__ . "/../../src/config/db.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class BillHandler {
         private $billRepo;
     

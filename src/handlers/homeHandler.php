@@ -7,6 +7,7 @@
     require_once __DIR__ . "/../repositories/AwardRepo.php";
     require_once __DIR__ . "/../repositories/ConsumerPayersRepo.php";
     require_once __DIR__ . "/../repositories/BacRepo.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
 
 
 

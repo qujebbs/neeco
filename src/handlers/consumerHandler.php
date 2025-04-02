@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/ConsumerRepo.php";
     require_once __DIR__ . "/../models/ConsumerModel.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class ConsumerHandler {
         private $consumerRepo;
     

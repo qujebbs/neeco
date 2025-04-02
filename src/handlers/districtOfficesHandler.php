@@ -3,6 +3,7 @@
     require_once __DIR__ . "/../models/DistrictOfficesModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../../utils/debugUtil.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class DistrictOfficesHandler {
         private $districtOfficesRepo;
     
@@ -10,6 +11,7 @@
             $this->districtOfficesRepo = new DistrictOfficesRepo();
         }
         public function handleRequest() {
+            $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
             $actions = [

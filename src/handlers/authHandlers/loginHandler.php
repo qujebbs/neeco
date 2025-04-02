@@ -46,7 +46,7 @@
                     'path' => '/'
                 ]);
                 
-                header("Location: /neeco2/playground");
+                header("Location: /neeco2/dashboard");
                 exit();
             } else { 
                 http_response_code(401);

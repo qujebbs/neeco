@@ -10,9 +10,9 @@ use ParagonIE\Paseto\Protocol\Version4;
 use ParagonIE\Paseto\Builder;
 
 class Auth {
-    public static function generateToken($userId, $position = [], $accountStatus)
+    public static function generateToken($userId, $position, $accountStatus)
     {
-        $encodedKey = file_get_contents('storage/keys/local.key');
+        $encodedKey = file_get_contents(__DIR__ . '/../../storage/keys/local.key');
 
         $rawKey = base64_decode($encodedKey);
 
@@ -40,7 +40,7 @@ class Auth {
     public static function verifyToken($token)
     {
 
-        $encodedKey = file_get_contents('storage/keys/local.key');
+        $encodedKey = file_get_contents(__DIR__ . '/../../storage/keys/local.key');
 
         
         $rawKey = base64_decode($encodedKey);
@@ -65,5 +65,43 @@ class Auth {
             http_response_code(401);
             die(json_encode(['error' => 'Invalid or expired token']));
         }
+    }
+    public static function getCurrentUser() {
+        if (!isset($_COOKIE['auth_token'])) {
+            return null;
+        }
+        
+        try {
+            return self::verifyToken($_COOKIE['auth_token']);
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+    
+    public static function requireAuth() {
+        $user = self::getCurrentUser();
+        
+        if (!$user) {
+            header('Location: /neeco2/login');
+            exit();
+        }
+        
+        return $user;
+    }
+    
+    public static function requirePosition($requiredPosition) {
+        $user = self::requireAuth();
+        
+        if (!in_array($user['position'], $requiredPosition)) {
+            header('HTTP/1.0 403 Forbidden');
+            echo 'Insufficient permissions';
+            exit();
+        }
+        
+        return $user;
+    }
+    
+    public static function isAuthenticated() {
+        return self::getCurrentUser() !== null;
     }
 }

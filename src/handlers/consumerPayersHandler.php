@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/ConsumerPayersRepo.php";
     require_once __DIR__ . "/../models/ConsumerPayersModel.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class ConsumerPayersHandler {
         private $consumerPayersRepo;
     
@@ -9,6 +10,7 @@
         }
 
             public function handleRequest() {
+                $currentUser = Auth::requirePosition(['admin']);
                 $action = $_REQUEST['action'] ?? 'getAll';
             
                 $actions = [

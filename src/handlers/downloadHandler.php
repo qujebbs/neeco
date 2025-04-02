@@ -2,6 +2,7 @@
     require_once __DIR__ . "/../repositories/DownloadsRepo.php";
     require_once __DIR__ . "/../models/DownloadsModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class DownloadsHandler {
         private $downloadsRepo;
     
@@ -10,6 +11,7 @@
         }
 
             public function handleRequest() {
+                $currentUser = Auth::requirePosition(['admin']);
                 $action = $_REQUEST['action'] ?? 'getAll';
             
                 $actions = [

@@ -3,6 +3,7 @@
     require_once __DIR__ . "/../repositories/AccountRepo.php";
     require_once __DIR__ . "/../repositories/ComplaintRepo.php";
     require_once __DIR__ . "/../filters/AccountFilters.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     
     class DashboardHandler{
         private $accountRepo;
@@ -15,6 +16,7 @@
         }
 
         public function load(){
+            $currentUser = Auth::requireAuth();
             $accountFilter = new AccountFilter([
                 'groupBy' => 'a.accountStatusId'
             ]);

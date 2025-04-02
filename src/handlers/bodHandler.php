@@ -3,6 +3,7 @@
     require_once __DIR__ . "/../models/BodModel.php";
     require_once __DIR__ . "/../../utils/debugUtil.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class BodHandler {
         private $bodRepo;
     
@@ -11,6 +12,7 @@
         }
 
         public function handleRequest() {
+            $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
             $actions = [

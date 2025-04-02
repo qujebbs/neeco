@@ -1,40 +1,13 @@
 <?php
-// session_start();
-//  include 'src/init.php';
-//   $consumer_id =  $_SESSION['consumerid'] ;
-//   $positionId = $_SESSION['pos_id'] ;
-//   $employee_id = $_SESSION['employeeid'];
-//   $user_id = $_SESSION['userid'];
-
-
-//   if($consumer_id !=0){
-//     $peracc = $qrys->select_one('consumer_tbl',array('consumer_id','=',$consumer_id));
-//   } else{
-//     $peracc = $qrys->select_one('emp_tbl',array('employee_id','=',$employee_id)); 
-//   }
-
-  
-//  $sql = "SELECT * FROM user_tbl WHERE user_id = '$user_id'";
-//  $result = mysqli_query($con, $sql);
-//  $row = mysqli_fetch_assoc($result);
 $positionId = 2;
-// //FIX LATER when login
+//FIX LATER TO GET FROM ACCOUNTREPO WHEN LOGIN IS IMPLEMENTED
 
-//     include __DIR__ . "/../../../src/repositories/ComplaintRepo.php";
-//     include __DIR__ . "/../../../src/repositories/AccountRepo.php";
+    require_once __DIR__ . "/../../../src/repositories/ComplaintRepo.php";
+    require_once __DIR__ . "/../../../src/repositories/AccountRepo.php";
 ?>
 
 <?php
 $con = getPDOConnection();
-
-// $complaintRepo = new ComplaintRepo();
-
-// $filter = new ComplaintFilter([
-//     'employeeId' => 1
-// ]);
-
-// $complaints = $complaintRepo->selectAll();
-
 
 $accountRepo = new AccountRepo();
 $peracc = $accountRepo->selectAll();

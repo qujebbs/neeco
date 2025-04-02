@@ -49,6 +49,7 @@
     // secure parameters and do constant values
 
 
+    //authorization not user friendly
     //displaying pdfs
     //no adding consumers yet
     //no error handlings or error handling not user friendly

@@ -3,15 +3,17 @@
     require_once __DIR__ . "/../models/AwardModel.php";
     require_once __DIR__ ."/../../src/config/db.php";
     require_once __DIR__ . "/../../utils/debugUtil.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     
 
     class AwardHandler {
         private $awardRepo;
 
-        public function __construct($con) {
+        public function __construct() {
             $this->awardRepo = new AwardRepo();
         }
         public function handleRequest() {
+            $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
             $actions = [

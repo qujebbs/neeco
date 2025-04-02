@@ -64,7 +64,6 @@
                 }
             }
             
-            //returned deleted rows unused
             public function deleteAward() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['awardId'])) {
 
@@ -80,7 +79,5 @@
         }
 
 $con = getPDOConnection();
-$awardHandler = new AwardHandler($con);
+$awardHandler = new AwardHandler();
 $awardHandler->handleRequest();
-            
-//VIEWS NOT YET READY

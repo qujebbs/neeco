@@ -38,6 +38,8 @@
         die();
     }
 
+    //TODO: SETTING NULL TO CONSUMERID OR EMPLOYEEID IN ACCOUNTS
+
     //SECURITY
     //CSRF TOKEN ////////////
     //CSP

@@ -38,6 +38,7 @@
             
             //no password check yet
             if ($user && $username === $user["username"]) {
+                session_start();
                 $token = Auth::generateToken($user["accountId"], $user["positionName"], $user["statusName"]);
                 setcookie('auth_token', $token, [
                     'httponly' => true,
@@ -45,6 +46,12 @@
                     'samesite' => 'Strict',
                     'path' => '/'
                 ]);
+
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['accountId'] = $user['accountId'];
+                $_SESSION['positionId'] = $user['positionId'];
+                $_SESSION['employeeId'] = $user['employeeId'];
+                $_SESSION['consumerId'] = $user['consumerId'];
                 
                 header("Location: /neeco2/dashboard");
                 exit();

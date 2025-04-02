@@ -404,14 +404,9 @@ $peracc = $accountRepo->selectAll();
                 <?php foreach ($employee_complaints as $complaint) : ?>
                     <a class="dropdown-item d-flex align-items-center" href="forward_task.php">
                         <!-- Display complaint details here -->
-                        <div class="mr-3">
-                            <i class="fas fa-exclamation-circle text-warning"></i>
-                            <span class="font-weight-bold"> <?php echo htmlspecialchars($complaint['first_name']); ?> </span>
-                        </div>
                         <div>
-                            <span class="font-weight-bold">Complainant Name: <?php echo htmlspecialchars($complaint['firstname']); ?> <?php echo htmlspecialchars($complaint['lastname']); ?></span>
                             <p class="small text-gray-500">Complain: <?php echo htmlspecialchars($complaint['complaint_desc']); ?></p>
-                        </div>
+                        </div> 
                     </a>
                 <?php endforeach; ?>
                 <!-- You can add more details or customize the display as needed -->
@@ -511,11 +506,6 @@ $peracc = $accountRepo->selectAll();
                         </span>                         
                     <?php } ?>
 
-                    <?php if( $positionId == 1){ ?>
-                                <img class="img-profile rounded-circle"
-                                    src="<?php echo  $peracc[0]['profilepix']; ?>">
-                                    <?php } ?>
-
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -526,12 +516,12 @@ $peracc = $accountRepo->selectAll();
             <a class="dropdown-toggle" href="users-profile.php" role="button" id="nameDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 <?php if( $positionId == 1){ ?>
-                <?php echo $peracc[0]['firstname'];?>
+                <?php echo $peracc[0]['username'];?>
                 
                 <?php } ?>
 
                 <?php if($positionId > 1){ ?>
-                <?php echo $peracc[0]['first_name'];?>
+                <?php echo $peracc[0]['username'];?>
                 
                 
                 <?php } ?>

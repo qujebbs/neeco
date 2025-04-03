@@ -75,4 +75,12 @@
         public function updateByFilter($filter){
             die();
         }
+
+        public function getComplaintNatures(){
+            $sql = "SELECT * FROM complaintNatures";
+            $stmt = $this->con->prepare($sql);
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }

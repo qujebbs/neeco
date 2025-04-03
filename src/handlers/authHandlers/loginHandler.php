@@ -52,6 +52,7 @@
                 $_SESSION['positionId'] = $user['positionId'];
                 $_SESSION['employeeId'] = $user['employeeId'];
                 $_SESSION['consumerId'] = $user['consumerId'];
+                $_SESSION['townId'] = $user['townId'];
                 
                 header("Location: /neeco2/dashboard");
                 exit();

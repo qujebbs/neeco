@@ -2,4 +2,6 @@
     include __DIR__ . "/../../utils/debugUtil.php";
     
 
-    dumpVar($complaints);
+    dumpVar($natures);
+    dumpVar($employees);
+    dumpVar($_SESSION['townId']);

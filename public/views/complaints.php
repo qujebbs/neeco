@@ -2,6 +2,8 @@
 <?php include __DIR__ . "/../views/fragments/metadata.php"; ?>
 <?php include __DIR__ . "/../views/fragments/tableComponent.php"; ?>
 <?php include __DIR__ . "/../views/fragments/modalComponent.php"; ?>
+<?php
+?>
 
 <div class="container-fluid">
     <h2 class="mt-4">Complaint Management</h2>
@@ -33,14 +35,11 @@
 
     foreach ($complaints as $complaint) {
         renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', [
-            'accountId' => 'Account ID', //TODO should be auto
-            'employeeId' => 'Employee ID', //TODO should be auto
             'townId' => 'Town ID', //TODO should be auto
-            'accountNum' => 'Account Number', //TODO should be auto
-            'landmark' => 'Landmark',
-            'complaintDesc' => 'Description',
-            'natureId' => 'Nature of Complaints'
-        ], 'complaint', $complaint, "/neeco2/complaint", "complaintId");
+            'natureId' => 'Nature of Complaint: ',
+            'employeeId' => 'Assign To: '
+        ], 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
+        ['employeeId' => $employees, 'natureId' => $natures]);
     }
     ?>
 </div>

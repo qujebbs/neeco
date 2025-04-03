@@ -2,6 +2,8 @@
     require_once __DIR__ . "/../repositories/ComplaintRepo.php";
     require_once __DIR__ . "/../models/ComplaintModel.php";
     require_once __DIR__ . "/../filters/ComplaintFilters.php";
+    require_once __DIR__ . "/../repositories/EmployeeRepo.php";
+    require_once __DIR__ . "/../../src/helpers/complaintHelper.php";
     class ComplaintHandler {
         private $complaintRepo;
     
@@ -27,13 +29,24 @@
             }
 
             public function getAll(){
+                
+                session_start();
                 $filter = new ComplaintFilter([
                 ]);
-                $complaints = $this->complaintRepo->selectByFilter($filter); 
+                $complaints = $this->complaintRepo->selectByFilter($filter);
+                $employeeRepo = new EmployeeRepo();
+                $tempemployees = $employeeRepo->getEmployeesByTown($_SESSION['townId']);
+                $employees = array_column($tempemployees, 'firstname',  'employeeId');
 
-                include __DIR__ . "/../../public/views/complaints.php";
+                $tempcomplaintNature = $this->complaintRepo->getComplaintNatures();
+                $natures = array_column($tempcomplaintNature, 'complaintReason', 'natureId');
+
+
+                include __DIR__ . "/../../public/views/dumper.php";
             }
 
+            //* @param int $accountId The complainant.
+            //* @param int $employeeId The current employee the complaint is assigned to.
             public function createComplaint(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $complaint = new Complaint($_POST);
@@ -44,7 +57,6 @@
                     exit;
                 }
             }
-
             public function updateComplaint() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $complaint = new Complaint($_POST);

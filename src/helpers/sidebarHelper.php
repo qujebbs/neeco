@@ -3,7 +3,9 @@
     require_once __DIR__ . "/../filters/AccountFilters.php";
 
     function getData(){
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $complaintRepo = new ComplaintRepo();
         $filter = new ComplaintFilter([
             'employeeId' => $_SESSION['employeeId']

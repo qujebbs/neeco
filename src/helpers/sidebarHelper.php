@@ -4,14 +4,20 @@
 
     function getData(){
         session_start();
-        $positionId = $_SESSION['positionId'];
-        $username = $_SESSION['username'];
         $complaintRepo = new ComplaintRepo();
         $filter = new ComplaintFilter([
             'employeeId' => $_SESSION['employeeId']
         ]);
-        $complaintRepo->countByFilter($filter);
-        // $notifications not included yet
+        
+        $complaints = $complaintRepo->selectByFilter($filter);
+        $positionId = $_SESSION['positionId'];
+        $username = $_SESSION['username'];
+        $complaintCount = count($complaints);
 
-        //TODO RETURN ALL THIS
+        return [
+            'complaints' => $complaints,
+            'positionId' => $positionId,
+            'username' => $username,
+            'complaintCount' => $complaintCount
+        ];
     } 

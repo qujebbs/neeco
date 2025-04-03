@@ -8,7 +8,6 @@
     class DashboardHandler{
         private $accountRepo;
         private $complaintRepo;
-        
 
         public function __construct() {
             $this->accountRepo = new AccountRepo();

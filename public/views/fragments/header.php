@@ -188,7 +188,7 @@ $quickdl = get_latest_downloads();
           <li class="dropdown"><a href="#"><span>Consumer Portal</span></a>
             <ul>
               <li><a href="/neeco2/login">Login</a></li>
-              <li><a href="register.php">Register</a></li>
+              <li><a href="/neeco2/register">Register</a></li>
               
             </ul>
           </li>

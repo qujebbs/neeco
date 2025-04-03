@@ -1,16 +1,7 @@
 <?php
-$positionId = 2;
-//FIX LATER TO GET FROM ACCOUNTREPO WHEN LOGIN IS IMPLEMENTED
-
-    require_once __DIR__ . "/../../../src/repositories/ComplaintRepo.php";
-    require_once __DIR__ . "/../../../src/repositories/AccountRepo.php";
-?>
-
-<?php
-$con = getPDOConnection();
-
-$accountRepo = new AccountRepo();
-$peracc = $accountRepo->selectAll();
+    require_once __DIR__ . "/../../../src/helpers/sidebarHelper.php";
+    $data = getData();
+    $positionId = $data['positionId']
 ?>
 
 
@@ -218,7 +209,7 @@ $peracc = $accountRepo->selectAll();
 
             <?php if( $positionId > 1){ ?>
             <li class="nav-item active">
-                <a class="nav-link" href="add_complaints.php">
+                <a class="nav-link" href="/neeco2/complaint">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>Add Complaints</span></a>
             </li>
@@ -270,7 +261,7 @@ $peracc = $accountRepo->selectAll();
             </li>
                     
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-newspaper"></i>
@@ -286,7 +277,7 @@ $peracc = $accountRepo->selectAll();
                         <a class="collapse-item" href="tables.php">Announcements</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -381,17 +372,13 @@ $peracc = $accountRepo->selectAll();
 
                        
                        <?php if ($positionId > 2 && $positionId != 7) : ?>
-    <?php
-    $employee_complaints = get_complain_notification($employee_id);
-    $complaint_count = $employee_complaints ? count($employee_complaints) : 0;
-    ?>
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
             <!-- Counter - Alerts -->
             <span class="badge badge-danger badge-counter">
-                <?php echo $complaint_count; ?>
+                <?php echo $data['complaintCount']; ?>
             </span>
         </a>
         <!-- Dropdown - Alerts -->
@@ -400,12 +387,12 @@ $peracc = $accountRepo->selectAll();
             <h6 class="dropdown-header">
                 Complaints Center   
             </h6>
-            <?php if ($complaint_count > 0) : ?>
-                <?php foreach ($employee_complaints as $complaint) : ?>
+            <?php if ($data['complaintCount'] > 0) : ?>
+                <?php foreach ($data['complaints'] as $complaint) : ?>
                     <a class="dropdown-item d-flex align-items-center" href="forward_task.php">
                         <!-- Display complaint details here -->
                         <div>
-                            <p class="small text-gray-500">Complain: <?php echo htmlspecialchars($complaint['complaint_desc']); ?></p>
+                            <p class="small text-gray-500">Complain: <?php echo htmlspecialchars($complaint['complaintDesc']); ?></p>
                         </div> 
                     </a>
                 <?php endforeach; ?>
@@ -493,7 +480,7 @@ $peracc = $accountRepo->selectAll();
                                 <?php if( $positionId == 1){ ?>
                                 <span class="mr-2 d-none d-lg-inline text-gray-900 xl">
 
-                                <?php echo  $peracc[0]['username']; ?>
+                                <?php echo  $data['username']; ?>
                                 <i class='fas fa-circle fa-green' style='color: green;'></i>  
                         </span>                         
                     <?php } ?>
@@ -501,7 +488,7 @@ $peracc = $accountRepo->selectAll();
                     <?php if($positionId > 1 ){ ?>
                                 <span class="mr-2 d-none d-lg-inline text-gray-900 xl">
 
-                               <?php echo  $peracc[0]['username']; ?> 
+                               <?php echo  $data['username']; ?> 
                                <i class='fas fa-circle fa-green' style='color: green;'></i>  
                         </span>                         
                     <?php } ?>
@@ -516,12 +503,12 @@ $peracc = $accountRepo->selectAll();
             <a class="dropdown-toggle" href="users-profile.php" role="button" id="nameDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 <?php if( $positionId == 1){ ?>
-                <?php echo $peracc[0]['username'];?>
+                <?php echo $data['username'];?>
                 
                 <?php } ?>
 
                 <?php if($positionId > 1){ ?>
-                <?php echo $peracc[0]['username'];?>
+                <?php echo $data['username'];?>
                 
                 
                 <?php } ?>

@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../repositories/ComplaintRepo.php";
     require_once __DIR__ . "/../models/ComplaintModel.php";
+    require_once __DIR__ . "/../filters/ComplaintFilters.php";
     class ComplaintHandler {
         private $complaintRepo;
     
@@ -26,9 +27,11 @@
             }
 
             public function getAll(){
-                $towns = $this->complaintRepo->selectAll(); 
+                $filter = new ComplaintFilter([
+                ]);
+                $complaints = $this->complaintRepo->selectByFilter($filter); 
 
-                include "views/unimplemented";
+                include __DIR__ . "/../../public/views/complaints.php";
             }
 
             public function createComplaint(){

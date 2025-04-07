@@ -7,4 +7,4 @@ use ParagonIE\Paseto\Protocol\Version4;
 
 $key = SymmetricKey::generate(new Version4());
 
-file_put_contents('storage/keys/local.key', $key->encode());
+file_put_contents(__DIR__ . '/../../storage/keys/local.key', $key->encode());

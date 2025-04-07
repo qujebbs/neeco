@@ -61,6 +61,7 @@
                 echo "invalid request method";
             }
         }else{
+            dumpvar($_SERVER);
             echo "invalid request method";
         }
     }

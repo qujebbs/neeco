@@ -3,7 +3,7 @@
         'name' => 'codesandtricks/xlsx',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '47c43176cf31dadadd4ec3e75dddda16c5b8f20b',
+        'reference' => 'a75e2a3fafd45a62cd84acd74f1b38d3fecbf38c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'codesandtricks/xlsx' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '47c43176cf31dadadd4ec3e75dddda16c5b8f20b',
+            'reference' => 'a75e2a3fafd45a62cd84acd74f1b38d3fecbf38c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

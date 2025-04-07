@@ -2,7 +2,7 @@
 
 function getPDOConnection()
 {
-    $server = "JERALD\SQLEXPRESS";
+    $server = "sqlserver://127.0.0.1:1433";
     $db = "neeco2area1";
     
     try {

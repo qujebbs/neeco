@@ -127,8 +127,8 @@
                         <a class="collapse-item" href="/neeco2/bill">Consumer Bills</a>
                         <h6 class="collapse-header">Complaints</h6>
                         <a class="collapse-item" href="consumer_complain.php">Consumer Complaints</a>
-                        <a class="collapse-item" href="admin_forwardtask.php">Unattended Complaints</a>
-                        <a class="collapse-item" href="admin_solved.php">Attended Complaints</a>
+                        <a class="collapse-item" href="complaint?status=unattended">Unattended Complaints</a>
+                        <a class="collapse-item" href="complaint?status=solved">Attended Complaints</a>
                     </div>
                 </div>
             </li>
@@ -169,35 +169,35 @@
                 
 
                 <li class="nav-item active">
-                <a class="nav-link" href="pending.php">
+                <a class="nav-link" href="complaint?status=received">
                     <i class="fas fa-fw fa-shopping-basket"></i>
                     <span>Received Complaint</span></a>
             </li>
 
 
             <li class="nav-item active"> 
-                <a class="nav-link" href="waiting_action.php">
+                <a class="nav-link" href="complaint?status=unattended">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>Unattended Complaint</span></a>
             </li>
 
             <li class="nav-item active"> 
-                <a class="nav-link" href="solved.php">
+                <a class="nav-link" href="complaint?status=solved">
                 <i class="fas fa-fw fa-comment"></i>
-                    <span>Attended Complaint</span></a>
+                    <span>Solved Complaint</span></a>
             </li>
 
             <?php } ?>
             <?php if ($positionId > 2 && ($positionId != 7 && $positionId != 1)){ ?>
             <li class="nav-item active">
-                <a class="nav-link" href="forward_task.php">
+                <a class="nav-link" href="complaint?status=received">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>Recieved Complaint</span></a>
             </li>
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="solved_lineman.php">
+                <a class="nav-link" href="complaint?status=solved">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>Attended Complaint</span></a>
             </li>
@@ -233,13 +233,13 @@
             </li>
             
             <li class="nav-item active">
-                <a class="nav-link" href="complaint_waiting_consumer.php">
+                <a class="nav-link" href="complaints?status=unattended">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>View Waiting Reports</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="complaint_solved_consumer.php">
+                <a class="nav-link" href="complaints?status=solved">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>View Solved Reports</span></a>
             </li>
@@ -389,7 +389,7 @@
             </h6>
             <?php if ($data['complaintCount'] > 0) : ?>
                 <?php foreach ($data['complaints'] as $complaint) : ?>
-                    <a class="dropdown-item d-flex align-items-center" href="forward_task.php">
+                    <a class="dropdown-item d-flex align-items-center" href="complaints?status=unattended">
                         <!-- Display complaint details here -->
                         <div>
                             <p class="small text-gray-500">Complain: <?php echo htmlspecialchars($complaint['complaintDesc']); ?></p>
@@ -397,7 +397,7 @@
                     </a>
                 <?php endforeach; ?>
                 <!-- You can add more details or customize the display as needed -->
-                <a class="dropdown-item text-center small text-gray-500" href="forward_task.php">Show All Complaints</a>
+                <a class="dropdown-item text-center small text-gray-500" href="complaints?status=unattended">Show All Complaints</a>
             <?php else : ?>
                 <!-- Display a message or any other content when there are no complaints -->
                 <p class="dropdown-item text-center small text-gray-500">No complaints assigned</p>

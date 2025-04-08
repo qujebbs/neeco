@@ -25,11 +25,11 @@
         }
         public function selectByFilter(ComplaintFilter $filter){
                 $sql = "SELECT * FROM neeco2area1.dbo.complaints c
-                        LEFT JOIN 	towns t ON c.townId=t.townId
-                        LEFT JOIN 	accounts a ON a.accountId=c.accountId
-                        LEFT JOIN   employees e ON e.employeeId=c.employeeId
-                        LEFT JOIN   complaintStatus s ON s.statusId=c.statusId
-                        LEFT JOIN 	complaintNatures cn2 ON cn2.natureId=c.natureId";
+                        LEFT JOIN 	neeco2area1.dbo.towns t ON c.townId=t.townId
+                        LEFT JOIN 	neeco2area1.dbo.accounts a ON a.accountId=c.accountId
+                        LEFT JOIN   neeco2area1.dbo.employees e ON e.employeeId=c.employeeId
+                        LEFT JOIN   neeco2area1.dbo.complaintStatus s ON s.statusId=c.statusId
+                        LEFT JOIN 	neeco2area1.dbo.complaintNatures cn2 ON cn2.natureId=c.natureId";
 
                 $conditions = $filter->toSqlConditions();
         

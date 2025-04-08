@@ -63,7 +63,7 @@
                         "archived" => 3
                     ];
                 
-                    $status = $_GET['status'] ?? "pending";
+                    $status = $_GET['status'] ?? null;
                 
                     if (isset($status) && !isset($statuses[$status])) {
                         http_response_code(400);

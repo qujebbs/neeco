@@ -29,10 +29,36 @@
             }
 
             public function getAll(){
-                
                 session_start();
-                $filter = new ComplaintFilter([
-                ]);
+                $statuses = [
+                    "received" => 1,
+                    "unattended" => 2,
+                    "solved" => 3
+                ];
+                $status = $_GET['status'] ?? null;
+                
+                if (isset($status) && !isset($statuses[$status])) {
+                    http_response_code(400);
+                    echo "Invalid Request.";
+                    exit;
+                }
+
+                if (isset($_SESSION['employeeId']) || $_SESSION['consumerId'] == 0) {
+                    $filter = new ComplaintFilter([
+                        "employeeId"=> $_SESSION['employeeId'],
+                        "statusId"=> $statuses[$status] ?? null
+                    ]);
+                }elseif(isset($_SESSION['consumerId']) || $_SESSION['employeeId'] == 0) {
+                    $filter = new ComplaintFilter([
+                        "employeeId"=> $_SESSION['consumerId'],
+                        "statusId"=> $statuses[$status] ?? null
+                    ]);
+                }else{
+                    $filter = new ComplaintFilter([
+                        "statusId"=> $statuses[$status] ?? null
+                    ]);
+                }
+
                 $complaints = $this->complaintRepo->selectByFilter($filter);
                 $employeeRepo = new EmployeeRepo();
                 $tempemployees = $employeeRepo->getEmployeesByTown($_SESSION['townId']);
@@ -42,7 +68,7 @@
                 $natures = array_column($tempcomplaintNature, 'complaintReason', 'natureId');
 
 
-                include __DIR__ . "/../../public/views/dumper.php";
+                include __DIR__ . "/../../public/views/complaints.php";
             }
 
             //* @param int $accountId The complainant.

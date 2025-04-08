@@ -67,7 +67,6 @@
                 $tempcomplaintNature = $this->complaintRepo->getComplaintNatures();
                 $natures = array_column($tempcomplaintNature, 'complaintReason', 'natureId');
 
-
                 include __DIR__ . "/../../public/views/complaints.php";
             }
 

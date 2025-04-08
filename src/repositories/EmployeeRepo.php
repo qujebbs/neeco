@@ -15,4 +15,12 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getEmployeesById($employeeId){
+            $sql = "SELECT * FROM {$this->table} WHERE employeeId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":id", $employeeId);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }

@@ -23,4 +23,12 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getTownDcso($townId){
+            $sql = "SELECT * FROM {$this->table} WHERE townId = :id AND positionId = 7";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":id", $townId);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     }

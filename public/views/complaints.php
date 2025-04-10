@@ -23,15 +23,12 @@
     ], 'complaint', 'complaintId');
 
     renderModal('addcomplaintModal', 'Add New Complaint', 'create', [
-        'accountId' => 'Account ID', //TODO should be auto
-        'employeeId' => 'Employee ID', //TODO should be auto
-        'townId' => 'Town ID', //TODO should be auto
         'accountNum' => 'Account Number', //TODO should be auto
         'landmark' => 'Landmark',
         'complaintDesc' => 'Description',
         'natureId' => 'Nature of Complaints'
         
-    ], 'complaint', [], "/neeco2/complaints");
+    ], 'complaint', [], "/neeco2/complaint");
 
     foreach ($complaints as $complaint) {
         renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', [

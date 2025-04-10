@@ -6,6 +6,7 @@ class ComplaintFilter {
     public ?int $natureId = null;
     public ?int $statusId = null;
     public ?string $groupBy = null;
+    public ?int $townId = null;
 
     public function __construct(array $params = []) {
         if (isset($params['complaintId'])) $this->complaintId = $params['complaintId'];
@@ -13,6 +14,7 @@ class ComplaintFilter {
         if (isset($params['employeeId'])) $this->employeeId = $params['employeeId'];
         if (isset($params['natureId'])) $this->natureId = $params['natureId'];
         if (isset($params['statusId'])) $this->statusId = $params['statusId'];
+        if (isset($params['townId'])) $this->townId = $params['townId'];
         if (isset($params['groupBy'])) $this->groupBy = $params['groupBy'];
     }
 
@@ -24,6 +26,7 @@ class ComplaintFilter {
         if ($this->employeeId !== null) $conditions[] = "c.employeeId = :employeeId";
         if ($this->natureId !== null) $conditions[] = "c.natureId = :natureId";
         if ($this->statusId !== null) $conditions[] = "c.statusId = :statusId";
+        if ($this->townId !== null) $conditions[] = "c.townId = :townId";
 
         $sql = '';
 

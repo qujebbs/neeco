@@ -190,9 +190,9 @@
             <?php } ?>
             <?php if ($positionId > 2 && ($positionId != 7 && $positionId != 1)){ ?>
             <li class="nav-item active">
-                <a class="nav-link" href="complaint?status=received">
+                <a class="nav-link" href="complaint?status=unattended">
                 <i class="fas fa-fw fa-comment"></i>
-                    <span>Recieved Complaint</span></a>
+                    <span>Unattended Complaint</span></a>
             </li>
 
 
@@ -211,7 +211,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/neeco2/complaint">
                 <i class="fas fa-fw fa-comment"></i>
-                    <span>Add Complaints</span></a>
+                    <span>All Complaints</span></a>
             </li>
 
             <li class="nav-item active"> 

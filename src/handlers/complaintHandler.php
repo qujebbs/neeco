@@ -56,7 +56,7 @@
                     ]);
                 }elseif(isset($_SESSION['consumerId']) || $_SESSION['employeeId'] == 0) {
                     $filter = new ComplaintFilter([
-                        "consumerId"=> $_SESSION['consumerId'],
+                        "accountId"=> $_SESSION['accountId'],
                         "statusId"=> $statuses[$status] ?? null
                     ]);
                 }else{

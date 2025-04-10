@@ -233,13 +233,13 @@
             </li>
             
             <li class="nav-item active">
-                <a class="nav-link" href="complaints?status=unattended">
+                <a class="nav-link" href="complaint?status=unattended">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>View Waiting Reports</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="complaints?status=solved">
+                <a class="nav-link" href="complaint?status=solved">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>View Solved Reports</span></a>
             </li>

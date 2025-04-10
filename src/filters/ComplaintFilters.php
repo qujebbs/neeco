@@ -10,6 +10,7 @@ class ComplaintFilter {
 
     public function __construct(array $params = []) {
         if (isset($params['complaintId'])) $this->complaintId = $params['complaintId'];
+        if (isset($params['accountId'])) $this->accountId = $params['accountId'];
         if (isset($params['consumerId'])) $this->consumerId = $params['consumerId'];
         if (isset($params['employeeId'])) $this->employeeId = $params['employeeId'];
         if (isset($params['natureId'])) $this->natureId = $params['natureId'];

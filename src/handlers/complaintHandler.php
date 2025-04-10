@@ -5,6 +5,7 @@
     require_once __DIR__ . "/../repositories/EmployeeRepo.php";
     require_once __DIR__ . "/../../src/helpers/complaintHelper.php";
     require_once __DIR__ . "/../utils/validateComplaints.php";
+    require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
     class ComplaintHandler {
         private $complaintRepo;
         private $employeeRepo;
@@ -15,6 +16,7 @@
         }
 
             public function handleRequest() {
+                $currentUser = Auth::requireAuth();
                 $action = $_REQUEST['action'] ?? 'getAll';
             
                 $actions = [

@@ -23,6 +23,7 @@
         '/neeco2/home' => '../src/handlers/homeHandler.php',
         '/neeco2/register' => '../src/handlers/authHandlers/registerHandler.php',
         '/neeco2/dashboard' => '../src/handlers/dashboardHandler.php',
+        '/neeco2/consumer-bill' => '../src/handlers/consumerBillHandler.php',
         '/neeco2/generate-key' => '../src/services/authService.php',
 
         '/neeco2/test' => '../public/views/register.php'
@@ -64,3 +65,4 @@
     // VIEW-RATE.PHP
 
     //REGISTER THROUGH ACCOUNTS ONLY NOT CONSUMERS
+    //TODO PAGES: home, senior citizen, RA, Rate archive, Downloads, linking of some pages with ID, employee dashboard

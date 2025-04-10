@@ -15,7 +15,7 @@
         }
 
         public function load(){
-            $currentUser = Auth::requireAuth();
+            $currentUser = Auth::requirePosition(['admin','finance','tsd','hr','ogm','dcso','lineman','citet','audit']);
             $accountFilter = new AccountFilter([
                 'groupBy' => 'a.accountStatusId'
             ]);

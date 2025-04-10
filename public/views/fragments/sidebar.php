@@ -126,7 +126,7 @@
                         <h6 class="collapse-header">Bills</h6>
                         <a class="collapse-item" href="/neeco2/bill">Consumer Bills</a>
                         <h6 class="collapse-header">Complaints</h6>
-                        <a class="collapse-item" href="consumer_complain.php">Consumer Complaints</a>
+                        <a class="collapse-item" href="/neeco2/complaint">Consumer Complaints</a>
                         <a class="collapse-item" href="complaint?status=unattended">Unattended Complaints</a>
                         <a class="collapse-item" href="complaint?status=solved">Attended Complaints</a>
                     </div>
@@ -227,7 +227,7 @@
             <!-- Heading -->
            
             <li class="nav-item active">
-                <a class="nav-link" href="complain.php">
+                <a class="nav-link" href="/neeco2/complaint">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>Report Outages</span></a>
             </li>
@@ -254,7 +254,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">All Billing Account</h6>
-                        <a class="collapse-item" href="bill_history.php">Bill History</a>
+                        <a class="collapse-item" href="/neeco2/bill">Bill History</a>
                         <a class="collapse-item" href="bills.php">Know Your Current Bill</a>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandler") {
+function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandler", $showActions = true) {
 ?>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -8,7 +8,9 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                     <?php foreach ($fields as $field): ?>
                         <th><?= htmlspecialchars($field, ENT_QUOTES, 'UTF-8') ?></th>
                     <?php endforeach; ?>
-                    <th>Actions</th>
+                    <?php if ($showActions): ?>
+                        <th>Actions</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +43,7 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                                 ?>
                             </td>
                         <?php endforeach; ?>
+                        <?php if ($showActions): ?>
                         <td>
                             <button class="btn btn-info btn-sm" data-toggle="modal" 
                                     data-target="#edit<?= $entity ?>Modal<?= $item[$idField] ?>">
@@ -55,6 +58,7 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                                 </button>
                             </form>
                         </td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

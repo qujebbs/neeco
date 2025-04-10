@@ -26,6 +26,8 @@
         }
 
         public function getAll() {
+            $currentUser = Auth::requireAuth();
+            session_start();
             $consumerId = $_SESSION["consumerId"] ?? null;
             $bills = $this->billRepo->selectWithJoin($consumerId); 
         
@@ -34,6 +36,7 @@
         
 
         public function createBill() {
+            $currentUser = Auth::requirePosition(['admin']);
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['billFile'])) {
                 $billsArr = readBillsCSV($_FILES['csv_file']["tmp_name"]);
     
@@ -44,6 +47,7 @@
             }
         }
             public function updateBill() {
+                $currentUser = Auth::requirePosition(['admin']);
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $Bll = new Bill($_POST);
 
@@ -55,6 +59,7 @@
             }
 
             public function deleteBill($con){
+                $currentUser = Auth::requirePosition(['admin']);
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     $this->billRepo->delete($_POST["billId"]);

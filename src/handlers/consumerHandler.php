@@ -9,6 +9,7 @@
             $this->consumerRepo = new ConsumerRepo();
         }
         public function handleRequest() {
+            $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getConsumers';
         
             $actions = [

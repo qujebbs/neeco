@@ -54,8 +54,13 @@
                 $_SESSION['consumerId'] = $user['consumerId'];
                 $_SESSION['townId'] = $user['townId'];
                 
-                header("Location: /neeco2/dashboard");
-                exit();
+                if ($user['positionId'] === "1") {
+                    header( "Location: /neeco2/complaint");
+                    exit;
+                }else{
+                    header("Location: /neeco2/dashboard");
+                    exit;
+                }
             } else { 
                 http_response_code(401);
                 echo "invalid request method";

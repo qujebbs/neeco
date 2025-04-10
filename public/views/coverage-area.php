@@ -39,7 +39,7 @@ include __DIR__ . '/../views/fragments/header.php';
             <article class="blog-details">
               <h2 class="title">Coverage Area</h2>
               <div class="post-img">
-                <img src="assets/img/Coverage Area.png" alt="Coverage Area Map" class="img-fluid" style="height: 150%; width: 110%;">
+                <img src="public/assets/img/Coverage Area.png" alt="Coverage Area Map" class="img-fluid" style="height: 150%; width: 110%;">
               </div>
               <div class="meta-top">
                 <ul></ul>

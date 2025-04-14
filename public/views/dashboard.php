@@ -17,13 +17,13 @@
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/neeco2/public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
    
 </head>
 <body id="page-top">
@@ -259,13 +259,6 @@
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
-                                    <br><br> <br><br>  
-                                    <div>
-                                        <h6 class="mt-4 font-weight-bold text-primary">Solved Complaints by Month</h6>
-                                        <ul>
-                                            <li>No data available</li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -289,6 +282,15 @@
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Town A
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Town B
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Town C
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -311,28 +313,37 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/neeco2/public/vendor/jquery/jquery.min.js"></script>
+    <script src="/neeco2/public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/neeco2/public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="/neeco2/public/vendor/chart.js/Chart.min.js"></script>
 
     <script>
-        // script.php.js
-        document.addEventListener("DOMContentLoaded", function() {
-            // Get the canvas element for the area chart
-            var areaCtx = document.getElementById("myAreaChart");
-            createAreaChart(areaCtx, []);
-        });
+        // Sample data for solved complaints by month (you would replace this with your actual data)
+        solvedComplaintsData = {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            data: <?php echo json_encode($solvedComplaintsData); ?>
+        };
 
-        function createAreaChart(ctx, dataFromDatabase) {
-            var myAreaChart = new Chart(ctx, {
+        // Sample data for complaints by town (you would replace this with your actual data)
+        complaintsByTownData = {
+            labels: ["Town A", "Town B", "Town C", "Town D", "Town E"],
+            data: <?php echo json_encode($townComplaints); ?>,
+            colors: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b']
+        };
+
+
+        // Area Chart for Solved Complaints by Month
+        document.addEventListener("DOMContentLoaded", function() {
+            var ctx = document.getElementById("myAreaChart");
+            var myLineChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    labels: solvedComplaintsData.labels,
                     datasets: [{
                         label: "Solved Complaints",
                         lineTension: 0.3,
@@ -346,47 +357,106 @@
                         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        data: [],
+                        data: solvedComplaintsData.data,
                     }],
                 },
+                options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 25,
+                            top: 25,
+                            bottom: 0
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 12
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: Math.max(...solvedComplaintsData.data) + 10,
+                                maxTicksLimit: 5,
+                                padding: 10,
+                                callback: function(value, index, values) {
+                                    return value;
+                                }
+                            },
+                            gridLines: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                            }
+                        }],
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        titleMarginBottom: 10,
+                        titleFontColor: '#6e707e',
+                        titleFontSize: 14,
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        intersect: false,
+                        mode: 'index',
+                        caretPadding: 10,
+                        callbacks: {
+                            label: function(tooltipItem, chart) {
+                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                return datasetLabel + ': ' + tooltipItem.yLabel;
+                            }
+                        }
+                    }
+                }
             });
-        }
-    </script>
 
-    <script>
-        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = '#858796';
-
-        // Pie Chart Example
-        var ctx = document.getElementById("myPieChart");
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [],
-                datasets: [{
-                    data: [],
-                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-                    hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-                    hoverBorderColor: "rgba(234, 236, 244, 1)",
-                }],
-            },
-            options: {
-                maintainAspectRatio: false,
-                tooltips: {
-                    backgroundColor: "rgb(255,255,255)",
-                    bodyFontColor: "#858796",
-                    borderColor: '#dddfeb',
-                    borderWidth: 1,
-                    xPadding: 15,
-                    yPadding: 15,
-                    displayColors: false,
-                    caretPadding: 10,
+            // Pie Chart for Complaints by Town
+            var ctx2 = document.getElementById("myPieChart");
+            var myPieChart = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: complaintsByTownData.labels,
+                    datasets: [{
+                        data: complaintsByTownData.data,
+                        backgroundColor: complaintsByTownData.colors,
+                        hoverBackgroundColor: complaintsByTownData.colors.map(color => color.replace('0.8', '1')),
+                        hoverBorderColor: "rgba(234, 236, 244, 1)",
+                    }],
                 },
-                legend: {
-                    display: false
+                options: {
+                    maintainAspectRatio: false,
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        caretPadding: 10,
+                    },
+                    legend: {
+                        display: false
+                    },
+                    cutoutPercentage: 80,
                 },
-                cutoutPercentage: 80,
-            },
+            });
         });
     </script>
 </body>

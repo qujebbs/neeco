@@ -22,7 +22,7 @@
                 'delete' => 'deleteAward',
                 'getAll' => 'getAll'
             ];
-        
+            
             if (isset($actions[$action])) {
                 return $this->{$actions[$action]}();
             }

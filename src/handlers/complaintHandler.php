@@ -14,7 +14,7 @@
             $this->complaintRepo = new ComplaintRepo();
             $this->employeeRepo = new EmployeeRepo();
         }
-
+        
             public function handleRequest() {
                 $currentUser = Auth::requireAuth();
                 $action = $_REQUEST['action'] ?? 'getAll';

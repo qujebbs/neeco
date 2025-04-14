@@ -84,4 +84,21 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getComplaintByMonth(){
+            $sql = "SELECT 
+                        FORMAT(resolvedDate, 'yyyy-MM') AS ComplaintMonth,
+                        COUNT(*) AS TotalComplaints
+                    FROM 
+                        neeco2area1.dbo.complaints
+                    WHERE 
+                        YEAR(resolvedDate) = YEAR(GETDATE())
+                    GROUP BY
+                        FORMAT(resolvedDate, 'yyyy-MM')
+                    ORDER BY 
+                        ComplaintMonth";
+            $stmt = $this->con->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }

@@ -75,6 +75,13 @@
                 $tempcomplaintNature = $this->complaintRepo->getComplaintNatures();
                 $natures = array_column($tempcomplaintNature, 'complaintReason', 'natureId');
 
+                $statuses = [
+                    1 => 'Pending',
+                    2 => 'Assigned',
+                    3 => 'Resolved'
+                ];
+                
+
                 include __DIR__ . "/../../public/views/complaints.php";
             }
 

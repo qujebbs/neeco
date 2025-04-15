@@ -6,14 +6,16 @@
 ?>
 
 <?php $positionId = $_SESSION['positionId'];
+
         $fields = [
             'townId' => 'Town ID',
             'natureId' => 'Nature of Complaint:',
         ];
     
-        // Only show "Assign To" if user is role 2 or 7
-        if (!in_array($positionId, [1])) {
+        if (in_array($positionId, [2, 7])) {
             $fields['employeeId'] = 'Assign To:';
+        }elseif (!in_array($positionId, [1, 2, 7])) {
+            $fields['statusId'] = 'Status:';
         }
 ?>
 
@@ -44,7 +46,7 @@
 
     foreach ($complaints as $complaint) {
         renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
-        ['employeeId' => $employees, 'natureId' => $natures]);
+        ['employeeId' => $employees, 'natureId' => $natures, 'statusId' => $statuses]);
     }
     ?>
 </div>

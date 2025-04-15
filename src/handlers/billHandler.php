@@ -26,7 +26,7 @@
         }
 
         public function getAll() {
-            $currentUser = Auth::requireAuth();
+            $currentUser = Auth::requirePosition(['admin', 'consumer']);
             session_start();
             $consumerId = $_SESSION["consumerId"] ?? null;
             $bills = $this->billRepo->selectWithJoin($consumerId); 

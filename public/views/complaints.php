@@ -5,6 +5,18 @@
 <?php
 ?>
 
+<?php $positionId = $_SESSION['positionId'];
+        $fields = [
+            'townId' => 'Town ID',
+            'natureId' => 'Nature of Complaint:',
+        ];
+    
+        // Only show "Assign To" if user is role 2 or 7
+        if (!in_array($positionId, [1])) {
+            $fields['employeeId'] = 'Assign To:';
+        }
+?>
+
 <div class="container-fluid">
     <h2 class="mt-4">Complaint Management</h2>
 
@@ -31,11 +43,7 @@
     ], 'complaint', [], "/neeco2/complaint");
 
     foreach ($complaints as $complaint) {
-        renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', [
-            'townId' => 'Town ID', //TODO should be auto
-            'natureId' => 'Nature of Complaint: ',
-            'employeeId' => 'Assign To: '
-        ], 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
+        renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
         ['employeeId' => $employees, 'natureId' => $natures]);
     }
     ?>

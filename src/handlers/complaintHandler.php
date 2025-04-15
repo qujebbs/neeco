@@ -69,8 +69,7 @@
                 }
 
                 $complaints = $this->complaintRepo->selectByFilter($filter);
-                $employeeRepo = new EmployeeRepo();
-                $tempemployees = $employeeRepo->getEmployeesByTown($_SESSION['townId']);
+                $tempemployees = $this->employeeRepo->getEmployeesByTown($_SESSION['townId']);
                 $employees = array_column($tempemployees, 'firstname',  'employeeId');
 
                 $tempcomplaintNature = $this->complaintRepo->getComplaintNatures();
@@ -110,20 +109,82 @@
             }
             public function updateComplaint() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $complaint = new Complaint($_POST);
+                    session_start();
 
-                    $this->complaintRepo->update($complaint, $_POST);
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    $currentUserPositionId = (int) $_SESSION['positionId'];
+                    
+                    $complaint = new Complaint($_POST);
+                    $filter = new ComplaintFilter([
+                        "complaintId"=> (int) $_POST['complaintId']
+                    ]);
+
+                    $existingComplaint = $this->complaintRepo->selectByFilter($filter);
+                    
+                    if (!$existingComplaint) {
+                        header("Location: /neeco2/complaint?error=Complaint not found.");
+                        exit;
+                    }
+                    
+                    //employeeId change check
+                    $isAssigning = isset($complaint->employeeId) && $complaint->employeeId != $existingComplaint[0]['employeeId'];
+                    
+                    if ($isAssigning) {
+                        if ($currentUserPositionId === 2 || $currentUserPositionId === 7) {
+                            $assignedEmployeeData = $this->employeeRepo->getEmployeesById($complaint->employeeId);
+                    
+                            if (!empty($assignedEmployeeData)) {
+                                $assignedEmployee = new Employees($assignedEmployeeData[0]);
+                                $assignedEmployeePositionId = (int) $assignedEmployee->positionId;
+                    
+                                $lowerRoles = [3, 4, 5, 6, 8, 9];
+                    
+                                if (in_array($assignedEmployeePositionId, $lowerRoles)) {
+                                    $complaint->statusId = 2; //default to assigned
+                                }
+                            } else {
+                                header("Location: /neeco2/complaint?error=Assigned employee not found.");
+                                exit;
+                            }
+                        } else {
+                            header("Location: /neeco2/complaint?error=You are not allowed to assign complaints.");
+                            exit;
+                        }
+                    }
+                    
+                    if (!isset($complaint->statusId)) {
+                        $complaint->statusId = $existingComplaint[0]['statusId'];
+                    }
+                    
+                    //Validation
+                    $validation = validateComplaint($complaint);
+                    if (!$validation['valid']) {
+                        //url encode to not destroy url
+                        $encodedErrors = urlencode(implode(', ', $validation['errors']));
+                        header("Location: /neeco2/complaint?error={$encodedErrors}");
+                        exit;
+                    }
+                    
+                    // update
+                    if ($this->complaintRepo->update($complaint, $_POST['complaintId'])) {
+                        header("Location: /neeco2/complaint?success=Complaint updated successfully");
+                        exit;
+                    } else {
+                        header("Location: /neeco2/complaint?error=Failed to update complaint.");
+                        exit;
+                    }
+                    
                 }
             }
 
             public function deleteComplaint(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-                    $this->complaintRepo->delete($_POST["id"]);
-                    header("Location: views/unimplemented.php");
-                    exit;
+                    if($this->complaintRepo->delete($_POST['complaintId'])){
+                        header("Location: /neeco2/complaint?success=complaint deleted successfully");
+                        exit;
+                    }else{
+                        header("Location: /neeco2/complaint?error=Failed to delete complaint.");
+                        exit();
+                    };
             }
         }
     }

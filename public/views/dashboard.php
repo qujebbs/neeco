@@ -283,13 +283,34 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Town A
+                                        <i class="fas fa-circle" style="color: #4e73df;"></i> TA
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Town B
+                                            <i class="fas fa-circle" style="color: #1cc88a;"></i> MZ
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Town C
+                                            <i class="fas fa-circle" style="color: #36b9cc;"></i> TG
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #f6c23e;"></i> SD
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #e74a3b;"></i> LP
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #858796;"></i> GB
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #fd7e14;"></i> QZ
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #20c997;"></i> CA
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #6f42c1;"></i> AG
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #17a2b8;"></i> LC
                                         </span>
                                     </div>
                                 </div>
@@ -324,17 +345,16 @@
 
     <script>
         // Sample data for solved complaints by month (you would replace this with your actual data)
-        solvedComplaintsData = {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            data: <?php echo json_encode($solvedComplaintsData); ?>
-        };
+        const solvedComplaintsData = <?php echo json_encode($solvedComplaintsData); ?>;
+        const complaintsByTownData = <?php echo json_encode($complaintsByTownData); ?>;
 
         // Sample data for complaints by town (you would replace this with your actual data)
-        complaintsByTownData = {
-            labels: ["Town A", "Town B", "Town C", "Town D", "Town E"],
-            data: <?php echo json_encode($townComplaints); ?>,
-            colors: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b']
-        };
+        // complaintsByTownData = {
+        //     labels: ["Town A", "Town B", "Town C", "Town D", "Town E", "Town F", "Town G", "Town H", "Town I", "Town J"],
+        //     data: [45, 30, 15, 7, 3, 3, 5 , 9 , 6, 5],
+        //     colors: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b', '#858796', '#fd7e14', '#20c997', '#6f42c1', '#17a2b8']
+        // };
+
 
 
         // Area Chart for Solved Complaints by Month

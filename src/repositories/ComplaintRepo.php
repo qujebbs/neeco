@@ -87,16 +87,33 @@
 
         public function getComplaintByMonth(){
             $sql = "SELECT 
-                        FORMAT(resolvedDate, 'yyyy-MM') AS ComplaintMonth,
+                        FORMAT(resolvedDate, 'MMM') AS ComplaintMonth,
                         COUNT(*) AS TotalComplaints
                     FROM 
                         neeco2area1.dbo.complaints
                     WHERE 
                         YEAR(resolvedDate) = YEAR(GETDATE())
                     GROUP BY
-                        FORMAT(resolvedDate, 'yyyy-MM')
+                        FORMAT(resolvedDate, 'MMM')
                     ORDER BY 
                         ComplaintMonth";
+            $stmt = $this->con->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function getComplaintCountByTown(){
+            $sql = "SELECT 
+                        COUNT(*) AS Total,
+                         t.townDesc AS TownName
+                    FROM 
+                        neeco2area1.dbo.complaints c
+                    JOIN 
+                        neeco2area1.dbo.towns t ON c.townId = t.townId
+                    GROUP BY 
+                        t.townDesc, t.townId
+                    ORDER BY 
+                        t.townId";
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -2,11 +2,15 @@
     require_once __DIR__ . '/../repositories/baseRepo.php';
     require_once __DIR__ . '/../filters/ComplaintFilters.php';
     require_once __DIR__ . '/../models/ComplaintModel.php';
+    require_once __DIR__ . '/../models/ComplaintActionModel.php';
     class ComplaintRepo extends BaseRepo{
         public function __construct() {
             parent::__construct( 'complaints', 'complaintId');
         }
         public function insert(Complaint $complaint){
+            if (empty($complaint->complaintDate)) {
+                $complaint->complaintDate = date('Y-m-d H:i:s');
+            }
             $sql = "INSERT INTO {$this->table}(accountId, employeeId, townId, accountNum, landmark, complaintDesc, statusId, complaintDate, natureId)
                     VALUES (:accountId, :employeeId, :townId, :accountNum, :landmark, :complaintDesc, :statusId, :complaintDate, :natureId)";
             $stmt = $this->con->prepare($sql);
@@ -50,16 +54,16 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         public function update(Complaint $complaint, $id){
-            $sql = "UPDATE {$this->table} SET employeeId = :employeeId, statusId = :statusId, natureId = :natureId WHERE complaintId = :complaintId";
+            $sql = "UPDATE {$this->table} SET employeeId = :employeeId, statusId = :statusId, natureId = :natureId, complaintDesc = :complaintDesc WHERE complaintId = :complaintId";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":employeeId", $complaint->employeeId);
             $stmt->bindParam(":statusId", $complaint->statusId);
             $stmt->bindParam(":natureId", $complaint->natureId);
+            $stmt->bindParam(":complaintDesc", $complaint->complaintDesc);
             $stmt->bindParam(":complaintId", $id);
 
             return $stmt->execute();
         }
-
         public function countByFilter(ComplaintFilter $filter){
             $sql = "SELECT c.statusId as cs, COUNT(*) AS count FROM complaints c";
 
@@ -87,21 +91,21 @@
 
         public function getComplaintByMonth(){
             $sql = "SELECT 
-                        FORMAT(resolvedDate, 'MMM') AS ComplaintMonth,
+                        FORMAT(endDate, 'MMM') AS ComplaintMonth,
                         COUNT(*) AS TotalComplaints
                     FROM 
-                        neeco2area1.dbo.complaints
+                        neeco2area1.dbo.complaintAction
                     WHERE 
-                        YEAR(resolvedDate) = YEAR(GETDATE())
+                        YEAR(endDate) = YEAR(GETDATE())
                     GROUP BY
-                        FORMAT(resolvedDate, 'MMM')
+                        FORMAT(endDate, 'MMM')
                     ORDER BY 
                         ComplaintMonth";
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-
+        
         public function getComplaintCountByTown(){
             $sql = "SELECT 
                         COUNT(*) AS Total,
@@ -117,5 +121,36 @@
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function markAsSolved(ComplaintAction $action, &$error = null){
+
+            $this->con->beginTransaction();
+            try {
+                $insertSql="INSERT INTO neeco2area1.dbo.complaintAction (complaintId, actionDetails, startDate, endDate, employeeId)
+                            VALUES (:complaintId, :actionDetails, :startDate, :endDate, :employeeId)";
+                $stmt = $this->con->prepare($insertSql);
+                
+                $stmt->bindParam(":complaintId", $action->complaintId);
+                $stmt->bindParam(":actionDetails", $action->actionDetails);
+                $stmt->bindParam(":startDate", $action->startDate);
+                $stmt->bindParam(":endDate", $action->endDate);
+                $stmt->bindParam(":employeeId", $action->employeeId);
+
+                $stmt->execute();
+
+                $updateSql = "UPDATE neeco2area1.dbo.complaints SET statusId = 3 WHERE complaintId = :complaintId";
+                $stmt = $this->con->prepare($updateSql);
+                $stmt->bindParam(":complaintId", $action->complaintId);
+
+                $stmt->execute();
+
+                $this->con->commit();
+                return true;
+            }catch (PDOException $e) {
+                $this->con->rollBack();
+                $error = $e->getMessage();
+                return false;
+            }
         }
     }

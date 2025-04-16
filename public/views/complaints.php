@@ -8,14 +8,21 @@
 <?php $positionId = $_SESSION['positionId'];
 
         $fields = [
-            'townId' => 'Town ID',
-            'natureId' => 'Nature of Complaint:',
         ];
     
         if (in_array($positionId, [2, 7])) {
             $fields['employeeId'] = 'Assign To:';
+            $fields['townId'] = 'Town ID';
+            $fields['natureId'] = 'Nature of Complaint:';
         }elseif (!in_array($positionId, [1, 2, 7])) {
-            $fields['statusId'] = 'Status:';
+            $fields['actionDetails'] = 'Action Details:';
+            $fields['startDate'] = 'Start Date:';
+            $fields['endDate'] = 'End Date:';
+            $fields['employeeId'] = 'Solved By:';
+        }elseif (in_array($positionId, [1])) {
+            $fields['complaintDesc'] = 'Description';
+            $fields['townId'] = 'Town ID';
+            $fields['natureId'] = 'Nature of Complaint:';
         }
 ?>
 
@@ -44,10 +51,18 @@
         
     ], 'complaint', [], "/neeco2/complaint");
 
-    foreach ($complaints as $complaint) {
-        renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
-        ['employeeId' => $employees, 'natureId' => $natures, 'statusId' => $statuses]);
+    if (in_array($positionId, [1, 2, 7])) {
+        foreach ($complaints as $complaint) {
+            renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'update', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
+            ['employeeId' => $employees, 'natureId' => $natures, 'statusId' => $statuses]);
+        }
+    }elseif (!in_array($positionId, [1, 2, 7])) {
+        foreach ($complaints as $complaint) {
+            renderModal("editcomplaintModal{$complaint['complaintId']}", 'Mark As Solved', 'mark', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
+            ['employeeId' => $employees]);
+        }
     }
+
     ?>
 </div>
 <?php include __DIR__ . "/../views/fragments/tableFooter.php"; ?>

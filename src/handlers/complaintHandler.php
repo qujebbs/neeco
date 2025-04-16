@@ -23,7 +23,8 @@
                     'create' => 'createComplaint',
                     'update' => 'updateComplaint',
                     'delete' => 'deleteComplaint',
-                    'getAll' => 'getAll'
+                    'getAll' => 'getAll',
+                    'mark' => 'markAsSolved'
                 ];
             
                 if (isset($actions[$action])) {
@@ -158,8 +159,15 @@
                         }
                     }
                     
+                    //set previous values on nulls
                     if (!isset($complaint->statusId)) {
                         $complaint->statusId = $existingComplaint[0]['statusId'];
+                    }
+                    if (!isset($complaint->employeeId)) {
+                        $complaint->employeeId = $existingComplaint[0]['employeeId'];
+                    }
+                    if (!isset($complaint->complaintDesc)) {
+                        $complaint->complaintDesc = $existingComplaint[0]['complaintDesc'];
                     }
                     
                     //Validation
@@ -180,6 +188,23 @@
                         exit;
                     }
                     
+                }
+            }
+
+            public function markAsSolved(){
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $action = new ComplaintAction($_POST);
+
+                    $error = '';
+                    $result = $this->complaintRepo->markAsSolved($action, $error);
+
+                    if ($result) {
+                        header("Location: /neeco2/complaint?success=Complaint updated successfully");
+                        exit;
+                    }else {
+                        header("Location: /neeco2/complaint?error=". urlencode("Failed: $error"));
+                        exit;
+                    }
                 }
             }
 

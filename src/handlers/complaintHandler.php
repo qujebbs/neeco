@@ -55,6 +55,7 @@
                 if ((isset($_SESSION['employeeId']) || $_SESSION['consumerId'] == 0) && $_SESSION['positionId'] != 7 ){
                     $filter = new ComplaintFilter([
                         "employeeId"=> $_SESSION['employeeId'],
+                        'orAccountId' => $_SESSION['accountId'],
                         "statusId"=> $statuses[$status] ?? null
                     ]);
                 }elseif(isset($_SESSION['consumerId']) || $_SESSION['employeeId'] == 0) {

@@ -49,6 +49,7 @@
                 if ($filter->natureId !== null) $stmt->bindParam(':natureId', $filter->natureId);
                 if ($filter->statusId !== null) $stmt->bindParam(':statusId', $filter->statusId);
                 if ($filter->townId !== null) $stmt->bindParam(':townId', $filter->townId);
+                if ($filter->orAccountId !== null) $stmt->bindParam(':orAccountId', $filter->orAccountId);
                 
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

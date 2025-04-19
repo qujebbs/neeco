@@ -8,7 +8,8 @@
         }
         $complaintRepo = new ComplaintRepo();
         $filter = new ComplaintFilter([
-            'employeeId' => $_SESSION['employeeId']
+            'employeeId' => $_SESSION['employeeId'],
+            'statusId' => 2
         ]);
         
         $complaints = $complaintRepo->selectByFilter($filter);

@@ -31,6 +31,7 @@ class HomeHandler {
     public function loadAbout() {
         $params = [
             "mission" => __DIR__ . "/../../public/views/mission.php",
+            "landing" => __DIR__ . "/../../public/views/landing.php",
             "company-profile" => __DIR__ . "/../../public/views/company-profile.php",
             "bod" => __DIR__ . "/../../public/views/board-of-directors.php",
             "staffs" => __DIR__ . "/../../public/views/view-staffs.php",
@@ -48,7 +49,7 @@ class HomeHandler {
             "bacs" => __DIR__ . "/../../public/views/view-bac.php"
         ];
 
-        $param = $_GET['section'] ?? "company-profile";
+        $param = $_GET['section'] ?? "landing";
 
         if (!isset($params[$param])) {
             http_response_code(400);

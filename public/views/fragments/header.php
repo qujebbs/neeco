@@ -64,7 +64,7 @@
   </div>
   <div class="social-links d-none d-md-flex align-items-center">
   <div class="upper-column info-box" style="padding: 10px 20px; line-height: 47px; text-transform:uppercase; background: #036029">
-             <div class="icon-box"><a href="login.php" style="color: #fff;" class="theme-btn btn-style-two" style="font-size: 17px color: #000;">Know your Bill</a></div>
+             <div class="icon-box"><a href="/neeco2/login" style="color: #fff;" class="theme-btn btn-style-two" style="font-size: 17px color: #000;">Know your Bill</a></div>
           </div>
   </div>
 </div>
@@ -115,7 +115,7 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.php">Home</a></li>
+          <li><a href="/neeco2/home">Home</a></li>
           <li class="dropdown"><a href="#"><span>About Us</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
             <li><a href="/neeco2/home?section=mission">Mission And Vission</a></li>

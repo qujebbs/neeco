@@ -9,20 +9,20 @@
 
         $fields = [
         ];
-    
-        if (in_array($positionId, [2, 7])) {
-            $fields['employeeId'] = 'Assign To:';
-            $fields['townId'] = 'Town ID';
-            $fields['natureId'] = 'Nature of Complaint:';
-        }elseif (!in_array($positionId, [1, 2, 7])) {
-            $fields['actionDetails'] = 'Action Details:';
-            $fields['startDate'] = 'Start Date:';
-            $fields['endDate'] = 'End Date:';
-            $fields['employeeId'] = 'Solved By:';
-        }elseif (in_array($positionId, [1])) {
+        //TODO Handle this in backend
+        if (in_array($positionId, [1]) || !isset($status) || $status == 'solved') {
             $fields['complaintDesc'] = 'Description';
             $fields['townId'] = 'Town ID';
-            $fields['natureId'] = 'Nature of Complaint:';
+            $fields['natureId'] = 'Nature of Complaint';
+        }elseif(in_array($positionId, [2, 7])) {
+            $fields['employeeId'] = 'Assign To';
+            $fields['townId'] = 'Town ID';
+            $fields['natureId'] = 'Nature of Complaint';
+        }elseif (!in_array($positionId, [1, 2, 7])) {
+            $fields['actionDetails'] = 'Action Details';
+            $fields['startDate'] = 'Start Date';
+            $fields['endDate'] = 'End Date';
+            $fields['employeeId'] = 'Solved By';
         }
 ?>
 
@@ -58,8 +58,8 @@
         }
     }elseif (!in_array($positionId, [1, 2, 7])) {
         foreach ($complaints as $complaint) {
-            renderModal("editcomplaintModal{$complaint['complaintId']}", 'Mark As Solved', 'mark', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
-            ['employeeId' => $employees]);
+            renderModal("editcomplaintModal{$complaint['complaintId']}", 'Update Complaint', 'mark', $fields, 'complaint', $complaint, "/neeco2/complaint", "complaintId", 
+            ['employeeId' => $employees, 'natureId' => $natures]);
         }
     }
 

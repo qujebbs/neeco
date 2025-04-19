@@ -3,7 +3,7 @@
     $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 
     $routes =[
-        '/' => 'index.php',
+        '/neeco2' => '../public/index.php',
         '/neeco2/award'=> '../src/handlers/AwardHandler.php',
         '/neeco2/bac'=> '../src/handlers/BacHandler.php',
         '/neeco2/bill'=> '../src/handlers/BillHandler.php',
@@ -20,13 +20,14 @@
         '/neeco2/town'=> '../src/handlers/TownsHandler.php',
         '/neeco2/playground' => '../public/views/dumper.php',
         '/neeco2/login' => '../src/handlers/authHandlers/loginHandler.php',
+        '/neeco2/logout' => '../src/handlers/authHandlers/logoutHandler.php',
         '/neeco2/home' => '../src/handlers/homeHandler.php',
         '/neeco2/register' => '../src/handlers/authHandlers/registerHandler.php',
         '/neeco2/dashboard' => '../src/handlers/dashboardHandler.php',
         '/neeco2/consumer-bill' => '../src/handlers/consumerBillHandler.php',
         '/neeco2/generate-key' => '../src/services/authService.php',
 
-        '/neeco2/test' => '../public/views/register.php'
+        '/neeco2/test' => '../public/views/dumper.php'
 
     ];
 

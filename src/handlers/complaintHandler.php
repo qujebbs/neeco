@@ -52,22 +52,27 @@
                     exit;
                 }
 
-                if ((isset($_SESSION['employeeId']) || $_SESSION['consumerId'] == 0) && $_SESSION['positionId'] != 7 ){
-                    $filter = new ComplaintFilter([
-                        "employeeId"=> $_SESSION['employeeId'],
-                        'orAccountId' => $_SESSION['accountId'],
-                        "statusId"=> $statuses[$status] ?? null
-                    ]);
-                }elseif(isset($_SESSION['consumerId']) || $_SESSION['employeeId'] == 0) {
-                    $filter = new ComplaintFilter([
-                        "accountId"=> $_SESSION['accountId'],
-                        "statusId"=> $statuses[$status] ?? null
-                    ]);
-                }else{
-                    $filter = new ComplaintFilter([
-                        "townId" => $_SESSION["townId"],
-                        "statusId"=> $statuses[$status] ?? null
-                    ]);
+                if (!isset($status)) {
+                        $filter = new ComplaintFilter([
+                            "accountId"=> $_SESSION['accountId'],
+                        ]);
+                } else {
+                    if ((isset($_SESSION['employeeId']) || $_SESSION['consumerId'] == 0) && $_SESSION['positionId'] != 7 ){
+                        $filter = new ComplaintFilter([
+                            "employeeId"=> $_SESSION['employeeId'],
+                            "statusId"=> $statuses[$status] ?? null
+                        ]);
+                    }elseif(isset($_SESSION['consumerId']) || $_SESSION['employeeId'] == 0) {
+                        $filter = new ComplaintFilter([
+                            "accountId"=> $_SESSION['accountId'],
+                            "statusId"=> $statuses[$status] ?? null
+                        ]);
+                    }else{
+                        $filter = new ComplaintFilter([
+                            "townId" => $_SESSION["townId"],
+                            "statusId"=> $statuses[$status] ?? null
+                        ]);
+                    }
                 }
 
                 $complaints = $this->complaintRepo->selectByFilter($filter);

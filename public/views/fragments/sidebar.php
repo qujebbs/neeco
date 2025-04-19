@@ -211,7 +211,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/neeco2/complaint">
                 <i class="fas fa-fw fa-comment"></i>
-                    <span>All Complaints</span></a>
+                    <span>Add Complaints</span></a>
             </li>
 
             <li class="nav-item active"> 
@@ -303,7 +303,7 @@
             <?php if( $positionId == 1){ ?>
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="public/img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>Senior Account</strong> is always guaranteed for discounts!</p>
                 <a class="btn btn-success btn-sm" href="">Register as Senior!</a>
             </div>
@@ -389,10 +389,10 @@
             </h6>
             <?php if ($data['complaintCount'] > 0) : ?>
                 <?php foreach ($data['complaints'] as $complaint) : ?>
-                    <a class="dropdown-item d-flex align-items-center" href="complaints?status=unattended">
+                    <a class="dropdown-item d-flex align-items-center" href="complaint?status=unattended">
                         <!-- Display complaint details here -->
                         <div>
-                            <p class="small text-gray-500">Complain: <?php echo htmlspecialchars($complaint['complaintDesc']); ?></p>
+                            <p class="small text-gray-500">Complaint: <?php echo htmlspecialchars($complaint['complaintDesc']); ?></p>
                         </div> 
                     </a>
                 <?php endforeach; ?>
@@ -421,7 +421,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="public/img/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -433,7 +433,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="public/img/undraw_profile_2.svg"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -445,7 +445,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="public/img/undraw_profile_3.svg"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -518,12 +518,12 @@
             
             </div><br>
             <?php
-            if($row['active'] == 1){
-                $active = "Active Now";
-            }
+            // if($row['active'] == 1){
+            //     $active = "Active Now";
+            // }
             
             ?>
-            <span class="mx-auto d-lg-inline text-gray-500 small"><i class='fas fa-circle fa-green' style='color: green;'></i>  <?php echo $active; ?></span>
+            <!-- span class="mx-auto d-lg-inline text-gray-500 small"><i class='fas fa-circle fa-green' style='color: green;'></i>  <?php //echo $active; ?></span>< -->
         </div>
     <div class="dropdown-divider"></div>
 
@@ -582,31 +582,37 @@
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+            <form method="POST" action="/neeco2/logout">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Select "Logout" below if you are ready to end your current session.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Logout</button>
+                    </div>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
+
     <!-- Bootstrap core JavaScript-->
-    <script src="public/vendor/jquery/jquery.min.js"></script>
-    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="public/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="public/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="public/js/sb-admin-2.min.js"></script>
+    <script src="public/assets/js/sb-admin-2.min.js"></script>
+    
 
     <!-- Page level plugins -->
    

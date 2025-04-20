@@ -214,11 +214,11 @@
                     <span>Add Complaints</span></a>
             </li>
 
-            <li class="nav-item active"> 
+            <!-- <li class="nav-item active"> 
                 <a class="nav-link" href="report.php">
                 <i class="fas fa-fw fa-comment"></i>
                     <span>Reports</span></a>
-            </li>
+            </li> -->
             
             <?php } ?>
             <!-- Divider -->
@@ -500,7 +500,7 @@
        
        
             
-            <a class="dropdown-toggle" href="users-profile.php" role="button" id="nameDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="dropdown-toggle" href="/neeco2/profile" role="button" id="nameDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 <?php if( $positionId == 1){ ?>
                 <?php echo $data['username'];?>
@@ -528,7 +528,7 @@
     <div class="dropdown-divider"></div>
 
     
-    <a class="dropdown-item" href="users-profile.php">
+    <a class="dropdown-item" href="/neeco2/profile">
         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
         Profile
     </a>

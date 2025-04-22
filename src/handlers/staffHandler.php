@@ -4,13 +4,19 @@
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../../utils/debugUtil.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
     class StaffHandler {
         private $staffRepo;
+        public $logger;
     
         public function __construct() {
             $this->staffRepo = new StaffRepo();
+            $this->logger = new Logger();
         }
             public function handleRequest() {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 $currentUser = Auth::requirePosition(['admin']);
                 $action = $_REQUEST['action'] ?? 'getAll';
             
@@ -39,6 +45,7 @@
                         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
                         $staff->staffPic = $fileHandler->uploadFile($_FILES['staffPic'], $allowedTypes);
                         if ($this->staffRepo->insert($staff)){
+                            $this->logger->log($_SESSION['employeeId'], "Added new Staff");
                             header("Location: /neeco2/staff?success=Staff created successfully");
                             exit;
                         }else{
@@ -61,6 +68,7 @@
                         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
                         $staff->staffPic = $fileHandler->uploadFile($_FILES['staffPic'], $allowedTypes);
                         if ($this->staffRepo->update($staff, intval($_POST['staffId']))){
+                            $this->logger->log($_SESSION['employeeId'], "Updated Staff");
                             header("Location: /neeco2/staff?success=Staff updated successfully");
                             exit;
                         }else{
@@ -77,6 +85,7 @@
             public function deleteStaff(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if($this->staffRepo->delete($_POST['staffId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted A Staff staffId = {$_POST['staffId']}");
                         header("Location: /neeco2/staff?success=Staff deleted successfully");
                         exit;
                     }else{
@@ -88,7 +97,7 @@
     }
 
 $con = getPDOConnection();
-$staffHandler = new StaffHandler($con);
+$staffHandler = new StaffHandler();
 $staffHandler->handleRequest();
 
 //VIEWS NOT READY

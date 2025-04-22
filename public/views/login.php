@@ -109,7 +109,7 @@ include __DIR__ . '/../views/fragments/header.php';
                             </form>
 
                             <p class="text-center" style="color: white;">Not a member? <a data-toggle="tab"
-                                    href="register.php" style="color: #22ab5c;">Sign Up</a></p>
+                                    href="/neeco2/register" style="color: #22ab5c;">Sign Up</a></p>
                         </div>
                     </div>
                 </div>

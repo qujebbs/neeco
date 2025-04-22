@@ -4,14 +4,20 @@
     require_once __DIR__ . "/../../utils/debugUtil.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
     class BodHandler {
         private $bodRepo;
+        public $logger;
     
         public function __construct($con) {
             $this->bodRepo = new BodRepo();
+            $this->logger = new Logger();
         }
 
         public function handleRequest() {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
@@ -43,6 +49,7 @@
                         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
                         $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
                         if ($this->bodRepo->insert($bod)){
+                            $this->logger->log($_SESSION['employeeId'], "Created New Bod {$bod->bodName}");
                             header("Location: /neeco2/bod?success=BOD created successfully");
                             exit;
                         }else{
@@ -64,6 +71,7 @@
                         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
                         $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
                         if ($this->bodRepo->update($bod, $_POST['bodId'])){
+                            $this->logger->log($_SESSION['employeeId'], "Updated A Bod");
                             header("Location: /neeco2/bod?success=BOD Updated successfully");
                             exit;
                         }else{
@@ -80,6 +88,7 @@
             public function deleteBod(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if($this->bodRepo->delete($_POST['bodId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted A Bod");
                         header("Location: /neeco2/bod?success=BOD deleted successfully");
                         exit;
                     }else{

@@ -1,10 +1,10 @@
 <?php
-    require_once("src/config/db.php");
+    require_once __DIR__ ."/../config/db.php";
 
     class Logger{
-        private $con;
-        public function __construct($con){
-            $this->con = $con;
+        protected $con;
+        public function __construct(){
+            $this->con = getPDOConnection();
         }
 
         public function log($employeeId, $logActivity){

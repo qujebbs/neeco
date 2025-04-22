@@ -3,15 +3,21 @@
     require_once __DIR__ . "/../models/BacModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
 
     class BacHandler {
             private $bacRepo;
+            public $logger;
         
             public function __construct($con) {
                 $this->bacRepo = new BacRepo();
+                $this->logger = new Logger();
             }
 
             public function handleRequest() {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 $currentUser = Auth::requirePosition(['admin']);
                 $action = $_REQUEST['action'] ?? 'getAll';
             
@@ -42,6 +48,7 @@
                         $allowedTypes = ['application/pdf'];
                         $bac->bacPdf = $fileHandler->uploadFile($_FILES['bacPdf'], $allowedTypes);
                         if ($this->bacRepo->insert($bac)){
+                            $this->logger->log($_SESSION['employeeId'], "Created New Bac {$bac->bacTitle}");
                             header("Location: /neeco2/bac?success=Download created successfully");
                             exit;
                         }else{
@@ -65,6 +72,7 @@
                         $allowedTypes = ['application/pdf'];
                         $bac->bacPdf = $fileHandler->uploadFile($_FILES['bacPdf'], $allowedTypes);
                         if ($this->bacRepo->update($bac, $_POST['bacId'])){
+                            $this->logger->log($_SESSION['employeeId'], "Updated Bac {$_POST['bacId']}");
                             header("Location: /neeco2/bac?success=BAC Updated successfully");
                             exit;
                         }else{
@@ -81,6 +89,7 @@
             public function deleteBac(){
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if($this->bacRepo->delete($_POST['bacId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted Bac {$_POST['bacId']}");
                         header("Location: /neeco2/bac?success=BAC deleted successfully");
                         exit;
                     }else{

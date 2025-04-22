@@ -23,7 +23,7 @@
         renderModal("editconsumerPayerModal{$consumerPayer['payerId']}", 'Update Consumer Payer', 'update', [
             'payerName' => 'Consumer Payer Name',
             'payerAddress' => 'Consumer Payer Address'
-        ], 'consumerPayer', $consumerPayer);
+        ], 'consumerPayer', $consumerPayer, "/neeco2/consumer-payer", "payerId");
     }
     ?>
 </div>

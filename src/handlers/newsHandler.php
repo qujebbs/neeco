@@ -3,14 +3,21 @@
     require_once __DIR__ . "/../models/NewsModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
+
     class NewsHandler {
         private $newsRepo;
+        public $logger;
     
         public function __construct($con) {
             $this->newsRepo = new NewsRepo();
+            $this->logger = new Logger();
         }
 
         public function handleRequest() {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
@@ -40,6 +47,7 @@
                     $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                     $news->newsPic = $fileHandler->uploadFile($_FILES['newsPic'], $allowedTypes);
                     if ($this->newsRepo->insert($news)){
+                        $this->logger->log($_SESSION['employeeId'], "Uploaded New News");
                         header("Location: /neeco2/news?success=News created successfully");
                         exit;
                     }else{
@@ -62,6 +70,7 @@
                     $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                     $news->newsPic = $fileHandler->uploadFile($_FILES['newsPic'], $allowedTypes);
                     if ($this->newsRepo->update($news, $_POST['newsId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Updated A News");
                         header("Location: /neeco2/news?success=News created successfully");
                         exit;
                     }else{
@@ -79,6 +88,7 @@
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if($this->newsRepo->delete($_POST['newsId'])){
+                    $this->logger->log($_SESSION['employeeId'], "Deleted A News");
                     header("Location: /neeco2/news?success=News deleted successfully");
                     exit;
                 }else{

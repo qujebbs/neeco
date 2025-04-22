@@ -2,14 +2,20 @@
     require_once __DIR__ . "/../repositories/ConsumerPayersRepo.php";
     require_once __DIR__ . "/../models/ConsumerPayersModel.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
     class ConsumerPayersHandler {
         private $consumerPayersRepo;
+        public $logger;
     
         public function __construct($con) {
             $this->consumerPayersRepo = new ConsumerPayersRepo();
+            $this->logger = new Logger();
         }
 
             public function handleRequest() {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 $currentUser = Auth::requirePosition(['admin']);
                 $action = $_REQUEST['action'] ?? 'getAll';
             
@@ -34,6 +40,7 @@
             }
 
             public function createConsumerPayers(){
+                $this->logger->log($_SESSION['employeeId'], "Created New Consumer Payer");
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $consumerPayer = new ConsumerPayers($_POST);
 
@@ -44,14 +51,19 @@
                 }
             }
 
-            public function updateConsumerPayers($con) {
+            public function updateConsumerPayers() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $consumerPayer = new ConsumerPayers($_POST);
 
-                    $this->consumerPayersRepo->update($consumerPayer, $_POST['consumerPayersId']);
-            
-                    header("Location: views/unimplemented.php");
+
+                if ($this->consumerPayersRepo->update($consumerPayer, $_POST['payerId'])){
+                    $this->logger->log($_SESSION['employeeId'], "Updated A Consumer Payer");
+                    header("Location: /neeco2/consumer-payer?success=Consumer Payer updated successfully");
                     exit;
+                }else{
+                    header("Location: /neeco2/consumer-payer?error=Failed to Update Consumer Payer.");
+                    exit();
+                }
                 }
             }
 
@@ -59,6 +71,7 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if($this->consumerPayersRepo->delete($_POST['payerId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted A Consumer Payer");
                         header("Location: /neeco2/consumer-payer?success=Consumer Payer deleted successfully");
                         exit;
                     }else{

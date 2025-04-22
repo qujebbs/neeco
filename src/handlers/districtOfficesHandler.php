@@ -4,13 +4,20 @@
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../../utils/debugUtil.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
+
     class DistrictOfficesHandler {
         private $districtOfficesRepo;
+        public $logger;
     
         public function __construct($con) {
             $this->districtOfficesRepo = new DistrictOfficesRepo();
+            $this->logger = new Logger();
         }
         public function handleRequest() {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
@@ -41,6 +48,7 @@
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                         $districtOffice->districtPic = $fileHandler->uploadFile($_FILES['districtPic'], $allowedTypes);
                         if ($this->districtOfficesRepo->insert($districtOffice)){
+                            $this->logger->log($_SESSION['employeeId'], "Created New District Office");
                             header("Location: /neeco2/district-office?success=District Office created successfully");
                             exit;
                         }else{
@@ -63,6 +71,7 @@
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                         $districtOffice->districtPic = $fileHandler->uploadFile($_FILES['districtPic'], $allowedTypes);
                         if ($this->districtOfficesRepo->update($districtOffice, $_POST['districtId'])){
+                            $this->logger->log($_SESSION['employeeId'], "Updated A District Office");
                             header("Location: /neeco2/district-office?success=District Office updated successfully");
                             exit;
                         }else{
@@ -80,6 +89,7 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if($this->districtOfficesRepo->delete($_POST['districtId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted A District Office");
                         header("Location: /neeco2/district-office?success=District Office deleted successfully");
                         exit;
                     }else{

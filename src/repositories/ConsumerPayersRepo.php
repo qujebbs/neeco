@@ -16,8 +16,8 @@
             return $stmt->execute();
         }
 
-        public function update(ConsumerPayers $consumerPayers,$id){
-            $sql = "UPDATE awards SET payerName = :payerName, payerAddress = :payerAddress WHERE payerId = :id";
+        public function update(ConsumerPayers $consumerPayers, $id){
+            $sql = "UPDATE {$this->table} SET payerName = :payerName, payerAddress = :payerAddress WHERE payerId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":payerName", $consumerPayers->payerName);
             $stmt->bindParam(":payerAddress", $consumerPayers->payerAddress);

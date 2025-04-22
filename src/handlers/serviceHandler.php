@@ -3,14 +3,20 @@
     require_once __DIR__ . "/../models/ServiceModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
     class ServiceHandler {
         private $serviceRepo;
+        public $logger;
     
         public function __construct($con) {
             $this->serviceRepo = new ServiceRepo();
+            $this->logger = new Logger();
         }
 
         public function handleRequest() {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
@@ -42,6 +48,7 @@
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                         $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
                         if ($this->serviceRepo->insert($service)){
+                            $this->logger->log($_SESSION['employeeId'], "Created New Service");
                             header("Location: /neeco2/service?success=Service created successfully");
                             exit;
                         }else{
@@ -63,6 +70,7 @@
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
                         $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
                         if ($this->serviceRepo->update($service, $_POST['serviceId'])){
+                            $this->logger->log($_SESSION['employeeId'], "Updated A Service");
                             header("Location: /neeco2/service?success=Service updated successfully");
                             exit;
                         }else{
@@ -80,6 +88,7 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if($this->serviceRepo->delete($_POST['serviceId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted A Service");
                         header("Location: /neeco2/service?success=Service deleted successfully");
                         exit;
                     }else{

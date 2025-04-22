@@ -3,14 +3,20 @@
     require_once __DIR__ . "/../models/RateModel.php";
     require_once __DIR__ . "/../utils/fileHandler.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
+    require_once __DIR__ . "/../logs/logger.php";
     class RateHandler {
         private $rateRepo;
-    
-        public function __construct($con) {
+        public $logger;
+
+        public function __construct() {
             $this->rateRepo = new RateRepo();
+            $this->logger = new Logger();
         }
 
         public function handleRequest() {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $currentUser = Auth::requirePosition(['admin']);
             $action = $_REQUEST['action'] ?? 'getAll';
         
@@ -42,6 +48,7 @@
                             $allowedTypes = ['application/pdf'];
                             $rate->pdf = $fileHandler->uploadFile($_FILES['pdf'], $allowedTypes);
                             if ($this->rateRepo->insert($rate)){
+                                $this->logger->log($_SESSION['employeeId'], "Created New Rate");
                                 header("Location: /neeco2/rate?success=Staff created successfully");
                                 exit;
                             }else{
@@ -65,6 +72,7 @@
                         $allowedTypes = ['application/pdf'];
                         $rate->pdf = $fileHandler->uploadFile($_FILES['pdf'], $allowedTypes);
                         if ($this->rateRepo->update($rate, $_POST['rateId'])){
+                            $this->logger->log($_SESSION['employeeId'], "Updated A Rate");
                             header("Location: /neeco2/rate?success=Rate updated successfully");
                             exit;
                         }else{
@@ -82,6 +90,7 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if($this->rateRepo->delete($_POST['rateId'])){
+                        $this->logger->log($_SESSION['employeeId'], "Deleted A Rate");
                         header("Location: /neeco2/rate?success=Rate deleted successfully");
                         exit;
                     }else{

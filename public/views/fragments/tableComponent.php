@@ -30,7 +30,7 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                                             echo '<img src="' . htmlspecialchars($filePath, ENT_QUOTES, 'UTF-8') . '" alt="Image" style="max-width: 100px; max-height: 100px;">';
                                         } else {
                                             // Display file link
-                                            echo '<a href="' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '" target="_blank">Download File</a>';
+                                            echo '<a href="' . htmlspecialchars($filePath, ENT_QUOTES, 'UTF-8') . '" target="_blank">View File</a>';
                                         }
                                     } else {
                                         // Display text for non-file/non-URL fields

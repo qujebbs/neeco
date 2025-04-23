@@ -65,10 +65,16 @@
             public function updateService() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $service = new Service($_POST);
+                    $tempService = new Service($this->serviceRepo->selectOne($_POST['serviceId']));
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
-                        $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
+                        if (!empty($_FILES['servicePic']['name'])){
+                            $service->servicePic = $fileHandler->uploadFile($_FILES['servicePic'], $allowedTypes);
+                        }else{
+                            $service->servicePic = $tempService->servicePic;
+                        }
+                        
                         if ($this->serviceRepo->update($service, $_POST['serviceId'])){
                             $this->logger->log($_SESSION['employeeId'], "Updated A Service");
                             header("Location: /neeco2/service?success=Service updated successfully");

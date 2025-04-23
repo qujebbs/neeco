@@ -62,11 +62,16 @@
             public function updateStaff() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $staff = new Staff($_POST);
+                    $tempStaff = new Staff($this->staffRepo->selectOne($_POST['staffId']));
             
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
-                        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-                        $staff->staffPic = $fileHandler->uploadFile($_FILES['staffPic'], $allowedTypes);
+                        $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+                        if (!empty($_FILES['staffPic']['name'])){
+                            $staff->staffPic = $fileHandler->uploadFile($_FILES['staffPic'], $allowedTypes);
+                        }else{
+                            $staff->staffPic = $tempStaff->staffPic;
+                        }
                         if ($this->staffRepo->update($staff, intval($_POST['staffId']))){
                             $this->logger->log($_SESSION['employeeId'], "Updated Staff");
                             header("Location: /neeco2/staff?success=Staff updated successfully");

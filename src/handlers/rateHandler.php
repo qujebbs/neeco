@@ -66,11 +66,16 @@
             public function updateRate() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rate = new Rate($_POST);
+                    $tempRates = new Rate($this->rateRepo->selectOne($_POST['rateId']));
 
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
                         $allowedTypes = ['application/pdf'];
-                        $rate->pdf = $fileHandler->uploadFile($_FILES['pdf'], $allowedTypes);
+                        if (!empty($_FILES['pdf']['name'])){
+                            $rate->pdf = $fileHandler->uploadFile($_FILES['pdf'], $allowedTypes);
+                        }else{
+                            $rate->pdf = $tempRates->pdf;
+                        }
                         if ($this->rateRepo->update($rate, $_POST['rateId'])){
                             $this->logger->log($_SESSION['employeeId'], "Updated A Rate");
                             header("Location: /neeco2/rate?success=Rate updated successfully");

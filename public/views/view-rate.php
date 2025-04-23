@@ -67,7 +67,7 @@ include __DIR__ . '/../views/fragments/header.php';
                 <div class="mt-3">
                   <?php foreach ($news as $item) : ?>  
                     <div class="post-item mt-3">
-                      <img src="<?php echo htmlspecialchars($item['news_picture']); ?>" alt="<?php echo htmlspecialchars($item['news_title']); ?>" style="height: 50px; width: 50px;">
+                      <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($item['news_picture']); ?>" alt="<?php echo htmlspecialchars($item['news_title']); ?>" style="height: 50px; width: 50px;">
                       <div>
                         <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($item['news_id']); ?>"><?php echo htmlspecialchars($item['news_title']); ?></a></h4>
                         <time datetime="<?php echo htmlspecialchars($item['upload_date']); ?>"><?php echo htmlspecialchars($item['upload_date']); ?></time>

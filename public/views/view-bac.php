@@ -36,7 +36,7 @@ include __DIR__ . '/../views/fragments/header.php';
             <?php foreach ($bacs as $row) : ?>  
               <article class="blog-details">
                 <div class="post-img">
-                  <iframe src="<?php echo htmlspecialchars($row['bacName']); ?>" style="width:100%; height:800px;" frameborder="0"></iframe>
+                  <iframe src="/neeco2/public/uploads/<?php echo htmlspecialchars($row['bacName']); ?>" style="width:100%; height:800px;" frameborder="0"></iframe>
                 </div>
                 <h2 class="title"><?php echo htmlspecialchars($row['bacTitle']); ?></h2>
                 <div class="meta-top"></div><!-- End meta top -->

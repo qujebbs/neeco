@@ -39,7 +39,7 @@ include __DIR__ . '/../views/fragments/header.php';
               <div class="col-xl-6 col-md-6">
                 <article>
                   <div class="post-img">
-                    <img src="<?php echo htmlspecialchars($member['bodPicture']); ?>" alt="<?php echo htmlspecialchars($member['bodName']); ?>" class="img-fluid">
+                    <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($member['bodPicture']); ?>" alt="<?php echo htmlspecialchars($member['bodName']); ?>" class="img-fluid">
                   </div>
                   <p class="post-category"><?php echo htmlspecialchars($member['bodName']); ?></p>
                   <p class="post-category" style="font-size: 12px; color: #000;"><?php echo htmlspecialchars($member['bodPosition']); ?></p>
@@ -57,7 +57,7 @@ include __DIR__ . '/../views/fragments/header.php';
                 <div class="mt-3">
                   <?php foreach ($news as $item) : ?>  
                   <div class="post-item mt-3">
-                    <img src="<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" style="height: 50px; width: 50px;">
+                    <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" style="height: 50px; width: 50px;">
                     <div>
                       <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($item['newsId']); ?>"><?php echo htmlspecialchars($item['newsTitle']); ?></a></h4>
                       <time datetime="<?php echo htmlspecialchars($item['uploadDate']); ?>"><?php echo htmlspecialchars($item['uploadDate']); ?></time>

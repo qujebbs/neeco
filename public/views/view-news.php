@@ -39,7 +39,7 @@ include __DIR__ . '/../views/fragments/header.php';
               <div class="col-xl-6 col-md-6">
                 <article>
                   <div class="post-img">
-                    <img src="<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" class="img-fluid">
+                    <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" class="img-fluid">
                   </div>
                   <p class="post-category"><?php echo htmlspecialchars($item['uploadDate']); ?></p>
                   <h2 class="title">

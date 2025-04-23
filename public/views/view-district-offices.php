@@ -56,7 +56,7 @@ include __DIR__ . '/../views/fragments/header.php';
 
               <?php foreach ($district_offices as $dist) : ?>
                 <div class="content" style="display: flex; align-items: center;">
-                  <img src="<?php echo htmlspecialchars($dist['districtPic']); ?>" alt="<?php echo htmlspecialchars($dist['districtName']); ?>" class="img-fluid" style="height: 50%; width: 50%; flex-shrink: 0;">
+                  <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($dist['districtPic']); ?>" alt="<?php echo htmlspecialchars($dist['districtName']); ?>" class="img-fluid" style="height: 50%; width: 50%; flex-shrink: 0;">
                   <div style="margin-left: 10px;">
                     <p style="font-size: 18px; font-weight: 10;">
                       <strong>Office:</strong> <?php echo htmlspecialchars($dist['districtName']); ?> <br>
@@ -80,7 +80,7 @@ include __DIR__ . '/../views/fragments/header.php';
                 <div class="mt-3">
                   <?php foreach ($news as $item) : ?>  
                     <div class="post-item mt-3">
-                      <img src="<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" style="height: 50px; width: 50px;">
+                      <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($item['newsPic']); ?>" alt="<?php echo htmlspecialchars($item['newsTitle']); ?>" style="height: 50px; width: 50px;">
                       <div>
                         <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($item['newsId']); ?>"><?php echo htmlspecialchars($item['newsTitle']); ?></a></h4>
                         <time datetime="<?php echo htmlspecialchars($item['uploadDate']); ?>"><?php echo htmlspecialchars($item['uploadDate']); ?></time>

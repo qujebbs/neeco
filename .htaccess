@@ -1,4 +1,6 @@
 Options -Multiviews
+Options -Indexes
+
 RewriteEngine On
 
 RewriteBase /neeco2/

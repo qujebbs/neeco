@@ -65,11 +65,16 @@
             public function updateDownloads() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $download = new Downloads($_POST);
-                    
+                    $tempDownload = new Downloads($this->downloadsRepo->selectOne($_POST['downloadId']));
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
                         $allowedTypes = ['application/pdf'];
-                        $download->pdfName = $fileHandler->uploadFile($_FILES['pdfName'], $allowedTypes);
+                        if (!empty($_FILES['districtPic']['name'])){
+                            $download->pdfName = $fileHandler->uploadFile($_FILES['pdfName'], $allowedTypes);
+                        }else{
+                            $download->pdfName = $tempDownload->pdfName;
+                        }
+                        
                         if ($this->downloadsRepo->update($download, $_POST['downloadId'])){
                             $this->logger->log($_SESSION['employeeId'], "Updated A Download");
                             header("Location: /neeco2/download?success=Download created successfully");

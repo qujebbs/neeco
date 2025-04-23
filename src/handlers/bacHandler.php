@@ -67,10 +67,16 @@
             
                     $bac = new Bac($_POST);
 
+                    $tempBac = new Bac($this->bacRepo->selectOne($_POST['bacId']));
+
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
                         $allowedTypes = ['application/pdf'];
-                        $bac->bacPdf = $fileHandler->uploadFile($_FILES['bacPdf'], $allowedTypes);
+                        if (!empty($_FILES['bacPdf']['name'])){
+                            $bac->bacPdf = $fileHandler->uploadFile($_FILES['bacPdf'], $allowedTypes);
+                        }else{
+                            $bac->bacPdf = $tempBac->bacPdf;
+                        }
                         if ($this->bacRepo->update($bac, $_POST['bacId'])){
                             $this->logger->log($_SESSION['employeeId'], "Updated Bac {$_POST['bacId']}");
                             header("Location: /neeco2/bac?success=BAC Updated successfully");
@@ -98,6 +104,7 @@
                     };
             }
         }
+         
     }
 
 $con = getPDOConnection();

@@ -65,11 +65,17 @@
             public function updateDistrictOffices() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $districtOffice = new DistrictOffices($_POST);
+
+                    $tempDistrictOffice = new DistrictOffices($this->districtOfficesRepo->selectOne($_POST['districtId']));
             
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
                         $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
-                        $districtOffice->districtPic = $fileHandler->uploadFile($_FILES['districtPic'], $allowedTypes);
+                        if (!empty($_FILES['districtPic']['name'])){
+                            $districtOffice->districtPic = $fileHandler->uploadFile($_FILES['districtPic'], $allowedTypes);
+                        }else{
+                            $districtOffice->districtPic = $tempDistrictOffice->districtPic;
+                        }
                         if ($this->districtOfficesRepo->update($districtOffice, $_POST['districtId'])){
                             $this->logger->log($_SESSION['employeeId'], "Updated A District Office");
                             header("Location: /neeco2/district-office?success=District Office updated successfully");

@@ -10,18 +10,18 @@
 
     <?php
     renderTable($downloads, [
-        'pdfTitle' => 'File Title',
+        'downloadsTitle' => 'File Title',
         'pdfName' => 'Quick Download'
     ], 'download', 'downloadId', "/neeco2/download");
 
     renderModal('adddownloadModal', 'Add New Download', 'create', [
-        'title' => 'File Title',  //POST['Title'] for downloads pdfTitle in db
+        'title' => 'File Title',  //POST['Title'] for downloads downloadsTitle in db
         'pdfName' => 'Quick Download'
     ], 'download', [], "/neeco2/download");
 
     foreach ($downloads as $download) {
         renderModal("editdownloadModal{$download['downloadId']}", 'Update Download', 'update', [
-            'title' => 'File Title',
+            'downloadsTitle' => 'File Title',
             'pdfName' => 'Quick Download'
         ], 'download', $download, "/neeco2/download", "downloadId");
     }

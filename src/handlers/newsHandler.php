@@ -64,11 +64,16 @@
         public function updateNews() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $news = new News($_POST);
+                $tempNews = new News($this->newsRepo->selectOne($_POST['newsId']));
 
                 try{ 
                     $fileHandler = new FileHandler('uploads/');
                     $allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
-                    $news->newsPic = $fileHandler->uploadFile($_FILES['newsPic'], $allowedTypes);
+                    if (!empty($_FILES['districtPic']['name'])){
+                        $news->newsPic = $fileHandler->uploadFile($_FILES['newsPic'], $allowedTypes);
+                    }else{
+                        $news->newsPic = $tempNews->newsPic;
+                    }
                     if ($this->newsRepo->update($news, $_POST['newsId'])){
                         $this->logger->log($_SESSION['employeeId'], "Updated A News");
                         header("Location: /neeco2/news?success=News created successfully");

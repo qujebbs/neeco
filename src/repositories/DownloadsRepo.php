@@ -9,20 +9,20 @@
         }
 
         public function insert(Downloads $downloads){
-            $sql = "INSERT INTO {$this->table} (pdfName, pdfTitle, uploadDate) VALUES (:pdfName, :pdfTitle, :uploadDate)";
+            $sql = "INSERT INTO {$this->table} (pdfName, downloadsTitle, uploadDate) VALUES (:pdfName, :downloadsTitle, :uploadDate)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam("pdfName", $downloads->pdfName);
-            $stmt->bindParam("pdfTitle", $downloads->pdfTitle);
+            $stmt->bindParam("downloadsTitle", $downloads->downloadsTitle);
             $stmt->bindParam("uploadDate", $downloads->uploadDate);
 
             return $stmt->execute();
         }
 
         public function update(Downloads $downloads, $id){
-            $sql = "UPDATE {$this->table} SET pdfName = :pdfName, pdfTitle = :pdfTitle, uploadDate = :uploadDate WHERE downloadId = :id";
+            $sql = "UPDATE {$this->table} SET pdfName = :pdfName, downloadsTitle = :downloadsTitle, uploadDate = :uploadDate WHERE downloadId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":pdfName", $downloads->pdfName);
-            $stmt->bindParam(":pdfTitle", $downloads->pdfTitle);
+            $stmt->bindParam(":downloadsTitle", $downloads->downloadsTitle);
             $stmt->bindParam(":uploadDate", $downloads->uploadDate);
             $stmt->bindParam(":id", $id);
 

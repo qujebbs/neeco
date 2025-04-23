@@ -66,10 +66,15 @@
             public function updateBod() {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $bod = new Bod($_POST);
+                    $tempBod = new Bod($this->bodRepo->selectOne($_POST['bodId']));
                     try{ 
                         $fileHandler = new FileHandler('uploads/');
                         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-                        $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
+                        if (!empty($_FILES['bodPicture']['name'])){
+                            $bod->bodPicture = $fileHandler->uploadFile($_FILES['bodPicture'], $allowedTypes);
+                        }else{
+                            $bod->bodPicture = $tempBod->bodPicture;
+                        }   
                         if ($this->bodRepo->update($bod, $_POST['bodId'])){
                             $this->logger->log($_SESSION['employeeId'], "Updated A Bod");
                             header("Location: /neeco2/bod?success=BOD Updated successfully");

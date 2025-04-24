@@ -11,15 +11,21 @@
     <?php
     renderTable($rates, [
         'pdf' => 'PDF',
+        'date' => 'Date',
+        'rateType' => 'rate Type'
     ], 'rate', 'rateId', "/neeco2/rate");
 
     renderModal('addrateModal', 'Add New Rate', 'create', [
-        'pdf' => 'PDF'
+        'pdf' => 'PDF',
+        'date' => 'Date',
+        'rateType' => 'rate Type'
     ], 'rate', [], "/neeco2/rate",);
 
     foreach ($rates as $rate) {
         renderModal("editrateModal{$rate['rateId']}", 'Update Rate', 'update', [
-            'pdf' => 'PDF'
+            'pdf' => 'PDF',
+            'date' => 'Date',
+            'rateType' => 'rate Type'
         ], 'rate', $rate, "/neeco2/rate", "rateId");
     }
     ?>

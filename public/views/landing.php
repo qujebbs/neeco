@@ -21,7 +21,7 @@ With a focus on efficiency, honesty, and solidarity, we work tirelessly to provi
 Join us in our mission to power progress and enhance the quality of life in our area. Together, we can build a brighter future for our families and neighbors.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="#services" class="btn-get-started">OUR SERVICE</a>
-            <a href="login.php" class="btn-get-started">Employee Portal</a>
+            <a href="/neeco2/login" class="btn-get-started">Employee Portal</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
@@ -37,7 +37,7 @@ Join us in our mission to power progress and enhance the quality of life in our 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
             <div class="icon"><i class='bx bxs-file-blank'></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Complaints</a></h4>
+              <h4 class="title"><a href="/neeco2/login" class="stretched-link">Complaints</a></h4>
             </div>
           </div>
 

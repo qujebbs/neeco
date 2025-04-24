@@ -49,7 +49,7 @@
         'complaintDesc' => 'Description',
         'natureId' => 'Nature of Complaints'
         
-    ], 'complaint', [], "/neeco2/complaint");
+    ], 'complaint', [], "/neeco2/complaint", "complaintId", ['natureId' => $natures]);
 
     if (in_array($positionId, [1, 2, 7])) {
         foreach ($complaints as $complaint) {

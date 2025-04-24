@@ -302,11 +302,11 @@
             </div>
             <?php if( $positionId == 1){ ?>
             <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
+            <!-- <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="public/img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>Senior Account</strong> is always guaranteed for discounts!</p>
                 <a class="btn btn-success btn-sm" href="">Register as Senior!</a>
-            </div>
+            </div> -->
             <?php } ?>
 
             
@@ -544,7 +544,7 @@
               
     <div class="dropdown-divider"></div>
 
-    <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+    <a class="dropdown-item" href="/neeco2/logout" data-toggle="modal" data-target="#logoutModal">
         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
         Logout
     </a>

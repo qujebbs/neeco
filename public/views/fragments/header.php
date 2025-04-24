@@ -145,40 +145,22 @@
           <li class="dropdown"><a href="#"><span>FAQs</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="/neeco2/home?section=member-insurance">Member Consumer Insurance Owner</a></li>
-              <li><a href="#">Senior Citizen Discounts</a></li>
+              <!-- <li><a href="#">Senior Citizen Discounts</a></li> -->
               <li><a href="/neeco2/home?section=safety">Safety Tips</a></li>
-              <li><a href="ra-7832-anti-pilferage-law-1.php">R.A. 7832 Anti Pilferage Law</a></li>
+              <!-- <li><a href="ra-7832-anti-pilferage-law-1.php">R.A. 7832 Anti Pilferage Law</a></li> -->
             </ul>
           </li>
 
 
-          <?php
-include __DIR__ .'/../../../src/init.php';
-
-function get_latest_downloads() {
-    global $con;
-    $list = array();
-
-    $sql = "SELECT * FROM downloads ";
-    $qry = $con->query($sql);
-
-    if ($qry) {
-        while ($row = mysqli_fetch_assoc($qry)) {
-            $list[] = $row;
-        }
-    }
-
-    return $list;
-}
-
-$quickdl = get_latest_downloads();
-?>
+      <?php require_once __DIR__ ."/../../../src/helpers/headerHelper.php";
+          $downloads = getDownloads();
+      ?>
 
 <li class="dropdown">
     <a href="#"><span>Downloads</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
     <ul>
-        <?php foreach ($quickdl as $dl) : ?>
-            <li><a href="<?php echo $dl['pdf_name']; ?>"><?php echo $dl['pdf_title']; ?></a></li>
+        <?php foreach ($downloads as $download) : ?>
+            <li><a href="/neeco2/public/uploads/<?php echo $download['pdfName']; ?>"><?php echo $download['downloadsTitle']; ?></a></li>
         <?php endforeach; ?>
     </ul>
 </li>

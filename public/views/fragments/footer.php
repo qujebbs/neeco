@@ -28,28 +28,12 @@
       </ul>
     </div>
     <?php
-include __DIR__ . '/../../../src/init.php';
+    require_once __DIR__ . "/../../../src/helpers/headerHelper.php";
 
-function get_all_rate() {
-    global $con;
-    $list = array();
-
-    $sql = "SELECT * FROM rates ORDER BY date DESC LIMIT 5 ";
-    $qry = $con->query($sql);
-
-    if ($qry) {
-        while ($row = mysqli_fetch_assoc($qry)) {
-            $list[] = $row;
-        }
-    }
-
-    return $list;
-}
-
-$quickrate = get_all_rate();
+$rates = getRates();
 
 $ratesByMonthAndYear = [];
-foreach ($quickrate as $rate) {
+foreach ($rates as $rate) {
     $year = date('Y', strtotime($rate['date']));
     $month = date('F', strtotime($rate['date']));
 

@@ -18,8 +18,7 @@ function getPDOConnection()
     // } catch (PDOException $e) {
     //     die("Connection failed: " . $e->getMessage());
     // }
-    $server = "127.0.0.1,1433"; // Named instance
-    // $server = "127.0.0.1,1433";    // IP + port
+    $server = "127.0.0.1,1433";
     $db = "neeco2area1";
     $user = "sa";
     $pass = "Cathpalug2256";

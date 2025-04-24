@@ -33,13 +33,14 @@
         <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <div>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
                             <i class="fas fa-download fa-sm text-white-50"></i> Add User
                         </button>       
                     </div>
-
+                    </div>
                     <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -233,6 +234,28 @@
                     </div>
                    
                     <!-- Content Row -->
+                    <div class="dropdown mb-3">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Download Report
+                        </button>
+
+                        <div class="dropdown-menu p-4" style="min-width: 300px;">
+                            <form action="/neeco2/generate-report" method="POST" target="_blank">
+                            <div class="mb-3">
+                                <label for="start_date" class="form-label">Start Date</label>
+                                <input type="date" name="start_date" id="start_date" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="end_date" class="form-label">End Date</label>
+                                <input type="date" name="end_date" id="end_date" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Export</button>
+                            <small class="text-muted d-block text-center mt-2">
+                                Leave blank to export all complaints
+                            </small>
+                            </form>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">

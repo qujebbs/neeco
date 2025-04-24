@@ -154,4 +154,53 @@
                 return false;
             }
         }
+
+        public function getComplaintsByDateRange($startDate, $endDate){
+
+            if ($startDate !=null && $endDate != null) {
+                $sql = "SELECT 
+                        c.accountNum AS complainantAccountNumber,
+                        c.complaintDate AS dateUploaded,
+                        c.complaintDesc AS description,
+                        e.firstname AS solver,
+                        t.townDesc AS town,
+                        cn2.complaintReason AS complaintNature,
+                        ca.startDate AS startDate,
+                        ca.endDate AS endDate
+            
+                        FROM neeco2area1.dbo.complaints c
+                        LEFT JOIN neeco2area1.dbo.towns t ON c.townId=t.townId
+                        LEFT JOIN neeco2area1.dbo.accounts a ON a.accountId=c.accountId
+                        LEFT JOIN neeco2area1.dbo.employees e ON e.employeeId=c.employeeId
+                        LEFT JOIN neeco2area1.dbo.complaintNatures cn2 ON cn2.natureId=c.natureId
+                        LEFT JOIN neeco2area1.dbo.complaintAction ca ON c.complaintId =ca.complaintId
+                        WHERE ca.startDate >= :startDate AND ca.endDate <= :endDate";
+                $stmt = $this->con->prepare($sql);
+                $stmt->bindParam(":startDate", $startDate);
+                $stmt->bindParam(":endDate", $endDate);
+                $stmt->execute();
+            }else{
+                $sql = "SELECT 
+                        c.accountNum AS complainantAccountNumber,
+                        c.complaintDate AS dateUploaded,
+                        c.complaintDesc AS description,
+                        e.firstname AS solver,
+                        t.townDesc AS town,
+                        cn2.complaintReason AS complaintNature,
+                        ca.startDate AS startDate,
+                        ca.endDate AS endDate
+            
+                        FROM neeco2area1.dbo.complaints c
+                        LEFT JOIN neeco2area1.dbo.towns t ON c.townId=t.townId
+                        LEFT JOIN neeco2area1.dbo.accounts a ON a.accountId=c.accountId
+                        LEFT JOIN neeco2area1.dbo.employees e ON e.employeeId=c.employeeId
+                        LEFT JOIN neeco2area1.dbo.complaintNatures cn2 ON cn2.natureId=c.natureId
+                        LEFT JOIN neeco2area1.dbo.complaintAction ca ON c.complaintId =ca.complaintId
+                        WHERE ca.actionId IS NOT NULL";
+                $stmt = $this->con->prepare($sql);
+                $stmt->execute();
+            }
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }

@@ -51,7 +51,7 @@ foreach ($rates as $rate) {
       <ul>
       <li>
     <box-icon name='right-arrow-alt'>
-        <a href="<?php echo $rate['pdf']; ?>">
+        <a href="/neeco2/public/uploads/<?php echo $rate['pdf']; ?>">
             <?php echo $month . " -- " . $year; ?>
         </a>
     </box-icon>

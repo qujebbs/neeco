@@ -41,7 +41,7 @@
             <div class="col-lg-8 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index.php" class="logo d-flex align-items-center w-auto">
+                <a href="/neeco2/home" class="logo d-flex align-items-center w-auto">
                   <img src="img/NEECO.png" alt="">
                   <span class="d-none d-lg-block" style="color:darkgreen;">NEECO ll AREA 1</span>
                 </a>
@@ -157,7 +157,7 @@
                       <button class="btn btn-primary w-100" name="registerbtn" type="submit">Register</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="login.php">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="/neeco2/login">Log in</a></p>
                     </div>
                   </form>
 

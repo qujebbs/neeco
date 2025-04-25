@@ -1,5 +1,4 @@
-<?php function renderModal($id, $title, $action, $fields, $entity, $data = [], $handler = "defaultHandler", $idName = null, $dropdowns = []) {
-?>
+<?php function renderModal($id, $title, $action, $fields, $entity, $data = [], $handler = "defaultHandler", $idName = null, $dropdowns = []) { ?>
     <div class="modal fade" id="<?= $id ?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -12,7 +11,7 @@
                 <div class="modal-body">
                     <form action="<?= htmlspecialchars($handler, ENT_QUOTES, 'UTF-8') ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="<?= $action ?>">
-                        
+
                         <?php if ($idName && isset($data[$idName])): ?>
                             <input type="hidden" name="<?= htmlspecialchars($idName, ENT_QUOTES, 'UTF-8') ?>" 
                                 value="<?= htmlspecialchars($data[$idName], ENT_QUOTES, 'UTF-8') ?>">
@@ -38,22 +37,28 @@
                                     <!-- Determine input type -->
                                     <?php
                                     $inputType = 'text';
-                                    if (stripos($field, 'date') !== false) {
+                                    if ((stripos($field, 'date') !== false) || (stripos($field, 'Year') !== false)) {
                                         $inputType = 'date';
                                     } elseif (preg_match('/file|image|pdf|picture|pic/i', $field)) {
                                         $inputType = 'file';
                                     }
+
+                                    // Prepare input value
+                                    $inputValue = isset($data[$field]) ? $data[$field] : '';
+
+                                    if ($inputType === 'date' && !empty($inputValue)) {
+                                        // Extract only the date part for SQL datetime formats
+                                        $inputValue = substr($inputValue, 0, 10);
+                                    }
                                     ?>
 
                                     <?php if ($inputType === 'file'): ?>
-                                        <!-- File input (no default value for security reasons) -->
                                         <input type="file" name="<?= $field ?>" class="form-control">
                                     <?php else: ?>
-                                        <!-- Normal text input -->
-                                        <input type="<?= $inputType ?>" 
-                                               name="<?= $field ?>" 
+                                        <input type="<?= $inputType ?>"
+                                               name="<?= $field ?>"
                                                class="form-control"
-                                               value="<?= isset($data[$field]) ? htmlspecialchars($data[$field], ENT_QUOTES, 'UTF-8') : '' ?>"
+                                               value="<?= htmlspecialchars($inputValue, ENT_QUOTES, 'UTF-8') ?>"
                                                required>
                                     <?php endif; ?>
                                 <?php endif; ?>
@@ -69,5 +74,4 @@
             </div>
         </div>
     </div>
-<?php 
-}
+<?php } ?>

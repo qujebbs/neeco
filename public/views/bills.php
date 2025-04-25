@@ -40,8 +40,8 @@
             'billYearMonth' => 'Bill Year Month',
             'kwhUsed' => 'Kilowatt Used',
             'orAmount' => 'OR Amount',
-            'dueDate' => 'Due Date',
-        ], 'bill', $bill);
+            'dueDate' => 'Due Date'
+        ], 'bill', $bill, "/neeco2/bill", "billId");
     }
     ?>
 </div>

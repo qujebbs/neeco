@@ -35,18 +35,18 @@ function getPDOConnection()
 
 
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "Cathpalug2256";
-    $database = "neecollarea1";
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "Cathpalug2256";
+    // $database = "neecollarea1";
 
-    date_default_timezone_set('Asia/Manila');
+    // date_default_timezone_set('Asia/Manila');
 
-    $con = new mysqli($servername, $username, $password,$database);
+    // $con = new mysqli($servername, $username, $password,$database);
 
 
-    if ($con->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
+    // if ($con->connect_error) {
+    // die("Connection failed: " . $conn->connect_error);
+    // }
 
 ?>

@@ -118,6 +118,17 @@ include __DIR__ . '/../views/fragments/header.php';
     </section>
 
     <?php include __DIR__ . '/../views/fragments/footer.php'; ?>
+    <?php if (isset($_GET['error'])): ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: "<?php echo addslashes($_GET['error']); ?>",
+            confirmButtonColor: '#6a0dad', // optional: to match your design
+        });
+    </script>
+    <?php endif; ?>
+
 </body>
 
 </html>

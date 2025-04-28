@@ -53,6 +53,16 @@
                 $_SESSION['employeeId'] = $user['employeeId'];
                 $_SESSION['consumerId'] = $user['consumerId'];
                 $_SESSION['townId'] = $user['townId'];
+
+                if ($user['accountStatusId'] == 1) {
+                    header('Location: /neeco2/pending');
+                    exit;
+                }
+
+                if ($user['accountStatusId'] == 3) {
+                    header('Location: /neeco2/login?error=This account has been Archived.');
+                    exit;
+                }
                 
                 if ($user['positionId'] === "1") {
                     header( "Location: /neeco2/complaint");
@@ -61,9 +71,8 @@
                     header("Location: /neeco2/dashboard");
                     exit;
                 }
-            } else { 
-                http_response_code(401);
-                echo "invalid request method";
+            }else { 
+                header("Location: /neeco2/login?error=Invalid Username or Password.");
             }
         }else{
             dumpvar($_SERVER);

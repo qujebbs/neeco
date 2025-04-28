@@ -17,14 +17,10 @@
         'statusName' => 'Status',
     ], 'account', 'accountId');
 
-    renderModal('addaccountModal', 'Add New Account', 'create', [
-        'Name' => 'Name'
-    ], 'account', [], "/neeco2/consumer");
-
     foreach ($accounts as $account) {
         renderModal("editaccountModal{$account['accountId']}", 'Update Account', 'update', [
-            'Name' => 'Name'
-        ], 'account', $account);
+            'accountStatusId' => 'status'
+        ], 'account', $account, "/neeco2/consumer", "accountId", ['accountStatusId' => $statusDropdown]);
     }
     ?>
 

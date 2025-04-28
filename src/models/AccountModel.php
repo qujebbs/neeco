@@ -11,6 +11,7 @@
         public $accountStatusId;
         public $verificationCode;
         public $isActive;
+        public $townId;
 
         public function __construct($data = []) {
             $this->accountId = $data['accountId'] ?? null;
@@ -23,5 +24,6 @@
             $this->accountStatusId = $data['accountStatusId'] ?? null;
             $this->verificationCode = $data['verificationCode'] ?? null;
             $this->isActive = $data['isActive'] ?? null;
+            $this->townId = $data['townId'] ?? null;
         }
     }

@@ -8,8 +8,8 @@
         }
         public function insert(Account $account){
             try{
-                $sql = "INSERT INTO {$this->table}(consumerId, employeeId, userName, [password], positionId, accountStatusId, verificationCode, isActive)
-                        VALUES (:consumerId, :employeeId, :userName, :pass, :positionId, :accountStatusId, :verificationCode, :isActive)";
+                $sql = "INSERT INTO {$this->table}(consumerId, employeeId, userName, [password], positionId, accountStatusId, verificationCode, isActive, townId)
+                        VALUES (:consumerId, :employeeId, :userName, :pass, :positionId, :accountStatusId, :verificationCode, :isActive, :townId)";
                 $stmt = $this->con->prepare($sql);
                 $stmt->bindParam(":consumerId", $account->consumerId);
                 $stmt->bindParam(":employeeId", $account->employeeId);
@@ -19,6 +19,7 @@
                 $stmt->bindParam(":accountStatusId", $account->accountStatusId);
                 $stmt->bindParam(":verificationCode", $account->verificationCode);
                 $stmt->bindParam(":isActive", $account->isActive);
+                $stmt->bindParam("townId", $account->townId);
                 return $stmt->execute();
             } catch (PDOException $e) {
                 error_log("Database Error: " . $e->getMessage());
@@ -66,5 +67,14 @@
             // return $stmt->debugDumpParams();
             $stmt->execute();
             return $stmt->fetchall(PDO::FETCH_ASSOC);
+        }
+
+        public function updateStatus($status, $accountId){
+            $sql = "UPDATE accounts SET accountStatusId = :statusId WHERE accountId = :accountId";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":statusId", $status);
+            $stmt->bindParam(":accountId", $accountId);
+            
+            return $stmt->execute();
         }
     }

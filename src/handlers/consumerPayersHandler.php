@@ -55,7 +55,6 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $consumerPayer = new ConsumerPayers($_POST);
 
-
                 if ($this->consumerPayersRepo->update($consumerPayer, $_POST['payerId'])){
                     $this->logger->log($_SESSION['employeeId'], "Updated A Consumer Payer");
                     header("Location: /neeco2/consumer-payer?success=Consumer Payer updated successfully");

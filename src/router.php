@@ -28,6 +28,7 @@
         '/neeco2/profile' => '../src/handlers/profileHandler.php',
         '/neeco2/generate-key' => '../src/services/authService.php',
         '/neeco2/generate-report'=> '../src/handlers/reportHandler.php',
+        '/neeco2/pending'=> '../public/views/pending.php',
 
         '/neeco2/test' => '../public/views/dumper.php'
 

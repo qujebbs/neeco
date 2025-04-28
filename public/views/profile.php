@@ -34,7 +34,7 @@ $data = getUserData();
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
             <?php if( $data['accountData']['positionId'] == 1){ ?>
-              <img src="<?php echo  $data['consumerData'][0]['profilepix']; ?>" alt="Profile" class="rounded-circle">
+              <img src="/neeco2/public/uploads/<?php echo  $data['consumerData'][0]['profilepix']; ?>" alt="Profile" class="rounded-circle">
              
 
               <h2><?php echo  $data['consumerData'][0]['firstname']." ".$data['consumerData'][0]['lastname']; ?></h2>

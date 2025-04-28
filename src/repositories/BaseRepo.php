@@ -69,7 +69,7 @@
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
 
-                return $stmt->rowCount();
+                return $stmt->debugDumpParams();
             }catch (PDOException $e){
                 error_log("Database Error in delete(): " . $e->getMessage());
                 return null;

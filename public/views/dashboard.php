@@ -51,8 +51,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="#" method="POST" enctype="multipart/form-data">
-                                        <input type="file" name="textfile">
+                                    <form action="/neeco2/consumer" method="POST" enctype="multipart/form-data">
+                                        <input type="file" name="consumerCsv">
+                                        <input type="hidden" name="action" value="create">
                                         <input type="submit" name="submit">
                                     </form>
                                 </div>

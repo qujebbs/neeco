@@ -10,7 +10,7 @@
         private $complaintRepo;
         private $employeeRepo;
     
-        public function __construct($con) {
+        public function __construct() {
             $this->complaintRepo = new ComplaintRepo();
             $this->employeeRepo = new EmployeeRepo();
         }
@@ -228,7 +228,7 @@
     }
 
 $con = getPDOConnection();
-$complaintHandler = new ComplaintHandler($con);
+$complaintHandler = new ComplaintHandler();
 $complaintHandler->handleRequest();
 
 

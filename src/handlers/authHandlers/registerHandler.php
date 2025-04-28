@@ -41,10 +41,12 @@
 
             $account = new Account($_POST);
 
-            $filter = new ConsumerFilter([
-                "accountNum" => $_POST['accountNum']
-            ]);
-            $user = $this->consumerRepo->selectByFilters($filter, 1);
+            $user = $this->consumerRepo->getByAccountNum($_POST['accountNum']);
+
+            $account->consumerId = $user['consumerId'];
+            $account->positionId = 1;
+            $account->accountStatusId = 1;
+            $account->townId = $user['townId'];
 
             if ($user) {
                 $inserted = $this->accountRepo->insert($account);

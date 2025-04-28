@@ -33,7 +33,7 @@ class Consumer {
         $this->barangay = $data['barangay'] ?? null;
         $this->profilepix = $data['profilepix'] ?? null;
         $this->backpix = $data['backpix'] ?? null;
-        $this->registration = $data['registration'] ?? null;
+        $this->registrationDate = $data['registrationDate'] ?? null;
         $this->contactNum = $data['contactNum'] ?? null;
         $this->poleId = $data['poleId'] ?? null;
         $this->meterSRN = $data['meterSRN'] ?? null;

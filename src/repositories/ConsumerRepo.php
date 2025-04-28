@@ -8,32 +8,43 @@
                 parent::__construct('consumers', 'consumerId');
             }
         
-            public function insert(Consumer $consumer) {
-                $sql = 'INSERT INTO {$this->table} 
-                (townId, routeCode, accountNum, lastname, firstname, midname, suffix, barangay, profilepix, backpix, registrationDate, poleId, meterSRN, employeeName, [date], [time], transferrable, email) VALUES
-                (:townId, :routeCode, :accountNum, :lastname, :firstname, :midname, :suffix, :barangay, :profilepix, :backpix, :registrationNum, :poleId, :meterSRN, :employeeName, :date, :time, :transferrable, :email)';
+            public function insert(array $consumers) {
+                if (empty($consumers)) return false;
+            
+                $values = [];
+                $params = [];
+            
+                foreach ($consumers as $consumer) {
+                    $values[] = "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $params[] = $consumer->townId;
+                    $params[] = $consumer->routeCode;
+                    $params[] = $consumer->accountNum;
+                    $params[] = $consumer->lastname;
+                    $params[] = $consumer->firstname;
+                    $params[] = $consumer->midname;
+                    $params[] = $consumer->suffix;
+                    $params[] = $consumer->barangay;
+                    $params[] = $consumer->profilepix;
+                    $params[] = $consumer->backpix;
+                    $params[] = $consumer->registrationDate;
+                    $params[] = $consumer->contactNum;
+                    $params[] = $consumer->poleId;
+                    $params[] = $consumer->meterSRN;
+                    $params[] = $consumer->employeeName;
+                    $params[] = $consumer->date;
+                    $params[] = $consumer->time;
+                    $params[] = $consumer->transferrable;
+                    $params[] = $consumer->email;
+                }
+            
+                $sql = "INSERT INTO {$this->table} 
+                        (townId, routeCode, accountNum, lastname, firstname, midname, suffix, barangay, profilepix, backpix, registrationDate, contactNum, poleId, meterSRN, employeeName, date, time, transferrable, email) 
+                        VALUES " . implode(", ", $values);
+            
                 $stmt = $this->con->prepare($sql);
-                $stmt->bindParam(':townId', $consumer->townId);
-                $stmt->bindParam(':routeCode', $consumer->routeCode);
-                $stmt->bindParam(':accountNum', $consumer->accountNum);
-                $stmt->bindParam(':lastname', $consumer->lastname);
-                $stmt->bindParam(':firstname', $consumer->firstname);
-                $stmt->bindParam(':midname', $consumer->midname);
-                $stmt->bindParam(':suffix', $consumer->suffix);
-                $stmt->bindParam(':barangay', $consumer->barangay);
-                $stmt->bindParam(':profilepix', $consumer->profilepix);
-                $stmt->bindParam(':backpix', $consumer->backpix);
-                $stmt->bindParam(':registrationDate', $consumer->registrationDate);
-                $stmt->bindParam(':poleId', $consumer->poleId);
-                $stmt->bindParam(':meterSRN', $consumer->meterSRN);
-                $stmt->bindParam(':employeeName', $consumer->employeeName);
-                $stmt->bindParam(':date', $consumer->date);
-                $stmt->bindParam(':time', $consumer->time);
-                $stmt->bindParam(':transferrable', $consumer->transferrable);
-                $stmt->bindParam(':email', $consumer->email);
-
-                return $stmt->execute();
+                return $stmt->execute($params);
             }
+            
             
             public function selectByFilters(ConsumerFilter $filters, $limit = 1000, $offset = 0) {
                 $limit = (int)$limit;
@@ -125,5 +136,16 @@
                 $stmt->bindParam(":id", $id);
 
                 return $stmt->execute();
+            }
+
+            public function getByAccountNum($accountNum){
+                $sql = "SELECT * FROM {$this->table} WHERE accountNum = :accountNum";
+                $stmt = $this->con->prepare($sql);
+
+                $stmt->bindParam(":accountNum", $accountNum);
+
+                $stmt->execute();
+
+                return $stmt->fetch(PDO::FETCH_ASSOC);
             }
     }

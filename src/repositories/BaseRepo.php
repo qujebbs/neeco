@@ -2,9 +2,9 @@
     require_once __DIR__ . "/../../src/config/db.php";
 
     class BaseRepo {
-        protected $con;
-        protected $table;
-        protected $primaryKey;
+        public $con;
+        public $table;
+        public $primaryKey;
         private const ALLOWED_TABLES = [
             'accountStatus', 'accounts', 'awards', 'bac', 'bills', 'bod', 
             'complaitStatus', 'complaints', 'consumerPromptPayers', 

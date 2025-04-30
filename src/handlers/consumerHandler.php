@@ -54,7 +54,6 @@
                 
                         if ($this->consumerRepo->insert($consumersArr)) {
                             $this->logger->log($_SESSION['employeeId'], "Created Consumers via CSV upload");
-                            dumpVar($consumersArr);
                             header("Location: /neeco2/consumer?success=Consumers created successfully");
                             exit;
                         } else {

@@ -49,6 +49,7 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                                     data-target="#edit<?= $entity ?>Modal<?= $item[$idField] ?>">
                                 <i class="fas fa-edit"></i>
                             </button>
+                            <?php if ($entity !== 'account'): ?>
                             <form action="<?php htmlspecialchars($handler, ENT_QUOTES, 'UTF-8') ?>" method="POST" style="display:inline;">
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="<?= $idField ?>" value="<?= $item[$idField] ?>">
@@ -57,6 +58,7 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
+                            <?php endif; ?>
                         </td>
                         <?php endif; ?>
                     </tr>

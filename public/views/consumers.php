@@ -15,7 +15,7 @@
         'barangay' => 'Address',
         'email' => 'Email',
         'statusName' => 'Status',
-    ], 'account', 'accountId');
+    ], 'account', 'accountId', "/neeco2/consumer");
 
     foreach ($accounts as $account) {
         renderModal("editaccountModal{$account['accountId']}", 'Update Account', 'update', [

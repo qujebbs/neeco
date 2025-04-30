@@ -13,5 +13,8 @@
     ],
     "require": {
         "paragonie/paseto": "2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
     }
 }

@@ -67,12 +67,11 @@
             try{
                 $stmt = $this->con->prepare("DELETE FROM {$this->table} WHERE {$this->primaryKey} = :id");
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-                $stmt->execute();
 
-                return $stmt->debugDumpParams();
+                return $stmt->execute();
             }catch (PDOException $e){
                 error_log("Database Error in delete(): " . $e->getMessage());
-                return null;
+                return false;
             }
         }
     }

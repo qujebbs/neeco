@@ -44,29 +44,16 @@ include __DIR__ . '/../views/fragments/header.php';
                   <p class="text-break">
                     <?php echo htmlspecialchars($row['bacUploadDate']); ?>
                   </p>
+                  <p class="text-break">
+                    <?php echo htmlspecialchars($row['bacDesc']); ?>
+                  </p>
                 </div><!-- End post content -->
               </article><!-- End blog post -->
             <?php endforeach; ?>
           </div>
 
           <!-- For Bidding List Section -->
-          <div class="col-lg-4">
-            <div class="sidebar">
-              <div class="sidebar-item recent-posts">
-                <h3 class="sidebar-title">For Bidding List</h3>
-                <div class="mt-3">
-                  <?php foreach ($bacs as $row) : ?>  
-                    <div class="post-item mt-3">
-                      <div>
-                        <h4><a href="bac-end.php?bac_id=<?php echo htmlspecialchars($row['bacId']); ?>"><?php echo htmlspecialchars($row['bacDesc']); ?></a></h4>
-                        <time datetime="<?php echo htmlspecialchars($row['bacUploadDate']); ?>"><?php echo htmlspecialchars($row['bacUploadDate']); ?></time>
-                      </div>
-                    </div><!-- End recent post item -->
-                  <?php endforeach; ?>
-                </div>
-              </div><!-- End For Bidding List sidebar -->
-            </div>
-          </div>
+
 
         </div><!-- End row -->
       </div>

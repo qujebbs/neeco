@@ -20,11 +20,10 @@
         }
         
         public function update(Bac $bac, $id){
-            $sql = "UPDATE {$this->table} SET bacName = :bacName, bacTitle = :bacTitle, bacUploadDate = :bacUploadDate, bacDesc = :bacDesc WHERE bacId = :id";
+            $sql = "UPDATE {$this->table} SET bacName = :bacName, bacTitle = :bacTitle, bacDesc = :bacDesc WHERE bacId = :id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":bacName", $bac->bacPdf);
             $stmt->bindParam(":bacTitle", $bac->bacTitle);
-            $stmt->bindParam(":bacUploadDate", $bac->bacUploadDate);
             $stmt->bindParam(":bacDesc", $bac->bacDesc);
             $stmt->bindParam(":id", $id);
 

@@ -48,6 +48,7 @@ class HomeHandler {
             "contact" => __DIR__ . "/../../public/views/contact.php",
             "bacs" => __DIR__ . "/../../public/views/view-bac.php", //unimplementedssas
             "data-privacy" => __DIR__ . "/../../public/views/data-privacy.php",
+            "blog-details" => __DIR__ . "/../../public/views/blog-details.php",
         ];
 
         $param = $_GET['section'] ?? "landing";
@@ -65,6 +66,18 @@ class HomeHandler {
 
         if (isset($this->repositories[$param])) {
             $data[str_replace('-', '_', $param)] = $this->repositories[$param]->selectAll();
+        }
+
+        if ($param === 'blog-details') {
+            $newsId = isset($_GET['news_id']) ? (int)$_GET['news_id'] : 0;
+            $newsItem = $this->repositories['news']->selectOne($newsId);
+    
+            if (!$newsItem) {
+                header("Location: ?section=news");
+                exit;
+            }
+    
+            $data['newsItem'] = $newsItem;
         }
 
         extract($data);

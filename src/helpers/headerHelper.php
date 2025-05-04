@@ -1,5 +1,4 @@
 <?php
-
     require_once __DIR__ ."/../repositories/DownloadsRepo.php";
     require_once __DIR__ ."/../repositories/RateRepo.php";
 

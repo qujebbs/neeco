@@ -43,7 +43,7 @@ include __DIR__ . '/../views/fragments/header.php';
                   </div>
                   <p class="post-category"><?php echo htmlspecialchars($item['uploadDate']); ?></p>
                   <h2 class="title">
-                    <a href="blog-details.php?news_id=<?php echo htmlspecialchars($item['newsId']); ?>" class="text-break"><?php echo htmlspecialchars($item['newsTitle']); ?></a>
+                    <a href="/neeco2/home?section=blog-details&news_id=<?php echo htmlspecialchars($item['newsId']); ?>" class="text-break"><?php echo htmlspecialchars($item['newsTitle']); ?></a>
                   </h2>
                 </article>
               </div><!-- End post list item -->

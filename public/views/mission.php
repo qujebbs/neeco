@@ -61,7 +61,7 @@ include __DIR__ . '/../views/fragments/header.php';
                   <div class="post-item mt-3">
                     <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($row['newsPic']); ?>" alt="" style="height: 50px; width: 50px;">
                     <div>
-                      <h4><a href="blog-details.php?news_id=<?php echo htmlspecialchars($row['newsId']); ?>">
+                      <h4><a href="/neeco2/home?section=blog-details&news_id=<?php echo htmlspecialchars($row['newsId']); ?>">
                         <?php echo htmlspecialchars($row['newsTitle']); ?></a></h4>
                       <time datetime="2020-01-01"><?php echo htmlspecialchars($row['uploadDate']); ?></time>
                     </div>

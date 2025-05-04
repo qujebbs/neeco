@@ -255,7 +255,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">All Billing Account</h6>
                         <a class="collapse-item" href="/neeco2/bill">Bill History</a>
-                        <a class="collapse-item" href="bills.php">Know Your Current Bill</a>
+                        <!-- <a class="collapse-item" href="bills.php">Know Your Current Bill</a> -->
                     </div>
                 </div>
             </li>
@@ -532,14 +532,14 @@
         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
         Profile
     </a>
-    <a class="dropdown-item" href="setting.php">
+    <!-- <a class="dropdown-item" href="setting.php">
         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
         Settings
-    </a>
-    <a class="dropdown-item" href="activity_log.php">
+    </a> -->
+    <!-- <a class="dropdown-item" href="activity_log.php">
         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
         Activity Log
-    </a>
+    </a> -->
 
               
     <div class="dropdown-divider"></div>

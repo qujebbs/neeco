@@ -48,6 +48,13 @@
             $account->accountStatusId = 1;
             $account->townId = $user['townId'];
 
+            $emailIsActive = $this->accountRepo->findByEmail($account->email);
+
+            if ($emailIsActive) {
+                include __DIR__ . '/../../../public/views/register.php';
+                echo "<script>Swal.fire('Error', 'Email is already in use', 'error');</script>";
+                return;
+            }
             if ($user) {
                 $inserted = $this->accountRepo->insert($account);
                     if ($inserted) {

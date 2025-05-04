@@ -64,6 +64,12 @@
                       <div id="emailHelp" class="form-text"></div>
                     </div>
 
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="email" name="email" id="email" class="form-control" aria-describedby="email" required>
+                      <div id="email" class="form-text"></div>
+                    </div>
+
 
                     <!-- <div class="col-6">
                       <label for="firstname" class="form-label">First Name</label>
@@ -152,7 +158,11 @@
                         <input class="form-control" type="file" id="backpix" name="backpix" accept="image/*" required>
                       </div>
                     </div> -->
-
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'email already in use'): ?>
+                        <script>
+                            Swal.fire('Error', 'Email is already in use', 'error');
+                        </script>
+                    <?php endif; ?>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" name="registerbtn" type="submit">Register</button>
                     </div>

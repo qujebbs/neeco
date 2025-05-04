@@ -46,7 +46,8 @@ class HomeHandler {
             "member-insurance" => __DIR__ . "/../../public/views/member-insurance.php",
             "safety" => __DIR__ . "/../../public/views/safety-tips.php",
             "contact" => __DIR__ . "/../../public/views/contact.php",
-            "bacs" => __DIR__ . "/../../public/views/view-bac.php" //unimplementedssas
+            "bacs" => __DIR__ . "/../../public/views/view-bac.php", //unimplementedssas
+            "data-privacy" => __DIR__ . "/../../public/views/data-privacy.php",
         ];
 
         $param = $_GET['section'] ?? "landing";

@@ -103,7 +103,7 @@ include __DIR__ . '/../views/fragments/header.php';
                                         </label>
                                     </div>
                                     <div class="w-50 text-md-right">
-                                        <a href="" style="color: white;">Forgot Password</a>
+                                        <a href="/neeco2/forgot-password" style="color: white;">Forgot Password</a>
                                     </div>
                                 </div>
                             </form>

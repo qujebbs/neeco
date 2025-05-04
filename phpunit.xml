@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="public\vendor\autoload.php"
+<phpunit bootstrap="public/vendor/autoload.php"
          colors="true"
-         verbose="true"
          stopOnFailure="false">
 
     <testsuites>
@@ -23,5 +22,8 @@
         <env name="DB_PASSWORD" value="Cathpalug2256"/>
     </php>
 
-
+    <logging>
+        <junit outputFile="test-results.xml"/>
+        <testdoxHtml outputFile="testdox.html"/>
+    </logging>
 </phpunit>

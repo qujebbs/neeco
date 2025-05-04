@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="AccountRepoTest" file="C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php" tests="4" assertions="6" errors="0" failures="4" skipped="0" time="0.043654">
+    <testcase name="testInsertSuccess" file="C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php" line="26" class="AccountRepoTest" classname="AccountRepoTest" assertions="2" time="0.041111">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">AccountRepoTest::testInsertSuccess&#13;
+Expectation failed for method name is "execute" when invoked 1 time
+Parameter 0 for invocation PDOStatement::execute(null): bool does not match expected value.
+Failed asserting that an array has the key ':email'.
+&#13;
+C:\xampp\htdocs\neeco2\src\repositories\AccountRepo.php:23
+C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php:48</failure>
+    </testcase>
+    <testcase name="testSelectByFilterReturnsData" file="C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php" line="53" class="AccountRepoTest" classname="AccountRepoTest" assertions="2" time="0.000987">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">AccountRepoTest::testSelectByFilterReturnsData&#13;
+Expectation failed for method name is "execute" when invoked 1 time
+Parameter 0 for invocation PDOStatement::execute(null): bool does not match expected value.
+Failed asserting that null is of type array.
+&#13;
+C:\xampp\htdocs\neeco2\src\repositories\AccountRepo.php:50
+C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php:72</failure>
+    </testcase>
+    <testcase name="testCountByFilterReturnsData" file="C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php" line="78" class="AccountRepoTest" classname="AccountRepoTest" assertions="1" time="0.000692">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">AccountRepoTest::testCountByFilterReturnsData&#13;
+Expectation failed for method name is "prepare" when invoked 1 time
+Parameter 0 for invocation PDO::prepare('SELECT a.accountStatusId AS a...unts a', []): PDOStatement|false does not match expected value.
+Failed asserting that 'SELECT a.accountStatusId AS acs, COUNT(*) AS count FROM neeco2area1.dbo.accounts a' [Encoding ignored](length: 82) contains "select count(*) as total" [Encoding ignored](length: 24).
+&#13;
+C:\xampp\htdocs\neeco2\src\repositories\AccountRepo.php:63
+C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php:97</failure>
+    </testcase>
+    <testcase name="testUpdateStatusSuccess" file="C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php" line="103" class="AccountRepoTest" classname="AccountRepoTest" assertions="1" time="0.000864">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">AccountRepoTest::testUpdateStatusSuccess&#13;
+Expectation failed for method name is "prepare" when invoked 1 time
+Parameter 0 for invocation PDO::prepare('UPDATE accounts SET accountSt...ountId', []): PDOStatement|false does not match expected value.
+Failed asserting that 'UPDATE accounts SET accountStatusId = :statusId WHERE accountId = :accountId' [Encoding ignored](length: 76) contains "update accounts set status" [Encoding ignored](length: 26).
+&#13;
+C:\xampp\htdocs\neeco2\src\repositories\AccountRepo.php:70
+C:\xampp\htdocs\neeco2\tests\unit\AccountRepoTest.php:125</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

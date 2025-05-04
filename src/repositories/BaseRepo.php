@@ -10,7 +10,7 @@
             'complaitStatus', 'complaints', 'consumerPromptPayers', 
             'consumers', 'districtOffices',
             'downloads', 'employees', 'news', 'positions', 'rates', 
-            'routes', 'services', 'staffs', 'towns', 'employees'
+            'routes', 'services', 'staffs', 'towns', 'employees', 'passwordResets'
         ];
 
         public $limit = 1000;

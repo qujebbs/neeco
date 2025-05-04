@@ -29,7 +29,10 @@
         '/neeco2/generate-key' => '../src/services/authService.php',
         '/neeco2/generate-report'=> '../src/handlers/reportHandler.php',
         '/neeco2/pending'=> '../public/views/pending.php',
-
+        '/neeco2/forgot-password' => '../src/handlers/authHandlers/forgotPasswordHandler.php',
+        '/neeco2/reset-password' => '../src/handlers/authHandlers/resetPasswordHandler.php',
+        '/neeco2/reset-success' => '../public/views/reset-success.php',
+        
         '/neeco2/test' => '../public/views/dumper.php'
 
     ];

@@ -20,10 +20,15 @@
                 $stmt->bindParam(":verificationCode", $account->verificationCode);
                 $stmt->bindParam(":isActive", $account->isActive);
                 $stmt->bindParam("townId", $account->townId);
-                return $stmt->execute();
+
+                if ($stmt->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
             } catch (PDOException $e) {
                 error_log("Database Error: " . $e->getMessage());
-                throw new Exception("Database Error: Insert Failed");
+                return false;
             }
         }
         
@@ -51,8 +56,6 @@
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
         
-        
-        //no other use but counting accounts base on accountStatus/ just adjust when needed
         public function countByFilter(AccountFilter $filter){
             $sql = "SELECT a.accountStatusId AS acs, COUNT(*) AS count FROM neeco2area1.dbo.accounts a";
 
@@ -63,8 +66,6 @@
             }
 
             $stmt = $this->con->prepare($sql);
-
-            // return $stmt->debugDumpParams();
             $stmt->execute();
             return $stmt->fetchall(PDO::FETCH_ASSOC);
         }
@@ -77,4 +78,32 @@
             
             return $stmt->execute();
         }
+
+        public function findByEmail($email) {
+            $sql = "SELECT * FROM accounts WHERE email = :email";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function findByAccountId($id){
+            $sql = "SELECT * FROM accounts WHERE accountId = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        
+        public function updatePassword($id, $hashedPassword) {
+            $sql = "UPDATE accounts SET [password] = :newPassword WHERE accountId = :accountId";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":newPassword", $hashedPassword);
+            $stmt->bindParam(":accountId", $id);
+
+            return $stmt->execute();
+        }
+        
     }

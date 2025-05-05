@@ -132,10 +132,10 @@
                     exit;
                 }
     
-                if ($user['positionId'] === "1") {
-                    header("Location: /neeco2/complaint");
-                } else {
+                if ($user['positionId'] === "2") {
                     header("Location: /neeco2/dashboard");
+                } else {
+                    header("Location: /neeco2/profile");
                 }
                 exit;
             } else {

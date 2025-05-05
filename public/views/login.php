@@ -44,10 +44,10 @@ include __DIR__ . '/../views/fragments/header.php';
                 <div class="col-md-6 text-center mb-5">
                     <br> <br> <br> <br> <br> <br> <br><br><br>
                     <h2 class="heading-section">Login to Your Account</h2>
-                    <p class="text-center small">Step 1. Enter your Account Number (e.g. 01-1234-1234 with DASH)</p>
+                    <!-- <p class="text-center small">Step 1. Enter your Account Number (e.g. 01-1234-1234 with DASH)</p>
                     <p class="text-center small">Step 2. Enter Account Password (Account Number without DASH e.g.
                         0112341234)</p>
-                    <p class="text-center small">Step 3. Click Login</p>
+                    <p class="text-center small">Step 3. Click Login</p> -->
                 </div>
                 <div class="col-md-7 col-lg-5">
                     <div class="wrap" style="background-color: #036029;">

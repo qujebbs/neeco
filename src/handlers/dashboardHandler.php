@@ -17,7 +17,7 @@
         public function load() {
             //Check user access
             $currentUser = Auth::requirePosition([
-                'admin', 'finance', 'tsd', 'hr', 'ogm', 'dcso', 'lineman', 'citet', 'audit'
+                'admin'
             ]);
         
             //ACCOUNT STATUS COUNTS

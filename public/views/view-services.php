@@ -42,7 +42,7 @@ include __DIR__ . '/../views/fragments/header.php';
                     <img src="/neeco2/public/uploads/<?php echo htmlspecialchars($service['servicePic']); ?>" alt="<?php echo htmlspecialchars($service['serviceTitle']); ?>" class="img-fluid">
                   </div>
                   <h2 class="title">
-                    <a href="service-details.php?service_id=<?php echo htmlspecialchars($service['serviceId']); ?>" class="text-break"><?php echo htmlspecialchars($service['serviceTitle']); ?></a>
+                    <p class="text-break"><?php echo htmlspecialchars($service['serviceTitle']); ?></p>
                   </h2>
                 </article>
               </div><!-- End post list item -->

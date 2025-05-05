@@ -61,11 +61,11 @@
             </a>
 
             <?php if($positionId > 2){ ?>
-            <!-- <li class="nav-item active">
+            <li class="nav-item active">
                 <a class="nav-link" href="/neeco2/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li> -->
+            </li>
 
             <?php } ?>
             <!-- Divider -->

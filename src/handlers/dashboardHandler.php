@@ -17,7 +17,7 @@
         public function load() {
             //Check user access
             $currentUser = Auth::requirePosition([
-                'admin'
+                'admin', 'finance', 'tsd', 'hr', 'ogm', 'dcso', 'lineman', 'citet', 'audit'
             ]);
         
             //ACCOUNT STATUS COUNTS
@@ -88,7 +88,11 @@
             $complaintsCount = $this->complaintRepo->countAll();
         
             //Load dashboard view
-            include __DIR__ . "/../../public/views/dashboard.php";
+            if ($currentUser['position'] === "admin") {
+                include __DIR__ . "/../../public/views/dashboard.php";
+            }else{
+                include __DIR__ . "/../../public/views/dashboard-emp.php";
+            }
         }        
     }
 

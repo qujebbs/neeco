@@ -241,7 +241,7 @@
                         </button>
 
                         <div class="dropdown-menu p-4" style="min-width: 300px;">
-                            <form action="/neeco2/generate-report" method="POST" target="_blank">
+                            <form action="/neeco2/generate-report" method="POST">
                             <div class="mb-3">
                                 <label for="start_date" class="form-label">Start Date</label>
                                 <input type="date" name="start_date" id="start_date" class="form-control">

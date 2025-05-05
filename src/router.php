@@ -34,6 +34,7 @@
         '/neeco2/test' => '../public/views/dumper.php',
         '/neeco2/generate-key' => '../src/services/authService.php',
         '/neeco2/playground' => '../public/views/dumper.php',
+        '/neeco2/hash-employee-password'=> '../public/views/hash.php',
     ];
 
         

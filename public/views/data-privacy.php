@@ -86,6 +86,10 @@
             position: absolute;
             left: 0;
         }
+
+        a {
+            text-decoration: none;
+        }
         
         .tab-content {
             padding: 1.5rem;

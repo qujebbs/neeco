@@ -23,8 +23,8 @@
         <li><a href="#">Home</a></li>
         <li><a href="/neeco2/home">About us</a></li>
         <li><a href="/neeco2/home?section=services">Services</a></li>
-        <li><a href="#">Terms of service</a></li>
-        <li><a href="#">Privacy policy</a></li>
+        <li><a href="/neeco2/home?section=data-privacy">Terms of service</a></li>
+        <li><a href="/neeco2/home?section=data-privacy">Privacy policy</a></li>
       </ul>
     </div>
     <?php

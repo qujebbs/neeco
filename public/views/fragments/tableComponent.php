@@ -23,7 +23,7 @@ function renderTable($items, $fields, $entity, $idField, $handler= "defaulthandl
                                 if (!empty($value)) {
                                     $filePath = 'public/uploads/' . basename($value);
                                     // Check if the value is a URL or file path
-                                    if (filter_var($value, FILTER_VALIDATE_URL) || preg_match('/\.(jpg|jpeg|png|gif|pdf)$/i', $value)) {
+                                    if (preg_match('/\.(jpg|jpeg|png|gif|pdf)$/i', $value) && file_exists("C:xampp/htdocs/neeco2/" . $filePath)) {
                                         // Check if it's an image
                                         if (preg_match('/\.(jpg|jpeg|png|gif)$/i', $value)) {
                                             // Display image

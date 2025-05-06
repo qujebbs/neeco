@@ -2,6 +2,8 @@
     require_once __DIR__ . "/../repositories/ComplaintRepo.php";
     require_once __DIR__ . "/../models/ComplaintModel.php";
     require_once __DIR__ . "/../filters/ComplaintFilters.php";
+    require_once __DIR__ . "/../repositories/ConsumerRepo.php";
+    require_once __DIR__ . "/../filters/ConsumerFilters.php";
     require_once __DIR__ . "/../repositories/EmployeeRepo.php";
     require_once __DIR__ . "/../../src/helpers/complaintHelper.php";
     require_once __DIR__ . "/../utils/validateComplaints.php";
@@ -9,10 +11,13 @@
     class ComplaintHandler {
         private $complaintRepo;
         private $employeeRepo;
+
+        private $consumerRepo;
     
         public function __construct() {
             $this->complaintRepo = new ComplaintRepo();
             $this->employeeRepo = new EmployeeRepo();
+            $this->consumerRepo = new ConsumerRepo();
         }
         
             public function handleRequest() {
@@ -98,6 +103,11 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     session_start();
                     $complaint = new Complaint($_POST);
+                    $filter = new ConsumerFilter([
+                        'consumerId' => $_SESSION['consumerId']
+                    ]);
+                    $consumer = $this->consumerRepo->selectByFilters($filter);
+                    $complaint->accountNum = $consumer[0]['accountNum'] ?? null;
                     $dcso = $this->employeeRepo->getTownDcso($_SESSION['townId']);
                     $complaint->employeeId = $dcso['employeeId'];
                     $complaint->statusId = 1;

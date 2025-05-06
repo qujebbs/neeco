@@ -44,7 +44,6 @@
     ], 'complaint', 'complaintId');
 
     renderModal('addcomplaintModal', 'Add New Complaint', 'create', [
-        'accountNum' => 'Account Number', //TODO should be auto
         'landmark' => 'Landmark',
         'complaintDesc' => 'Description',
         'natureId' => 'Nature of Complaints'

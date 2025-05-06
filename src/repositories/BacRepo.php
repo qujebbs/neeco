@@ -9,9 +9,9 @@
         }
 
         public function insert(Bac $bac) {
-            $sql = "INSERT INTO {$this->table} (bacName, bacTitle, bacUploadDate, bacDesc) VALUES (:bacName, :bacTitle, :bacUploadDate, :bacDesc)";
+            $sql = "INSERT INTO {$this->table} (bacPdf, bacTitle, bacUploadDate, bacDesc) VALUES (:bacPdf, :bacTitle, :bacUploadDate, :bacDesc)";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":bacName", $bac->bacPdf);
+            $stmt->bindParam(":bacPdf", $bac->bacPdf);
             $stmt->bindParam(":bacTitle", $bac->bacTitle);
             $stmt->bindParam(":bacUploadDate", $bac->bacUploadDate);
             $stmt->bindParam(":bacDesc", $bac->bacDesc);
@@ -20,9 +20,9 @@
         }
         
         public function update(Bac $bac, $id){
-            $sql = "UPDATE {$this->table} SET bacName = :bacName, bacTitle = :bacTitle, bacDesc = :bacDesc WHERE bacId = :id";
+            $sql = "UPDATE {$this->table} SET bacPdf = :bacPdf, bacTitle = :bacTitle, bacDesc = :bacDesc WHERE bacId = :id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":bacName", $bac->bacPdf);
+            $stmt->bindParam(":bacPdf", $bac->bacPdf);
             $stmt->bindParam(":bacTitle", $bac->bacTitle);
             $stmt->bindParam(":bacDesc", $bac->bacDesc);
             $stmt->bindParam(":id", $id);

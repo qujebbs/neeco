@@ -110,7 +110,7 @@
                 $token = Auth::generateToken($user["accountId"], $user["positionName"], $user["statusName"]);
                 setcookie('auth_token', $token, [
                     'httponly' => true,
-                    'secure' => true,
+                    // 'secure' => true,
                     'samesite' => 'Strict',
                     'path' => '/'
                 ]);

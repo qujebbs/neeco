@@ -5,6 +5,7 @@
     require_once __DIR__ . "/../repositories/ConsumerRepo.php";
     require_once __DIR__ . "/../filters/ConsumerFilters.php";
     require_once __DIR__ . "/../repositories/EmployeeRepo.php";
+    require_once __DIR__ . "/../repositories/TownsRepo.php";
     require_once __DIR__ . "/../../src/helpers/complaintHelper.php";
     require_once __DIR__ . "/../utils/validateComplaints.php";
     require_once __DIR__ . "/../middlewares/AuthMiddleware.php";
@@ -13,11 +14,13 @@
         private $employeeRepo;
 
         private $consumerRepo;
+        private $townRepo;
     
         public function __construct() {
             $this->complaintRepo = new ComplaintRepo();
             $this->employeeRepo = new EmployeeRepo();
             $this->consumerRepo = new ConsumerRepo();
+            $this->townRepo = new TownsRepo();
         }
         
             public function handleRequest() {
@@ -87,6 +90,9 @@
                 $tempcomplaintNature = $this->complaintRepo->getComplaintNatures();
                 $natures = array_column($tempcomplaintNature, 'complaintReason', 'natureId');
 
+                $temptowns = $this->townRepo->selectAll();
+                $towns = array_column($temptowns,'townDesc', 'townId');
+
                 $statuses = [
                     1 => 'Pending',
                     2 => 'Assigned',
@@ -109,11 +115,16 @@
                     $consumer = $this->consumerRepo->selectByFilters($filter);
                     $complaint->accountNum = $consumer[0]['accountNum'] ?? null;
                     $dcso = $this->employeeRepo->getTownDcso($_SESSION['townId']);
-                    $complaint->employeeId = $dcso['employeeId'];
+                    $complaint->employeeId = $dcso['employeeId'] ?? null;
                     $complaint->statusId = 1;
                     $complaint->accountId = $_SESSION['accountId'];
                     $complaint->townId = $_SESSION['townId'];
                     
+                    if ($complaint->employeeId === null){
+                        header("Location: /neeco2/complaint?error=There is no DCSO in your town to handle your complaint. Please try again later");
+                        exit;
+                    }
+
                     $validation = validateComplaint($complaint);
 
                     if (!$validation['valid']) {

@@ -26,7 +26,6 @@
             }
         }
         
-        // Checks if registered account number is present in consumers then register the user
         public function register() {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 echo "Invalid request method";

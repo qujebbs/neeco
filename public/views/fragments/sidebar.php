@@ -160,6 +160,11 @@
                     <span> Services</span></a>
             </li>
 
+            <li class="nav-item active">
+                <a class="nav-link" href="/neeco2/employee">
+                <i class="fas fa-fw fa-comment"></i>
+                    <span> Manage Employees</span></a>
+            </li>
            
 
            

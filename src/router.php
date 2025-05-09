@@ -30,6 +30,7 @@
         '/neeco2/forgot-password' => '../src/handlers/authHandlers/forgotPasswordHandler.php',
         '/neeco2/reset-password' => '../src/handlers/authHandlers/resetPasswordHandler.php',
         '/neeco2/reset-success' => '../public/views/reset-success.php',
+        '/neeco2/employee' => '../src/handlers/employeeHandler.php',
         
         '/neeco2/test' => '../public/views/dumper.php',
         '/neeco2/generate-key' => '../src/services/authService.php',
@@ -46,30 +47,3 @@
         echo $url;
         die();
     }
-
-    //TODO: SETTING NULL TO CONSUMERID OR EMPLOYEEID IN ACCOUNTS
-
-    //SECURITY
-    //CSRF TOKEN ////////////
-    //CSP
-    //authorization
-    //CHANGE THE SELECT * to not expose unused data
-    //upgrade router
-    //CSRF
-    //htaccess protection and file uploads security
-    // secure parameters and do constant values
-
-
-    //authorization not user friendly
-    //displaying pdfs
-    //no adding consumers yet
-    //no error handlings or error handling not user friendly
-    //required fields
-    //fix file upload paths
-    //user management
-    //approve and archive multiple users
-    //error on consumerHandler
-    // VIEW-RATE.PHP
-
-    //REGISTER THROUGH ACCOUNTS ONLY NOT CONSUMERS
-    //TODO PAGES: home, senior citizen, RA, Rate archive, Downloads, linking of some pages with ID, employee dashboard

@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <h2 class="mt-4">Employees Management</h2>
 
-    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addemployeeModal">Add New Employees</button>
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addemployeeModal">Add New Employee</button>
 
     <?php
     renderTable($employees, [
